@@ -1077,6 +1077,209 @@
       opacity:.86;
     }
 
+    /* ADDED HERO PRODUCT STUFF */
+    .hero-product-stage{
+      position:relative;
+      min-height:620px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .hero-product-card{
+      position:relative;
+      width:100%;
+      max-width:530px;
+      min-height:610px;
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(235,233,225,.96));
+      box-shadow:0 30px 60px rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.2);
+      padding:28px 24px 26px;
+      overflow:visible;
+    }
+
+    .winner-badge{
+      position:absolute;
+      top:18px;
+      right:18px;
+      z-index:5;
+      background:#fff;
+      color:var(--green);
+      border:1px solid #d9d3c7;
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-product-image-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:430px;
+      padding:18px 10px 8px;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-product-image{
+      max-height:430px;
+      width:auto;
+      object-fit:contain;
+      filter:drop-shadow(0 18px 34px rgba(0,0,0,.22));
+    }
+
+    .hero-buy-wrap{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      margin-top:8px;
+      position:relative;
+      z-index:3;
+    }
+
+    .hero-buy-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:220px;
+      height:56px;
+      border:none;
+      border-radius:12px;
+      background:#0f4b3a;
+      color:#fff;
+      font-weight:900;
+      font-size:18px;
+      box-shadow:0 14px 24px rgba(15,75,58,.22);
+      cursor:pointer;
+    }
+
+    .hero-buy-sub{
+      font-size:14px;
+      color:var(--green);
+      font-weight:900;
+      text-align:center;
+    }
+
+    .hero-callout{
+      position:absolute;
+      z-index:4;
+      max-width:180px;
+      font-weight:900;
+      line-height:1.18;
+    }
+
+    .hero-callout span{
+      display:inline-block;
+      border-radius:14px;
+      padding:12px 14px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-callout.good span{
+      background:#edf7f1;
+      color:#1f7a4c;
+      border:1px solid #d9eadf;
+    }
+
+    .hero-callout.bad span{
+      background:#fff3ee;
+      color:#d94d45;
+      border:1px solid #f0d1ca;
+    }
+
+    .hero-callout::after{
+      content:"";
+      position:absolute;
+      height:2px;
+      background:rgba(15,75,58,.72);
+    }
+
+    .callout-l1{left:-44px; top:70px;}
+    .callout-l1::after{width:86px; right:-80px; top:28px;}
+
+    .callout-l2{left:-72px; top:196px;}
+    .callout-l2::after{width:112px; right:-106px; top:27px;}
+
+    .callout-l3{left:-54px; bottom:176px;}
+    .callout-l3::after{width:94px; right:-88px; top:27px;}
+
+    .callout-r1{right:-42px; top:76px;}
+    .callout-r1::after{width:84px; left:-78px; top:27px;}
+
+    .callout-r2{right:-76px; top:214px;}
+    .callout-r2::after{width:116px; left:-110px; top:27px;}
+
+    .callout-r3{right:-54px; bottom:170px;}
+    .callout-r3::after{width:94px; left:-88px; top:27px;}
+
+    .hero-mobile-callouts{
+      display:none;
+    }
+
+    .hero-discount-row{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+      position:relative;
+      z-index:3;
+    }
+
+    .discount-chip{
+      background:#f1ece2;
+      color:var(--green);
+      border:1px solid #ddd8ce;
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:13px;
+      font-weight:900;
+    }
+
+    /* ADDED SAVINGS BLOCK */
+    .bulk-savings{
+      max-width:920px;
+      margin:28px auto 0;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .bulk-card{
+      background:#faf8f3;
+      border:1px solid #d9d3c7;
+      border-radius:18px;
+      padding:22px 18px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .bulk-card h4{
+      margin:0;
+      color:var(--green);
+      font-size:20px;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    .bulk-card .bulk-small{
+      margin-top:8px;
+      color:#557364;
+      font-weight:700;
+    }
+
+    .bulk-card .bulk-save{
+      margin-top:10px;
+      color:var(--green);
+      font-weight:900;
+      font-size:18px;
+    }
+
     @media (max-width: 1100px){
       .hero-grid,.delivery-grid,.benefit-grid,.review-grid{
         grid-template-columns:1fr 1fr;
@@ -1096,6 +1299,33 @@
 
       .hero-card-area{min-height:auto}
       .bottle-card.one{left:16px}
+
+      .hero-product-stage{min-height:auto}
+      .hero-product-card{
+        min-height:auto;
+        padding:24px 18px 22px;
+      }
+
+      .hero-callout{
+        display:none;
+      }
+
+      .hero-mobile-callouts{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+        margin-top:18px;
+      }
+
+      .hero-mobile-callouts .hero-callout{
+        display:block;
+        position:static;
+        max-width:none;
+      }
+
+      .hero-mobile-callouts .hero-callout::after{
+        display:none;
+      }
     }
 
     @media (max-width: 980px){
@@ -1105,6 +1335,7 @@
       }
 
       .checkout-card,.quote-card{min-height:auto}
+      .bulk-savings{grid-template-columns:1fr}
     }
 
     @media (max-width: 760px){
@@ -1155,32 +1386,45 @@
       .faq-box{padding:14px 20px}
       .checkout-card,.quote-card{padding:22px}
       .benefit-card{min-height:auto}
+
+      .hero-product-image-wrap{
+        min-height:280px;
+        padding-top:34px;
+      }
+
+      .hero-product-image{
+        max-height:280px;
+      }
+
+      .hero-mobile-callouts{
+        grid-template-columns:1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="topbar">⌂ Fresh Raw Cow's Milk • Weekly Delivery Across NSW, QLD &amp; VIC ⌂</div>
+  <div class="topbar">⌂ Free Shipping Across NSW, VIC &amp; QLD - Fresh Raw Cow's Milk ⌂</div>
 
   <header>
     <div class="container nav">
       <a class="brand" href="#top">
         <span class="brand-logo">
-          <img src="logo.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='22px';" />
+          <img src="c1e2bf4f-7742-420f-8cb3-f96540821553.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='22px';" />
         </span>
         <span class="brand-name">RawMilkAUS</span>
       </a>
 
       <nav class="nav-links">
         <a href="#benefits">Benefits</a>
+        <a href="#reviews">Reviews</a>
         <a href="#science">The Science</a>
         <a href="#plans">Plans</a>
         <a href="#delivery">Delivery</a>
-        <a href="#reviews">Reviews</a>
       </nav>
 
       <div class="nav-cta">
-        <a class="btn" href="#plans">My Subscription</a>
-        <a class="btn primary" href="#checkout">Get Started</a>
+        <a class="btn" href="#reviews">See Reviews</a>
+        <a class="btn primary" href="#plans">Order Now</a>
       </div>
     </div>
   </header>
@@ -1197,17 +1441,43 @@
         </div>
 
         <div class="hero-card-area">
-          <div class="poster">
-            <div class="poster-inner">
-              <div class="poster-brand">RawMilk<span style="font-weight:500">AUS</span></div>
-              <h2 class="poster-title">Fresh Raw<br>Cow's Milk</h2>
-              <div class="poster-cow">🐄</div>
-              <div class="poster-sub">Primal Diet<br>Health Benefits</div>
-              <div class="poster-bar">FOR PET USE ONLY</div>
+          <div class="hero-product-stage">
+            <div class="hero-product-card">
+              <div class="winner-badge">★ Winner</div>
+
+              <div class="hero-callout good callout-l1"><span>Increases Height</span></div>
+              <div class="hero-callout good callout-l2"><span>Lowers Cortisol</span></div>
+              <div class="hero-callout good callout-l3"><span>Improves Gut Health</span></div>
+
+              <div class="hero-callout good callout-r1"><span>Clears Skin &amp; Acne</span></div>
+              <div class="hero-callout good callout-r2"><span>Immunity Support</span></div>
+              <div class="hero-callout good callout-r3"><span>Microplastic Free • 100% Glass</span></div>
+
+              <div class="hero-product-image-wrap">
+                <img class="hero-product-image" src="c1e2bf4f-7742-420f-8cb3-f96540821553.png" alt="RawMilkAUS product" />
+              </div>
+
+              <div class="hero-buy-wrap">
+                <a class="hero-buy-btn" href="#plans">Buy Now</a>
+                <div class="hero-buy-sub">Free Shipping Across NSW, VIC &amp; QLD</div>
+              </div>
+
+              <div class="hero-discount-row">
+                <div class="discount-chip">Buy More • Save More</div>
+                <div class="discount-chip">2+ Plans = 10% Off</div>
+                <div class="discount-chip">4+ Plans = 20% Off</div>
+              </div>
+
+              <div class="hero-mobile-callouts">
+                <div class="hero-callout good"><span>Increases Height</span></div>
+                <div class="hero-callout good"><span>Lowers Cortisol</span></div>
+                <div class="hero-callout good"><span>Improves Gut Health</span></div>
+                <div class="hero-callout good"><span>Clears Skin &amp; Acne</span></div>
+                <div class="hero-callout good"><span>Immunity Support</span></div>
+                <div class="hero-callout good"><span>Microplastic Free • 100% Glass</span></div>
+              </div>
             </div>
           </div>
-          <div class="bottle-card one"><div class="bottle-illus"></div></div>
-          <div class="bottle-card two"><div class="bottle-illus" style="height:118px;width:38px"></div></div>
         </div>
       </div>
     </section>
@@ -1274,88 +1544,6 @@
               <li><span class="good-chip">So the contrast is simple: processed milk feels dead and stripped back, raw milk feels full, rich and naturally supportive.</span></li>
             </ul>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="science" class="science-wrap">
-      <h2 class="science-title">Raw Milk vs Pasteurised</h2>
-      <div class="science-sub">— The Brutal Truth</div>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Nutrient</th>
-              <th>Pasteurised</th>
-              <th>Raw Milk</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Vitamin A</td><td class="bad">✕ 35% Reduction</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Vitamin C</td><td class="bad">✕ 77% Reduction</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Vitamin E</td><td class="bad">✕ 14% Reduction</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Iron</td><td class="bad">✕ 66% Reduction</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Zinc</td><td class="bad">✕ 70% Reduction</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>B-Complex Vitamins</td><td class="bad">✕ 38% Reduction</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Calcium</td><td class="bad">✕ 21% Reduction</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Enzymes</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Immunoglobulins</td><td class="bad">✕ 100% Damaged (59% Destroyed)</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Whey Proteins</td><td class="bad">✕ 100% Damaged (34% Denatured)</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Probiotics</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="plans" class="section-shell" style="padding-top:78px">
-      <div class="container">
-        <div class="title-top">Subscription Plans</div>
-        <h2 class="section-title">Weekly Delivery Plans</h2>
-        <p class="section-sub">Choose your monthly volume</p>
-
-        <div class="plan-box">
-          <div class="plan-title">🥛 <span>Select Your Plan</span></div>
-          <div class="select-wrap">
-            <select id="planSelect">
-              <option selected disabled>Choose your monthly volume...</option>
-              <option value="10L / month — 2.5L weekly — 1 pet starter">10L / month — 2.5L weekly — 1 pet starter</option>
-              <option value="20L / month — 5L weekly — 2 pets">20L / month — 5L weekly — 2 pets</option>
-              <option value="30L / month — 7.5L weekly — small household">30L / month — 7.5L weekly — small household</option>
-              <option value="40L / month — 10L weekly — small household">40L / month — 10L weekly — small household</option>
-              <option value="50L / month — 12.5L weekly — small household">50L / month — 12.5L weekly — small household</option>
-              <option value="60L / month — 15L weekly — medium household">60L / month — 15L weekly — medium household</option>
-              <option value="70L / month — 17.5L weekly — medium household">70L / month — 17.5L weekly — medium household</option>
-              <option value="80L / month — 20L weekly — medium household">80L / month — 20L weekly — medium household</option>
-              <option value="90L+ / month — large households">90L+ / month — large households</option>
-              <option value="100L+ / month — custom">100L+ / month — custom</option>
-            </select>
-          </div>
-          <button class="checkout" id="goToCheckoutBtn">Continue to Checkout</button>
-          <div class="plan-foot">🥛 Delivered weekly in 2L glass bottles</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="delivery" class="section-shell">
-      <div class="container delivery-grid">
-        <div class="delivery-copy">
-          <div class="title-top" style="text-align:left; margin-bottom:14px">Delivery</div>
-          <h2>Weekly Chilled Delivery</h2>
-          <div class="mini">Across NSW, QLD, VIC, SA, WA &amp; ACT</div>
-          <p>Fresh from licensed Australian dairies. Cold-chain guaranteed from farm to your door. Glass bottles only — because your milk should never touch plastic.</p>
-          <div class="delivery-feats">
-            <div class="delivery-feat"><i>🚚</i><span>Weekly scheduled delivery</span></div>
-            <div class="delivery-feat"><i>🌡</i><span>Cold-chain guaranteed</span></div>
-            <div class="delivery-feat"><i>🥛</i><span>Glass bottles only</span></div>
-          </div>
-        </div>
-
-        <div class="delivery-card">
-          <div class="label">
-            <strong>Licensed Australian Dairies</strong>
-            <div>NSW • QLD • VIC • SA • WA • ACT</div>
-          </div>
         </div>
       </div>
     </section>
@@ -1534,6 +1722,108 @@
       </div>
     </section>
 
+    <section id="science" class="science-wrap">
+      <h2 class="science-title">Raw Milk vs Pasteurised</h2>
+      <div class="science-sub">— The Brutal Truth</div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nutrient</th>
+              <th>Pasteurised</th>
+              <th>Raw Milk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Vitamin A</td><td class="bad">✕ 35% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Vitamin C</td><td class="bad">✕ 77% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Vitamin E</td><td class="bad">✕ 14% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Iron</td><td class="bad">✕ 66% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Zinc</td><td class="bad">✕ 70% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>B-Complex Vitamins</td><td class="bad">✕ 38% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Calcium</td><td class="bad">✕ 21% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Enzymes</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Immunoglobulins</td><td class="bad">✕ 100% Damaged (59% Destroyed)</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Whey Proteins</td><td class="bad">✕ 100% Damaged (34% Denatured)</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Probiotics</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="plans" class="section-shell" style="padding-top:78px">
+      <div class="container">
+        <div class="title-top">Subscription Plans</div>
+        <h2 class="section-title">Weekly Delivery Plans</h2>
+        <p class="section-sub">Choose your monthly volume</p>
+
+        <div class="plan-box">
+          <div class="plan-title">🥛 <span>Select Your Plan</span></div>
+          <div class="select-wrap">
+            <select id="planSelect">
+              <option selected disabled>Choose your monthly volume...</option>
+              <option value="10L / month — 2.5L weekly — 1 pet starter">10L / month — 2.5L weekly — 1 pet starter</option>
+              <option value="20L / month — 5L weekly — 2 pets">20L / month — 5L weekly — 2 pets</option>
+              <option value="30L / month — 7.5L weekly — small household">30L / month — 7.5L weekly — small household</option>
+              <option value="40L / month — 10L weekly — small household">40L / month — 10L weekly — small household</option>
+              <option value="50L / month — 12.5L weekly — small household">50L / month — 12.5L weekly — small household</option>
+              <option value="60L / month — 15L weekly — medium household">60L / month — 15L weekly — medium household</option>
+              <option value="70L / month — 17.5L weekly — medium household">70L / month — 17.5L weekly — medium household</option>
+              <option value="80L / month — 20L weekly — medium household">80L / month — 20L weekly — medium household</option>
+              <option value="90L+ / month — large households">90L+ / month — large households</option>
+              <option value="100L+ / month — custom">100L+ / month — custom</option>
+            </select>
+          </div>
+          <button class="checkout" id="goToCheckoutBtn">Continue to Checkout</button>
+          <div class="plan-foot">🥛 Delivered weekly in 2L glass bottles • Free shipping across NSW, VIC &amp; QLD</div>
+        </div>
+
+        <div class="bulk-savings">
+          <div class="bulk-card">
+            <h4>Starter Order</h4>
+            <div class="bulk-small">1 plan</div>
+            <div class="bulk-save">Standard pricing</div>
+          </div>
+
+          <div class="bulk-card">
+            <h4>Stock Up</h4>
+            <div class="bulk-small">2+ plans</div>
+            <div class="bulk-save">10% Off</div>
+          </div>
+
+          <div class="bulk-card">
+            <h4>Family / Bulk</h4>
+            <div class="bulk-small">4+ plans</div>
+            <div class="bulk-save">20% Off</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="delivery" class="section-shell">
+      <div class="container delivery-grid">
+        <div class="delivery-copy">
+          <div class="title-top" style="text-align:left; margin-bottom:14px">Delivery</div>
+          <h2>Weekly Chilled Delivery</h2>
+          <div class="mini">Free Shipping Across NSW, VIC &amp; QLD</div>
+          <p>Fresh from licensed Australian dairies. Cold-chain guaranteed from farm to your door. Glass bottles only — because your milk should never touch plastic.</p>
+          <div class="delivery-feats">
+            <div class="delivery-feat"><i>🚚</i><span>Free shipping on all orders</span></div>
+            <div class="delivery-feat"><i>🌡</i><span>Cold-chain guaranteed</span></div>
+            <div class="delivery-feat"><i>🥛</i><span>Glass bottles only</span></div>
+          </div>
+        </div>
+
+        <div class="delivery-card">
+          <div class="label">
+            <strong>Licensed Australian Dairies</strong>
+            <div>Free Shipping • NSW • VIC • QLD</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="faq-shell">
       <div class="container">
         <h2 class="section-title">Frequently Asked Questions</h2>
@@ -1658,29 +1948,23 @@
       <div class="container">
         <div class="logo-row">
           <span class="foot-logo">
-            <img src="logo.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='18px';">
+            <img src="c1e2bf4f-7742-420f-8cb3-f96540821553.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='18px';">
           </span>
           <span>RawMilkAUS</span>
         </div>
 
         <div class="foot-links">
-          <span>NSW Delivery</span>
+          <span>Free Shipping NSW</span>
           <span class="sep">•</span>
-          <span>QLD Delivery</span>
+          <span>Free Shipping VIC</span>
           <span class="sep">•</span>
-          <span>VIC Delivery</span>
-          <span class="sep">•</span>
-          <span>SA Delivery</span>
-          <span class="sep">•</span>
-          <span>WA Delivery</span>
-          <span class="sep">•</span>
-          <span>ACT Delivery</span>
+          <span>Free Shipping QLD</span>
         </div>
 
         <div class="foot-divider"></div>
 
         <div class="foot-copy">
-          <div>This product is sold strictly for pet use only. Consult a qualified professional for feeding decisions.</div>
+          <div>Free shipping across NSW, VIC &amp; QLD. This product is sold strictly for pet use only. Consult a qualified professional for feeding decisions.</div>
           <div class="copyright">©️ 2026 RawMilkAUS. All rights reserved.</div>
         </div>
       </div>
