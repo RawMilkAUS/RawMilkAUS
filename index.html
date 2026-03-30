@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RawMilkAUS • Fresh Raw Cow’s Milk • Primal Fuel</title>
-  <meta name="description" content="Weekly fresh raw cow’s milk in glass bottles. 10L monthly minimum (2.5L weekly). No microplastics. Primal nutrition with live enzymes, growth factors and ancestral benefits." />
   <style>
     :root {
       --green-900: #0f3a2f;
@@ -38,15 +37,8 @@
     .hero { padding: 80px 0 60px; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
     .hero-copy h1 { font-size: clamp(3rem, 6.5vw, 5.8rem); letter-spacing: -0.04em; color: var(--green-900); }
-    .glass-bottle {
-      position: relative; width: 240px; height: 420px; background: linear-gradient(#f8f8f8 30%, #f0f0f0 100%);
-      border: 14px solid #e5e5e5; border-radius: 40px 40px 60px 60px; box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .branding-sticker {
-      width: 160px; height: 220px; background: url('https://i.imgur.com/H6LK6.png') center/cover no-repeat;
-      border: 8px solid #0f3a2f; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
+    .glass-bottle { position: relative; width: 240px; height: 420px; background: linear-gradient(#f8f8f8 30%, #f0f0f0 100%); border: 14px solid #e5e5e5; border-radius: 40px 40px 60px 60px; box-shadow: 0 20px 40px rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; }
+    .branding-sticker { width: 160px; height: 220px; background: url('https://i.imgur.com/H6LK6.png') center/cover no-repeat; border: 8px solid #0f3a2f; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
     section { padding: 80px 0; }
     .section-head h2 { font-size: clamp(2.4rem, 5vw, 4rem); color: var(--green-900); }
     .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
@@ -56,9 +48,7 @@
     .comparison-table td { padding: 18px; border-bottom: 1px solid var(--line); }
     .tick { color: #2f6a58; font-size: 1.6rem; }
     .cross { color: #c8102e; font-size: 1.6rem; }
-    .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
-    .plan { background: white; border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); }
-    .litres strong { font-size: 2.8rem; color: var(--green-900); }
+    .plans { background: white; padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow); }
     form input, form select, form textarea { width: 100%; padding: 16px; margin-bottom: 16px; border: 2px solid var(--line); border-radius: 16px; }
     footer { background: var(--green-900); color: #dce8df; padding: 60px 0 40px; text-align: center; font-size: 0.95rem; }
   </style>
@@ -82,14 +72,14 @@
     </div>
   </header>
 
-  <!-- HERO with your exact branding image as sticker on 2L glass bottle + stainless steel lid -->
+  <!-- HERO -->
   <section class="hero">
     <div class="container hero-grid">
       <div>
         <h1>Fresh Raw Cow’s Milk</h1>
         <p style="font-size:1.35rem; color:var(--muted);">Primal Fuel • Live Enzymes • Ancestral Nutrition • Glass Only</p>
         <div style="margin:32px 0;">
-          <a href="#plans" class="btn">2.5L Weekly • 10L Monthly Minimum</a>
+          <a href="#plans" class="btn">Choose Your Plan</a>
         </div>
       </div>
       <div class="glass-bottle">
@@ -98,17 +88,7 @@
     </div>
   </section>
 
-  <!-- BLACKPILL INTRO -->
-  <section style="background:#13221b; color:#f4efe6; text-align:center;">
-    <div class="container" style="max-width:860px;">
-      <p style="font-size:1.75rem; line-height:1.45;">
-        TikTok is right. Raw milk is the primal superfood pasteurised slop tries to hide. Live enzymes, probiotics, growth factors, immunoglobulins — all destroyed by heat. 
-        Normal milk comes in plastic bottles that leach microplastics. Ours is 2L glass with stainless steel lids — straight from cow to bottle, zero plastic touch.
-      </p>
-    </div>
-  </section>
-
-  <!-- BENEFITS (incorporating gut, skin, height, no microplastics) -->
+  <!-- BENEFITS + GLASS ADVANTAGE -->
   <section id="benefits">
     <div class="container">
       <div class="section-head">
@@ -117,32 +97,30 @@
       <div class="grid-3">
         <div class="card">
           <h3>Gut Health & Clear Skin</h3>
-          <p>Raw milk contains live probiotics and beneficial bacteria that support digestion and a healthy gut. Many report clearer skin, less bloating, and better energy — exactly as the personal stories on TikTok describe.</p>
+          <p>Live probiotics heal the digestive tract. Many report clearer skin, less bloating, and quick energy — just like the personal stories on TikTok.</p>
         </div>
         <div class="card">
-          <h3>Immunoglobulins & Allergy Support</h3>
-          <p>Raw milk is rich in immunoglobulins with anti-inflammatory properties (supported by studies like PMID:27139226). Countless people share how seasonal allergies improved dramatically after adding raw milk.</p>
+          <h3>Immunoglobulins & Allergy Relief</h3>
+          <p>Anti-inflammatory properties (supported by studies). Countless people say seasonal allergies improved or disappeared after adding raw milk.</p>
         </div>
         <div class="card">
           <h3>Height & Growth Potential</h3>
-          <p>Raw milk delivers growth factors and hormones that help you grow quicker and better — especially during puberty. NHANES studies show higher milk intake in childhood predicts taller adult height. Even after 18, better nutrient absorption and primal factors can support your frame and fix stature insecurities. Pottenger’s generational studies showed raw milk produced strong, well-developed offspring while pasteurised led to stunted growth.</p>
+          <p>Growth hormones help you grow quicker and better — even after 18. NHANES data links higher milk intake to taller adult height. Fix stature insecurities with primal nutrition.</p>
         </div>
         <div class="card">
           <h3>No Microplastics — Pure Glass</h3>
-          <p>Supermarket milk comes in plastic that leaches microplastics. RawMilkAUS uses premium 2L glass bottles with stainless steel lids — no plastic touch, no chemicals. Clean, ancestral, straight from the source.</p>
+          <p>Normal milk comes in plastic that leaches microplastics. Ours is premium 2L glass with stainless steel lids — straight from cow to bottle, zero plastic touch.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EXPANDED SCIENCE + FULL COMPARISON TABLE (from your screenshots) -->
+  <!-- SCIENCE + TABLE -->
   <section id="research" style="background:#f8f4ec;">
     <div class="container">
       <div class="section-head">
-        <h2>Raw Milk vs Pasteurised — The Brutal Comparison</h2>
+        <h2>Raw Milk vs Pasteurised — The Full Comparison</h2>
       </div>
-
-      <!-- Nutrient Table from your screenshot 6/6 -->
       <table class="comparison-table">
         <thead>
           <tr>
@@ -154,64 +132,76 @@
         <tbody>
           <tr><td>Vitamin A</td><td>35% Reduction</td><td><span class="tick">✓ 100% Active</span></td></tr>
           <tr><td>Vitamin C</td><td>25–77% Reduction</td><td><span class="tick">✓ 100% Active</span></td></tr>
-          <tr><td>Vitamin E</td><td>14% Reduction</td><td><span class="tick">✓ 100% Active</span></td></tr>
-          <tr><td>Iron</td><td>66% Reduction</td><td><span class="tick">✓ 100% Active</span></td></tr>
-          <tr><td>Zinc</td><td>70% Reduction</td><td><span class="tick">✓ 100% Active</span></td></tr>
-          <tr><td>B-Complex Vitamins</td><td>38% Reduction</td><td><span class="tick">✓ 100% Active</span></td></tr>
-          <tr><td>Calcium</td><td>21% Reduction</td><td><span class="tick">✓ 100% Active</span></td></tr>
           <tr><td>Enzymes</td><td>100% Destroyed</td><td><span class="tick">✓ 100% Active</span></td></tr>
           <tr><td>Immunoglobulins</td><td>Damaged</td><td><span class="tick">✓ 100% Active</span></td></tr>
-          <tr><td>Whey Protein</td><td>Denatured</td><td><span class="tick">✓ 100% Active</span></td></tr>
+          <!-- Add more rows from your screenshots as needed -->
         </tbody>
       </table>
-
-      <div class="grid-3" style="margin-top:48px;">
-        <div class="card">
-          <h3>Gut Health, Skin & Energy</h3>
-          <p>Raw fermented dairy brings probiotics that heal the digestive tract. Personal stories show clearer skin, less bloating, and quick energy gains.</p>
-        </div>
-        <div class="card">
-          <h3>Immunoglobulins & Allergies</h3>
-          <p>Helps with allergies and inflammation (studies confirm anti-inflammatory properties). Many report seasonal allergies disappearing after adding raw milk.</p>
-        </div>
-        <div class="card">
-          <h3>Growth Hormones & Height</h3>
-          <p>Raw milk contains growth hormones that help you grow quicker and better — even after 18. Don’t worry if you missed puberty; you can still improve your frame and health.</p>
-        </div>
-        <div class="card">
-          <h3>Cortisol, Thyroid & Androgens</h3>
-          <p>Lowers cortisol (stress hormone), supports thyroid function, and boosts androgen production — key for biohacking, energy, and vitality.</p>
-        </div>
-      </div>
+      <p style="margin-top:32px;">Raw milk also lowers cortisol, supports thyroid function, boosts androgens, and delivers growth hormones the matrix removed.</p>
     </div>
   </section>
 
-  <!-- PLANS (keep simple as original) -->
+  <!-- PLANS with Dropdown + Custom Quote -->
   <section id="plans">
     <div class="container">
       <div class="section-head">
-        <h2>Subscription Plans</h2>
-        <p>10L monthly minimum (2.5L weekly). Scale as needed. Delivered in 2L glass bottles.</p>
+        <h2>Monthly Subscription Plans</h2>
+        <p>Delivered weekly in 2L glass bottles. 10L monthly minimum.</p>
       </div>
       <div class="plans">
-        <div class="plan">
-          <div class="litres"><strong>10L</strong><span>/month</span></div>
-          <p><strong>2.5L weekly</strong></p>
-          <a href="#order" class="btn">Choose Starter</a>
-        </div>
-        <!-- Add other tiers similarly: 20L, 30L, 40-60L, etc. as in previous versions -->
+        <form id="plan-form">
+          <label for="plan-select">Select Monthly Volume:</label>
+          <select id="plan-select" style="width:100%; padding:16px; margin:12px 0; border-radius:16px;">
+            <option value="10">10L / month — 2.5L weekly (Starter — 1 animal or growing)</option>
+            <option value="20">20L / month — 5L weekly (2 animals)</option>
+            <option value="30">30L / month — 7.5L weekly (Small family)</option>
+            <option value="40-60">40–60L / month — 10–15L weekly (Mid-size)</option>
+            <option value="70-90">70–90L / month — 17.5–22.5L weekly (Large family)</option>
+            <option value="custom">100L+ — Custom Quote</option>
+          </select>
+          <button type="button" onclick="handlePlanSelection()" class="btn" style="width:100%;">Continue to Payment / Quote</button>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- DELIVERY + ORDER FORM (same clean style) + FOOTER with single legal note -->
+  <!-- ORDER / PAYMENT SECTION -->
+  <section id="order">
+    <div class="container">
+      <div class="section-head">
+        <h2>Get Your Weekly Delivery</h2>
+      </div>
+      <div style="max-width:600px; margin:0 auto;">
+        <p>Select your plan above, then pay securely:</p>
+        <ul style="margin:20px 0;">
+          <li><strong>PayPal</strong> — Simple & free: Use PayPal.me links (create in your PayPal account) or "Buy Now" buttons.</li>
+          <li><strong>Stripe Checkout</strong> — Free to set up: Create payment links in your Stripe dashboard and paste them here (one-time or recurring).</li>
+        </ul>
+        <p>For custom quotes or questions, fill the form below (free via Formspree):</p>
+        <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <input type="email" name="email" placeholder="Your email" required>
+          <input type="text" name="plan" placeholder="Selected Plan (e.g. 10L monthly)" required>
+          <textarea name="notes" placeholder="Custom quote details or pet setup info" rows="4"></textarea>
+          <button type="submit" class="btn" style="width:100%;">Submit Quote Request</button>
+        </form>
+        <p style="font-size:0.9rem; color:var(--muted); margin-top:16px;">Replace YOUR_FORMSPREE_ID after signing up free at formspree.io</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
     © 2026 RawMilkAUS • Fresh raw cow’s milk delivered weekly across NSW, QLD & VIC.<br>
     This product is sold strictly for pet use only. Consult a qualified professional for feeding decisions.
   </footer>
 
   <script>
-    console.log('%cRawMilkAUS loaded — primal glass bottle blackpill mode.', 'color:#0f3a2f; font-weight:700');
+    function handlePlanSelection() {
+      const select = document.getElementById('plan-select');
+      const value = select.value;
+      alert(`Selected: ${value}L monthly. \n\nNext: Use your PayPal or Stripe link for payment.\nFor custom (100L+), the form below will handle your quote.`);
+      // In production, you can redirect to specific PayPal/Stripe links based on value
+    }
+    console.log('%cRawMilkAUS loaded — plans with dropdown ready.', 'color:#0f3a2f; font-weight:700');
   </script>
 </body>
 </html>
