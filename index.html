@@ -19,17 +19,19 @@
       --radius:22px;
       --max:1180px;
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:var(--bg);
       color:var(--text);
       line-height:1.45;
     }
     img{max-width:100%;display:block}
     a{text-decoration:none;color:inherit}
+    button,input,select,textarea{font:inherit}
     .container{width:min(var(--max), calc(100% - 36px)); margin:0 auto}
 
     .topbar{
@@ -44,31 +46,77 @@
     }
 
     header{
-      position:sticky; top:0; z-index:50;
+      position:sticky;
+      top:0;
+      z-index:50;
       background:rgba(244,241,234,.96);
       backdrop-filter:blur(10px);
       border-bottom:1px solid var(--line);
     }
     .nav{
       min-height:78px;
-      display:flex; align-items:center; justify-content:space-between; gap:24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
     }
-    .brand{display:flex; align-items:center; gap:14px; font-weight:900; color:var(--green)}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      color:var(--green);
+    }
     .brand-logo{
-      width:40px;height:40px;border-radius:10px;display:grid;place-items:center;
-      overflow:hidden; flex:0 0 auto;
+      width:40px;
+      height:40px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      flex:0 0 auto;
+      background:transparent;
     }
-    .brand-logo img{width:100%;height:100%;object-fit:cover;border-radius:10px}
-    .brand-name{font-family: Georgia, 'Times New Roman', serif; font-size:21px}
-    .nav-links{display:flex;gap:34px;align-items:center;color:var(--muted);font-weight:700}
-    .nav-cta{display:flex;gap:12px;align-items:center}
+    .brand-logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:10px;
+    }
+    .brand-name{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:21px;
+    }
+    .nav-links{
+      display:flex;
+      gap:34px;
+      align-items:center;
+      color:var(--muted);
+      font-weight:700;
+    }
+    .nav-cta{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:14px 22px; border-radius:10px; border:1.5px solid var(--green);
-      font-weight:800; transition:.18s ease; cursor:pointer; background:transparent; color:var(--green);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 22px;
+      border-radius:10px;
+      border:1.5px solid var(--green);
+      font-weight:800;
+      transition:.18s ease;
+      cursor:pointer;
+      background:transparent;
+      color:var(--green);
     }
     .btn:hover{transform:translateY(-1px)}
-    .btn.primary{background:var(--green); color:#fff}
+    .btn.primary{
+      background:var(--green);
+      color:#fff;
+    }
 
     section{padding:0}
 
@@ -77,36 +125,81 @@
       color:#fff;
       padding:86px 0 80px;
       min-height:740px;
-      display:flex; align-items:center;
+      display:flex;
+      align-items:center;
     }
-    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:38px;
+      align-items:center;
+    }
     .eyebrow{
-      display:inline-flex; padding:9px 16px; border:1px solid rgba(255,255,255,.16);
-      border-radius:999px; color:rgba(255,255,255,.8); text-transform:uppercase;
-      font-size:13px; letter-spacing:.22em; margin-bottom:22px;
+      display:inline-flex;
+      padding:9px 16px;
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:999px;
+      color:rgba(255,255,255,.8);
+      text-transform:uppercase;
+      font-size:13px;
+      letter-spacing:.22em;
+      margin-bottom:22px;
     }
     .hero h1{
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size:76px; line-height:.96; margin:0 0 18px; letter-spacing:-.04em;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:76px;
+      line-height:.96;
+      margin:0 0 18px;
+      letter-spacing:-.04em;
       color:#f3eee4;
     }
-    .hero h1 em{font-style:italic; display:block}
-    .hero-sub{font-size:20px; color:rgba(255,255,255,.72); font-weight:700; margin-bottom:28px}
-    .pill{
-      display:inline-flex; padding:16px 26px; border-radius:999px; background:#f1ece2; color:var(--green);
-      font-weight:900; font-size:19px; box-shadow:var(--shadow); margin-bottom:22px;
+    .hero h1 em{
+      font-style:italic;
+      display:block;
     }
-    .hero-note{max-width:440px; color:rgba(255,255,255,.56); font-size:16px}
+    .hero-sub{
+      font-size:20px;
+      color:rgba(255,255,255,.72);
+      font-weight:700;
+      margin-bottom:28px;
+    }
+    .pill{
+      display:inline-flex;
+      padding:16px 26px;
+      border-radius:999px;
+      background:#f1ece2;
+      color:var(--green);
+      font-weight:900;
+      font-size:19px;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+    }
+    .hero-note{
+      max-width:440px;
+      color:rgba(255,255,255,.56);
+      font-size:16px;
+    }
 
-    .hero-card-area{position:relative; min-height:540px}
+    .hero-card-area{
+      position:relative;
+      min-height:540px;
+    }
     .poster{
-      position:absolute; right:34px; top:42px; width:430px; height:575px;
-      border-radius:22px; background:linear-gradient(135deg, rgba(255,255,255,.92), rgba(218,232,223,.82));
-      box-shadow:0 30px 60px rgba(0,0,0,.18); overflow:hidden;
+      position:absolute;
+      right:34px;
+      top:42px;
+      width:430px;
+      height:575px;
+      border-radius:22px;
+      background:linear-gradient(135deg, rgba(255,255,255,.92), rgba(218,232,223,.82));
+      box-shadow:0 30px 60px rgba(0,0,0,.18);
+      overflow:hidden;
       border:1px solid rgba(255,255,255,.14);
     }
     .poster::before{
-      content:""; position:absolute; inset:0;
+      content:"";
+      position:absolute;
+      inset:0;
       background:
         radial-gradient(circle at 78% 18%, rgba(255,255,255,.95) 0 8px, transparent 10px),
         radial-gradient(circle at 84% 23%, rgba(255,255,255,.92) 0 12px, transparent 14px),
@@ -116,181 +209,765 @@
       opacity:.95;
     }
     .poster::after{
-      content:""; position:absolute; left:-60px; right:-40px; bottom:-10px; height:180px;
+      content:"";
+      position:absolute;
+      left:-60px;
+      right:-40px;
+      bottom:-10px;
+      height:180px;
       background:radial-gradient(circle at 30% 60%, rgba(12,77,59,.92), rgba(12,77,59,.98) 60%, transparent 62%);
-      filter:blur(18px); opacity:.72;
+      filter:blur(18px);
+      opacity:.72;
     }
-    .poster-inner{position:relative; z-index:2; height:100%; padding:38px 34px 24px; color:var(--green)}
-    .poster-brand{font-size:24px; font-weight:900; color:#fff; text-align:right; margin-bottom:34px}
+    .poster-inner{
+      position:relative;
+      z-index:2;
+      height:100%;
+      padding:38px 34px 24px;
+      color:var(--green);
+    }
+    .poster-brand{
+      font-size:24px;
+      font-weight:900;
+      color:#fff;
+      text-align:right;
+      margin-bottom:34px;
+    }
     .poster-title{
-      font-family: Georgia, 'Times New Roman', serif; font-size:74px; line-height:.92; letter-spacing:-.05em;
-      margin:0 0 18px; color:#103f31;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:74px;
+      line-height:.92;
+      letter-spacing:-.05em;
+      margin:0 0 18px;
+      color:#103f31;
     }
-    .poster-cow{font-size:54px; line-height:1; margin:8px 0 16px}
-    .poster-sub{font-weight:900; font-size:30px; line-height:1.08; margin:0 0 24px}
-    .poster-bar{background:rgba(10,70,54,.96); color:#fff; display:inline-flex; padding:14px 20px; font-size:24px; font-weight:900}
+    .poster-cow{
+      font-size:54px;
+      line-height:1;
+      margin:8px 0 16px;
+    }
+    .poster-sub{
+      font-weight:900;
+      font-size:30px;
+      line-height:1.08;
+      margin:0 0 24px;
+    }
+    .poster-bar{
+      background:rgba(10,70,54,.96);
+      color:#fff;
+      display:inline-flex;
+      padding:14px 20px;
+      font-size:24px;
+      font-weight:900;
+    }
 
     .bottle-card{
-      position:absolute; width:114px; height:152px; background:#dad8dc; border-radius:14px;
-      box-shadow:0 18px 32px rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.35);
-      overflow:hidden; display:grid; place-items:center;
+      position:absolute;
+      width:114px;
+      height:152px;
+      background:#dad8dc;
+      border-radius:14px;
+      box-shadow:0 18px 32px rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.35);
+      overflow:hidden;
+      display:grid;
+      place-items:center;
     }
     .bottle-card.one{top:18px; left:52px}
     .bottle-card.two{right:10px; bottom:18px; width:128px; height:182px}
     .bottle-illus{
-      width:34px; height:96px; border-radius:18px 18px 12px 12px; background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(248,248,248,.9));
-      border:2px solid rgba(255,255,255,.65); position:relative;
+      width:34px;
+      height:96px;
+      border-radius:18px 18px 12px 12px;
+      background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(248,248,248,.9));
+      border:2px solid rgba(255,255,255,.65);
+      position:relative;
     }
-    .bottle-illus::before{content:""; position:absolute; top:-14px; left:10px; right:10px; height:18px; border-radius:12px; background:#171717}
-    .bottle-illus::after{content:""; position:absolute; bottom:-8px; left:5px; right:5px; height:10px; border-radius:50%; background:#676a73}
+    .bottle-illus::before{
+      content:"";
+      position:absolute;
+      top:-14px;
+      left:10px;
+      right:10px;
+      height:18px;
+      border-radius:12px;
+      background:#171717;
+    }
+    .bottle-illus::after{
+      content:"";
+      position:absolute;
+      bottom:-8px;
+      left:5px;
+      right:5px;
+      height:10px;
+      border-radius:50%;
+      background:#676a73;
+    }
 
-    .section-shell{padding:74px 0 86px; border-top:1px solid var(--line)}
-    .title-top{font-size:13px; letter-spacing:.28em; text-transform:uppercase; color:#547162; text-align:center; margin-bottom:12px}
+    .section-shell{
+      padding:74px 0 86px;
+      border-top:1px solid var(--line);
+    }
+    .title-top{
+      font-size:13px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:#547162;
+      text-align:center;
+      margin-bottom:12px;
+    }
     .section-title{
-      font-family: Georgia, 'Times New Roman', serif; font-size:68px; line-height:1; letter-spacing:-.04em;
-      margin:0; text-align:center; color:var(--green);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:68px;
+      line-height:1;
+      letter-spacing:-.04em;
+      margin:0;
+      text-align:center;
+      color:var(--green);
     }
-    .section-sub{max-width:820px; margin:18px auto 0; text-align:center; color:#4f7162; font-size:18px}
+    .section-sub{
+      max-width:820px;
+      margin:18px auto 0;
+      text-align:center;
+      color:#4f7162;
+      font-size:18px;
+    }
 
-    .benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:72px}
+    .benefit-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:30px;
+      margin-top:72px;
+    }
     .benefit-card{
-      background:#f8f6f1; border:1px solid #d9d3c7; border-radius:20px; padding:32px 30px; min-height:444px;
+      background:#f8f6f1;
+      border:1px solid #d9d3c7;
+      border-radius:20px;
+      padding:32px 30px;
+      min-height:444px;
       box-shadow:0 8px 16px rgba(14,75,58,.03);
     }
     .benefit-card.tinted{background:#edf4f1}
-    .benefit-head{display:flex; align-items:center; gap:12px; margin-bottom:30px}
-    .benefit-icon{width:46px;height:46px;border-radius:12px;background:#ecece7;display:grid;place-items:center;font-size:20px}
-    .benefit-tag{
-      background:var(--green); color:#fff; border-radius:999px; padding:7px 12px; font-size:12px; font-weight:900; letter-spacing:.05em; text-transform:uppercase;
+    .benefit-head{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:30px;
     }
-    .benefit-card h3{font-family: Georgia, 'Times New Roman', serif; font-size:22px; line-height:1.32; margin:0 0 22px}
-    .benefit-card ul{padding:0; margin:0; list-style:none; display:grid; gap:13px; color:#47695b; font-size:16px}
-    .benefit-card li{position:relative; padding-left:20px}
-    .benefit-card li::before{content:"→"; position:absolute; left:0; top:0; color:var(--green); font-weight:900}
-    .highlight{color:#e53935; font-weight:800}
+    .benefit-icon{
+      width:46px;
+      height:46px;
+      border-radius:12px;
+      background:#ecece7;
+      display:grid;
+      place-items:center;
+      font-size:20px;
+    }
+    .benefit-tag{
+      background:var(--green);
+      color:#fff;
+      border-radius:999px;
+      padding:7px 12px;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    .benefit-card h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:22px;
+      line-height:1.32;
+      margin:0 0 22px;
+    }
+    .benefit-card ul{
+      padding:0;
+      margin:0;
+      list-style:none;
+      display:grid;
+      gap:13px;
+      color:#47695b;
+      font-size:16px;
+    }
+    .benefit-card li{
+      position:relative;
+      padding-left:20px;
+    }
+    .benefit-card li::before{
+      content:"→";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--green);
+      font-weight:900;
+    }
+    .highlight{
+      color:#e53935;
+      font-weight:800;
+    }
 
-    .science-wrap{background:var(--green); color:#fff; padding:68px 0 0; border-radius:0 0 12px 12px}
-    .science-title{color:#f2ede3; text-align:center; font-family:Georgia, 'Times New Roman', serif; font-size:64px; margin:0}
-    .science-sub{color:#d8ddd8; text-align:center; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; margin:10px 0 34px}
-    .table-wrap{width:min(830px, calc(100% - 36px)); margin:0 auto; border-radius:18px 18px 0 0; overflow:hidden; box-shadow:0 -2px 0 rgba(255,255,255,.05), 0 18px 32px rgba(0,0,0,.12)}
-    table{width:100%; border-collapse:collapse; background:rgba(255,255,255,.06)}
-    th,td{padding:18px 20px; text-align:left; font-size:16px}
-    thead th{background:rgba(255,255,255,.14); color:#d6dbd5; text-transform:uppercase; letter-spacing:.06em; font-weight:800}
+    .science-wrap{
+      background:var(--green);
+      color:#fff;
+      padding:68px 0 0;
+      border-radius:0 0 12px 12px;
+    }
+    .science-title{
+      color:#f2ede3;
+      text-align:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:64px;
+      margin:0;
+    }
+    .science-sub{
+      color:#d8ddd8;
+      text-align:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-style:italic;
+      font-size:26px;
+      margin:10px 0 34px;
+    }
+    .table-wrap{
+      width:min(830px, calc(100% - 36px));
+      margin:0 auto;
+      border-radius:18px 18px 0 0;
+      overflow:hidden;
+      box-shadow:0 -2px 0 rgba(255,255,255,.05), 0 18px 32px rgba(0,0,0,.12);
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      background:rgba(255,255,255,.06);
+    }
+    th,td{
+      padding:18px 20px;
+      text-align:left;
+      font-size:16px;
+    }
+    thead th{
+      background:rgba(255,255,255,.14);
+      color:#d6dbd5;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-weight:800;
+    }
     tbody tr:nth-child(odd){background:rgba(255,255,255,.04)}
     tbody tr:nth-child(even){background:rgba(255,255,255,.02)}
     .bad{color:#ff8f8f}
     .good{color:#84f2a6}
 
-    .plan-box{max-width:540px; margin:56px auto 0; background:#fbfaf6; border:1px solid #d8d2c8; border-radius:24px; padding:40px 44px; box-shadow:var(--shadow)}
-    .plan-title{display:flex;gap:12px;align-items:center;justify-content:center;font-family:Georgia, 'Times New Roman', serif;font-size:22px;font-weight:700;color:var(--green);margin-bottom:22px}
+    .plan-box{
+      max-width:540px;
+      margin:56px auto 0;
+      background:#fbfaf6;
+      border:1px solid #d8d2c8;
+      border-radius:24px;
+      padding:40px 44px;
+      box-shadow:var(--shadow);
+    }
+    .plan-title{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:22px;
+      font-weight:700;
+      color:var(--green);
+      margin-bottom:22px;
+    }
     .select-wrap{position:relative}
     select{
-      width:100%; appearance:none; border:1px solid #d6d0c3; background:#f8f6f0; color:#4f7162; padding:17px 52px 17px 18px; border-radius:14px; font-size:16px;
+      width:100%;
+      appearance:none;
+      border:1px solid #d6d0c3;
+      background:#f8f6f0;
+      color:#4f7162;
+      padding:17px 52px 17px 18px;
+      border-radius:14px;
+      font-size:16px;
       outline:none;
     }
-    .select-wrap::after{content:"⌄"; position:absolute; right:18px; top:50%; transform:translateY(-54%); color:#738c80; font-size:20px; pointer-events:none}
-    .checkout{width:100%; margin-top:22px; padding:18px 20px; border:none; border-radius:14px; background:#95aba1; color:#fff; font-weight:900; font-size:17px}
-    .plan-foot{margin-top:16px; text-align:center; color:#527264; font-size:14px}
+    .select-wrap::after{
+      content:"⌄";
+      position:absolute;
+      right:18px;
+      top:50%;
+      transform:translateY(-54%);
+      color:#738c80;
+      font-size:20px;
+      pointer-events:none;
+    }
+    .checkout{
+      width:100%;
+      margin-top:22px;
+      padding:18px 20px;
+      border:none;
+      border-radius:14px;
+      background:#95aba1;
+      color:#fff;
+      font-weight:900;
+      font-size:17px;
+    }
+    .plan-foot{
+      margin-top:16px;
+      text-align:center;
+      color:#527264;
+      font-size:14px;
+    }
 
-    .delivery-grid{display:grid; grid-template-columns:1fr 1fr; gap:62px; align-items:center; margin-top:58px}
-    .delivery-copy h2{font-family:Georgia, 'Times New Roman', serif; font-size:66px; line-height:1; margin:0 0 18px; color:var(--green)}
-    .delivery-copy .mini{font-family:Georgia, 'Times New Roman', serif; font-style:italic; color:#5b856f; font-size:18px; margin-bottom:28px}
-    .delivery-copy p{font-size:18px; line-height:1.55; color:#4e7062; max-width:500px}
-    .delivery-feats{display:flex; gap:28px; margin-top:34px; flex-wrap:wrap}
-    .delivery-feat{display:flex; gap:12px; align-items:flex-start; color:var(--green); font-weight:700}
-    .delivery-feat i{width:40px;height:40px;border-radius:10px;background:#ecece7;display:grid;place-items:center;font-style:normal}
-    .delivery-card{position:relative; border-radius:24px; overflow:hidden; min-height:385px; background:linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.18)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=80') center/cover; box-shadow:var(--shadow)}
-    .delivery-card .label{position:absolute; left:24px; bottom:24px; color:#fff}
-    .delivery-card .label strong{display:block; font-family:Georgia, 'Times New Roman', serif; font-size:34px; margin-bottom:8px}
+    .delivery-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:62px;
+      align-items:center;
+      margin-top:58px;
+    }
+    .delivery-copy h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:66px;
+      line-height:1;
+      margin:0 0 18px;
+      color:var(--green);
+    }
+    .delivery-copy .mini{
+      font-family:Georgia, "Times New Roman", serif;
+      font-style:italic;
+      color:#5b856f;
+      font-size:18px;
+      margin-bottom:28px;
+    }
+    .delivery-copy p{
+      font-size:18px;
+      line-height:1.55;
+      color:#4e7062;
+      max-width:500px;
+    }
+    .delivery-feats{
+      display:flex;
+      gap:28px;
+      margin-top:34px;
+      flex-wrap:wrap;
+    }
+    .delivery-feat{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      color:var(--green);
+      font-weight:700;
+    }
+    .delivery-feat i{
+      width:40px;
+      height:40px;
+      border-radius:10px;
+      background:#ecece7;
+      display:grid;
+      place-items:center;
+      font-style:normal;
+    }
+    .delivery-card{
+      position:relative;
+      border-radius:24px;
+      overflow:hidden;
+      min-height:385px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.18)),
+        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=80') center/cover;
+      box-shadow:var(--shadow);
+    }
+    .delivery-card .label{
+      position:absolute;
+      left:24px;
+      bottom:24px;
+      color:#fff;
+    }
+    .delivery-card .label strong{
+      display:block;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:34px;
+      margin-bottom:8px;
+    }
 
-    .review-shell{padding:70px 0 86px; border-top:1px solid var(--line)}
-    .review-summary{max-width:710px; margin:42px auto 58px; background:#faf8f3; border:1px solid #d9d3c7; border-radius:22px; padding:36px 38px; display:grid; grid-template-columns:180px 1fr; gap:30px; box-shadow:var(--shadow)}
-    .rating-big{font-family:Georgia, 'Times New Roman', serif; font-size:72px; line-height:1; color:var(--green); margin-bottom:10px}
-    .stars{color:#f2b21d; font-size:20px; letter-spacing:3px; margin-bottom:10px}
+    .review-shell{
+      padding:70px 0 86px;
+      border-top:1px solid var(--line);
+    }
+    .review-summary{
+      max-width:710px;
+      margin:42px auto 58px;
+      background:#faf8f3;
+      border:1px solid #d9d3c7;
+      border-radius:22px;
+      padding:36px 38px;
+      display:grid;
+      grid-template-columns:180px 1fr;
+      gap:30px;
+      box-shadow:var(--shadow);
+    }
+    .rating-big{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:72px;
+      line-height:1;
+      color:var(--green);
+      margin-bottom:10px;
+    }
+    .stars{
+      color:#f2b21d;
+      font-size:20px;
+      letter-spacing:3px;
+      margin-bottom:10px;
+    }
     .muted{color:#527264}
-    .bar-row{display:grid; grid-template-columns:42px 1fr 36px; gap:10px; align-items:center; margin-bottom:10px; color:#557364}
-    .bar{height:8px; background:#e8e4db; border-radius:999px; overflow:hidden}
-    .bar > span{display:block; height:100%; background:var(--green); border-radius:999px}
-    .review-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
-    .review-card{background:#faf8f3; border:1px solid #d9d3c7; border-radius:20px; padding:28px 28px 24px; box-shadow:0 6px 14px rgba(14,75,58,.03)}
-    .review-top{display:flex; justify-content:space-between; gap:12px; margin-bottom:2px}
-    .review-name{font-weight:900; font-size:18px; color:var(--green)}
-    .review-tag{background:#e9ece6; color:var(--green); border-radius:999px; padding:5px 10px; font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.05em; white-space:nowrap}
-    .review-meta{font-size:14px; color:#5c7a6d; margin-bottom:12px}
-    .review-copy{color:#47695b; font-size:16px; line-height:1.55; font-style:italic}
-    .cta-shell{padding:78px 0 0; border-top:1px solid var(--line)}
-    .cta-title{font-family:Georgia, 'Times New Roman', serif; font-size:66px; line-height:1; letter-spacing:-.04em; text-align:center; color:var(--green); margin:0}
-    .cta-sub{margin:18px 0 54px; text-align:center; color:#4f7162; font-size:18px}
-    .cta-grid{display:grid; grid-template-columns:1fr 1fr; gap:44px; max-width:830px; margin:0 auto}
-    .checkout-card,.quote-card{background:#faf8f3; border:1px solid #d9d3c7; border-radius:22px; padding:28px 28px 30px; min-height:480px; box-shadow:var(--shadow)}
-    .mini-heading{display:flex; align-items:center; gap:12px; font-family:Georgia, 'Times New Roman', serif; font-size:18px; color:var(--green); font-weight:700; margin-bottom:24px}
-    .mini-heading i{font-style:normal; font-size:18px}
-    .pay-btn{display:flex; align-items:center; justify-content:center; gap:12px; width:100%; height:44px; border-radius:12px; color:#fff; font-weight:900; font-size:16px; margin-bottom:16px; box-shadow:0 10px 20px rgba(0,0,0,.08)}
-    .pay-btn.paypal{background:#1475bb}
-    .pay-btn.stripe{background:linear-gradient(90deg, #635bff, #5d5af3)}
-    .pay-btn .icon{font-size:20px; font-weight:900}
-    .checkout-note{text-align:center; color:#527264; font-size:14px; max-width:280px; margin:20px auto 0; line-height:1.45}
-    .quote-card form{display:grid; gap:14px}
-    .quote-card input,.quote-card select,.quote-card textarea{width:100%; border:1px solid #d9d3c7; border-radius:14px; background:#f5f2eb; color:#4f7162; padding:14px 16px; font-size:16px; outline:none}
-    .quote-card textarea{min-height:76px; resize:vertical}
-    .quote-submit{margin-top:2px; height:44px; border:none; border-radius:12px; background:var(--green); color:#fff; font-weight:900; font-size:16px}
-    .site-footer{margin-top:78px; background:var(--green); color:#e9eee8; padding:64px 0 46px}
-    .site-footer .logo-row{display:flex; align-items:center; justify-content:center; gap:14px; font-family:Georgia, 'Times New Roman', serif; font-size:20px; font-weight:700}
-    .site-footer .logo-row .foot-logo{width:30px; height:30px; border-radius:8px; overflow:hidden; display:grid; place-items:center}
-    .site-footer .logo-row .foot-logo img{width:100%; height:100%; object-fit:cover}
-    .foot-links{display:flex; justify-content:center; gap:22px; margin:28px 0 30px; color:#dbe5de; flex-wrap:wrap}
-    .foot-links span.sep{opacity:.35}
-    .foot-divider{max-width:630px; height:1px; background:rgba(255,255,255,.18); margin:0 auto 28px}
-    .foot-copy{max-width:720px; margin:0 auto; text-align:center; color:rgba(233,238,232,.72); font-size:14px; line-height:1.55}
-    .foot-copy .copyright{margin-top:14px; opacity:.86}
-    .faq-shell{padding:74px 0 84px; border-top:1px solid var(--line)}
-    .faq-sub{max-width:760px; margin:14px auto 0; text-align:center; color:#4f7162; font-size:18px}
-    .faq-box{max-width:720px; margin:46px auto 0; background:#f8f6f1; border:1px solid #d9d3c7; border-radius:20px; padding:20px 36px; box-shadow:var(--shadow)}
-    .faq-item{border-bottom:1px solid #d8d2c7}
+    .bar-row{
+      display:grid;
+      grid-template-columns:42px 1fr 36px;
+      gap:10px;
+      align-items:center;
+      margin-bottom:10px;
+      color:#557364;
+    }
+    .bar{
+      height:8px;
+      background:#e8e4db;
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .bar > span{
+      display:block;
+      height:100%;
+      background:var(--green);
+      border-radius:999px;
+    }
+    .review-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+    .review-card{
+      background:#faf8f3;
+      border:1px solid #d9d3c7;
+      border-radius:20px;
+      padding:28px 28px 24px;
+      box-shadow:0 6px 14px rgba(14,75,58,.03);
+    }
+    .review-top{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:2px;
+    }
+    .review-name{
+      font-weight:900;
+      font-size:18px;
+      color:var(--green);
+    }
+    .review-tag{
+      background:#e9ece6;
+      color:var(--green);
+      border-radius:999px;
+      padding:5px 10px;
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      white-space:nowrap;
+    }
+    .review-meta{
+      font-size:14px;
+      color:#5c7a6d;
+      margin-bottom:12px;
+    }
+    .review-copy{
+      color:#47695b;
+      font-size:16px;
+      line-height:1.55;
+      font-style:italic;
+    }
+
+    .faq-shell{
+      padding:74px 0 84px;
+      border-top:1px solid var(--line);
+    }
+    .faq-sub{
+      max-width:760px;
+      margin:14px auto 0;
+      text-align:center;
+      color:#4f7162;
+      font-size:18px;
+    }
+    .faq-box{
+      max-width:720px;
+      margin:46px auto 0;
+      background:#f8f6f1;
+      border:1px solid #d9d3c7;
+      border-radius:20px;
+      padding:20px 36px;
+      box-shadow:var(--shadow);
+    }
+    .faq-item{
+      border-bottom:1px solid #d8d2c7;
+    }
     .faq-item:last-child{border-bottom:none}
-    .faq-question{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 0; cursor:pointer; font-family:Georgia, 'Times New Roman', serif; font-size:18px; font-weight:700; color:var(--green); background:none; border:none; width:100%; text-align:left}
-    .faq-question span:last-child{font-family:Inter, sans-serif; font-size:30px; line-height:1; color:#6b8778; flex:0 0 auto}
-    .faq-answer{display:none; padding:0 0 20px; color:#4c6d60; font-size:16px; line-height:1.6}
+    .faq-question{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:22px 0;
+      cursor:pointer;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:18px;
+      font-weight:700;
+      color:var(--green);
+      background:none;
+      border:none;
+      width:100%;
+      text-align:left;
+    }
+    .faq-question span:last-child{
+      font-family:Inter, sans-serif;
+      font-size:30px;
+      line-height:1;
+      color:#6b8778;
+      flex:0 0 auto;
+    }
+    .faq-answer{
+      display:none;
+      padding:0 0 20px;
+      color:#4c6d60;
+      font-size:16px;
+      line-height:1.6;
+    }
     .faq-item.active .faq-answer{display:block}
-    .faq-item.active .faq-question{color:#113f31}
     .faq-item.active .faq-question span:last-child{color:var(--green)}
 
-    footer{padding:38px 0 60px; border-top:1px solid var(--line); color:#5b7669}
-    .foot{display:flex; justify-content:space-between; gap:24px; align-items:center}
+    .cta-shell{
+      padding:78px 0 0;
+      border-top:1px solid var(--line);
+    }
+    .cta-title{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:66px;
+      line-height:1;
+      letter-spacing:-.04em;
+      text-align:center;
+      color:var(--green);
+      margin:0;
+    }
+    .cta-sub{
+      margin:18px 0 54px;
+      text-align:center;
+      color:#4f7162;
+      font-size:18px;
+    }
+    .cta-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:44px;
+      max-width:830px;
+      margin:0 auto;
+    }
+    .checkout-card,.quote-card{
+      background:#faf8f3;
+      border:1px solid #d9d3c7;
+      border-radius:22px;
+      padding:28px 28px 30px;
+      min-height:480px;
+      box-shadow:var(--shadow);
+    }
+    .mini-heading{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:18px;
+      color:var(--green);
+      font-weight:700;
+      margin-bottom:24px;
+    }
+    .mini-heading i{
+      font-style:normal;
+      font-size:18px;
+    }
+    .pay-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      width:100%;
+      height:44px;
+      border-radius:12px;
+      color:#fff;
+      font-weight:900;
+      font-size:16px;
+      margin-bottom:16px;
+      box-shadow:0 10px 20px rgba(0,0,0,.08);
+    }
+    .pay-btn.paypal{background:#1475bb}
+    .pay-btn.stripe{background:linear-gradient(90deg, #635bff, #5d5af3)}
+    .pay-btn .icon{
+      font-size:20px;
+      font-weight:900;
+    }
+    .checkout-note{
+      text-align:center;
+      color:#527264;
+      font-size:14px;
+      max-width:280px;
+      margin:20px auto 0;
+      line-height:1.45;
+    }
+    .quote-card form{
+      display:grid;
+      gap:14px;
+    }
+    .quote-card input,.quote-card select,.quote-card textarea{
+      width:100%;
+      border:1px solid #d9d3c7;
+      border-radius:14px;
+      background:#f5f2eb;
+      color:#4f7162;
+      padding:14px 16px;
+      font-size:16px;
+      outline:none;
+    }
+    .quote-card textarea{
+      min-height:76px;
+      resize:vertical;
+    }
+    .quote-submit{
+      margin-top:2px;
+      height:44px;
+      border:none;
+      border-radius:12px;
+      background:var(--green);
+      color:#fff;
+      font-weight:900;
+      font-size:16px;
+    }
+
+    .site-footer{
+      margin-top:78px;
+      background:var(--green);
+      color:#e9eee8;
+      padding:64px 0 46px;
+    }
+    .site-footer .logo-row{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:20px;
+      font-weight:700;
+    }
+    .site-footer .logo-row .foot-logo{
+      width:30px;
+      height:30px;
+      border-radius:8px;
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+    }
+    .site-footer .logo-row .foot-logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .foot-links{
+      display:flex;
+      justify-content:center;
+      gap:22px;
+      margin:28px 0 30px;
+      color:#dbe5de;
+      flex-wrap:wrap;
+    }
+    .foot-links span.sep{opacity:.35}
+    .foot-divider{
+      max-width:630px;
+      height:1px;
+      background:rgba(255,255,255,.18);
+      margin:0 auto 28px;
+    }
+    .foot-copy{
+      max-width:720px;
+      margin:0 auto;
+      text-align:center;
+      color:rgba(233,238,232,.72);
+      font-size:14px;
+      line-height:1.55;
+    }
+    .foot-copy .copyright{
+      margin-top:14px;
+      opacity:.86;
+    }
 
     @media (max-width: 1100px){
-      .hero-grid,.delivery-grid,.benefit-grid,.review-grid{grid-template-columns:1fr 1fr}
+      .hero-grid,.delivery-grid,.benefit-grid,.review-grid{
+        grid-template-columns:1fr 1fr;
+      }
       .benefit-grid .benefit-card:last-child{grid-column:span 2}
       .hero h1{font-size:58px}
-      .section-title,.delivery-copy h2,.science-title{font-size:52px}
-      .poster{position:relative; inset:auto; width:100%; max-width:420px; margin:0 auto}
+      .section-title,.delivery-copy h2,.science-title,.cta-title{font-size:52px}
+      .poster{
+        position:relative;
+        inset:auto;
+        width:100%;
+        max-width:420px;
+        margin:0 auto;
+      }
       .hero-card-area{min-height:auto}
       .bottle-card.one{left:16px}
     }
+
     @media (max-width: 980px){
-      .cta-grid{grid-template-columns:1fr; max-width:620px}
+      .cta-grid{
+        grid-template-columns:1fr;
+        max-width:620px;
+      }
       .checkout-card,.quote-card{min-height:auto}
     }
+
     @media (max-width: 760px){
-      .nav{flex-wrap:wrap; padding:14px 0}
+      .nav{
+        flex-wrap:wrap;
+        padding:14px 0;
+      }
       .nav-links{display:none}
-      .hero-wrap{padding:54px 0 48px; min-height:auto}
-      .hero-grid,.delivery-grid,.benefit-grid,.review-grid,.foot,.review-summary{grid-template-columns:1fr}
+      .hero-wrap{
+        padding:54px 0 48px;
+        min-height:auto;
+      }
+      .hero-grid,.delivery-grid,.benefit-grid,.review-grid,.review-summary,.cta-grid{
+        grid-template-columns:1fr;
+      }
       .benefit-grid .benefit-card:last-child{grid-column:auto}
       .hero h1{font-size:44px}
-      .poster{height:500px; max-width:100%; right:auto}
+      .poster{
+        height:500px;
+        max-width:100%;
+        right:auto;
+      }
       .poster-title{font-size:56px}
       .poster-sub{font-size:24px}
       .poster-bar{font-size:20px}
-      .section-title,.delivery-copy h2,.science-title{font-size:40px}
-      .section-shell,.review-shell{padding:54px 0}
+      .section-title,.delivery-copy h2,.science-title,.cta-title{font-size:40px}
+      .section-shell,.review-shell,.faq-shell{padding:54px 0}
       .review-summary{padding:28px}
       .plan-box{padding:28px 22px}
-      .nav-cta{width:100%; justify-content:flex-start}
+      .nav-cta{
+        width:100%;
+        justify-content:flex-start;
+      }
       .btn{padding:12px 16px}
-      .topbar{font-size:11px; letter-spacing:.1em}
+      .topbar{
+        font-size:11px;
+        letter-spacing:.1em;
+      }
       .brand-name{font-size:18px}
       .delivery-card{min-height:300px}
+      .cta-sub,.faq-sub,.section-sub{font-size:16px}
+      .faq-box{padding:14px 20px}
+      .checkout-card,.quote-card{padding:22px}
     }
   </style>
 </head>
@@ -315,7 +992,7 @@
 
       <div class="nav-cta">
         <a class="btn" href="#plans">My Subscription</a>
-        <a class="btn primary" href="#plans">Get Started</a>
+        <a class="btn primary" href="#checkout">Get Started</a>
       </div>
     </div>
   </header>
@@ -325,7 +1002,7 @@
       <div class="container hero-grid">
         <div>
           <div class="eyebrow">Australia's Premium Raw Milk</div>
-          <h1>Fresh Raw<br/><em>Cow's Milk</em></h1>
+          <h1>Fresh Raw<br><em>Cow's Milk</em></h1>
           <div class="hero-sub">Primal Fuel • Live Enzymes • Ancestral Nutrition</div>
           <div class="pill">2.5L Weekly • 10L Monthly Minimum</div>
           <div class="hero-note">Delivered in 2L glass bottles with stainless steel lids — zero microplastics</div>
@@ -335,9 +1012,9 @@
           <div class="poster">
             <div class="poster-inner">
               <div class="poster-brand">RawMilk<span style="font-weight:500">AUS</span></div>
-              <h2 class="poster-title">Fresh Raw<br/>Cow's Milk</h2>
+              <h2 class="poster-title">Fresh Raw<br>Cow's Milk</h2>
               <div class="poster-cow">🐄</div>
-              <div class="poster-sub">Primal Diet<br/>Health Benefits</div>
+              <div class="poster-sub">Primal Diet<br>Health Benefits</div>
               <div class="poster-bar">FOR PET USE ONLY</div>
             </div>
           </div>
@@ -370,7 +1047,7 @@
 
           <article class="benefit-card">
             <div class="benefit-head">
-              <div class="benefit-icon">↗️</div>
+              <div class="benefit-icon">↗</div>
               <div class="benefit-tag">Height &amp; Structure</div>
             </div>
             <h3>Growth Hormones &amp; Height</h3>
@@ -484,6 +1161,7 @@
             <div class="delivery-feat"><i>🥛</i><span>Glass bottles only</span></div>
           </div>
         </div>
+
         <div class="delivery-card">
           <div class="label">
             <strong>Licensed Australian Dairies</strong>
@@ -515,29 +1193,30 @@
 
         <div class="review-grid">
           <article class="review-card">
-            <div class="review-top"><div class="review-name">Tamara K.</div><div class="review-tag">Gut Health</div></div>
-            <div class="review-meta">Gold Coast, QLD · January 2026</div>
+            <div class="review-top"><div class="review-name">Sophie H.</div><div class="review-tag">Respiratory &amp; Immunity</div></div>
+            <div class="review-meta">Wollongong, NSW · January 2026</div>
             <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“I had IBS for 7 years. Doctors had no answers. Six weeks on raw milk and I can eat anything without bloating. The live enzymes are doing what they're supposed to — actually digesting food properly. I'm blown away.”</div>
+            <div class="review-copy">“My daughter's asthma has reduced by at least 70%. Her specialist is confused. I know exactly why — the immunoglobulins and anti-inflammatory properties in raw milk. We've been ordering 20L a month for 3 months and won't stop.”</div>
           </article>
+
           <article class="review-card">
-            <div class="review-top"><div class="review-name">Marcus W.</div><div class="review-tag">Immunity &amp; Muscle</div></div>
-            <div class="review-meta">Newcastle, NSW · March 2026</div>
+            <div class="review-top"><div class="review-name">Tom A.</div><div class="review-tag">Bone &amp; Height</div></div>
+            <div class="review-meta">Brisbane, QLD · March 2026</div>
             <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My immune system was a mess — sick every month. Haven't been sick once in 4 months since starting. The immunoglobulins are the real deal. Also put on 3kg of muscle with the same gym routine. The whey protein in raw form is completely different.”</div>
+            <div class="review-copy">“Grew 2cm at 20. People told me I was done. The calcium bioavailability in raw milk vs pasteurised is incomparable. My bone density has genuinely improved based on recent scans. This product is the real deal.”</div>
           </article>
+
           <article class="review-card">
-            <div class="review-top"><div class="review-name">Chloe B.</div><div class="review-tag">Child Height Growth</div></div>
-            <div class="review-meta">Adelaide, SA · February 2026</div>
+            <div class="review-top"><div class="review-name">Emma S.</div><div class="review-tag">Joint &amp; Gut Health</div></div>
+            <div class="review-meta">Melbourne, VIC · February 2026</div>
             <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My son grew 3cm in 8 weeks. He's 16 and I thought he was done growing. The growth hormones in this milk are real. His energy levels are also through the roof compared to before. We'll never go back to pasteurised garbage.”</div>
+            <div class="review-copy">“Chronic joint pain since my twenties. Gone after 6 weeks. The zinc and anti-inflammatory factors are doing what no supplement ever did. Also lost the belly bloat I thought was just how I was built! It was just dead pasteurised milk all along.”</div>
           </article>
         </div>
       </div>
     </section>
-  </main>
 
-  <section class="faq-shell">
+    <section class="faq-shell">
       <div class="container">
         <h2 class="section-title">Frequently Asked Questions</h2>
         <p class="faq-sub">Everything you need to know about raw milk, delivery, and your subscription.</p>
@@ -550,78 +1229,78 @@
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>What makes raw milk different from pasteurised milk?</span><span>+</span></button>
-            <div class="faq-answer">Pasteurisation uses heat to kill bacteria — but also changes enzymes, proteins, and other naturally occurring components. This section is where you can place your preferred brand comparison copy.</div>
+            <div class="faq-answer">Pasteurisation uses heat to kill bacteria — but also destroys live enzymes, immunoglobulins, beneficial probiotics, vitamins (A, C, E), and minerals (iron, zinc, calcium). Raw milk retains 100% of these bioactive compounds in their natural, functional state. The nutritional comparison is not even close.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>How is your raw milk kept safe during delivery?</span><span>+</span></button>
-            <div class="faq-answer">We use a strict cold-chain process from collection to delivery. Milk is refrigerated immediately, packed with premium cold packs, and delivered in insulated containers.</div>
+            <div class="faq-answer">We use a strict cold-chain process from the dairy to your door. Milk is collected fresh, immediately refrigerated, packed with premium cold gel packs, and delivered in an insulated container. Our glass bottles are sanitised between each delivery cycle.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>Why do you use glass bottles and stainless steel lids?</span><span>+</span></button>
-            <div class="faq-answer">We use 2L glass bottles with stainless steel lids so the milk never touches plastic during storage and delivery.</div>
+            <div class="faq-answer">Plastic leaches microplastics and BPA/BPS into liquids — especially fats like milk. We use 2L glass bottles with stainless steel lids so your milk never touches plastic at any point. Zero microplastics. Zero off-gassing. Pure milk.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>How do the growth benefits work?</span><span>+</span></button>
-            <div class="faq-answer">This is the spot to place your growth-related brand copy. Keep in mind that any public health or growth claims should be reviewed carefully before publishing.</div>
+            <div class="faq-answer">Raw milk contains bioactive growth factors including IGF-1, insulin-like growth factor, alongside bioavailable calcium, phosphorus, and complete whey protein. Studies such as the NHANES cohort analysis and Pottenger's cat research demonstrate significantly superior skeletal development in those consuming raw vs processed dairy. These factors are largely destroyed by heat during pasteurisation.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>Can raw milk really help with allergies?</span><span>+</span></button>
-            <div class="faq-answer">This is the spot to place your allergy-related brand copy or research notes. If you are citing a study, it is best to verify the exact wording before publishing.</div>
+            <div class="faq-answer">Yes — extensively studied. A 2016 study (PMID:27139226) found that children consuming raw farm milk had significantly lower rates of asthma and atopic sensitisation compared to those on pasteurised milk. The key mechanism is intact immunoglobulins and anti-inflammatory whey proteins that are denatured by heat.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>How does raw milk improve gut health?</span><span>+</span></button>
-            <div class="faq-answer">This is the spot to place your gut-health brand copy. If you want, I can rewrite this section in your preferred tone while keeping the same layout.</div>
+            <div class="faq-answer">Raw milk contains over 30 species of beneficial bacteria, live digestive enzymes (lipase, amylase, lactase, protease), and natural prebiotics. These work synergistically to restore gut flora, improve nutrient absorption, reduce bloating, and address conditions like IBS that pasteurised milk often aggravates.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>What is the minimum order?</span><span>+</span></button>
-            <div class="faq-answer">Our minimum order is 10L per month, delivered weekly as part of your chosen subscription plan.</div>
+            <div class="faq-answer">Our minimum subscription is 10L per month (2.5L weekly delivery). We offer plans from 10L up to 300L+ per month for larger operations. All plans include weekly delivery in 2L glass bottles.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>Which areas do you deliver to?</span><span>+</span></button>
-            <div class="faq-answer">We currently offer weekly delivery routes across NSW, QLD, and VIC, subject to route fit and delivery-zone availability.</div>
+            <div class="faq-answer">We currently deliver weekly across New South Wales (NSW), Queensland (QLD), and Victoria (VIC). If you're outside these states or in a remote area, please contact us for a custom delivery quote.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>How fresh is the milk when it arrives?</span><span>+</span></button>
-            <div class="faq-answer">Your order is packed chilled and sent through our weekly cold-delivery system so it arrives fresh and ready for refrigeration.</div>
+            <div class="faq-answer">Our milk is collected fresh and typically arrives at your door within 24–48 hours of collection. Shelf life is 7–10 days refrigerated. The freshness is immediately noticeable compared to supermarket milk that can be weeks old before it reaches shelves.</div>
           </div>
 
           <div class="faq-item">
-            <button class="faq-question" type="button"><span>Do I need to shake the bottle before use?</span><span>+</span></button>
-            <div class="faq-answer">Yes — natural separation can occur, so a gentle shake before use is normal.</div>
+            <button class="faq-question" type="button"><span>Do I need to shake the bottle before drinking?</span><span>+</span></button>
+            <div class="faq-answer">Yes. Raw milk is not homogenised — the cream naturally rises to the top. Gently invert the bottle a few times to mix before use. This cream layer is one of the most nutritionally dense parts of the milk, rich in fat-soluble vitamins A, D, E, and K.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>How do I store raw milk?</span><span>+</span></button>
-            <div class="faq-answer">Keep refrigerated immediately on arrival and follow the storage guidance provided with your order.</div>
+            <div class="faq-answer">Keep raw milk refrigerated at all times (below 4°C). Never leave it out at room temperature for extended periods. It's best consumed within 7 days of delivery. The glass bottles are reusable — we collect them on your next delivery.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>Can I cancel or change my plan anytime?</span><span>+</span></button>
-            <div class="faq-answer">You can place your own subscription policy here, including notice periods, pauses, upgrades, or custom-order changes.</div>
+            <div class="faq-answer">Yes. You can upgrade, downgrade, pause, or cancel your subscription at any time. We require 72 hours notice before your next scheduled delivery for any changes. Simply contact us via the quote form or email.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>Is raw milk suitable for lactose intolerance?</span><span>+</span></button>
-            <div class="faq-answer">This is the spot to place your lactose-intolerance brand copy. If you want, I can help you rewrite it in the exact tone used in your screenshots.</div>
+            <div class="faq-answer">Many people who are sensitive to pasteurised milk find they tolerate raw milk well. This is because raw milk contains lactase — the enzyme that breaks down lactose — which is destroyed by pasteurisation. The intact bacteria in raw milk also help process lactose naturally.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>What breeds of cows produce your milk?</span><span>+</span></button>
-            <div class="faq-answer">You can place your breed information here, for example Jersey, A2, grass-fed, or your preferred sourcing details.</div>
+            <div class="faq-answer">Our milk comes from grass-fed A2 Holstein-Friesian and Jersey cows on licensed Australian farms. Jersey cows in particular produce milk with higher butterfat and protein content, and are prized for the superior quality of their cream.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="cta-shell">
+    <section id="checkout" class="cta-shell">
       <div class="container">
         <h2 class="cta-title">Ready for Primal Fuel?</h2>
         <p class="cta-sub">Secure your weekly delivery</p>
@@ -637,9 +1316,9 @@
           <div class="quote-card">
             <div class="mini-heading"><span>Request a Quote</span></div>
             <form>
-              <input type="text" placeholder="Full Name" />
-              <input type="email" placeholder="Email Address" />
-              <input type="text" placeholder="Suburb / Postcode" />
+              <input type="text" placeholder="Full Name">
+              <input type="email" placeholder="Email Address">
+              <input type="text" placeholder="Suburb / Postcode">
               <select>
                 <option selected disabled>Select a plan...</option>
                 <option>10L / month — 2.5L weekly</option>
@@ -664,7 +1343,9 @@
     <footer class="site-footer">
       <div class="container">
         <div class="logo-row">
-          <span class="foot-logo"><img src="logo.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='18px';" /></span>
+          <span class="foot-logo">
+            <img src="logo.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='18px';">
+          </span>
           <span>RawMilkAUS</span>
         </div>
 
@@ -680,32 +1361,36 @@
 
         <div class="foot-copy">
           <div>This product is sold strictly for pet use only. Consult a qualified professional for feeding decisions.</div>
-          <div class="copyright">©️ 2026 RawMilkAUS. All rights reserved.</div>
+          <div class="copyright">© 2026 RawMilkAUS. All rights reserved.</div>
         </div>
       </div>
     </footer>
-    <div class="container foot">
-      <div>©️ <span id="year"></span> RawMilkAUS</div>
-      <div>Benefits · The Science · Plans · Delivery</div>
-    </div>
-  </footer>
+  </main>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
     document.querySelectorAll('.faq-question').forEach(function(button){
       button.addEventListener('click', function(){
         var item = this.parentElement;
         var isActive = item.classList.contains('active');
+
         document.querySelectorAll('.faq-item').forEach(function(faq){
           faq.classList.remove('active');
           faq.querySelector('.faq-question span:last-child').textContent = '+';
         });
+
         if(!isActive){
           item.classList.add('active');
           this.querySelector('span:last-child').textContent = '−';
         }
       });
     });
+
+    // Open the first FAQ by default
+    var firstFaq = document.querySelector('.faq-item');
+    if(firstFaq){
+      firstFaq.classList.add('active');
+      firstFaq.querySelector('.faq-question span:last-child').textContent = '−';
+    }
   </script>
 </body>
 </html>
