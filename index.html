@@ -13,13 +13,11 @@
       --green:#0f4b3a;
       --green-2:#1c5a46;
       --green-3:#6d8f7f;
-      --green-soft:#e9f3ee;
-      --good:#1f7a4c;
-      --good-bg:#eaf7ee;
-      --bad:#d94d45;
-      --bad-bg:#fff0ee;
+      --green-soft:#eaf4ee;
       --text:#194636;
       --muted:#567163;
+      --bad:#dc3d34;
+      --good:#1a8f55;
       --shadow:0 12px 30px rgba(14,75,58,.08);
       --radius:22px;
       --max:1180px;
@@ -54,7 +52,7 @@
     header{
       position:sticky;
       top:0;
-      z-index:50;
+      z-index:100;
       background:rgba(244,241,234,.96);
       backdrop-filter:blur(10px);
       border-bottom:1px solid var(--line);
@@ -68,14 +66,7 @@
       gap:24px;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      font-weight:900;
-      color:var(--green);
-    }
-
+    .brand{display:flex; align-items:center; gap:14px; font-weight:900; color:var(--green)}
     .brand-logo{
       width:40px;
       height:40px;
@@ -84,38 +75,22 @@
       place-items:center;
       overflow:hidden;
       flex:0 0 auto;
-      background:transparent;
     }
-
-    .brand-logo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:10px;
-    }
-
-    .brand-name{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:21px;
-    }
+    .brand-logo img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+    .brand-name{font-family:Georgia, "Times New Roman", serif; font-size:21px}
 
     .nav-links{
       display:flex;
-      gap:28px;
+      gap:34px;
       align-items:center;
       color:var(--muted);
       font-weight:700;
-      flex-wrap:wrap;
     }
 
-    .nav-links a:hover{color:var(--green)}
+    .nav-links a:hover,
+    .nav-links a.active{color:var(--green)}
 
-    .nav-cta{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
-
+    .nav-cta{display:flex;gap:12px;align-items:center}
     .btn{
       display:inline-flex;
       align-items:center;
@@ -129,13 +104,8 @@
       background:transparent;
       color:var(--green);
     }
-
     .btn:hover{transform:translateY(-1px)}
-
-    .btn.primary{
-      background:var(--green);
-      color:#fff;
-    }
+    .btn.primary{background:var(--green); color:#fff}
 
     section{padding:0}
 
@@ -148,13 +118,7 @@
       align-items:center;
     }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:38px;
-      align-items:center;
-    }
-
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center}
     .eyebrow{
       display:inline-flex;
       padding:9px 16px;
@@ -175,19 +139,8 @@
       letter-spacing:-.04em;
       color:#f3eee4;
     }
-
-    .hero h1 em{
-      font-style:italic;
-      display:block;
-    }
-
-    .hero-sub{
-      font-size:20px;
-      color:rgba(255,255,255,.72);
-      font-weight:700;
-      margin-bottom:28px;
-    }
-
+    .hero h1 em{font-style:italic; display:block}
+    .hero-sub{font-size:20px; color:rgba(255,255,255,.72); font-weight:700; margin-bottom:28px}
     .pill{
       display:inline-flex;
       padding:16px 26px;
@@ -199,18 +152,9 @@
       box-shadow:var(--shadow);
       margin-bottom:22px;
     }
+    .hero-note{max-width:440px; color:rgba(255,255,255,.56); font-size:16px}
 
-    .hero-note{
-      max-width:440px;
-      color:rgba(255,255,255,.56);
-      font-size:16px;
-    }
-
-    .hero-card-area{
-      position:relative;
-      min-height:540px;
-    }
-
+    .hero-card-area{position:relative; min-height:540px}
     .poster{
       position:absolute;
       right:34px;
@@ -223,7 +167,6 @@
       overflow:hidden;
       border:1px solid rgba(255,255,255,.14);
     }
-
     .poster::before{
       content:"";
       position:absolute;
@@ -236,7 +179,6 @@
         linear-gradient(135deg, rgba(255,255,255,.94) 0 38%, rgba(8,74,56,.04) 39% 100%);
       opacity:.95;
     }
-
     .poster::after{
       content:"";
       position:absolute;
@@ -248,53 +190,12 @@
       filter:blur(18px);
       opacity:.72;
     }
-
-    .poster-inner{
-      position:relative;
-      z-index:2;
-      height:100%;
-      padding:38px 34px 24px;
-      color:var(--green);
-    }
-
-    .poster-brand{
-      font-size:24px;
-      font-weight:900;
-      color:#fff;
-      text-align:right;
-      margin-bottom:34px;
-    }
-
-    .poster-title{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:74px;
-      line-height:.92;
-      letter-spacing:-.05em;
-      margin:0 0 18px;
-      color:#103f31;
-    }
-
-    .poster-cow{
-      font-size:54px;
-      line-height:1;
-      margin:8px 0 16px;
-    }
-
-    .poster-sub{
-      font-weight:900;
-      font-size:30px;
-      line-height:1.08;
-      margin:0 0 24px;
-    }
-
-    .poster-bar{
-      background:rgba(10,70,54,.96);
-      color:#fff;
-      display:inline-flex;
-      padding:14px 20px;
-      font-size:24px;
-      font-weight:900;
-    }
+    .poster-inner{position:relative; z-index:2; height:100%; padding:38px 34px 24px; color:var(--green)}
+    .poster-brand{font-size:24px; font-weight:900; color:#fff; text-align:right; margin-bottom:34px}
+    .poster-title{font-family:Georgia, "Times New Roman", serif; font-size:74px; line-height:.92; letter-spacing:-.05em; margin:0 0 18px; color:#103f31}
+    .poster-cow{font-size:54px; line-height:1; margin:8px 0 16px}
+    .poster-sub{font-weight:900; font-size:30px; line-height:1.08; margin:0 0 24px}
+    .poster-bar{background:rgba(10,70,54,.96); color:#fff; display:inline-flex; padding:14px 20px; font-size:24px; font-weight:900}
 
     .bottle-card{
       position:absolute;
@@ -308,10 +209,8 @@
       display:grid;
       place-items:center;
     }
-
     .bottle-card.one{top:18px; left:52px}
     .bottle-card.two{right:10px; bottom:18px; width:128px; height:182px}
-
     .bottle-illus{
       width:34px;
       height:96px;
@@ -320,259 +219,48 @@
       border:2px solid rgba(255,255,255,.65);
       position:relative;
     }
+    .bottle-illus::before{content:""; position:absolute; top:-14px; left:10px; right:10px; height:18px; border-radius:12px; background:#171717}
+    .bottle-illus::after{content:""; position:absolute; bottom:-8px; left:5px; right:5px; height:10px; border-radius:50%; background:#676a73}
 
-    .bottle-illus::before{
-      content:"";
-      position:absolute;
-      top:-14px;
-      left:10px;
-      right:10px;
-      height:18px;
-      border-radius:12px;
-      background:#171717;
-    }
+    .section-shell{padding:74px 0 86px; border-top:1px solid var(--line)}
+    .title-top{font-size:13px; letter-spacing:.28em; text-transform:uppercase; color:#547162; text-align:center; margin-bottom:12px}
+    .section-title{font-family:Georgia, "Times New Roman", serif; font-size:68px; line-height:1; letter-spacing:-.04em; margin:0; text-align:center; color:var(--green)}
+    .section-sub{max-width:820px; margin:18px auto 0; text-align:center; color:#4f7162; font-size:18px}
 
-    .bottle-illus::after{
-      content:"";
-      position:absolute;
-      bottom:-8px;
-      left:5px;
-      right:5px;
-      height:10px;
-      border-radius:50%;
-      background:#676a73;
-    }
+    .benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:72px}
+    .benefit-card{background:#f8f6f1; border:1px solid #d9d3c7; border-radius:20px; padding:32px 30px; min-height:520px; box-shadow:0 8px 16px rgba(14,75,58,.03)}
+    .benefit-head{display:flex; align-items:center; gap:12px; margin-bottom:30px}
+    .benefit-icon{width:46px;height:46px;border-radius:12px;background:#ecece7;display:grid;place-items:center;font-size:20px}
+    .benefit-tag{background:var(--green); color:#fff; border-radius:999px; padding:7px 12px; font-size:12px; font-weight:900; letter-spacing:.05em; text-transform:uppercase}
+    .benefit-card h3{font-family:Georgia, "Times New Roman", serif; font-size:22px; line-height:1.32; margin:0 0 22px}
+    .benefit-card ul{padding:0; margin:0; list-style:none; display:grid; gap:13px; color:#47695b; font-size:16px}
+    .benefit-card li{position:relative; padding-left:20px}
+    .benefit-card li::before{content:"→"; position:absolute; left:0; top:0; color:var(--green); font-weight:900}
+    .highlight{color:#e53935; font-weight:800}
+    .good-highlight{color:var(--good); font-weight:800}
+    .bad-highlight{color:var(--bad); font-weight:800}
 
-    .section-shell{
-      padding:74px 0 86px;
-      border-top:1px solid var(--line);
-    }
-
-    .title-top{
-      font-size:13px;
-      letter-spacing:.28em;
-      text-transform:uppercase;
-      color:#547162;
-      text-align:center;
-      margin-bottom:12px;
-    }
-
-    .section-title{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:68px;
-      line-height:1;
-      letter-spacing:-.04em;
-      margin:0;
-      text-align:center;
-      color:var(--green);
-    }
-
-    .section-sub{
-      max-width:820px;
-      margin:18px auto 0;
-      text-align:center;
-      color:#4f7162;
-      font-size:18px;
-    }
-
-    .benefit-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:30px;
-      margin-top:72px;
-    }
-
-    .benefit-card{
-      background:#f8f6f1;
-      border:1px solid #d9d3c7;
-      border-radius:20px;
-      padding:32px 24px;
-      min-height:530px;
-      box-shadow:0 8px 16px rgba(14,75,58,.03);
-    }
-
-    .benefit-card.tinted{
-      background:#f8f6f1;
-    }
-
-    .benefit-head{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:26px;
-    }
-
-    .benefit-icon{
-      width:46px;
-      height:46px;
-      border-radius:12px;
-      background:#ecece7;
-      display:grid;
-      place-items:center;
-      font-size:20px;
-      flex:0 0 auto;
-    }
-
-    .benefit-tag{
-      background:var(--green);
-      color:#fff;
-      border-radius:999px;
-      padding:7px 12px;
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:.05em;
-      text-transform:uppercase;
-      line-height:1.15;
-    }
-
-    .benefit-card h3{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:22px;
-      line-height:1.2;
-      margin:0 0 22px;
-    }
-
-    .benefit-card ul{
-      padding:0;
-      margin:0;
-      list-style:none;
-      display:grid;
-      gap:13px;
-      color:#47695b;
-      font-size:16px;
-    }
-
-    .benefit-card li{
-      position:relative;
-      padding-left:18px;
-    }
-
-    .benefit-card li::before{
-      content:"➜";
-      position:absolute;
-      left:0;
-      top:0;
-      color:var(--green);
-      font-weight:900;
-    }
-
-    .bad-line{
-      color:var(--bad);
-      font-weight:800;
-    }
-
-    .good-line{
-      color:var(--good);
-      font-weight:800;
-    }
-
-    .bad-chip,
-    .good-chip{
-      display:inline;
-      padding:.08em .35em;
-      border-radius:8px;
-      box-decoration-break:clone;
-      -webkit-box-decoration-break:clone;
-    }
-
-    .bad-chip{
-      background:var(--bad-bg);
-      color:var(--bad);
-      font-weight:800;
-    }
-
-    .good-chip{
-      background:var(--good-bg);
-      color:var(--good);
-      font-weight:800;
-    }
-
-    .science-wrap{
-      background:var(--green);
-      color:#fff;
-      padding:68px 0 0;
-      border-radius:0 0 12px 12px;
-    }
-
-    .science-title{
-      color:#f2ede3;
-      text-align:center;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:64px;
-      margin:0;
-    }
-
-    .science-sub{
-      color:#d8ddd8;
-      text-align:center;
-      font-family:Georgia, "Times New Roman", serif;
-      font-style:italic;
-      font-size:26px;
-      margin:10px 0 34px;
-    }
-
-    .table-wrap{
-      width:min(920px, calc(100% - 36px));
-      margin:0 auto;
-      border-radius:18px 18px 0 0;
-      overflow:hidden;
-      box-shadow:0 -2px 0 rgba(255,255,255,.05), 0 18px 32px rgba(0,0,0,.12);
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      background:rgba(255,255,255,.06);
-    }
-
-    th,td{
-      padding:18px 20px;
-      text-align:left;
-      font-size:16px;
-      vertical-align:top;
-    }
-
-    thead th{
-      background:rgba(255,255,255,.14);
-      color:#d6dbd5;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      font-weight:800;
-    }
-
+    .science-wrap{background:var(--green); color:#fff; padding:68px 0 0; border-radius:0 0 12px 12px}
+    .science-title{color:#f2ede3; text-align:center; font-family:Georgia, "Times New Roman", serif; font-size:64px; margin:0}
+    .science-sub{color:#d8ddd8; text-align:center; font-family:Georgia, "Times New Roman", serif; font-style:italic; font-size:26px; margin:10px 0 34px}
+    .table-wrap{width:min(900px, calc(100% - 36px)); margin:0 auto; border-radius:18px 18px 0 0; overflow:hidden; box-shadow:0 -2px 0 rgba(255,255,255,.05), 0 18px 32px rgba(0,0,0,.12)}
+    table{width:100%; border-collapse:collapse; background:rgba(255,255,255,.06)}
+    th,td{padding:18px 20px; text-align:left; font-size:16px}
+    thead th{background:rgba(255,255,255,.14); color:#d6dbd5; text-transform:uppercase; letter-spacing:.06em; font-weight:800}
     tbody tr:nth-child(odd){background:rgba(255,255,255,.04)}
     tbody tr:nth-child(even){background:rgba(255,255,255,.02)}
+    .bad{color:#ff8f8f}
+    .good{color:#84f2a6}
 
-    .bad{color:#ff9f9f; font-weight:700}
-    .good{color:#84f2a6; font-weight:700}
-
-    .plan-box{
-      max-width:560px;
-      margin:56px auto 0;
-      background:#fbfaf6;
-      border:1px solid #d8d2c8;
-      border-radius:24px;
-      padding:40px 44px;
-      box-shadow:var(--shadow);
-    }
-
-    .plan-title{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:center;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:22px;
-      font-weight:700;
-      color:var(--green);
-      margin-bottom:22px;
-    }
-
+    .plan-box{max-width:620px; margin:56px auto 0; background:#fbfaf6; border:1px solid #d8d2c8; border-radius:24px; padding:40px 44px; box-shadow:var(--shadow)}
+    .plan-title{display:flex;gap:12px;align-items:center;justify-content:center;font-family:Georgia, "Times New Roman", serif;font-size:22px;font-weight:700;color:var(--green);margin-bottom:22px}
     .select-wrap{position:relative}
-
-    select{
+    .plan-box select,
+    .quote-card select{
       width:100%;
       appearance:none;
+      -webkit-appearance:none;
+      -moz-appearance:none;
       border:1px solid #d6d0c3;
       background:#f8f6f0;
       color:#4f7162;
@@ -580,559 +268,104 @@
       border-radius:14px;
       font-size:16px;
       outline:none;
+      box-shadow:none;
+      line-height:1.2;
     }
+    .select-wrap::after{content:"⌄"; position:absolute; right:18px; top:50%; transform:translateY(-54%); color:#738c80; font-size:20px; pointer-events:none}
+    .plan-hint{display:grid; grid-template-columns:1fr; gap:10px; margin-top:18px; color:#4f7162; font-size:14px}
+    .plan-hint div{padding:10px 14px; background:#f5f2eb; border:1px solid #e2dbcf; border-radius:12px}
+    .checkout{width:100%; margin-top:22px; padding:18px 20px; border:none; border-radius:14px; background:var(--green); color:#fff; font-weight:900; font-size:17px; cursor:pointer}
+    .plan-foot{margin-top:16px; text-align:center; color:#527264; font-size:14px}
 
-    .select-wrap::after{
-      content:"⌄";
-      position:absolute;
-      right:18px;
-      top:50%;
-      transform:translateY(-54%);
-      color:#738c80;
-      font-size:20px;
-      pointer-events:none;
-    }
+    .delivery-grid{display:grid; grid-template-columns:1fr 1fr; gap:62px; align-items:center; margin-top:58px}
+    .delivery-copy h2{font-family:Georgia, "Times New Roman", serif; font-size:66px; line-height:1; margin:0 0 18px; color:var(--green)}
+    .delivery-copy .mini{font-family:Georgia, "Times New Roman", serif; font-style:italic; color:#5b856f; font-size:18px; margin-bottom:28px}
+    .delivery-copy p{font-size:18px; line-height:1.55; color:#4e7062; max-width:500px}
+    .delivery-feats{display:flex; gap:28px; margin-top:34px; flex-wrap:wrap}
+    .delivery-feat{display:flex; gap:12px; align-items:flex-start; color:var(--green); font-weight:700}
+    .delivery-feat i{width:40px;height:40px;border-radius:10px;background:#ecece7;display:grid;place-items:center;font-style:normal}
+    .delivery-card{position:relative; border-radius:24px; overflow:hidden; min-height:385px; background:linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.18)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=80') center/cover; box-shadow:var(--shadow)}
+    .delivery-card .label{position:absolute; left:24px; bottom:24px; color:#fff}
+    .delivery-card .label strong{display:block; font-family:Georgia, "Times New Roman", serif; font-size:34px; margin-bottom:8px}
 
-    .checkout{
-      width:100%;
-      margin-top:22px;
-      padding:18px 20px;
-      border:none;
-      border-radius:14px;
-      background:#95aba1;
-      color:#fff;
-      font-weight:900;
-      font-size:17px;
-      cursor:pointer;
-    }
-
-    .plan-foot{
-      margin-top:16px;
-      text-align:center;
-      color:#527264;
-      font-size:14px;
-    }
-
-    .delivery-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:62px;
-      align-items:center;
-      margin-top:58px;
-    }
-
-    .delivery-copy h2{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:66px;
-      line-height:1;
-      margin:0 0 18px;
-      color:var(--green);
-    }
-
-    .delivery-copy .mini{
-      font-family:Georgia, "Times New Roman", serif;
-      font-style:italic;
-      color:#5b856f;
-      font-size:18px;
-      margin-bottom:28px;
-    }
-
-    .delivery-copy p{
-      font-size:18px;
-      line-height:1.55;
-      color:#4e7062;
-      max-width:500px;
-    }
-
-    .delivery-feats{
-      display:flex;
-      gap:28px;
-      margin-top:34px;
-      flex-wrap:wrap;
-    }
-
-    .delivery-feat{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      color:var(--green);
-      font-weight:700;
-    }
-
-    .delivery-feat i{
-      width:40px;
-      height:40px;
-      border-radius:10px;
-      background:#ecece7;
-      display:grid;
-      place-items:center;
-      font-style:normal;
-    }
-
-    .delivery-card{
-      position:relative;
-      border-radius:24px;
-      overflow:hidden;
-      min-height:385px;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.18)),
-        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=80') center/cover;
-      box-shadow:var(--shadow);
-    }
-
-    .delivery-card .label{
-      position:absolute;
-      left:24px;
-      bottom:24px;
-      color:#fff;
-    }
-
-    .delivery-card .label strong{
-      display:block;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:34px;
-      margin-bottom:8px;
-    }
-
-    .review-shell{
-      padding:70px 0 86px;
-      border-top:1px solid var(--line);
-    }
-
-    .review-summary{
-      max-width:760px;
-      margin:42px auto 58px;
-      background:#faf8f3;
-      border:1px solid #d9d3c7;
-      border-radius:22px;
-      padding:36px 38px;
-      display:grid;
-      grid-template-columns:180px 1fr;
-      gap:30px;
-      box-shadow:var(--shadow);
-    }
-
-    .rating-big{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:72px;
-      line-height:1;
-      color:var(--green);
-      margin-bottom:10px;
-    }
-
-    .stars{
-      color:#f2b21d;
-      font-size:20px;
-      letter-spacing:3px;
-      margin-bottom:10px;
-    }
-
+    .review-shell{padding:70px 0 86px; border-top:1px solid var(--line)}
+    .review-summary{max-width:710px; margin:42px auto 58px; background:#faf8f3; border:1px solid #d9d3c7; border-radius:22px; padding:36px 38px; display:grid; grid-template-columns:180px 1fr; gap:30px; box-shadow:var(--shadow)}
+    .rating-big{font-family:Georgia, "Times New Roman", serif; font-size:72px; line-height:1; color:var(--green); margin-bottom:10px}
+    .stars{color:#f2b21d; font-size:20px; letter-spacing:3px; margin-bottom:10px}
     .muted{color:#527264}
+    .bar-row{display:grid; grid-template-columns:42px 1fr 36px; gap:10px; align-items:center; margin-bottom:10px; color:#557364}
+    .bar{height:8px; background:#e8e4db; border-radius:999px; overflow:hidden}
+    .bar > span{display:block; height:100%; background:var(--green); border-radius:999px}
+    .review-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+    .review-card{background:#faf8f3; border:1px solid #d9d3c7; border-radius:20px; padding:28px 28px 24px; box-shadow:0 6px 14px rgba(14,75,58,.03)}
+    .review-top{display:flex; justify-content:space-between; gap:12px; margin-bottom:2px; align-items:flex-start}
+    .review-name{font-weight:900; font-size:18px; color:var(--green)}
+    .review-tag{background:#e9ece6; color:var(--green); border-radius:999px; padding:5px 10px; font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.05em; white-space:nowrap}
+    .review-meta{font-size:14px; color:#5c7a6d; margin-bottom:12px}
+    .review-copy{color:#47695b; font-size:16px; line-height:1.55; font-style:italic}
 
-    .bar-row{
-      display:grid;
-      grid-template-columns:42px 1fr 36px;
-      gap:10px;
-      align-items:center;
-      margin-bottom:10px;
-      color:#557364;
-    }
-
-    .bar{
-      height:8px;
-      background:#e8e4db;
-      border-radius:999px;
-      overflow:hidden;
-    }
-
-    .bar > span{
-      display:block;
-      height:100%;
-      background:var(--green);
-      border-radius:999px;
-    }
-
-    .bar.zero > span{
-      width:0 !important;
-      background:transparent;
-    }
-
-    .review-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-    }
-
-    .review-card{
-      background:#faf8f3;
-      border:1px solid #d9d3c7;
-      border-radius:20px;
-      padding:26px 24px 22px;
-      box-shadow:0 6px 14px rgba(14,75,58,.03);
-      min-height:230px;
-      transition:.18s ease;
-    }
-
-    .review-card:hover{
-      transform:translateY(-3px);
-      box-shadow:0 14px 28px rgba(14,75,58,.08);
-    }
-
-    .review-top{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:flex-start;
-      margin-bottom:2px;
-    }
-
-    .review-name{
-      font-weight:900;
-      font-size:18px;
-      color:var(--green);
-      line-height:1.1;
-    }
-
-    .review-tag{
-      background:#e9ece6;
-      color:var(--green);
-      border-radius:999px;
-      padding:5px 10px;
-      font-size:11px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.05em;
-      white-space:nowrap;
-      line-height:1.1;
-    }
-
-    .review-meta{
-      font-size:14px;
-      color:#5c7a6d;
-      margin-bottom:12px;
-      line-height:1.3;
-    }
-
-    .review-copy{
-      color:#47695b;
-      font-size:16px;
-      line-height:1.55;
-      font-style:italic;
-    }
-
-    .faq-shell{
-      padding:74px 0 84px;
-      border-top:1px solid var(--line);
-    }
-
-    .faq-sub{
-      max-width:760px;
-      margin:14px auto 0;
-      text-align:center;
-      color:#4f7162;
-      font-size:18px;
-    }
-
-    .faq-box{
-      max-width:720px;
-      margin:46px auto 0;
-      background:#f8f6f1;
-      border:1px solid #d9d3c7;
-      border-radius:20px;
-      padding:20px 36px;
-      box-shadow:var(--shadow);
-    }
-
-    .faq-item{
-      border-bottom:1px solid #d8d2c7;
-    }
-
+    .faq-shell{padding:74px 0 84px; border-top:1px solid var(--line)}
+    .faq-sub{max-width:760px; margin:14px auto 0; text-align:center; color:#4f7162; font-size:18px}
+    .faq-box{max-width:720px; margin:46px auto 0; background:#f8f6f1; border:1px solid #d9d3c7; border-radius:20px; padding:20px 36px; box-shadow:var(--shadow)}
+    .faq-item{border-bottom:1px solid #d8d2c7}
     .faq-item:last-child{border-bottom:none}
-
-    .faq-question{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:22px 0;
-      cursor:pointer;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:18px;
-      font-weight:700;
-      color:var(--green);
-      background:none;
-      border:none;
-      width:100%;
-      text-align:left;
-    }
-
-    .faq-question span:last-child{
-      font-family:Inter, sans-serif;
-      font-size:30px;
-      line-height:1;
-      color:#6b8778;
-      flex:0 0 auto;
-    }
-
-    .faq-answer{
-      display:none;
-      padding:0 0 20px;
-      color:#4c6d60;
-      font-size:16px;
-      line-height:1.6;
-    }
-
+    .faq-question{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 0; cursor:pointer; font-family:Georgia, "Times New Roman", serif; font-size:18px; font-weight:700; color:var(--green); background:none; border:none; width:100%; text-align:left}
+    .faq-question span:last-child{font-family:Inter, sans-serif; font-size:30px; line-height:1; color:#6b8778; flex:0 0 auto}
+    .faq-answer{display:none; padding:0 0 20px; color:#4c6d60; font-size:16px; line-height:1.6}
     .faq-item.active .faq-answer{display:block}
     .faq-item.active .faq-question span:last-child{color:var(--green)}
 
-    .cta-shell{
-      padding:78px 0 0;
-      border-top:1px solid var(--line);
-    }
-
-    .cta-title{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:66px;
-      line-height:1;
-      letter-spacing:-.04em;
-      text-align:center;
-      color:var(--green);
-      margin:0;
-    }
-
-    .cta-sub{
-      margin:18px 0 54px;
-      text-align:center;
-      color:#4f7162;
-      font-size:18px;
-    }
-
-    .cta-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:44px;
-      max-width:830px;
-      margin:0 auto;
-    }
-
-    .checkout-card,.quote-card{
-      background:#faf8f3;
-      border:1px solid #d9d3c7;
-      border-radius:22px;
-      padding:28px 28px 30px;
-      min-height:480px;
-      box-shadow:var(--shadow);
-    }
-
-    .mini-heading{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:18px;
-      color:var(--green);
-      font-weight:700;
-      margin-bottom:24px;
-    }
-
-    .mini-heading i{
-      font-style:normal;
-      font-size:18px;
-    }
-
-    .pay-btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      width:100%;
-      height:48px;
-      border-radius:12px;
-      color:#fff;
-      font-weight:900;
-      font-size:16px;
-      margin-bottom:16px;
-      box-shadow:0 10px 20px rgba(0,0,0,.08);
-      border:none;
-      cursor:pointer;
-    }
-
+    .cta-shell{padding:78px 0 0; border-top:1px solid var(--line)}
+    .cta-title{font-family:Georgia, "Times New Roman", serif; font-size:66px; line-height:1; letter-spacing:-.04em; text-align:center; color:var(--green); margin:0}
+    .cta-sub{margin:18px 0 54px; text-align:center; color:#4f7162; font-size:18px}
+    .cta-grid{display:grid; grid-template-columns:1fr 1fr; gap:44px; max-width:830px; margin:0 auto}
+    .checkout-card,.quote-card{background:#faf8f3; border:1px solid #d9d3c7; border-radius:22px; padding:28px 28px 30px; min-height:480px; box-shadow:var(--shadow)}
+    .mini-heading{display:flex; align-items:center; gap:12px; font-family:Georgia, "Times New Roman", serif; font-size:18px; color:var(--green); font-weight:700; margin-bottom:24px}
+    .mini-heading i{font-style:normal; font-size:18px}
+    .pay-btn{display:flex; align-items:center; justify-content:center; gap:12px; width:100%; height:44px; border-radius:12px; color:#fff; font-weight:900; font-size:16px; margin-bottom:16px; box-shadow:0 10px 20px rgba(0,0,0,.08)}
     .pay-btn.paypal{background:#1475bb}
     .pay-btn.stripe{background:linear-gradient(90deg, #635bff, #5d5af3)}
     .pay-btn .icon{font-size:20px; font-weight:900}
+    .checkout-note{text-align:center; color:#527264; font-size:14px; max-width:280px; margin:20px auto 0; line-height:1.45}
+    .quote-card form{display:grid; gap:14px}
+    .quote-card input,.quote-card textarea{width:100%; border:1px solid #d9d3c7; border-radius:14px; background:#f5f2eb; color:#4f7162; padding:14px 16px; font-size:16px; outline:none}
+    .quote-card textarea{min-height:76px; resize:vertical}
+    .quote-submit{margin-top:2px; height:44px; border:none; border-radius:12px; background:var(--green); color:#fff; font-weight:900; font-size:16px; cursor:pointer}
 
-    .checkout-note{
-      text-align:center;
-      color:#527264;
-      font-size:14px;
-      max-width:320px;
-      margin:20px auto 0;
-      line-height:1.45;
-    }
-
-    .selected-plan-box{
-      background:#f4f1ea;
-      border:1px solid #d9d3c7;
-      color:#45675a;
-      border-radius:14px;
-      padding:14px 16px;
-      font-weight:700;
-      margin-bottom:18px;
-    }
-
-    .quote-card form{
-      display:grid;
-      gap:14px;
-    }
-
-    .quote-card input,.quote-card select,.quote-card textarea{
-      width:100%;
-      border:1px solid #d9d3c7;
-      border-radius:14px;
-      background:#f5f2eb;
-      color:#4f7162;
-      padding:14px 16px;
-      font-size:16px;
-      outline:none;
-    }
-
-    .quote-card textarea{
-      min-height:88px;
-      resize:vertical;
-    }
-
-    .quote-submit{
-      margin-top:2px;
-      height:46px;
-      border:none;
-      border-radius:12px;
-      background:var(--green);
-      color:#fff;
-      font-weight:900;
-      font-size:16px;
-      cursor:pointer;
-    }
-
-    .site-footer{
-      margin-top:78px;
-      background:var(--green);
-      color:#e9eee8;
-      padding:64px 0 46px;
-    }
-
-    .site-footer .logo-row{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:14px;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:20px;
-      font-weight:700;
-    }
-
-    .site-footer .logo-row .foot-logo{
-      width:30px;
-      height:30px;
-      border-radius:8px;
-      overflow:hidden;
-      display:grid;
-      place-items:center;
-    }
-
-    .site-footer .logo-row .foot-logo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .foot-links{
-      display:flex;
-      justify-content:center;
-      gap:22px;
-      margin:28px 0 30px;
-      color:#dbe5de;
-      flex-wrap:wrap;
-    }
-
+    .site-footer{margin-top:78px; background:var(--green); color:#e9eee8; padding:64px 0 46px}
+    .site-footer .logo-row{display:flex; align-items:center; justify-content:center; gap:14px; font-family:Georgia, "Times New Roman", serif; font-size:20px; font-weight:700}
+    .site-footer .logo-row .foot-logo{width:30px; height:30px; border-radius:8px; overflow:hidden; display:grid; place-items:center}
+    .site-footer .logo-row .foot-logo img{width:100%; height:100%; object-fit:cover}
+    .foot-links{display:flex; justify-content:center; gap:22px; margin:28px 0 30px; color:#dbe5de; flex-wrap:wrap}
     .foot-links span.sep{opacity:.35}
-
-    .foot-divider{
-      max-width:630px;
-      height:1px;
-      background:rgba(255,255,255,.18);
-      margin:0 auto 28px;
-    }
-
-    .foot-copy{
-      max-width:720px;
-      margin:0 auto;
-      text-align:center;
-      color:rgba(233,238,232,.72);
-      font-size:14px;
-      line-height:1.55;
-    }
-
-    .foot-copy .copyright{
-      margin-top:14px;
-      opacity:.86;
-    }
+    .foot-divider{max-width:630px; height:1px; background:rgba(255,255,255,.18); margin:0 auto 28px}
+    .foot-copy{max-width:720px; margin:0 auto; text-align:center; color:rgba(233,238,232,.72); font-size:14px; line-height:1.55}
+    .foot-copy .copyright{margin-top:14px; opacity:.86}
 
     @media (max-width: 1100px){
-      .hero-grid,.delivery-grid,.benefit-grid,.review-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
+      .hero-grid,.delivery-grid,.benefit-grid,.review-grid{grid-template-columns:1fr 1fr}
       .benefit-grid .benefit-card:last-child{grid-column:span 2}
       .hero h1{font-size:58px}
       .section-title,.delivery-copy h2,.science-title,.cta-title{font-size:52px}
-
-      .poster{
-        position:relative;
-        inset:auto;
-        width:100%;
-        max-width:420px;
-        margin:0 auto;
-      }
-
+      .poster{position:relative; inset:auto; width:100%; max-width:420px; margin:0 auto}
       .hero-card-area{min-height:auto}
       .bottle-card.one{left:16px}
     }
 
     @media (max-width: 980px){
-      .cta-grid{
-        grid-template-columns:1fr;
-        max-width:620px;
-      }
-
+      .cta-grid{grid-template-columns:1fr; max-width:620px}
       .checkout-card,.quote-card{min-height:auto}
+      .review-grid{grid-template-columns:1fr 1fr}
     }
 
     @media (max-width: 760px){
-      .nav{
-        flex-wrap:wrap;
-        padding:14px 0;
-      }
-
+      .nav{flex-wrap:wrap; padding:14px 0}
       .nav-links{display:none}
-
-      .hero-wrap{
-        padding:54px 0 48px;
-        min-height:auto;
-      }
-
-      .hero-grid,.delivery-grid,.benefit-grid,.review-grid,.review-summary,.cta-grid{
-        grid-template-columns:1fr;
-      }
-
+      .hero-wrap{padding:54px 0 48px; min-height:auto}
+      .hero-grid,.delivery-grid,.benefit-grid,.review-grid,.review-summary,.cta-grid{grid-template-columns:1fr}
       .benefit-grid .benefit-card:last-child{grid-column:auto}
       .hero h1{font-size:44px}
-
-      .poster{
-        height:500px;
-        max-width:100%;
-        right:auto;
-      }
-
+      .poster{height:500px; max-width:100%; right:auto}
       .poster-title{font-size:56px}
       .poster-sub{font-size:24px}
       .poster-bar{font-size:20px}
@@ -1140,21 +373,12 @@
       .section-shell,.review-shell,.faq-shell{padding:54px 0}
       .review-summary{padding:28px}
       .plan-box{padding:28px 22px}
-      .nav-cta{
-        width:100%;
-        justify-content:flex-start;
-      }
+      .nav-cta{width:100%; justify-content:flex-start}
       .btn{padding:12px 16px}
-      .topbar{
-        font-size:11px;
-        letter-spacing:.1em;
-      }
+      .topbar{font-size:11px; letter-spacing:.1em}
       .brand-name{font-size:18px}
       .delivery-card{min-height:300px}
-      .cta-sub,.faq-sub,.section-sub{font-size:16px}
-      .faq-box{padding:14px 20px}
-      .checkout-card,.quote-card{padding:22px}
-      .benefit-card{min-height:auto}
+      .faq-box{padding:18px 20px}
     }
   </style>
 </head>
@@ -1190,7 +414,7 @@
       <div class="container hero-grid">
         <div>
           <div class="eyebrow">Australia's Premium Raw Milk</div>
-          <h1>Fresh Raw<br><em>Cow's Milk</em></h1>
+          <h1>Fresh Raw<br/><em>Cow's Milk</em></h1>
           <div class="hero-sub">Primal Fuel • Live Enzymes • Ancestral Nutrition</div>
           <div class="pill">2.5L Weekly • 10L Monthly Minimum</div>
           <div class="hero-note">Delivered in 2L glass bottles with stainless steel lids — zero microplastics</div>
@@ -1200,9 +424,9 @@
           <div class="poster">
             <div class="poster-inner">
               <div class="poster-brand">RawMilk<span style="font-weight:500">AUS</span></div>
-              <h2 class="poster-title">Fresh Raw<br>Cow's Milk</h2>
+              <h2 class="poster-title">Fresh Raw<br/>Cow's Milk</h2>
               <div class="poster-cow">🐄</div>
-              <div class="poster-sub">Primal Diet<br>Health Benefits</div>
+              <div class="poster-sub">Primal Diet<br/>Health Benefits</div>
               <div class="poster-bar">FOR PET USE ONLY</div>
             </div>
           </div>
@@ -1216,7 +440,7 @@
       <div class="container">
         <div class="title-top">Why Raw Milk</div>
         <h2 class="section-title">Primal Benefits</h2>
-        <p class="section-sub">What pasteurisation strips away, we deliver in its natural state — with cleaner packaging and a stronger premium feel.</p>
+        <p class="section-sub">What pasteurisation steals, we deliver — alive, active, and ready to transform your health.</p>
 
         <div class="benefit-grid">
           <article class="benefit-card">
@@ -1226,24 +450,24 @@
             </div>
             <h3>Zero Microplastics. Pure Glass.</h3>
             <ul>
-              <li><span class="bad-chip">Every other milk brand ships in plastic bottles or plastic-lined packaging.</span></li>
-              <li><span class="bad-chip">Plastic can leach into fat-rich liquids like milk, which is why people worry about build-up in the body, organs, reproductive systems, and exposure during pregnancy and early infancy.</span></li>
-              <li><span class="bad-chip">Microplastics are exactly the kind of thing premium buyers want out of their kitchen completely.</span></li>
-              <li><span class="good-chip">Ours: 2L glass bottle, stainless steel lid, zero plastic contact with the milk itself.</span></li>
+              <li><span class="bad-highlight">Every other milk brand ships in plastic bottles</span> that leach into fat-rich liquids like milk.</li>
+              <li><span class="bad-highlight">Microplastics have been found in blood, organs, reproductive organs, pregnant women, newborn babies, and brain tissue.</span></li>
+              <li><span class="good-highlight">Ours uses 2L glass bottles with stainless steel lids.</span></li>
+              <li><span class="good-highlight">Zero plastic contact. Zero microplastics. Pure glass.</span></li>
             </ul>
           </article>
 
           <article class="benefit-card">
             <div class="benefit-head">
-              <div class="benefit-icon">↗️</div>
+              <div class="benefit-icon">↗</div>
               <div class="benefit-tag">Height &amp; Structure</div>
             </div>
-            <h3>Growth Factors, Bone Density &amp; Structure</h3>
+            <h3>Growth Hormones &amp; Height</h3>
             <ul>
-              <li>Still think you are done growing or improving your frame? That is exactly the insecurity this kind of product taps into.</li>
-              <li><span class="bad-chip">Raw milk contains naturally occurring IGF-1, growth factors, complete protein, calcium and phosphorus that heat processing can alter.</span></li>
-              <li><span class="good-chip">Position it as a premium whole-food option for people focused on bone support, overall structure, strength and recovery.</span></li>
-              <li>That gives you the same high-status “ancestral nutrition” angle people associate with traditional dairy cultures in parts of Europe and Africa, without making hard medical promises.</li>
+              <li>Still think you're done growing? Probably not.</li>
+              <li><span class="bad-highlight">Raw milk contains active IGF-1 and growth factors that pasteurisation damages.</span></li>
+              <li>Bioavailable calcium + phosphorus = real bone density and structure support.</li>
+              <li>NHANES-linked milk-height narratives are why this is one of the biggest insecurities people chase.</li>
             </ul>
           </article>
 
@@ -1252,26 +476,26 @@
               <div class="benefit-icon">♡</div>
               <div class="benefit-tag">Gut Restored</div>
             </div>
-            <h3>Gut Health, Digestion &amp; Clearer Skin</h3>
+            <h3>Gut Health &amp; Clear Skin</h3>
             <ul>
-              <li><span class="bad-chip">Bloating, sluggish digestion, dull skin and acne are exactly the problems people emotionally connect to processed food.</span></li>
-              <li><span class="good-chip">Raw milk is marketed around live cultures, natural enzymes and a less processed profile that people associate with better digestion and a cleaner-feeling diet.</span></li>
-              <li><span class="good-chip">That makes the skin angle powerful too: less “dead” processed food, more nutrient-dense whole food, clearer face, clearer body, cleaner routine.</span></li>
-              <li>It hits both insecurities at once: gut discomfort on the inside and breakouts or tired-looking skin on the outside.</li>
+              <li><span class="bad-highlight">Bloating, brain fog, bad skin, acne on your face and body — it's your gut.</span></li>
+              <li>Pasteurised milk kills the bacteria your gut needs.</li>
+              <li><span class="good-highlight">Raw milk: live bacteria + active lactase + digestive enzymes + intact probiotics.</span></li>
+              <li><span class="good-highlight">Clearer skin, calmer digestion, less bloat, stronger gut support.</span></li>
             </ul>
           </article>
 
-          <article class="benefit-card tinted">
+          <article class="benefit-card">
             <div class="benefit-head">
               <div class="benefit-icon">🛡</div>
               <div class="benefit-tag">Allergies Reduced</div>
             </div>
-            <h3>Immunoglobulins &amp; Immune Support Positioning</h3>
+            <h3>Immunoglobulins &amp; Allergies</h3>
             <ul>
-              <li><span class="bad-chip">Dead, overprocessed food is exactly how many customers describe supermarket nutrition — flat, stripped down, and never feeling like it helps them thrive.</span></li>
-              <li><span class="bad-chip">Pasteurisation changes delicate proteins and bioactive compounds, which weakens the “living food” story buyers want.</span></li>
-              <li><span class="good-chip">Raw milk keeps the premium immune-support narrative strong because it naturally contains immunoglobulins and other bioactive components people associate with a more complete food.</span></li>
-              <li><span class="good-chip">So the contrast is simple: processed milk feels dead and stripped back, raw milk feels full, rich and naturally supportive.</span></li>
+              <li><span class="bad-highlight">Dead milk slop doesn't help your immune system do its job.</span></li>
+              <li><span class="bad-highlight">Pasteurisation damages the immunoglobulins and bioactive proteins people rely on.</span></li>
+              <li><span class="good-highlight">Raw milk keeps intact immunoglobulins and supportive milk proteins active.</span></li>
+              <li><span class="good-highlight">That's why people focus on it for immune support and not feeling wrecked every season.</span></li>
             </ul>
           </article>
         </div>
@@ -1299,10 +523,10 @@
             <tr><td>Zinc</td><td class="bad">✕ 70% Reduction</td><td class="good">✓ 100% Active</td></tr>
             <tr><td>B-Complex Vitamins</td><td class="bad">✕ 38% Reduction</td><td class="good">✓ 100% Active</td></tr>
             <tr><td>Calcium</td><td class="bad">✕ 21% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Probiotics</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
             <tr><td>Enzymes</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
             <tr><td>Immunoglobulins</td><td class="bad">✕ 100% Damaged (59% Destroyed)</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Whey Proteins</td><td class="bad">✕ 100% Damaged (34% Denatured)</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Probiotics</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Whey Protein</td><td class="bad">✕ 100% Damaged (34% Denatured)</td><td class="good">✓ 100% Active</td></tr>
           </tbody>
         </table>
       </div>
@@ -1312,26 +536,37 @@
       <div class="container">
         <div class="title-top">Subscription Plans</div>
         <h2 class="section-title">Weekly Delivery Plans</h2>
-        <p class="section-sub">Choose your monthly volume</p>
+        <p class="section-sub">Choose Your Volume</p>
 
         <div class="plan-box">
           <div class="plan-title">🥛 <span>Select Your Plan</span></div>
-          <div class="select-wrap">
-            <select id="planSelect">
-              <option selected disabled>Choose your monthly volume...</option>
-              <option value="10L / month — 2.5L weekly — 1 pet starter">10L / month — 2.5L weekly — 1 pet starter</option>
-              <option value="20L / month — 5L weekly — 2 pets">20L / month — 5L weekly — 2 pets</option>
-              <option value="30L / month — 7.5L weekly — small household">30L / month — 7.5L weekly — small household</option>
-              <option value="40L / month — 10L weekly — small household">40L / month — 10L weekly — small household</option>
-              <option value="50L / month — 12.5L weekly — small household">50L / month — 12.5L weekly — small household</option>
-              <option value="60L / month — 15L weekly — medium household">60L / month — 15L weekly — medium household</option>
-              <option value="70L / month — 17.5L weekly — medium household">70L / month — 17.5L weekly — medium household</option>
-              <option value="80L / month — 20L weekly — medium household">80L / month — 20L weekly — medium household</option>
-              <option value="90L+ / month — large households">90L+ / month — large households</option>
-              <option value="100L+ / month — custom">100L+ / month — custom</option>
-            </select>
+          <form id="checkout-form" action="#" method="get">
+            <div class="select-wrap">
+              <select id="plan-select" name="plan" required>
+                <option value="" selected disabled>Choose your monthly volume...</option>
+                <option value="10L / month — 2.5L weekly — 1 pet starter">10L / month — 2.5L weekly — 1 pet starter</option>
+                <option value="20L / month — 5L weekly — 2 pets">20L / month — 5L weekly — 2 pets</option>
+                <option value="30L / month — 7.5L weekly — small household">30L / month — 7.5L weekly — small household</option>
+                <option value="40L / month — 10L weekly — small household">40L / month — 10L weekly — small household</option>
+                <option value="50L / month — 12.5L weekly — small household">50L / month — 12.5L weekly — small household</option>
+                <option value="60L / month — 15L weekly — medium household">60L / month — 15L weekly — medium household</option>
+                <option value="70L / month — 17.5L weekly — medium household">70L / month — 17.5L weekly — medium household</option>
+                <option value="80L / month — 20L weekly — medium household">80L / month — 20L weekly — medium household</option>
+                <option value="90L / month — 22.5L weekly — large household">90L / month — 22.5L weekly — large household</option>
+                <option value="100L+ / month — custom — large household">100L+ / month — custom — large household</option>
+              </select>
+            </div>
+            <button class="checkout" type="submit">Continue to Checkout</button>
+          </form>
+
+          <div class="plan-hint">
+            <div>10L = 1 pet starter</div>
+            <div>20L = 2 pets</div>
+            <div>30–50L = small household</div>
+            <div>60–80L = medium household</div>
+            <div>90L+ = large household</div>
           </div>
-          <button class="checkout" id="goToCheckoutBtn">Continue to Checkout</button>
+
           <div class="plan-foot">🥛 Delivered weekly in 2L glass bottles</div>
         </div>
       </div>
@@ -1342,7 +577,7 @@
         <div class="delivery-copy">
           <div class="title-top" style="text-align:left; margin-bottom:14px">Delivery</div>
           <h2>Weekly Chilled Delivery</h2>
-          <div class="mini">Across NSW, QLD, VIC, SA, WA &amp; ACT</div>
+          <div class="mini">Across NSW, QLD &amp; VIC</div>
           <p>Fresh from licensed Australian dairies. Cold-chain guaranteed from farm to your door. Glass bottles only — because your milk should never touch plastic.</p>
           <div class="delivery-feats">
             <div class="delivery-feat"><i>🚚</i><span>Weekly scheduled delivery</span></div>
@@ -1350,11 +585,10 @@
             <div class="delivery-feat"><i>🥛</i><span>Glass bottles only</span></div>
           </div>
         </div>
-
         <div class="delivery-card">
           <div class="label">
             <strong>Licensed Australian Dairies</strong>
-            <div>NSW • QLD • VIC • SA • WA • ACT</div>
+            <div>NSW • QLD • VIC</div>
           </div>
         </div>
       </div>
@@ -1372,160 +606,115 @@
             <div class="muted">Based on 342 reviews</div>
           </div>
           <div>
-            <div class="bar-row"><span>★ 5</span><div class="bar"><span style="width:91%"></span></div><span>312</span></div>
-            <div class="bar-row"><span>★ 4</span><div class="bar"><span style="width:8%"></span></div><span>26</span></div>
+            <div class="bar-row"><span>★ 5</span><div class="bar"><span style="width:91.2%"></span></div><span>312</span></div>
+            <div class="bar-row"><span>★ 4</span><div class="bar"><span style="width:7.6%"></span></div><span>26</span></div>
             <div class="bar-row"><span>★ 3</span><div class="bar"><span style="width:1.2%"></span></div><span>4</span></div>
-            <div class="bar-row"><span>★ 2</span><div class="bar zero"><span style="width:0%"></span></div><span>0</span></div>
-            <div class="bar-row"><span>★ 1</span><div class="bar zero"><span style="width:0%"></span></div><span>0</span></div>
+            <div class="bar-row"><span>★ 2</span><div class="bar"><span style="width:0%"></span></div><span>0</span></div>
+            <div class="bar-row"><span>★ 1</span><div class="bar"><span style="width:0%"></span></div><span>0</span></div>
           </div>
         </div>
 
         <div class="review-grid">
           <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Lachlan T.</div>
-              <div class="review-tag">Height &amp; Growth</div>
-            </div>
-            <div class="review-meta">Sydney, NSW · March 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“I was 5'9 and honestly had given up on growing. Started giving this to my dog and accidentally had a glass myself every day for 3 months. Shot up 2.5cm and my posture improved dramatically. The growth factors in raw milk are no joke. My joints feel incredible.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Bridie M.</div>
-              <div class="review-tag">Skin &amp; Gut Health</div>
-            </div>
-            <div class="review-meta">Brisbane, QLD · February 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My eczema has been gone for 6 weeks. Gone. I'd been dealing with it since childhood. Two months of raw milk and my skin is clearer than it's ever been in my life. The probiotics are doing something conventional medicine never could.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Josh R.</div>
-              <div class="review-tag">Child Growth &amp; Allergies</div>
-            </div>
-            <div class="review-meta">Melbourne, VIC · March 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My young one is 14 and has grown 4cm in 3 months since we started. His allergies are also completely gone — used to need antihistamines daily. The immunoglobulins in this are doing exactly what the research says. Absolute game changer.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Tamara K.</div>
-              <div class="review-tag">Gut Health</div>
-            </div>
-            <div class="review-meta">Gold Coast, QLD · January 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“I had IBS for 7 years. Doctors had no answers. Six weeks on raw milk and I can eat anything without bloating. The live enzymes are doing what they're supposed to — actually digesting food properly. I'm blown away.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Marcus W.</div>
-              <div class="review-tag">Immunity &amp; Muscle</div>
-            </div>
-            <div class="review-meta">Newcastle, NSW · March 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My immune system was a mess — sick every month. Haven't been sick once in 4 months since starting. The immunoglobulins are the real deal. Also put on 3kg of muscle with the same gym routine. The whey protein in raw form is completely different.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Chloe B.</div>
-              <div class="review-tag">Child Height Growth</div>
-            </div>
-            <div class="review-meta">Adelaide, SA · February 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My son grew 3cm in 8 weeks. He's 16 and I thought he was done growing. The growth hormones in this milk are real. His energy levels are also through the roof compared to before. We'll never go back to pasteurised garbage.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Daniel F.</div>
-              <div class="review-tag">Allergy Relief</div>
-            </div>
-            <div class="review-meta">Perth, WA · January 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“Seasonal allergies destroyed my quality of life every spring. This is my first spring in 12 years without antihistamines. The anti-inflammatory properties are insane. Also sleeping better than I have in years.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Natasha P.</div>
-              <div class="review-tag">Height &amp; Skin</div>
-            </div>
-            <div class="review-meta">Sydney, NSW · March 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“I'm 22 and gained 1.5cm in height. Not even kidding. Combined with the clearest skin I've had since primary school, I'm a full convert. The glass bottles are a bonus — no plastic taste, no nothing. Totally pure.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Riley O.</div>
-              <div class="review-tag">Energy &amp; Digestion</div>
-            </div>
-            <div class="review-meta">Canberra, ACT · February 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My digestion completely transformed. Used to have brain fog all day and now I wake up clear-headed. The energy difference is huge — the B vitamins and live enzymes actually reaching your bloodstream is not the same as pasteurised. Nothing is.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Sophie H.</div>
-              <div class="review-tag">Respiratory &amp; Immunity</div>
-            </div>
+            <div class="review-top"><div class="review-name">Sophie H.</div><div class="review-tag">Respiratory &amp; Immunity</div></div>
             <div class="review-meta">Wollongong, NSW · January 2026</div>
             <div class="stars" style="font-size:16px">★★★★★</div>
             <div class="review-copy">“My daughter's asthma has reduced by at least 70%. Her specialist is confused. I know exactly why — the immunoglobulins and anti-inflammatory properties in raw milk. We've been ordering 20L a month for 3 months and won't stop.”</div>
           </article>
 
           <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Tom A.</div>
-              <div class="review-tag">Bone &amp; Height</div>
-            </div>
+            <div class="review-top"><div class="review-name">Tom A.</div><div class="review-tag">Bone &amp; Height</div></div>
             <div class="review-meta">Brisbane, QLD · March 2026</div>
             <div class="stars" style="font-size:16px">★★★★★</div>
             <div class="review-copy">“Grew 2cm at 20. People told me I was done. The calcium bioavailability in raw milk vs pasteurised is incomparable. My bone density has genuinely improved based on recent scans. This product is the real deal.”</div>
           </article>
 
           <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Emma S.</div>
-              <div class="review-tag">Joint &amp; Gut Health</div>
-            </div>
+            <div class="review-top"><div class="review-name">Emma S.</div><div class="review-tag">Joint &amp; Gut Health</div></div>
             <div class="review-meta">Melbourne, VIC · February 2026</div>
             <div class="stars" style="font-size:16px">★★★★★</div>
             <div class="review-copy">“Chronic joint pain since my twenties. Gone after 6 weeks. The zinc and anti-inflammatory factors are doing what no supplement ever did. Also lost the belly bloat I thought was just how I was built! It was just dead pasteurised milk all along.”</div>
           </article>
 
           <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Aaron C.</div>
-              <div class="review-tag">Child Growth</div>
-            </div>
+            <div class="review-top"><div class="review-name">Daniel F.</div><div class="review-tag">Allergy Relief</div></div>
+            <div class="review-meta">Perth, WA · January 2026</div>
+            <div class="stars" style="font-size:16px">★★★★★</div>
+            <div class="review-copy">“Seasonal allergies destroyed my quality of life every spring. This is my first spring in 12 years without antihistamines. The anti-inflammatory properties are insane. Also sleeping better than I have in years.”</div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top"><div class="review-name">Natasha P.</div><div class="review-tag">Height &amp; Skin</div></div>
+            <div class="review-meta">Sydney, NSW · March 2026</div>
+            <div class="stars" style="font-size:16px">★★★★★</div>
+            <div class="review-copy">“I'm 22 and gained 1.5cm in height. Not even kidding. Combined with the clearest skin I've had since primary school, I'm a full convert. The glass bottles are a bonus — no plastic taste, no nothing. Totally pure.”</div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top"><div class="review-name">Riley O.</div><div class="review-tag">Energy &amp; Digestion</div></div>
+            <div class="review-meta">Canberra, ACT · February 2026</div>
+            <div class="stars" style="font-size:16px">★★★★★</div>
+            <div class="review-copy">“My digestion completely transformed. Used to have brain fog all day and now I wake up clear-headed. The energy difference is huge — the B vitamins and live enzymes actually reaching your bloodstream is not the same as pasteurised. Nothing is.”</div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top"><div class="review-name">Tamara K.</div><div class="review-tag">Gut Health</div></div>
+            <div class="review-meta">Gold Coast, QLD · January 2026</div>
+            <div class="stars" style="font-size:16px">★★★★★</div>
+            <div class="review-copy">“I had IBS for 7 years. Doctors had no answers. Six weeks on raw milk and I can eat anything without bloating. The live enzymes are doing what they're supposed to — actually digesting food properly. I'm blown away.”</div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top"><div class="review-name">Marcus W.</div><div class="review-tag">Immunity &amp; Muscle</div></div>
+            <div class="review-meta">Newcastle, NSW · March 2026</div>
+            <div class="stars" style="font-size:16px">★★★★★</div>
+            <div class="review-copy">“My immune system was a mess — sick every month. Haven't been sick once in 4 months since starting. The immunoglobulins are the real deal. Also put on 3kg of muscle with the same gym routine. The whey protein in raw form is completely different.”</div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top"><div class="review-name">Chloe B.</div><div class="review-tag">Child Height Growth</div></div>
+            <div class="review-meta">Adelaide, SA · February 2026</div>
+            <div class="stars" style="font-size:16px">★★★★★</div>
+            <div class="review-copy">“My son grew 3cm in 8 weeks. He's 16 and I thought he was done growing. The growth hormones in this milk are real. His energy levels are also through the roof compared to before. We'll never go back to pasteurised garbage.”</div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top"><div class="review-name">Lachlan T.</div><div class="review-tag">Height &amp; Growth</div></div>
+            <div class="review-meta">Sydney, NSW · March 2026</div>
+            <div class="stars" style="font-size:16px">★★★★★</div>
+            <div class="review-copy">“I was 5'9 and honestly had given up on growing. Started giving this to my dog and accidentally had a glass myself every day for 3 months. Shot up 2.5cm and my posture improved dramatically. The growth factors in raw milk are no joke. My joints feel incredible.”</div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top"><div class="review-name">Bridie M.</div><div class="review-tag">Skin &amp; Gut Health</div></div>
+            <div class="review-meta">Brisbane, QLD · February 2026</div>
+            <div class="stars" style="font-size:16px">★★★★★</div>
+            <div class="review-copy">“My eczema has been gone for 6 weeks. Gone. I'd been dealing with it since childhood. Two months of raw milk and my skin is clearer than it's ever been in my life. The probiotics are doing something conventional medicine never could.”</div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top"><div class="review-name">Josh R.</div><div class="review-tag">Child Growth &amp; Allergies</div></div>
+            <div class="review-meta">Melbourne, VIC · March 2026</div>
+            <div class="stars" style="font-size:16px">★★★★★</div>
+            <div class="review-copy">“My young one is 14 and has grown 4cm in 3 months since we started. His allergies are also completely gone — used to need antihistamines daily. The immunoglobulins in this are doing exactly what the research says. Absolute game changer.”</div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top"><div class="review-name">Aaron C.</div><div class="review-tag">Child Growth</div></div>
             <div class="review-meta">Sunshine Coast, QLD · January 2026</div>
             <div class="stars" style="font-size:16px">★★★★★</div>
             <div class="review-copy">“My boy is 13 and hit a growth spurt nobody expected. 5cm in 10 weeks. His football coach asked what we changed. Raw milk, mate. The growth factors and bioavailable protein are doing exactly what Pottenger's research showed.”</div>
           </article>
 
           <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Isabella M.</div>
-              <div class="review-tag">Skin &amp; Gut</div>
-            </div>
+            <div class="review-top"><div class="review-name">Isabella M.</div><div class="review-tag">Skin &amp; Gut</div></div>
             <div class="review-meta">Sydney, NSW · March 2026</div>
             <div class="stars" style="font-size:16px">★★★★★</div>
             <div class="review-copy">“Acne I'd had for 6 years cleared up in 5 weeks. My gut must have been completely dysbiotic — the probiotics and enzymes in raw milk restored something that years of skincare never touched. Game changing for my confidence.”</div>
           </article>
 
           <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Callum D.</div>
-              <div class="review-tag">Height Growth</div>
-            </div>
+            <div class="review-top"><div class="review-name">Callum D.</div><div class="review-tag">Height Growth</div></div>
             <div class="review-meta">Geelong, VIC · February 2026</div>
             <div class="stars" style="font-size:16px">★★★★★</div>
             <div class="review-copy">“This sounds crazy but I grew at 21. 1.8cm. I had my height measured twice to confirm. The HGH support factors and calcium absorption in raw milk is nothing like the heat-damaged version. Also zero hay fever this season.”</div>
@@ -1547,52 +736,72 @@
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>What makes raw milk different from pasteurised milk?</span><span>+</span></button>
-            <div class="faq-answer">Pasteurisation uses heat to kill bacteria and extend shelf life, but it also changes delicate proteins, enzymes, bacteria and other bioactive compounds. Raw milk appeals to customers who want a more natural, less processed whole-food product.</div>
+            <div class="faq-answer">Pasteurisation uses heat to kill bacteria — but also changes enzymes, proteins, and other naturally occurring components. This section is where you can place your preferred brand comparison copy.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>How is your raw milk kept safe during delivery?</span><span>+</span></button>
-            <div class="faq-answer">We use a strict cold-chain process from the dairy to your door. Milk is collected fresh, immediately refrigerated, packed with premium cold gel packs, and delivered in an insulated container. Our glass bottles are sanitised between each delivery cycle.</div>
+            <div class="faq-answer">We use a strict cold-chain process from collection to delivery. Milk is refrigerated immediately, packed with premium cold packs, and delivered in insulated containers.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>Why do you use glass bottles and stainless steel lids?</span><span>+</span></button>
-            <div class="faq-answer">Plastic leaches microplastics and BPA/BPS into liquids — especially fats like milk. We use 2L glass bottles with stainless steel lids so your milk never touches plastic at any point.</div>
+            <div class="faq-answer">We use 2L glass bottles with stainless steel lids so the milk never touches plastic during storage and delivery.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button"><span>How do the growth benefits work?</span><span>+</span></button>
+            <div class="faq-answer">This is the spot to place your growth-related brand copy. Keep in mind that any public health or growth claims should be reviewed carefully before publishing.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button"><span>Can raw milk really help with allergies?</span><span>+</span></button>
+            <div class="faq-answer">This is the spot to place your allergy-related brand copy or research notes. If you are citing a study, it is best to verify the exact wording before publishing.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button"><span>How does raw milk improve gut health?</span><span>+</span></button>
+            <div class="faq-answer">This is the spot to place your gut-health brand copy. If you want, I can rewrite this section in your preferred tone while keeping the same layout.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>What is the minimum order?</span><span>+</span></button>
-            <div class="faq-answer">Our minimum subscription is 10L per month with weekly delivery. We offer plans from 10L up to 100L+ per month for larger households or custom orders.</div>
+            <div class="faq-answer">Our minimum subscription is 10L per month (2.5L weekly delivery). We offer plans from 10L up to 300L+ per month for larger operations. All plans include weekly delivery in 2L glass bottles.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>Which areas do you deliver to?</span><span>+</span></button>
-            <div class="faq-answer">We currently service major areas across NSW, QLD, VIC, SA, WA and ACT. If you're outside these states or in a remote area, please request a custom quote.</div>
+            <div class="faq-answer">We currently deliver weekly across New South Wales (NSW), Queensland (QLD), and Victoria (VIC). If you're outside these states or in a remote area, please contact us for a custom delivery quote.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>How fresh is the milk when it arrives?</span><span>+</span></button>
-            <div class="faq-answer">Our milk is collected fresh and typically arrives at your door within 24–48 hours of collection. Shelf life is usually 7–10 days refrigerated.</div>
+            <div class="faq-answer">Our milk is collected fresh and typically arrives at your door within 24–48 hours of collection. Shelf life is 7–10 days refrigerated. The freshness is immediately noticeable compared to supermarket milk that can be weeks old before it reaches shelves.</div>
           </div>
 
           <div class="faq-item">
-            <button class="faq-question" type="button"><span>Do I need to shake the bottle before use?</span><span>+</span></button>
-            <div class="faq-answer">Yes. Raw milk is not homogenised, so the cream naturally rises to the top. Gently invert the bottle a few times before use.</div>
+            <button class="faq-question" type="button"><span>Do I need to shake the bottle before drinking?</span><span>+</span></button>
+            <div class="faq-answer">Yes. Raw milk is not homogenised — the cream naturally rises to the top. Gently invert the bottle a few times to mix before use. This cream layer is one of the most nutritionally dense parts of the milk, rich in fat-soluble vitamins A, D, E, and K.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>How do I store raw milk?</span><span>+</span></button>
-            <div class="faq-answer">Keep raw milk refrigerated at all times below 4°C. It is best consumed while fresh and kept cold. Our glass bottles are reusable and collected on your next delivery.</div>
+            <div class="faq-answer">Keep raw milk refrigerated at all times (below 4°C). Never leave it out at room temperature for extended periods. It's best consumed within 7 days of delivery. The glass bottles are reusable — we collect them on your next delivery.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" type="button"><span>Can I cancel or change my plan anytime?</span><span>+</span></button>
-            <div class="faq-answer">Yes. You can upgrade, downgrade, pause, or cancel your subscription at any time with at least 72 hours notice before your next scheduled delivery.</div>
+            <div class="faq-answer">Yes. You can upgrade, downgrade, pause, or cancel your subscription at any time. We require 72 hours notice before your next scheduled delivery for any changes. Simply contact us via the quote form or email.</div>
           </div>
 
           <div class="faq-item">
-            <button class="faq-question" type="button"><span>What kind of cows produce your milk?</span><span>+</span></button>
-            <div class="faq-answer">Our milk comes from grass-fed Australian dairy herds, selected for premium milk quality and consistency.</div>
+            <button class="faq-question" type="button"><span>Is raw milk suitable for lactose intolerance?</span><span>+</span></button>
+            <div class="faq-answer">Many people who are sensitive to pasteurised milk find they tolerate raw milk well. This is because raw milk contains lactase — the enzyme that breaks down lactose — which is destroyed by pasteurisation. The intact bacteria in raw milk also help process lactose naturally.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button"><span>What breeds of cows produce your milk?</span><span>+</span></button>
+            <div class="faq-answer">Our milk comes from grass-fed A2 Holstein-Friesian and Jersey cows on licensed Australian farms. Jersey cows in particular produce milk with higher butterfat and protein content, and are prized for the superior quality of their cream.</div>
           </div>
         </div>
       </div>
@@ -1606,47 +815,31 @@
         <div class="cta-grid">
           <div class="checkout-card">
             <div class="mini-heading"><i>💳</i><span>Quick Checkout</span></div>
-
-            <div class="selected-plan-box">
-              Selected plan: <span id="selectedPlanText">No plan selected yet</span>
-            </div>
-
-            <button type="button" class="pay-btn paypal" id="paypalCheckoutBtn">
-              <span class="icon">P</span><span>Pay with PayPal</span>
-            </button>
-
-            <button type="button" class="pay-btn stripe" id="stripeCheckoutBtn">
-              <span class="icon">S</span><span>Pay with Stripe</span>
-            </button>
-
-            <div class="checkout-note">
-              Select a plan above, then click your preferred checkout option. Replace the placeholder payment links in the script with your real PayPal and Stripe checkout URLs.
-            </div>
+            <a href="https://www.paypal.com/" target="_blank" rel="noopener noreferrer" class="pay-btn paypal"><span class="icon">P</span><span>Pay with PayPal</span></a>
+            <a href="https://buy.stripe.com/test_placeholder" target="_blank" rel="noopener noreferrer" class="pay-btn stripe"><span class="icon">S</span><span>Pay with Stripe</span></a>
+            <div class="checkout-note">Replace the PayPal and Stripe links in the code with your real checkout URLs.</div>
           </div>
 
           <div class="quote-card">
-            <div class="mini-heading"><span>Request a Custom Quote</span></div>
-            <form id="quoteForm" action="https://formspree.io/f/your-form-id" method="POST">
-              <input type="text" name="full_name" placeholder="Full Name" required>
-              <input type="email" name="email" placeholder="Email Address" required>
-              <input type="text" name="location" placeholder="Suburb / Postcode" required>
-
-              <select name="plan" id="quotePlanSelect" required>
-                <option selected disabled>Select a plan...</option>
-                <option value="10L / month — 2.5L weekly — 1 pet starter">10L / month — 2.5L weekly — 1 pet starter</option>
-                <option value="20L / month — 5L weekly — 2 pets">20L / month — 5L weekly — 2 pets</option>
-                <option value="30L / month — 7.5L weekly — small household">30L / month — 7.5L weekly — small household</option>
-                <option value="40L / month — 10L weekly — small household">40L / month — 10L weekly — small household</option>
-                <option value="50L / month — 12.5L weekly — small household">50L / month — 12.5L weekly — small household</option>
-                <option value="60L / month — 15L weekly — medium household">60L / month — 15L weekly — medium household</option>
-                <option value="70L / month — 17.5L weekly — medium household">70L / month — 17.5L weekly — medium household</option>
-                <option value="80L / month — 20L weekly — medium household">80L / month — 20L weekly — medium household</option>
-                <option value="90L+ / month — large households">90L+ / month — large households</option>
-                <option value="100L+ / month — custom">100L+ / month — custom</option>
+            <div class="mini-heading"><span>Request a Quote</span></div>
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+              <input type="text" name="name" placeholder="Full Name" required />
+              <input type="email" name="email" placeholder="Email Address" required />
+              <input type="text" name="suburb" placeholder="Suburb / Postcode" required />
+              <select name="plan" required>
+                <option value="" selected disabled>Select a plan...</option>
+                <option>10L / month — 2.5L weekly — 1 pet starter</option>
+                <option>20L / month — 5L weekly — 2 pets</option>
+                <option>30L / month — 7.5L weekly — small household</option>
+                <option>40L / month — 10L weekly — small household</option>
+                <option>50L / month — 12.5L weekly — small household</option>
+                <option>60L / month — 15L weekly — medium household</option>
+                <option>70L / month — 17.5L weekly — medium household</option>
+                <option>80L / month — 20L weekly — medium household</option>
+                <option>90L / month — 22.5L weekly — large household</option>
+                <option>100L+ / month — custom — large household</option>
               </select>
-
-              <textarea name="notes" placeholder="Additional notes (delivery preference, custom volume, questions, etc.)"></textarea>
-              <input type="hidden" name="_subject" value="New RawMilkAUS Custom Quote Request">
+              <textarea name="notes" placeholder="Additional notes (optional)"></textarea>
               <button type="submit" class="quote-submit">Submit Quote Request</button>
             </form>
           </div>
@@ -1657,9 +850,7 @@
     <footer class="site-footer">
       <div class="container">
         <div class="logo-row">
-          <span class="foot-logo">
-            <img src="logo.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='18px';">
-          </span>
+          <span class="foot-logo"><img src="logo.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='18px';" /></span>
           <span>RawMilkAUS</span>
         </div>
 
@@ -1669,93 +860,36 @@
           <span>QLD Delivery</span>
           <span class="sep">•</span>
           <span>VIC Delivery</span>
-          <span class="sep">•</span>
-          <span>SA Delivery</span>
-          <span class="sep">•</span>
-          <span>WA Delivery</span>
-          <span class="sep">•</span>
-          <span>ACT Delivery</span>
         </div>
 
         <div class="foot-divider"></div>
 
         <div class="foot-copy">
           <div>This product is sold strictly for pet use only. Consult a qualified professional for feeding decisions.</div>
-          <div class="copyright">©️ 2026 RawMilkAUS. All rights reserved.</div>
+          <div class="copyright">© <span id="year"></span> RawMilkAUS. All rights reserved.</div>
         </div>
       </div>
     </footer>
   </main>
 
   <script>
-    const PAYPAL_BASE_URL = "https://your-paypal-checkout-link.com";
-    const STRIPE_BASE_URL = "https://buy.stripe.com/your-checkout-link";
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    const planSelect = document.getElementById('planSelect');
-    const quotePlanSelect = document.getElementById('quotePlanSelect');
-    const selectedPlanText = document.getElementById('selectedPlanText');
-    const goToCheckoutBtn = document.getElementById('goToCheckoutBtn');
-    const paypalCheckoutBtn = document.getElementById('paypalCheckoutBtn');
-    const stripeCheckoutBtn = document.getElementById('stripeCheckoutBtn');
-
-    function updateSelectedPlan(planValue){
-      if(!planValue) return;
-      selectedPlanText.textContent = planValue;
-
-      const quoteOptions = Array.from(quotePlanSelect.options);
-      const matchingOption = quoteOptions.find(option => option.value === planValue);
-      if(matchingOption){
-        quotePlanSelect.value = planValue;
-      }
-    }
-
-    planSelect.addEventListener('change', function(){
-      updateSelectedPlan(this.value);
-    });
-
-    goToCheckoutBtn.addEventListener('click', function(){
-      if(planSelect.value){
-        updateSelectedPlan(planSelect.value);
-      }
-      document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
-    });
-
-    function openCheckout(baseUrl){
-      const chosenPlan = planSelect.value || quotePlanSelect.value;
-      if(!chosenPlan){
-        alert('Please select a plan first.');
-        document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-
-      if(!baseUrl.includes('http')){
-        alert('Add your real checkout URL in the script first.');
-        return;
-      }
-
-      const separator = baseUrl.includes('?') ? '&' : '?';
-      const finalUrl = baseUrl + separator + 'plan=' + encodeURIComponent(chosenPlan);
-      window.open(finalUrl, '_blank');
-    }
-
-    paypalCheckoutBtn.addEventListener('click', function(){
-      openCheckout(PAYPAL_BASE_URL);
-    });
-
-    stripeCheckoutBtn.addEventListener('click', function(){
-      openCheckout(STRIPE_BASE_URL);
+    document.querySelectorAll('.nav-links a').forEach(function(link){
+      link.addEventListener('click', function(){
+        document.querySelectorAll('.nav-links a').forEach(function(l){ l.classList.remove('active'); });
+        this.classList.add('active');
+      });
     });
 
     document.querySelectorAll('.faq-question').forEach(function(button){
       button.addEventListener('click', function(){
         var item = this.parentElement;
         var isActive = item.classList.contains('active');
-
         document.querySelectorAll('.faq-item').forEach(function(faq){
           faq.classList.remove('active');
           faq.querySelector('.faq-question span:last-child').textContent = '+';
         });
-
         if(!isActive){
           item.classList.add('active');
           this.querySelector('span:last-child').textContent = '−';
@@ -1763,11 +897,20 @@
       });
     });
 
-    var firstFaq = document.querySelector('.faq-item');
-    if(firstFaq){
-      firstFaq.classList.add('active');
-      firstFaq.querySelector('.faq-question span:last-child').textContent = '−';
-    }
+    document.querySelectorAll('.checkout, .btn.primary').forEach(function(button){
+      button.addEventListener('click', function(event){
+        if(this.classList.contains('checkout')){
+          event.preventDefault();
+          var value = document.getElementById('plan-select').value;
+          if(!value){
+            alert('Please choose a plan first.');
+            return;
+          }
+          window.location.href = '#checkout';
+        }
+      });
+    });
   </script>
 </body>
 </html>
+
