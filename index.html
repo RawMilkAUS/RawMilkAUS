@@ -23,6 +23,7 @@
       --shadow:0 12px 30px rgba(14,75,58,.08);
       --radius:22px;
       --max:1180px;
+      --star:#f2b21d;
     }
 
     *{box-sizing:border-box}
@@ -138,8 +139,8 @@
     }
 
     .header-buy-btn{
-      min-width:160px;
-      height:52px;
+      min-width:150px;
+      min-height:52px;
       font-size:18px;
       padding:0 28px;
     }
@@ -171,7 +172,7 @@
       text-transform:uppercase;
       font-size:13px;
       letter-spacing:.22em;
-      margin-bottom:22px;
+      margin-bottom:18px;
     }
 
     .hero h1{
@@ -192,177 +193,84 @@
       font-size:20px;
       color:rgba(255,255,255,.72);
       font-weight:700;
-      margin-bottom:28px;
-    }
-
-    .pill{
-      display:inline-flex;
-      padding:16px 26px;
-      border-radius:999px;
-      background:#f1ece2;
-      color:var(--green);
-      font-weight:900;
-      font-size:19px;
-      box-shadow:var(--shadow);
       margin-bottom:22px;
     }
 
     .hero-note{
-      max-width:440px;
-      color:rgba(255,255,255,.56);
-      font-size:16px;
-    }
-
-    .hero-note-big{
       max-width:520px;
-      font-size:19px;
-      line-height:1.55;
-      color:rgba(255,255,255,.82);
+      color:rgba(255,255,255,.78);
+      font-size:17px;
       font-weight:700;
-      margin-bottom:10px;
+      line-height:1.55;
+      margin-bottom:8px;
     }
 
-    .hero-note-ship{
-      color:#dff3e7;
-      font-size:18px;
+    .hero-note.shipping{
+      color:#ecf7f0;
       font-weight:900;
+      font-size:18px;
+      margin-bottom:18px;
+    }
+
+    .hero-left-buy{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:240px;
+      height:64px;
+      border:none;
+      border-radius:14px;
+      background:#f3eee4;
+      color:var(--green);
+      font-weight:900;
+      font-size:22px;
+      box-shadow:0 16px 28px rgba(0,0,0,.18);
+      margin:10px 0 18px;
+    }
+
+    .hero-left-buy:hover{
+      transform:translateY(-1px);
+    }
+
+    .hero-trust-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .hero-trust-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.14);
+      color:#f5f0e7;
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:800;
+      font-size:14px;
+      line-height:1.2;
+    }
+
+    .hero-stars{
+      color:var(--star);
+      letter-spacing:2px;
+      font-size:16px;
+      line-height:1;
+    }
+
+    .hero-trust-inline{
+      color:#f3eee4;
+      font-weight:900;
+      font-size:15px;
+      margin-top:8px;
     }
 
     .hero-card-area{
       position:relative;
       min-height:540px;
-    }
-
-    .poster{
-      position:absolute;
-      right:34px;
-      top:42px;
-      width:430px;
-      height:575px;
-      border-radius:22px;
-      background:linear-gradient(135deg, rgba(255,255,255,.92), rgba(218,232,223,.82));
-      box-shadow:0 30px 60px rgba(0,0,0,.18);
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.14);
-    }
-
-    .poster::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 78% 18%, rgba(255,255,255,.95) 0 8px, transparent 10px),
-        radial-gradient(circle at 84% 23%, rgba(255,255,255,.92) 0 12px, transparent 14px),
-        radial-gradient(circle at 90% 31%, rgba(255,255,255,.94) 0 4px, transparent 6px),
-        radial-gradient(circle at 10% 8%, rgba(255,255,255,.96) 0 230px, transparent 235px),
-        linear-gradient(135deg, rgba(255,255,255,.94) 0 38%, rgba(8,74,56,.04) 39% 100%);
-      opacity:.95;
-    }
-
-    .poster::after{
-      content:"";
-      position:absolute;
-      left:-60px;
-      right:-40px;
-      bottom:-10px;
-      height:180px;
-      background:radial-gradient(circle at 30% 60%, rgba(12,77,59,.92), rgba(12,77,59,.98) 60%, transparent 62%);
-      filter:blur(18px);
-      opacity:.72;
-    }
-
-    .poster-inner{
-      position:relative;
-      z-index:2;
-      height:100%;
-      padding:38px 34px 24px;
-      color:var(--green);
-    }
-
-    .poster-brand{
-      font-size:24px;
-      font-weight:900;
-      color:#fff;
-      text-align:right;
-      margin-bottom:34px;
-    }
-
-    .poster-title{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:74px;
-      line-height:.92;
-      letter-spacing:-.05em;
-      margin:0 0 18px;
-      color:#103f31;
-    }
-
-    .poster-cow{
-      font-size:54px;
-      line-height:1;
-      margin:8px 0 16px;
-    }
-
-    .poster-sub{
-      font-weight:900;
-      font-size:30px;
-      line-height:1.08;
-      margin:0 0 24px;
-    }
-
-    .poster-bar{
-      background:rgba(10,70,54,.96);
-      color:#fff;
-      display:inline-flex;
-      padding:14px 20px;
-      font-size:24px;
-      font-weight:900;
-    }
-
-    .bottle-card{
-      position:absolute;
-      width:114px;
-      height:152px;
-      background:#dad8dc;
-      border-radius:14px;
-      box-shadow:0 18px 32px rgba(0,0,0,.18);
-      border:1px solid rgba(255,255,255,.35);
-      overflow:hidden;
-      display:grid;
-      place-items:center;
-    }
-
-    .bottle-card.one{top:18px; left:52px}
-    .bottle-card.two{right:10px; bottom:18px; width:128px; height:182px}
-
-    .bottle-illus{
-      width:34px;
-      height:96px;
-      border-radius:18px 18px 12px 12px;
-      background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(248,248,248,.9));
-      border:2px solid rgba(255,255,255,.65);
-      position:relative;
-    }
-
-    .bottle-illus::before{
-      content:"";
-      position:absolute;
-      top:-14px;
-      left:10px;
-      right:10px;
-      height:18px;
-      border-radius:12px;
-      background:#171717;
-    }
-
-    .bottle-illus::after{
-      content:"";
-      position:absolute;
-      bottom:-8px;
-      left:5px;
-      right:5px;
-      height:10px;
-      border-radius:50%;
-      background:#676a73;
     }
 
     .section-shell{
@@ -657,7 +565,6 @@
       color:#5b856f;
       font-size:18px;
       margin-bottom:28px;
-      font-weight:900;
     }
 
     .delivery-copy p{
@@ -744,7 +651,7 @@
     }
 
     .stars{
-      color:#f2b21d;
+      color:var(--star);
       font-size:20px;
       letter-spacing:3px;
       margin-bottom:10px;
@@ -1100,10 +1007,10 @@
       opacity:.86;
     }
 
-    /* HERO PRODUCT STUFF */
+    /* HERO PRODUCT */
     .hero-product-stage{
       position:relative;
-      min-height:660px;
+      min-height:670px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -1115,20 +1022,20 @@
       max-width:560px;
       min-height:650px;
       border-radius:28px;
-      background:linear-gradient(180deg, rgba(255,255,255,.78), rgba(240,238,232,.72));
-      backdrop-filter:blur(3px);
+      background:linear-gradient(180deg, rgba(255,255,255,.78), rgba(235,233,225,.74));
       box-shadow:0 30px 60px rgba(0,0,0,.18);
       border:1px solid rgba(255,255,255,.2);
-      padding:20px 20px 24px;
+      padding:16px 24px 26px;
       overflow:visible;
+      backdrop-filter:blur(3px);
     }
 
     .winner-badge{
       position:absolute;
-      top:16px;
-      right:16px;
+      top:14px;
+      right:18px;
       z-index:5;
-      background:rgba(255,255,255,.88);
+      background:#fff;
       color:var(--green);
       border:1px solid #d9d3c7;
       border-radius:999px;
@@ -1140,22 +1047,58 @@
       box-shadow:var(--shadow);
     }
 
-    .hero-product-image-wrap{
+    .hero-rating-badge{
+      position:absolute;
+      left:20px;
+      top:14px;
+      z-index:5;
+      background:rgba(255,255,255,.9);
+      color:var(--green);
+      border:1px solid #d9d3c7;
+      border-radius:16px;
+      padding:10px 14px;
+      box-shadow:var(--shadow);
+      max-width:220px;
+    }
+
+    .hero-rating-badge .rating-top{
       display:flex;
       align-items:center;
+      gap:8px;
+      font-weight:900;
+      font-size:14px;
+      line-height:1.2;
+    }
+
+    .hero-rating-badge .rating-stars{
+      color:var(--star);
+      letter-spacing:2px;
+      font-size:14px;
+      margin-top:4px;
+    }
+
+    .hero-rating-badge .rating-sub{
+      font-size:12px;
+      font-weight:800;
+      color:#58786a;
+      margin-top:4px;
+    }
+
+    .hero-product-image-wrap{
+      display:flex;
+      align-items:flex-start;
       justify-content:center;
-      min-height:500px;
-      padding:10px 0 0;
+      min-height:520px;
+      padding:12px 0 0;
       position:relative;
       z-index:2;
     }
 
     .hero-product-image{
-      max-height:520px;
-      width:92%;
-      object-fit:cover;
-      object-position:center;
-      border-radius:10px;
+      max-height:560px;
+      width:95%;
+      object-fit:contain;
+      object-position:top center;
       filter:drop-shadow(0 18px 34px rgba(0,0,0,.22));
     }
 
@@ -1163,7 +1106,7 @@
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:6px;
+      gap:8px;
       margin-top:-6px;
       position:relative;
       z-index:3;
@@ -1173,34 +1116,29 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-width:270px;
-      height:64px;
+      min-width:230px;
+      height:60px;
       border:none;
-      border-radius:14px;
+      border-radius:12px;
       background:#0f4b3a;
       color:#fff;
       font-weight:900;
-      font-size:20px;
+      font-size:22px;
       box-shadow:0 14px 24px rgba(15,75,58,.22);
       cursor:pointer;
     }
 
     .hero-buy-sub{
-      font-size:16px;
-      color:#0f4b3a;
+      font-size:14px;
+      color:var(--green);
       font-weight:900;
       text-align:center;
-    }
-
-    .hero-buy-sub-aussie{
-      color:#1b6a49;
-      font-size:14px;
     }
 
     .hero-callout{
       position:absolute;
       z-index:4;
-      max-width:190px;
+      max-width:180px;
       font-weight:900;
       line-height:1.18;
     }
@@ -1208,10 +1146,8 @@
     .hero-callout span{
       display:inline-block;
       border-radius:14px;
-      padding:14px 16px;
+      padding:12px 14px;
       box-shadow:var(--shadow);
-      font-size:15px;
-      line-height:1.2;
     }
 
     .hero-callout.good span{
@@ -1220,85 +1156,30 @@
       border:1px solid #d9eadf;
     }
 
-    .hero-callout.bad span{
-      background:#fff3ee;
-      color:#d94d45;
-      border:1px solid #f0d1ca;
-    }
-
     .hero-callout::after{
       content:"";
       position:absolute;
-      height:3px;
-      background:rgba(15,75,58,.78);
-      transform-origin:center;
+      height:2px;
+      background:rgba(15,75,58,.72);
     }
 
-    .callout-l1{
-      left:-48px;
-      top:68px;
-    }
-    .callout-l1::after{
-      width:82px;
-      right:-76px;
-      top:30px;
-      transform:rotate(-1deg);
-    }
+    .callout-l1{left:-44px; top:62px;}
+    .callout-l1::after{width:86px; right:-80px; top:28px;}
 
-    .callout-l2{
-      left:-92px;
-      top:214px;
-    }
-    .callout-l2::after{
-      width:118px;
-      right:-110px;
-      top:29px;
-      transform:rotate(3deg);
-    }
+    .callout-l2{left:-84px; top:198px;}
+    .callout-l2::after{width:120px; right:-112px; top:27px; transform:rotate(2deg);}
 
-    .callout-l3{
-      left:-62px;
-      bottom:198px;
-    }
-    .callout-l3::after{
-      width:92px;
-      right:-84px;
-      top:42px;
-      transform:rotate(8deg);
-    }
+    .callout-l3{left:-48px; bottom:190px;}
+    .callout-l3::after{width:82px; right:-74px; top:40px; transform:rotate(10deg);}
 
-    .callout-r1{
-      right:-56px;
-      top:74px;
-    }
-    .callout-r1::after{
-      width:92px;
-      left:-84px;
-      top:36px;
-      transform:rotate(2deg);
-    }
+    .callout-r1{right:-52px; top:66px;}
+    .callout-r1::after{width:92px; left:-86px; top:29px; transform:rotate(1deg);}
 
-    .callout-r2{
-      right:-90px;
-      top:228px;
-    }
-    .callout-r2::after{
-      width:122px;
-      left:-114px;
-      top:31px;
-      transform:rotate(-2deg);
-    }
+    .callout-r2{right:-78px; top:212px;}
+    .callout-r2::after{width:118px; left:-112px; top:28px; transform:rotate(-2deg);}
 
-    .callout-r3{
-      right:-62px;
-      bottom:192px;
-    }
-    .callout-r3::after{
-      width:88px;
-      left:-80px;
-      top:28px;
-      transform:rotate(-9deg);
-    }
+    .callout-r3{right:-44px; bottom:184px;}
+    .callout-r3::after{width:82px; left:-76px; top:26px; transform:rotate(-10deg);}
 
     .hero-mobile-callouts{
       display:none;
@@ -1309,13 +1190,13 @@
       justify-content:center;
       flex-wrap:wrap;
       gap:10px;
-      margin-top:16px;
+      margin-top:18px;
       position:relative;
       z-index:3;
     }
 
     .discount-chip{
-      background:#f3ede3;
+      background:#f1ece2;
       color:var(--green);
       border:1px solid #ddd8ce;
       border-radius:999px;
@@ -1324,7 +1205,6 @@
       font-weight:900;
     }
 
-    /* SAVINGS BLOCK */
     .bulk-savings{
       max-width:920px;
       margin:28px auto 0;
@@ -1371,20 +1251,10 @@
       .hero h1{font-size:58px}
       .section-title,.delivery-copy h2,.science-title,.cta-title{font-size:52px}
 
-      .poster{
-        position:relative;
-        inset:auto;
-        width:100%;
-        max-width:420px;
-        margin:0 auto;
-      }
-
       .hero-card-area{min-height:auto}
-      .bottle-card.one{left:16px}
 
       .hero-product-stage{min-height:auto}
       .hero-product-card{
-        max-width:520px;
         min-height:auto;
         padding:24px 18px 22px;
       }
@@ -1394,7 +1264,7 @@
       }
 
       .hero-product-image{
-        max-height:430px;
+        max-height:440px;
         width:100%;
       }
 
@@ -1417,6 +1287,11 @@
 
       .hero-mobile-callouts .hero-callout::after{
         display:none;
+      }
+
+      .hero-rating-badge{
+        position:static;
+        margin:0 auto 12px;
       }
     }
 
@@ -1450,15 +1325,6 @@
       .benefit-grid .benefit-card:last-child{grid-column:auto}
       .hero h1{font-size:44px}
 
-      .poster{
-        height:500px;
-        max-width:100%;
-        right:auto;
-      }
-
-      .poster-title{font-size:56px}
-      .poster-sub{font-size:24px}
-      .poster-bar{font-size:20px}
       .section-title,.delivery-copy h2,.science-title,.cta-title{font-size:40px}
       .section-shell,.review-shell,.faq-shell{padding:54px 0}
       .review-summary{padding:28px}
@@ -1479,52 +1345,29 @@
       .checkout-card,.quote-card{padding:22px}
       .benefit-card{min-height:auto}
 
-      .header-buy-btn{
-        min-width:140px;
-        height:48px;
-        font-size:16px;
-      }
-
-      .hero-note-big{
-        font-size:17px;
-      }
-
-      .hero-note-ship{
-        font-size:16px;
-      }
-
-      .hero-product-card{
-        padding:18px 14px 20px;
-      }
-
       .hero-product-image-wrap{
         min-height:300px;
-        padding-top:34px;
+        padding-top:18px;
       }
 
       .hero-product-image{
         max-height:320px;
-        width:100%;
-      }
-
-      .hero-buy-btn{
-        min-width:220px;
-        height:56px;
-        font-size:18px;
-      }
-
-      .hero-buy-sub{
-        font-size:14px;
       }
 
       .hero-mobile-callouts{
         grid-template-columns:1fr;
       }
+
+      .hero-left-buy{
+        min-width:220px;
+        height:56px;
+        font-size:20px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="topbar">🇦🇺 FREE SHIPPING ACROSS NSW, VIC &amp; QLD • 100% AUSTRALIAN MADE • FRESH RAW COW'S MILK 🇦🇺</div>
+  <div class="topbar">⌂ Free Shipping Across NSW, VIC &amp; QLD - Fresh Raw Cow's Milk ⌂</div>
 
   <header>
     <div class="container nav">
@@ -1532,7 +1375,7 @@
         <span class="brand-logo">
           <img src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='22px';" />
         </span>
-        <span class="brand-name">🇦🇺 RawMilkAUS</span>
+        <span class="brand-name">RawMilkAUS</span>
       </a>
 
       <nav class="nav-links">
@@ -1541,6 +1384,7 @@
         <a href="#science">The Science</a>
         <a href="#plans">Plans</a>
         <a href="#delivery">Delivery</a>
+        <a href="#faq">FAQ</a>
       </nav>
 
       <div class="nav-cta">
@@ -1553,17 +1397,36 @@
     <section class="hero-wrap hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">🇦🇺 Australia's Premium Raw Milk</div>
+          <div class="eyebrow">🇦🇺 AUSTRALIA'S PREMIUM RAW MILK</div>
+
+          <div class="hero-trust-row">
+            <div class="hero-trust-chip">
+              <span class="hero-stars">★★★★★</span>
+              <span>342 Aussies Trust This</span>
+            </div>
+          </div>
+
           <h1>Fresh Raw<br><em>Cow's Milk</em></h1>
           <div class="hero-sub">Primal Fuel • Live Enzymes • Ancestral Nutrition</div>
-          <div class="hero-note hero-note-big">100% Australian made from Aussie cows 🇦🇺 Delivered in 2L glass bottles with stainless steel lids — zero microplastics.</div>
-          <div class="hero-note hero-note-ship">Free shipping across NSW, VIC &amp; QLD</div>
+
+          <div class="hero-note">100% Australian made from Aussie cows 🇦🇺 Delivered in 2L glass bottles with stainless steel lids — zero microplastics.</div>
+          <div class="hero-note shipping">Free shipping across NSW, VIC &amp; QLD</div>
+
+          <a class="hero-left-buy" href="#plans">BUY NOW</a>
+
+          <div class="hero-trust-inline">🇦🇺 Trusted by Aussies • 312+ 5-star reviews • ★★★★★</div>
         </div>
 
         <div class="hero-card-area">
           <div class="hero-product-stage">
             <div class="hero-product-card">
-              <div class="winner-badge">🇦🇺 ★ WINNER</div>
+              <div class="hero-rating-badge">
+                <div class="rating-top">🇦🇺 342 Aussies Trust This</div>
+                <div class="rating-stars">★★★★★</div>
+                <div class="rating-sub">312+ 5-star reviews</div>
+              </div>
+
+              <div class="winner-badge">★ Winner</div>
 
               <div class="hero-callout good callout-l1"><span>Increases Height</span></div>
               <div class="hero-callout good callout-l2"><span>Lowers Cortisol</span></div>
@@ -1571,7 +1434,7 @@
 
               <div class="hero-callout good callout-r1"><span>Clears Skin &amp; Acne</span></div>
               <div class="hero-callout good callout-r2"><span>Immunity Support</span></div>
-              <div class="hero-callout good callout-r3"><span>Microplastic Free<br>• 100% Glass</span></div>
+              <div class="hero-callout good callout-r3"><span>Microplastic Free • 100% Glass</span></div>
 
               <div class="hero-product-image-wrap">
                 <img class="hero-product-image" src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="RawMilkAUS product" />
@@ -1579,13 +1442,11 @@
 
               <div class="hero-buy-wrap">
                 <a class="hero-buy-btn" href="#plans">Buy Now</a>
-                <div class="hero-buy-sub">🇦🇺 Free Shipping Across NSW, VIC &amp; QLD</div>
-                <div class="hero-buy-sub hero-buy-sub-aussie">100% Australian Made • From Aussie Cows</div>
+                <div class="hero-buy-sub">Free Shipping Across NSW, VIC &amp; QLD</div>
               </div>
 
               <div class="hero-discount-row">
-                <div class="discount-chip">🇦🇺 Aussie Made</div>
-                <div class="discount-chip">Free Shipping</div>
+                <div class="discount-chip">Buy More • Save More</div>
                 <div class="discount-chip">2+ Plans = 10% Off</div>
                 <div class="discount-chip">4+ Plans = 20% Off</div>
               </div>
@@ -1928,25 +1789,25 @@
         <div class="delivery-copy">
           <div class="title-top" style="text-align:left; margin-bottom:14px">Delivery</div>
           <h2>Weekly Chilled Delivery</h2>
-          <div class="mini">🇦🇺 100% Australian Made • Free Shipping Across NSW, VIC &amp; QLD</div>
+          <div class="mini">Free Shipping Across NSW, VIC &amp; QLD</div>
           <p>Fresh from licensed Australian dairies. Cold-chain guaranteed from farm to your door. Glass bottles only — because your milk should never touch plastic.</p>
           <div class="delivery-feats">
             <div class="delivery-feat"><i>🚚</i><span>Free shipping on all orders</span></div>
-            <div class="delivery-feat"><i>🇦🇺</i><span>100% Australian made from Aussie cows</span></div>
+            <div class="delivery-feat"><i>🌡</i><span>Cold-chain guaranteed</span></div>
             <div class="delivery-feat"><i>🥛</i><span>Glass bottles only</span></div>
           </div>
         </div>
 
         <div class="delivery-card">
           <div class="label">
-            <strong>🇦🇺 Licensed Australian Dairies</strong>
+            <strong>Licensed Australian Dairies</strong>
             <div>Free Shipping • NSW • VIC • QLD</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="faq-shell">
+    <section id="faq" class="faq-shell">
       <div class="container">
         <h2 class="section-title">Frequently Asked Questions</h2>
         <p class="faq-sub">Everything you need to know about raw milk, delivery, and your subscription.</p>
@@ -2070,9 +1931,9 @@
       <div class="container">
         <div class="logo-row">
           <span class="foot-logo">
-            <img src="c6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='18px';">
+            <img src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='18px';">
           </span>
-          <span>🇦🇺 RawMilkAUS</span>
+          <span>RawMilkAUS</span>
         </div>
 
         <div class="foot-links">
@@ -2086,7 +1947,7 @@
         <div class="foot-divider"></div>
 
         <div class="foot-copy">
-          <div>🇦🇺 100% Australian made from Aussie cows • Free shipping across NSW, VIC &amp; QLD • This product is sold strictly for pet use only. Consult a qualified professional for feeding decisions.</div>
+          <div>Free shipping across NSW, VIC &amp; QLD. This product is sold strictly for pet use only. Consult a qualified professional for feeding decisions.</div>
           <div class="copyright">©️ 2026 RawMilkAUS. All rights reserved.</div>
         </div>
       </div>
