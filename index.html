@@ -40,6 +40,8 @@
     a{text-decoration:none;color:inherit}
     button,input,select,textarea{font:inherit}
     .container{width:min(var(--max), calc(100% - 36px)); margin:0 auto}
+    .desktop-only{display:inline}
+    .mobile-only{display:none}
 
     .topbar{
       background:var(--green);
@@ -1442,6 +1444,9 @@
     }
 
     @media (max-width: 760px){
+      .desktop-only{display:none}
+      .mobile-only{display:inline}
+
       .topbar{
         font-size:10px;
         letter-spacing:.08em;
@@ -1585,19 +1590,17 @@
         object-position:center top;
       }
 
-      /* mobile callouts around bottle */
       .hero-callout{
         display:block;
         position:absolute;
-        max-width:120px;
         z-index:4;
         font-weight:900;
-        line-height:1.08;
+        line-height:1.02;
       }
 
       .hero-callout span{
-        padding:8px 10px;
-        font-size:11px;
+        padding:7px 9px;
+        font-size:10px;
         border-radius:12px;
       }
 
@@ -1607,64 +1610,69 @@
       }
 
       .callout-l1{
-        left:-2px;
-        top:118px;
+        left:0;
+        top:120px;
+        max-width:96px;
       }
       .callout-l1::after{
+        width:38px;
+        right:-34px;
+        top:18px;
+      }
+
+      .callout-l2{
+        left:-4px;
+        top:208px;
+        max-width:112px;
+      }
+      .callout-l2::after{
         width:40px;
         right:-36px;
         top:18px;
       }
 
-      .callout-l2{
-        left:-8px;
-        top:208px;
-      }
-      .callout-l2::after{
-        width:44px;
-        right:-40px;
-        top:18px;
-      }
-
       .callout-l3{
-        left:6px;
-        bottom:180px;
+        left:4px;
+        bottom:214px;
+        max-width:104px;
       }
       .callout-l3::after{
-        width:36px;
-        right:-32px;
+        width:32px;
+        right:-28px;
         top:18px;
         transform:rotate(8deg);
       }
 
       .callout-r1{
-        right:-6px;
+        right:-4px;
         top:122px;
+        max-width:112px;
       }
       .callout-r1::after{
+        width:36px;
+        left:-32px;
+        top:18px;
+      }
+
+      .callout-r2{
+        right:-4px;
+        top:212px;
+        max-width:108px;
+      }
+      .callout-r2::after{
         width:38px;
         left:-34px;
         top:18px;
       }
 
-      .callout-r2{
-        right:-8px;
-        top:220px;
-      }
-      .callout-r2::after{
-        width:42px;
-        left:-38px;
-        top:18px;
-      }
-
       .callout-r3{
-        right:0;
-        bottom:178px;
-        max-width:145px;
+        right:2px;
+        bottom:212px;
+        max-width:118px;
       }
       .callout-r3::after{
-        width:34px;
-        left:-30px;
+        width:30px;
+        left:-26px;
         top:18px;
         transform:rotate(-8deg);
       }
@@ -1739,7 +1747,7 @@
 
       .hero-buy-wrap{
         margin-top:-2px;
-        gap:6px;
+        gap:4px;
       }
 
       .hero-buy-btn{
@@ -1749,18 +1757,19 @@
       }
 
       .hero-buy-sub{
-        font-size:12px;
-        line-height:1.25;
+        font-size:11px;
+        line-height:1.15;
+        margin-bottom:2px;
       }
 
       .hero-discount-row{
-        gap:8px;
-        margin-top:12px;
+        gap:7px;
+        margin-top:8px;
       }
 
       .discount-chip{
-        font-size:11px;
-        padding:8px 10px;
+        font-size:10px;
+        padding:7px 9px;
       }
 
       .section-title,
@@ -1773,11 +1782,10 @@
       .section-shell,
       .review-shell,
       .faq-shell{
-        padding:46px 0;
+        padding:40px 0;
       }
 
       .benefit-grid,
-      .review-grid,
       .review-summary,
       .cta-grid,
       .delivery-grid{
@@ -1785,49 +1793,64 @@
       }
 
       .benefit-grid{
-        gap:16px;
-        margin-top:38px;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+        margin-top:28px;
       }
 
       .benefit-card{
         min-height:auto;
-        padding:22px 18px;
-        border-radius:18px;
+        padding:16px 12px;
+        border-radius:16px;
       }
 
       .benefit-head{
-        margin-bottom:18px;
+        align-items:flex-start;
+        gap:8px;
+        margin-bottom:12px;
       }
 
       .benefit-icon{
-        width:40px;
-        height:40px;
-        font-size:18px;
+        width:34px;
+        height:34px;
+        font-size:16px;
       }
 
       .benefit-tag{
-        font-size:10px;
-        padding:6px 10px;
+        font-size:9px;
+        padding:5px 8px;
+        line-height:1.1;
       }
 
       .benefit-card h3{
-        font-size:18px;
-        margin:0 0 16px;
+        font-size:16px;
+        line-height:1.1;
+        margin:0 0 12px;
       }
 
       .benefit-card ul{
-        gap:10px;
-        font-size:14px;
+        gap:8px;
+        font-size:12.5px;
+        line-height:1.35;
       }
 
       .benefit-card li{
-        padding-left:16px;
+        padding-left:14px;
+      }
+
+      .benefit-card li::before{
+        font-size:12px;
+        top:1px;
       }
 
       .section-sub,
       .faq-sub,
       .cta-sub{
         font-size:15px;
+      }
+
+      .review-grid{
+        grid-template-columns:1fr;
       }
 
       .review-summary{
@@ -1865,33 +1888,38 @@
         padding:20px;
       }
 
+      .science-wrap{
+        padding:34px 0 0;
+      }
+
       .science-title{
-        font-size:34px;
+        font-size:32px;
       }
 
       .science-sub{
-        font-size:18px;
-        margin:10px 0 20px;
+        font-size:16px;
+        margin:6px 0 12px;
       }
 
       .table-wrap{
-        width:calc(100% - 16px);
-        margin:0 8px;
-        border-radius:16px;
+        width:calc(100% - 12px);
+        margin:0 6px;
+        border-radius:14px;
       }
 
       table{
-        min-width:560px;
+        min-width:470px;
       }
 
       th,td{
-        padding:12px 10px;
-        font-size:13px;
+        padding:9px 7px;
+        font-size:11.5px;
+        line-height:1.25;
       }
 
       thead th{
-        font-size:11px;
-        letter-spacing:.04em;
+        font-size:9.5px;
+        letter-spacing:.03em;
       }
 
       .sticky-mobile-buy{
@@ -2050,8 +2078,25 @@
             <tr><td>B-Complex Vitamins</td><td class="bad">✕ 38% Reduction</td><td class="good">✓ 100% Active</td></tr>
             <tr><td>Calcium</td><td class="bad">✕ 21% Reduction</td><td class="good">✓ 100% Active</td></tr>
             <tr><td>Enzymes</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Immunoglobulins</td><td class="bad">✕ 100% Damaged (59% Destroyed)</td><td class="good">✓ 100% Active</td></tr>
-            <tr><td>Whey Proteins</td><td class="bad">✕ 100% Damaged (34% Denatured)</td><td class="good">✓ 100% Active</td></tr>
+
+            <tr>
+              <td>Immunoglobulins</td>
+              <td class="bad">
+                <span class="desktop-only">✕ 100% Damaged (59% Destroyed)</span>
+                <span class="mobile-only">✕ 59% Destroyed</span>
+              </td>
+              <td class="good">✓ 100% Active</td>
+            </tr>
+
+            <tr>
+              <td>Whey Proteins</td>
+              <td class="bad">
+                <span class="desktop-only">✕ 100% Damaged (34% Denatured)</span>
+                <span class="mobile-only">✕ 34% Destroyed</span>
+              </td>
+              <td class="good">✓ 100% Active</td>
+            </tr>
+
             <tr><td>Probiotics</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
           </tbody>
         </table>
