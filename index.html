@@ -1379,6 +1379,109 @@
       line-height:1.28;
     }
 
+    /* plan cards */
+    .plan-cards-box{
+      max-width:980px;
+    }
+
+    .plan-cards{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+      margin-top:8px;
+    }
+
+    .plan-card{
+      position:relative;
+      text-align:left;
+      border:2px solid #d8d2c8;
+      background:#fffdf8;
+      border-radius:20px;
+      padding:20px 18px 18px;
+      cursor:pointer;
+      transition:.18s ease;
+      box-shadow:0 10px 22px rgba(14,75,58,.05);
+    }
+
+    .plan-card:hover{
+      transform:translateY(-2px);
+      border-color:#0f4b3a;
+      box-shadow:0 16px 30px rgba(14,75,58,.12);
+    }
+
+    .plan-card.active{
+      border-color:#0f4b3a;
+      background:#f3fbf7;
+      box-shadow:0 0 0 3px rgba(15,75,58,.10), 0 18px 34px rgba(14,75,58,.14);
+    }
+
+    .plan-card-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+    }
+
+    .plan-card-name{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:22px;
+      line-height:1.1;
+      color:var(--green);
+      font-weight:700;
+    }
+
+    .plan-card-price{
+      font-weight:900;
+      font-size:24px;
+      color:var(--green);
+      white-space:nowrap;
+    }
+
+    .plan-card-volume{
+      color:#4f7162;
+      font-size:16px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .plan-card-save{
+      color:#1f7a4c;
+      font-size:15px;
+      font-weight:900;
+    }
+
+    .plan-badge{
+      position:absolute;
+      top:-12px;
+      left:16px;
+      background:linear-gradient(180deg, #f3c84b 0%, #e5b52a 100%);
+      color:#214235;
+      font-weight:900;
+      font-size:12px;
+      padding:8px 12px;
+      border-radius:999px;
+      box-shadow:0 10px 20px rgba(0,0,0,.10);
+      letter-spacing:.02em;
+    }
+
+    .most-popular{
+      border-color:#d7b24a;
+      background:#fffaf0;
+      box-shadow:0 16px 28px rgba(229,181,42,.14);
+    }
+
+    .selected-plan-box-main{
+      margin-top:18px;
+      font-size:16px;
+    }
+
+    .secure-stripe-btn{
+      margin-top:16px;
+      font-size:22px;
+      min-height:68px;
+    }
+
     @media (max-width: 1100px){
       .hero-grid,.delivery-grid,.benefit-grid,.review-grid{
         grid-template-columns:1fr 1fr;
@@ -1481,6 +1584,10 @@
 
       .hero-mobile-callouts .hero-callout::after{
         display:none;
+      }
+
+      .plan-cards{
+        grid-template-columns:repeat(2, 1fr);
       }
     }
 
@@ -1954,6 +2061,37 @@
         border-radius:15px;
       }
 
+      .plan-cards{
+        grid-template-columns:1fr;
+        gap:14px;
+      }
+
+      .plan-card{
+        padding:18px 16px 16px;
+        border-radius:18px;
+      }
+
+      .plan-card-name{
+        font-size:20px;
+      }
+
+      .plan-card-price{
+        font-size:22px;
+      }
+
+      .plan-card-volume{
+        font-size:15px;
+      }
+
+      .plan-card-save{
+        font-size:14px;
+      }
+
+      .secure-stripe-btn{
+        font-size:20px;
+        min-height:62px;
+      }
+
       .faq-box{
         padding:12px 16px;
       }
@@ -2270,155 +2408,21 @@
         </div>
 
         <div class="review-grid">
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Lachlan T.</div>
-              <div class="review-tag">Height &amp; Growth</div>
-            </div>
-            <div class="review-meta">Sydney, NSW · March 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“I was 5'9 and honestly had given up on growing. Started giving this to my dog and accidentally had a glass myself every day for 3 months. Shot up 2.5cm and my posture improved dramatically. The growth factors in raw milk are no joke. My joints feel incredible.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Bridie M.</div>
-              <div class="review-tag">Skin &amp; Gut Health</div>
-            </div>
-            <div class="review-meta">Brisbane, QLD · February 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My eczema has been gone for 6 weeks. Gone. I'd been dealing with it since childhood. Two months of raw milk and my skin is clearer than it's ever been in my life. The probiotics are doing something conventional medicine never could.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Josh R.</div>
-              <div class="review-tag">Child Growth &amp; Allergies</div>
-            </div>
-            <div class="review-meta">Melbourne, VIC · March 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My young one is 14 and has grown 4cm in 3 months since we started. His allergies are also completely gone — used to need antihistamines daily. The immunoglobulins in this are doing exactly what the research says. Absolute game changer.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Tamara K.</div>
-              <div class="review-tag">Gut Health</div>
-            </div>
-            <div class="review-meta">Gold Coast, QLD · January 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“I had IBS for 7 years. Doctors had no answers. Six weeks on raw milk and I can eat anything without bloating. The live enzymes are doing what they're supposed to — actually digesting food properly. I'm blown away.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Marcus W.</div>
-              <div class="review-tag">Immunity &amp; Muscle</div>
-            </div>
-            <div class="review-meta">Newcastle, NSW · March 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My immune system was a mess — sick every month. Haven't been sick once in 4 months since starting. The immunoglobulins are the real deal. Also put on 3kg of muscle with the same gym routine. The whey protein in raw form is completely different.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Chloe B.</div>
-              <div class="review-tag">Child Height Growth</div>
-            </div>
-            <div class="review-meta">Adelaide, SA · February 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My son grew 3cm in 8 weeks. He's 16 and I thought he was done growing. The growth hormones in this milk are real. His energy levels are also through the roof compared to before. We'll never go back to pasteurised garbage.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Daniel F.</div>
-              <div class="review-tag">Allergy Relief</div>
-            </div>
-            <div class="review-meta">Perth, WA · January 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“Seasonal allergies destroyed my quality of life every spring. This is my first spring in 12 years without antihistamines. The anti-inflammatory properties are insane. Also sleeping better than I have in years.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Natasha P.</div>
-              <div class="review-tag">Height &amp; Skin</div>
-            </div>
-            <div class="review-meta">Sydney, NSW · March 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“I'm 22 and gained 1.5cm in height. Not even kidding. Combined with the clearest skin I've had since primary school, I'm a full convert. The glass bottles are a bonus — no plastic taste, no nothing. Totally pure.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Riley O.</div>
-              <div class="review-tag">Energy &amp; Digestion</div>
-            </div>
-            <div class="review-meta">Canberra, ACT · February 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My digestion completely transformed. Used to have brain fog all day and now I wake up clear-headed. The energy difference is huge — the B vitamins and live enzymes actually reaching your bloodstream is not the same as pasteurised. Nothing is.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Sophie H.</div>
-              <div class="review-tag">Respiratory &amp; Immunity</div>
-            </div>
-            <div class="review-meta">Wollongong, NSW · January 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My daughter's asthma has reduced by at least 70%. Her specialist is confused. I know exactly why — the immunoglobulins and anti-inflammatory properties in raw milk. We've been ordering 20L a month for 3 months and won't stop.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Tom A.</div>
-              <div class="review-tag">Bone &amp; Height</div>
-            </div>
-            <div class="review-meta">Brisbane, QLD · March 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“Grew 2cm at 20. People told me I was done. The calcium bioavailability in raw milk vs pasteurised is incomparable. My bone density has genuinely improved based on recent scans. This product is the real deal.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Emma S.</div>
-              <div class="review-tag">Joint &amp; Gut Health</div>
-            </div>
-            <div class="review-meta">Melbourne, VIC · February 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“Chronic joint pain since my twenties. Gone after 6 weeks. The zinc and anti-inflammatory factors are doing what no supplement ever did. Also lost the belly bloat I thought was just how I was built! It was just dead pasteurised milk all along.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Aaron C.</div>
-              <div class="review-tag">Child Growth</div>
-            </div>
-            <div class="review-meta">Sunshine Coast, QLD · January 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“My boy is 13 and hit a growth spurt nobody expected. 5cm in 10 weeks. His football coach asked what we changed. Raw milk, mate. The growth factors and bioavailable protein are doing exactly what Pottenger's research showed.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Isabella M.</div>
-              <div class="review-tag">Skin &amp; Gut</div>
-            </div>
-            <div class="review-meta">Sydney, NSW · March 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“Acne I'd had for 6 years cleared up in 5 weeks. My gut must have been completely dysbiotic — the probiotics and enzymes in raw milk restored something that years of skincare never touched. Game changing for my confidence.”</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-top">
-              <div class="review-name">Callum D.</div>
-              <div class="review-tag">Height Growth</div>
-            </div>
-            <div class="review-meta">Geelong, VIC · February 2026</div>
-            <div class="stars" style="font-size:16px">★★★★★</div>
-            <div class="review-copy">“This sounds crazy but I grew at 21. 1.8cm. I had my height measured twice to confirm. The HGH support factors and calcium absorption in raw milk is nothing like the heat-damaged version. Also zero hay fever this season.”</div>
-          </article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Lachlan T.</div><div class="review-tag">Height &amp; Growth</div></div><div class="review-meta">Sydney, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“I was 5'9 and honestly had given up on growing. Started giving this to my dog and accidentally had a glass myself every day for 3 months. Shot up 2.5cm and my posture improved dramatically. The growth factors in raw milk are no joke. My joints feel incredible.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Bridie M.</div><div class="review-tag">Skin &amp; Gut Health</div></div><div class="review-meta">Brisbane, QLD · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My eczema has been gone for 6 weeks. Gone. I'd been dealing with it since childhood. Two months of raw milk and my skin is clearer than it's ever been in my life. The probiotics are doing something conventional medicine never could.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Josh R.</div><div class="review-tag">Child Growth &amp; Allergies</div></div><div class="review-meta">Melbourne, VIC · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My young one is 14 and has grown 4cm in 3 months since we started. His allergies are also completely gone — used to need antihistamines daily. The immunoglobulins in this are doing exactly what the research says. Absolute game changer.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Tamara K.</div><div class="review-tag">Gut Health</div></div><div class="review-meta">Gold Coast, QLD · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“I had IBS for 7 years. Doctors had no answers. Six weeks on raw milk and I can eat anything without bloating. The live enzymes are doing what they're supposed to — actually digesting food properly. I'm blown away.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Marcus W.</div><div class="review-tag">Immunity &amp; Muscle</div></div><div class="review-meta">Newcastle, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My immune system was a mess — sick every month. Haven't been sick once in 4 months since starting. The immunoglobulins are the real deal. Also put on 3kg of muscle with the same gym routine. The whey protein in raw form is completely different.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Chloe B.</div><div class="review-tag">Child Height Growth</div></div><div class="review-meta">Adelaide, SA · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My son grew 3cm in 8 weeks. He's 16 and I thought he was done growing. The growth hormones in this milk are real. His energy levels are also through the roof compared to before. We'll never go back to pasteurised garbage.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Daniel F.</div><div class="review-tag">Allergy Relief</div></div><div class="review-meta">Perth, WA · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“Seasonal allergies destroyed my quality of life every spring. This is my first spring in 12 years without antihistamines. The anti-inflammatory properties are insane. Also sleeping better than I have in years.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Natasha P.</div><div class="review-tag">Height &amp; Skin</div></div><div class="review-meta">Sydney, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“I'm 22 and gained 1.5cm in height. Not even kidding. Combined with the clearest skin I've had since primary school, I'm a full convert. The glass bottles are a bonus — no plastic taste, no nothing. Totally pure.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Riley O.</div><div class="review-tag">Energy &amp; Digestion</div></div><div class="review-meta">Canberra, ACT · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My digestion completely transformed. Used to have brain fog all day and now I wake up clear-headed. The energy difference is huge — the B vitamins and live enzymes actually reaching your bloodstream is not the same as pasteurised. Nothing is.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Sophie H.</div><div class="review-tag">Respiratory &amp; Immunity</div></div><div class="review-meta">Wollongong, NSW · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My daughter's asthma has reduced by at least 70%. Her specialist is confused. I know exactly why — the immunoglobulins and anti-inflammatory properties in raw milk. We've been ordering 20L a month for 3 months and won't stop.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Tom A.</div><div class="review-tag">Bone &amp; Height</div></div><div class="review-meta">Brisbane, QLD · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“Grew 2cm at 20. People told me I was done. The calcium bioavailability in raw milk vs pasteurised is incomparable. My bone density has genuinely improved based on recent scans. This product is the real deal.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Emma S.</div><div class="review-tag">Joint &amp; Gut Health</div></div><div class="review-meta">Melbourne, VIC · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“Chronic joint pain since my twenties. Gone after 6 weeks. The zinc and anti-inflammatory factors are doing what no supplement ever did. Also lost the belly bloat I thought was just how I was built! It was just dead pasteurised milk all along.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Aaron C.</div><div class="review-tag">Child Growth</div></div><div class="review-meta">Sunshine Coast, QLD · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My boy is 13 and hit a growth spurt nobody expected. 5cm in 10 weeks. His football coach asked what we changed. Raw milk, mate. The growth factors and bioavailable protein are doing exactly what Pottenger's research showed.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Isabella M.</div><div class="review-tag">Skin &amp; Gut</div></div><div class="review-meta">Sydney, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“Acne I'd had for 6 years cleared up in 5 weeks. My gut must have been completely dysbiotic — the probiotics and enzymes in raw milk restored something that years of skincare never touched. Game changing for my confidence.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Callum D.</div><div class="review-tag">Height Growth</div></div><div class="review-meta">Geelong, VIC · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“This sounds crazy but I grew at 21. 1.8cm. I had my height measured twice to confirm. The HGH support factors and calcium absorption in raw milk is nothing like the heat-damaged version. Also zero hay fever this season.”</div></article>
         </div>
       </div>
     </section>
@@ -2452,21 +2456,80 @@
         <h2 class="section-title">Weekly Delivery Plans</h2>
         <p class="section-sub">100% Grass-Fed Pasture-Raised Australian Cows • No Vaccines • No Hormones • No Antibiotics</p>
 
-        <div class="plan-box">
+        <div class="plan-box plan-cards-box">
           <div class="plan-title">🥛 <span>Select Your Plan</span></div>
-          <div class="select-wrap">
-            <select id="planSelect">
-              <option selected disabled>Choose your monthly volume...</option>
-              <option value="20L / month — 5L weekly — Starter - $200">20L / month - 5L weekly - Starter - $200</option>
-              <option value="40L / month — 10L weekly — For 2 — $380 - Save 5%">40L / month — 10L weekly — For 2 - $380 — Save 5%</option>
-              <option value="60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 - Save 10%">60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 - Save 10%</option>
-              <option value="90L / month — 22.5L weekly — Small Household — $765 - Save 15%">90L / month — 22.5L weekly — Small Household — $765 - Save 15%</option>
-              <option value="120L / month — 30L weekly — Medium Household — $960 - Save 20%">120L / month — 30L weekly — Medium Household — $960 - Save 20%</option>
-              <option value="150L / month — 37.5L weekly — Large Household — $1125 - Save 25%">150L / month — 37.5L weekly — Large Household — $1125 - Save 25%</option>
-              <option value="Bulk / Custom Orders — Save 30%">Bulk / Custom Orders — Save 30%</option>
-            </select>
+
+          <div class="plan-cards" id="planCards">
+            <button type="button" class="plan-card" data-plan="20L / month — 5L weekly — Starter — $200">
+              <div class="plan-card-top">
+                <div class="plan-card-name">Starter</div>
+                <div class="plan-card-price">$200</div>
+              </div>
+              <div class="plan-card-volume">20L / month • 5L weekly</div>
+              <div class="plan-card-save">Standard price</div>
+            </button>
+
+            <button type="button" class="plan-card" data-plan="40L / month — 10L weekly — For 2 — $380 — Save 5%">
+              <div class="plan-card-top">
+                <div class="plan-card-name">For 2</div>
+                <div class="plan-card-price">$380</div>
+              </div>
+              <div class="plan-card-volume">40L / month • 10L weekly</div>
+              <div class="plan-card-save">Save 5%</div>
+            </button>
+
+            <button type="button" class="plan-card most-popular" data-plan="60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 — Save 10%">
+              <div class="plan-badge">⭐ Most Popular ⭐</div>
+              <div class="plan-card-top">
+                <div class="plan-card-name">Most Popular</div>
+                <div class="plan-card-price">$540</div>
+              </div>
+              <div class="plan-card-volume">60L / month • 15L weekly</div>
+              <div class="plan-card-save">Save 10%</div>
+            </button>
+
+            <button type="button" class="plan-card" data-plan="90L / month — 22.5L weekly — Small Household — $765 — Save 15%">
+              <div class="plan-card-top">
+                <div class="plan-card-name">Small Household</div>
+                <div class="plan-card-price">$765</div>
+              </div>
+              <div class="plan-card-volume">90L / month • 22.5L weekly</div>
+              <div class="plan-card-save">Save 15%</div>
+            </button>
+
+            <button type="button" class="plan-card" data-plan="120L / month — 30L weekly — Medium Household — $960 — Save 20%">
+              <div class="plan-card-top">
+                <div class="plan-card-name">Medium Household</div>
+                <div class="plan-card-price">$960</div>
+              </div>
+              <div class="plan-card-volume">120L / month • 30L weekly</div>
+              <div class="plan-card-save">Save 20%</div>
+            </button>
+
+            <button type="button" class="plan-card" data-plan="150L / month — 37.5L weekly — Large Household — $1125 — Save 25%">
+              <div class="plan-card-top">
+                <div class="plan-card-name">Large Household</div>
+                <div class="plan-card-price">$1125</div>
+              </div>
+              <div class="plan-card-volume">150L / month • 37.5L weekly</div>
+              <div class="plan-card-save">Save 25%</div>
+            </button>
+
+            <button type="button" class="plan-card custom-card" data-plan="Bulk / Custom Orders — Save 30%">
+              <div class="plan-card-top">
+                <div class="plan-card-name">Bulk / Custom Orders</div>
+                <div class="plan-card-price">Custom</div>
+              </div>
+              <div class="plan-card-volume">150L+ orders</div>
+              <div class="plan-card-save">Save 30%</div>
+            </button>
           </div>
-          <button class="checkout" id="goToCheckoutBtn">Continue to Checkout</button>
+
+          <div class="selected-plan-box selected-plan-box-main">
+            Selected plan: <span id="selectedPlanText">No plan selected yet</span>
+          </div>
+
+          <button class="checkout secure-stripe-btn" id="goToCheckoutBtn">Secure Stripe Checkout</button>
           <div class="plan-foot">🥛 Delivered weekly in 2L glass bottles • Free shipping across NSW, VIC &amp; QLD • 100% Grass-Fed Pasture-Raised Australian Cows • No Vaccines • No Hormones • No Antibiotics</div>
         </div>
 
@@ -2498,60 +2561,17 @@
         <p class="faq-sub">Everything you need to know about raw milk, delivery, and your subscription.</p>
 
         <div class="faq-box">
-          <div class="faq-item">
-            <button class="faq-question" type="button"><span>Is raw milk legal in Australia?</span><span>+</span></button>
-            <div class="faq-answer">Raw cow's milk sold for human consumption is regulated in Australia. Our product is sold strictly for pet use only and labelled accordingly.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button"><span>What makes raw milk different from pasteurised milk?</span><span>+</span></button>
-            <div class="faq-answer">Pasteurisation uses heat to kill bacteria and extend shelf life, but it also changes delicate proteins, enzymes, bacteria and other bioactive compounds. Raw milk appeals to customers who want a more natural, less processed whole-food product.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button"><span>How is your raw milk kept safe during delivery?</span><span>+</span></button>
-            <div class="faq-answer">We use a strict cold-chain process from the dairy to your door. Milk is collected fresh, immediately refrigerated, packed with premium cold gel packs, and delivered in an insulated container. Our glass bottles are sanitised between each delivery cycle.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button"><span>Why do you use glass bottles and stainless steel lids?</span><span>+</span></button>
-            <div class="faq-answer">Plastic leaches microplastics and BPA/BPS into liquids — especially fats like milk. We use 2L glass bottles with stainless steel lids so your milk never touches plastic at any point.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button"><span>What is the minimum order?</span><span>+</span></button>
-            <div class="faq-answer">Our minimum subscription is 20L per month with weekly delivery. We offer plans from 20L up to 150L per month, plus larger custom bulk orders.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button"><span>Which areas do you deliver to?</span><span>+</span></button>
-            <div class="faq-answer">We currently service major areas across NSW, QLD, VIC, SA, WA and ACT. If you're outside these states or in a remote area, please request a custom quote.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button"><span>How fresh is the milk when it arrives?</span><span>+</span></button>
-            <div class="faq-answer">Our milk is collected fresh and typically arrives at your door within 24–48 hours of collection. Shelf life is usually 7–10 days refrigerated.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button"><span>Do I need to shake the bottle before use?</span><span>+</span></button>
-            <div class="faq-answer">Yes. Raw milk is not homogenised, so the cream naturally rises to the top. Gently invert the bottle a few times before use.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button"><span>How do I store raw milk?</span><span>+</span></button>
-            <div class="faq-answer">Keep raw milk refrigerated at all times below 4°C. It is best consumed while fresh and kept cold. Our glass bottles are reusable and collected on your next delivery.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button"><span>Can I cancel or change my plan anytime?</span><span>+</span></button>
-            <div class="faq-answer">Yes. You can upgrade, downgrade, pause, or cancel your subscription at any time with at least 72 hours notice before your next scheduled delivery.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button"><span>What kind of cows produce your milk?</span><span>+</span></button>
-            <div class="faq-answer">Our milk comes from grass-fed Australian dairy herds, selected for premium milk quality and consistency.</div>
-          </div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>Is raw milk legal in Australia?</span><span>+</span></button><div class="faq-answer">Raw cow's milk sold for human consumption is regulated in Australia. Our product is sold strictly for pet use only and labelled accordingly.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>What makes raw milk different from pasteurised milk?</span><span>+</span></button><div class="faq-answer">Pasteurisation uses heat to kill bacteria and extend shelf life, but it also changes delicate proteins, enzymes, bacteria and other bioactive compounds. Raw milk appeals to customers who want a more natural, less processed whole-food product.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>How is your raw milk kept safe during delivery?</span><span>+</span></button><div class="faq-answer">We use a strict cold-chain process from the dairy to your door. Milk is collected fresh, immediately refrigerated, packed with premium cold gel packs, and delivered in an insulated container. Our glass bottles are sanitised between each delivery cycle.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>Why do you use glass bottles and stainless steel lids?</span><span>+</span></button><div class="faq-answer">Plastic leaches microplastics and BPA/BPS into liquids — especially fats like milk. We use 2L glass bottles with stainless steel lids so your milk never touches plastic at any point.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>What is the minimum order?</span><span>+</span></button><div class="faq-answer">Our minimum subscription is 20L per month with weekly delivery. We offer plans from 20L up to 150L per month, plus larger custom bulk orders.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>Which areas do you deliver to?</span><span>+</span></button><div class="faq-answer">We currently service major areas across NSW, QLD, VIC, SA, WA and ACT. If you're outside these states or in a remote area, please request a custom quote.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>How fresh is the milk when it arrives?</span><span>+</span></button><div class="faq-answer">Our milk is collected fresh and typically arrives at your door within 24–48 hours of collection. Shelf life is usually 7–10 days refrigerated.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>Do I need to shake the bottle before use?</span><span>+</span></button><div class="faq-answer">Yes. Raw milk is not homogenised, so the cream naturally rises to the top. Gently invert the bottle a few times before use.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>How do I store raw milk?</span><span>+</span></button><div class="faq-answer">Keep raw milk refrigerated at all times below 4°C. It is best consumed while fresh and kept cold. Our glass bottles are reusable and collected on your next delivery.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>Can I cancel or change my plan anytime?</span><span>+</span></button><div class="faq-answer">Yes. You can upgrade, downgrade, pause, or cancel your subscription at any time with at least 72 hours notice before your next scheduled delivery.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>What kind of cows produce your milk?</span><span>+</span></button><div class="faq-answer">Our milk comes from grass-fed Australian dairy herds, selected for premium milk quality and consistency.</div></div>
         </div>
       </div>
     </section>
@@ -2566,7 +2586,7 @@
             <div class="mini-heading"><i>💳</i><span>Quick Checkout</span></div>
 
             <div class="selected-plan-box">
-              Selected plan: <span id="selectedPlanText">No plan selected yet</span>
+              Selected plan: <span id="selectedPlanTextCheckout">No plan selected yet</span>
             </div>
 
             <button type="button" class="pay-btn paypal" id="paypalCheckoutBtn">
@@ -2591,12 +2611,12 @@
 
               <select name="plan" id="quotePlanSelect" required>
                 <option selected disabled>Select a plan...</option>
-                <option value="20L / month — 5L weekly — Starter">20L / month — 5L weekly — Starter</option>
-                <option value="40L / month — 10L weekly — For 2 — Save 5%">40L / month — 10L weekly — For 2 — Save 5%</option>
-                <option value="60L / month — 15L weekly — ★ Most Popular ★ — Save 10%">60L / month — 15L weekly — ★ Most Popular ★ — Save 10%</option>
-                <option value="90L / month — 22.5L weekly — Small Household — Save 15%">90L / month — 22.5L weekly — Small Household — Save 15%</option>
-                <option value="120L / month — 30L weekly — Medium Household — Save 20%">120L / month — 30L weekly — Medium Household — Save 20%</option>
-                <option value="150L / month — 37.5L weekly — Large Household — Save 25%">150L / month — 37.5L weekly — Large Household — Save 25%</option>
+                <option value="20L / month — 5L weekly — Starter — $200">20L / month — 5L weekly — Starter — $200</option>
+                <option value="40L / month — 10L weekly — For 2 — $380 — Save 5%">40L / month — 10L weekly — For 2 — $380 — Save 5%</option>
+                <option value="60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 — Save 10%">60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 — Save 10%</option>
+                <option value="90L / month — 22.5L weekly — Small Household — $765 — Save 15%">90L / month — 22.5L weekly — Small Household — $765 — Save 15%</option>
+                <option value="120L / month — 30L weekly — Medium Household — $960 — Save 20%">120L / month — 30L weekly — Medium Household — $960 — Save 20%</option>
+                <option value="150L / month — 37.5L weekly — Large Household — $1125 — Save 25%">150L / month — 37.5L weekly — Large Household — $1125 — Save 25%</option>
                 <option value="Bulk / Custom Orders — Save 30%">Bulk / Custom Orders — Save 30%</option>
               </select>
 
@@ -2641,37 +2661,50 @@
     const PAYPAL_BASE_URL = "https://your-paypal-checkout-link.com";
     const STRIPE_BASE_URL = "https://buy.stripe.com/your-checkout-link";
 
-    const planSelect = document.getElementById('planSelect');
     const quotePlanSelect = document.getElementById('quotePlanSelect');
     const selectedPlanText = document.getElementById('selectedPlanText');
+    const selectedPlanTextCheckout = document.getElementById('selectedPlanTextCheckout');
     const goToCheckoutBtn = document.getElementById('goToCheckoutBtn');
     const paypalCheckoutBtn = document.getElementById('paypalCheckoutBtn');
     const stripeCheckoutBtn = document.getElementById('stripeCheckoutBtn');
+    const planCards = document.querySelectorAll('.plan-card');
+
+    let selectedPlanValue = '';
 
     function updateSelectedPlan(planValue){
       if(!planValue) return;
+      selectedPlanValue = planValue;
       selectedPlanText.textContent = planValue;
+      selectedPlanTextCheckout.textContent = planValue;
 
       const quoteOptions = Array.from(quotePlanSelect.options);
       const matchingOption = quoteOptions.find(option => option.value === planValue);
       if(matchingOption){
         quotePlanSelect.value = planValue;
       }
+
+      planCards.forEach(function(card){
+        card.classList.toggle('active', card.dataset.plan === planValue);
+      });
     }
 
-    planSelect.addEventListener('change', function(){
-      updateSelectedPlan(this.value);
+    planCards.forEach(function(card){
+      card.addEventListener('click', function(){
+        updateSelectedPlan(this.dataset.plan);
+      });
     });
 
     goToCheckoutBtn.addEventListener('click', function(){
-      if(planSelect.value){
-        updateSelectedPlan(planSelect.value);
+      if(!selectedPlanValue){
+        alert('Please select a plan first.');
+        document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
+        return;
       }
-      document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+      openCheckout(STRIPE_BASE_URL);
     });
 
     function openCheckout(baseUrl){
-      const chosenPlan = planSelect.value || quotePlanSelect.value;
+      const chosenPlan = selectedPlanValue || (quotePlanSelect ? quotePlanSelect.value : '');
       if(!chosenPlan){
         alert('Please select a plan first.');
         document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
