@@ -1436,6 +1436,24 @@
       font-size:24px;
       color:var(--green);
       white-space:nowrap;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      line-height:1.05;
+    }
+
+    .plan-card-old-price{
+      font-size:15px;
+      color:#c24a43;
+      text-decoration:line-through;
+      font-weight:800;
+      opacity:.95;
+    }
+
+    .plan-card-new-price{
+      font-size:24px;
+      color:var(--green);
+      font-weight:900;
     }
 
     .plan-card-volume{
@@ -1449,6 +1467,52 @@
       color:#1f7a4c;
       font-size:15px;
       font-weight:900;
+      margin-top:4px;
+    }
+
+    .plan-card-save-amount{
+      color:#c24a43;
+      font-size:14px;
+      font-weight:900;
+      margin-top:4px;
+    }
+
+    .plan-helper-text{
+      max-width:980px;
+      margin:16px auto 0;
+      text-align:center;
+      color:#4f7162;
+      font-size:15px;
+      font-weight:800;
+    }
+
+    .custom-litres-wrap{
+      display:none;
+      margin-top:16px;
+    }
+
+    .custom-litres-wrap.show{
+      display:block;
+    }
+
+    .custom-litres-label{
+      display:block;
+      margin-bottom:8px;
+      color:var(--green);
+      font-size:15px;
+      font-weight:900;
+      text-align:left;
+    }
+
+    .custom-litres-input{
+      width:100%;
+      border:1px solid #d6d0c3;
+      background:#f8f6f0;
+      color:#4f7162;
+      padding:16px 18px;
+      border-radius:14px;
+      font-size:16px;
+      outline:none;
     }
 
     .plan-badge{
@@ -2453,76 +2517,89 @@
     <section id="plans" class="section-shell" style="padding-top:78px">
       <div class="container">
         <div class="title-top">Subscription Plans</div>
-        <h2 class="section-title">Weekly Delivery Plans</h2>
-        <p class="section-sub">100% Grass-Fed Pasture-Raised Australian Cows • No Vaccines • No Hormones • No Antibiotics</p>
+        <h2 class="section-title">Monthly Plans (Delivered Weekly) </h2>
+        <p class="section-sub">Choose your monthly volume below. The prices shown are per month with weekly deliveries included.</p>
 
         <div class="plan-box plan-cards-box">
-          <div class="plan-title">🥛 <span>Select Your Plan</span></div>
+          <div class="plan-title">🥛 <span>Select Your Monthly Plan</span></div>
 
           <div class="plan-cards" id="planCards">
             <button type="button" class="plan-card" data-plan="20L / month — 5L weekly — Starter — $200">
               <div class="plan-card-top">
                 <div class="plan-card-name">Starter</div>
-                <div class="plan-card-price">$200</div>
+                <div class="plan-card-price"><span class="plan-card-new-price">$200</span></div>
               </div>
               <div class="plan-card-volume">20L / month • 5L weekly</div>
-              <div class="plan-card-save">Standard price</div>
+              <div class="plan-card-save">Standard entry plan</div>
             </button>
 
             <button type="button" class="plan-card" data-plan="40L / month — 10L weekly — For 2 — $380 — Save 5%">
               <div class="plan-card-top">
                 <div class="plan-card-name">For 2</div>
-                <div class="plan-card-price">$380</div>
+                <div class="plan-card-price"><span class="plan-card-old-price">$400</span><span class="plan-card-new-price">$380</span></div>
               </div>
               <div class="plan-card-volume">40L / month • 10L weekly</div>
               <div class="plan-card-save">Save 5%</div>
+              <div class="plan-card-save-amount">Save $20</div>
             </button>
 
             <button type="button" class="plan-card most-popular" data-plan="60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 — Save 10%">
               <div class="plan-badge">⭐ Most Popular ⭐</div>
               <div class="plan-card-top">
                 <div class="plan-card-name">Most Popular</div>
-                <div class="plan-card-price">$540</div>
+                <div class="plan-card-price"><span class="plan-card-old-price">$600</span><span class="plan-card-new-price">$540</span></div>
               </div>
               <div class="plan-card-volume">60L / month • 15L weekly</div>
               <div class="plan-card-save">Save 10%</div>
+              <div class="plan-card-save-amount">Save $60</div>
             </button>
 
             <button type="button" class="plan-card" data-plan="90L / month — 22.5L weekly — Small Household — $765 — Save 15%">
               <div class="plan-card-top">
                 <div class="plan-card-name">Small Household</div>
-                <div class="plan-card-price">$765</div>
+                <div class="plan-card-price"><span class="plan-card-old-price">$900</span><span class="plan-card-new-price">$765</span></div>
               </div>
               <div class="plan-card-volume">90L / month • 22.5L weekly</div>
               <div class="plan-card-save">Save 15%</div>
+              <div class="plan-card-save-amount">Save $135</div>
             </button>
 
             <button type="button" class="plan-card" data-plan="120L / month — 30L weekly — Medium Household — $960 — Save 20%">
               <div class="plan-card-top">
                 <div class="plan-card-name">Medium Household</div>
-                <div class="plan-card-price">$960</div>
+                <div class="plan-card-price"><span class="plan-card-old-price">$1200</span><span class="plan-card-new-price">$960</span></div>
               </div>
               <div class="plan-card-volume">120L / month • 30L weekly</div>
               <div class="plan-card-save">Save 20%</div>
+              <div class="plan-card-save-amount">Save $240</div>
             </button>
 
             <button type="button" class="plan-card" data-plan="150L / month — 37.5L weekly — Large Household — $1125 — Save 25%">
               <div class="plan-card-top">
                 <div class="plan-card-name">Large Household</div>
-                <div class="plan-card-price">$1125</div>
+                <div class="plan-card-price"><span class="plan-card-old-price">$1500</span><span class="plan-card-new-price">$1125</span></div>
               </div>
               <div class="plan-card-volume">150L / month • 37.5L weekly</div>
               <div class="plan-card-save">Save 25%</div>
+              <div class="plan-card-save-amount">Save $375</div>
             </button>
 
             <button type="button" class="plan-card custom-card" data-plan="Bulk / Custom Orders — Save 30%">
               <div class="plan-card-top">
                 <div class="plan-card-name">Bulk / Custom Orders</div>
-                <div class="plan-card-price">Custom</div>
+                <div class="plan-card-price"><span class="plan-card-old-price">Standard</span><span class="plan-card-new-price">30% Off</span></div>
               </div>
               <div class="plan-card-volume">150L+ orders</div>
-              <div class="plan-card-save">Save 30%</div>
+              <div class="plan-card-save">Best for very large orders</div>
+              <div class="plan-card-save-amount">Custom monthly litres</div>
             </button>
+          </div>
+
+          <div class="plan-helper-text">All prices below are monthly prices. Your milk is still delivered weekly.</div>
+
+          <div class="custom-litres-wrap" id="customLitresWrap">
+            <label class="custom-litres-label" for="customLitresInput">For bulk / custom orders, how many litres per month do you want?</label>
+            <input class="custom-litres-input" id="customLitresInput" type="text" placeholder="Example: 180L per month" />
           </div>
 
           <div class="selected-plan-box selected-plan-box-main">
@@ -2662,6 +2739,8 @@
     const STRIPE_BASE_URL = "https://buy.stripe.com/your-checkout-link";
 
     const quotePlanSelect = document.getElementById('quotePlanSelect');
+    const customLitresWrap = document.getElementById('customLitresWrap');
+    const customLitresInput = document.getElementById('customLitresInput');
     const selectedPlanText = document.getElementById('selectedPlanText');
     const selectedPlanTextCheckout = document.getElementById('selectedPlanTextCheckout');
     const goToCheckoutBtn = document.getElementById('goToCheckoutBtn');
@@ -2674,8 +2753,14 @@
     function updateSelectedPlan(planValue){
       if(!planValue) return;
       selectedPlanValue = planValue;
-      selectedPlanText.textContent = planValue;
-      selectedPlanTextCheckout.textContent = planValue;
+
+      let displayPlan = planValue;
+      if(planValue.includes('Bulk / Custom Orders') && customLitresInput && customLitresInput.value.trim()){
+        displayPlan = planValue + ' — ' + customLitresInput.value.trim();
+      }
+
+      selectedPlanText.textContent = displayPlan;
+      selectedPlanTextCheckout.textContent = displayPlan;
 
       const quoteOptions = Array.from(quotePlanSelect.options);
       const matchingOption = quoteOptions.find(option => option.value === planValue);
@@ -2686,6 +2771,10 @@
       planCards.forEach(function(card){
         card.classList.toggle('active', card.dataset.plan === planValue);
       });
+
+      if(customLitresWrap){
+        customLitresWrap.classList.toggle('show', planValue.includes('Bulk / Custom Orders'));
+      }
     }
 
     planCards.forEach(function(card){
@@ -2769,3 +2858,4 @@
   </script>
 </body>
 </html>
+
