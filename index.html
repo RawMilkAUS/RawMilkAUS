@@ -940,6 +940,95 @@
     .faq-item.active .faq-answer{display:block}
     .faq-item.active .faq-question span:last-child{color:var(--green)}
 
+    .contact-shell{
+      padding:74px 0 84px;
+      border-top:1px solid var(--line);
+    }
+
+    .contact-sub{
+      max-width:760px;
+      margin:14px auto 0;
+      text-align:center;
+      color:#4f7162;
+      font-size:18px;
+    }
+
+    .contact-card{
+      max-width:760px;
+      margin:46px auto 0;
+      background:#faf8f3;
+      border:1px solid #d9d3c7;
+      border-radius:24px;
+      padding:34px 30px;
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+
+    .contact-card h3{
+      margin:0 0 12px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:30px;
+      color:var(--green);
+    }
+
+    .contact-card p{
+      margin:0 0 14px;
+      color:#4f7162;
+      font-size:17px;
+      line-height:1.6;
+    }
+
+    .contact-email-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:14px;
+      background:var(--green-soft);
+      border:1px solid #cfe1d8;
+      color:var(--green);
+      font-weight:900;
+      font-size:18px;
+      margin:8px 0 18px;
+    }
+
+    .social-heading{
+      margin-top:8px;
+      color:var(--green);
+      font-weight:900;
+      font-size:16px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .contact-socials{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .contact-social-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid #d9d3c7;
+      color:var(--green);
+      font-weight:900;
+      box-shadow:0 10px 20px rgba(14,75,58,.05);
+      transition:.18s ease;
+    }
+
+    .contact-social-link:hover{
+      transform:translateY(-2px);
+      border-color:#0f4b3a;
+      box-shadow:0 14px 24px rgba(14,75,58,.10);
+    }
+
     .cta-shell{
       padding:78px 0 0;
       border-top:1px solid var(--line);
@@ -1119,6 +1208,32 @@
     }
 
     .foot-links span.sep{opacity:.35}
+
+    .footer-socials{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin:0 0 26px;
+    }
+
+    .footer-social-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.18);
+      color:#f4f7f4;
+      font-weight:800;
+      background:rgba(255,255,255,.06);
+      transition:.18s ease;
+    }
+
+    .footer-social-link:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.10);
+    }
 
     .foot-divider{
       max-width:630px;
@@ -2088,7 +2203,8 @@
 
       .section-shell,
       .review-shell,
-      .faq-shell{
+      .faq-shell,
+      .contact-shell{
         padding:40px 0;
       }
 
@@ -2158,7 +2274,8 @@
 
       .section-sub,
       .faq-sub,
-      .cta-sub{
+      .cta-sub,
+      .contact-sub{
         font-size:15px;
       }
 
@@ -2261,6 +2378,19 @@
         padding:12px 16px;
       }
 
+      .contact-card{
+        padding:24px 18px;
+      }
+
+      .contact-card h3{
+        font-size:24px;
+      }
+
+      .contact-email-link,
+      .contact-social-link{
+        width:100%;
+      }
+
       .checkout-card,
       .quote-card{
         padding:20px;
@@ -2351,6 +2481,7 @@
         <a href="#delivery">Delivery</a>
         <a href="#plans">Plans</a>
         <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
       </nav>
 
       <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu">☰</button>
@@ -2816,7 +2947,7 @@
         <p class="faq-sub">Everything you need to know about raw milk, delivery, and your subscription.</p>
 
         <div class="faq-box">
-            <div class="faq-item"><button class="faq-question" type="button"><span>What kind of cows produce your milk?</span><span>+</span></button><div class="faq-answer">Our milk comes from 100% pasture raised grass-fed Australian dairy herds, selected for premium milk quality and consistency.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>What kind of cows produce your milk?</span><span>+</span></button><div class="faq-answer">Our milk comes from 100% pasture raised grass-fed Australian dairy herds, selected for premium milk quality and consistency.</div></div>
           <div class="faq-item"><button class="faq-question" type="button"><span>Is raw milk legal in Australia?</span><span>+</span></button><div class="faq-answer">Raw cow's milk sold for human consumption is illegal in Australia. Our product is sold for pet use only and labelled accordingly.</div></div>
           <div class="faq-item"><button class="faq-question" type="button"><span>What makes raw milk different from pasteurised milk?</span><span>+</span></button><div class="faq-answer">Pasteurisation uses heat to kill bacteria and extend shelf life, but it also changes delicate proteins, enzymes, bacteria and other bioactive compounds. Raw milk appeals to customers who want a more natural, less processed whole-food product.</div></div>
           <div class="faq-item"><button class="faq-question" type="button"><span>How is your raw milk kept safe during delivery?</span><span>+</span></button><div class="faq-answer">We use a strict cold-chain process from the dairy to your door. Milk is collected fresh, immediately refrigerated, packed with premium cold gel packs, and delivered in an insulated container. Our glass bottles are sanitised between each delivery cycle.</div></div>
@@ -2827,7 +2958,28 @@
           <div class="faq-item"><button class="faq-question" type="button"><span>Do I need to shake the bottle before use?</span><span>+</span></button><div class="faq-answer">Yes. Raw milk is not homogenised, so the cream naturally rises to the top. Gently invert the bottle a few times before use.</div></div>
           <div class="faq-item"><button class="faq-question" type="button"><span>How do I store raw milk?</span><span>+</span></button><div class="faq-answer">Keep raw milk refrigerated at all times below 4°C. It is best consumed while fresh and kept cold. Our glass bottles are reusable and collected on your next delivery.</div></div>
           <div class="faq-item"><button class="faq-question" type="button"><span>Can I cancel or change my plan anytime?</span><span>+</span></button><div class="faq-answer">Yes. You can upgrade, downgrade, pause, or cancel your subscription at any time with at least 72 hours notice before your next scheduled delivery.</div></div>
-        
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-shell">
+      <div class="container">
+        <div class="title-top">Contact Us</div>
+        <h2 class="section-title">Still Have Questions?</h2>
+        <p class="contact-sub">Need help with your plan, delivery area, or anything else? Reach out directly and follow our journey on Instagram and TikTok.</p>
+
+        <div class="contact-card">
+          <h3>We’d Love To Hear From You</h3>
+          <p>For any questions about your order, subscription, delivery, or custom requests, contact us anytime below.</p>
+
+          <a class="contact-email-link" href="mailto:tom@lifemaxxingshop.com">tom@lifemaxxingshop.com</a>
+
+          <div class="social-heading">Follow Our Journey on Instagram &amp; TikTok</div>
+
+          <div class="contact-socials">
+            <a class="contact-social-link" href="https://www.instagram.com/RawMilkAUS" target="_blank" rel="noopener noreferrer">Instagram — @RawMilkAUS</a>
+            <a class="contact-social-link" href="https://www.tiktok.com/@RawMilkAUS" target="_blank" rel="noopener noreferrer">TikTok — @RawMilkAUS</a>
+          </div>
         </div>
       </div>
     </section>
@@ -2896,6 +3048,11 @@
 
         <div class="foot-links">
           <span>100% Grass-Fed Pasture-Raised Australian Cows • No Vaccines • No Hormones • No Antibiotics</span>
+        </div>
+
+        <div class="footer-socials">
+          <a class="footer-social-link" href="https://www.instagram.com/RawMilkAUS" target="_blank" rel="noopener noreferrer">Instagram — @RawMilkAUS</a>
+          <a class="footer-social-link" href="https://www.tiktok.com/@RawMilkAUS" target="_blank" rel="noopener noreferrer">TikTok — @RawMilkAUS</a>
         </div>
 
         <div class="foot-divider"></div>
