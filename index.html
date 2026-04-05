@@ -195,7 +195,7 @@
       min-height:740px;
       display:flex;
       align-items:center;
-      overflow-x:hidden;
+      overflow:visible;
     }
 
     .hero-grid{
@@ -366,7 +366,7 @@
       position:relative;
       min-height:540px;
       min-width:0;
-      overflow-x:hidden;
+      overflow:visible;
     }
 
     .section-shell{
@@ -1281,7 +1281,7 @@
       align-items:center;
       justify-content:center;
       max-width:100%;
-      overflow-x:hidden;
+      overflow:visible;
     }
 
     .hero-product-card{
@@ -1883,11 +1883,6 @@
       header,
       section,
       .container,
-      .hero-wrap,
-      .hero-grid,
-      .hero-card-area,
-      .hero-product-stage,
-      .hero-product-card,
       .plan-box,
       .plan-cards-box,
       .review-shell,
@@ -2003,7 +1998,7 @@
         min-height:auto;
         padding:14px 12px 18px;
         border-radius:22px;
-        overflow:hidden;
+        overflow:visible;
       }
 
       .hero-rating-badge{
@@ -2511,6 +2506,14 @@
 
       body.has-sticky-buy .site-footer{
         padding-bottom:108px;
+      }
+
+      .hero-wrap,
+      .hero-grid,
+      .hero-card-area,
+      .hero-product-stage,
+      .hero-product-card{
+        overflow:visible !important;
       }
     }
   </style>
