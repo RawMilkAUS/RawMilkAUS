@@ -1,0 +1,3369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RawMilkAUS</title>
+  <meta name="description" content="RawMilkAUS weekly delivery website demo" />
+  <style>
+    :root{
+      --bg:#f4f1ea;
+      --panel:#f7f5ef;
+      --line:#ddd8ce;
+      --green:#0f4b3a;
+      --green-2:#1c5a46;
+      --green-3:#6d8f7f;
+      --green-soft:#e9f3ee;
+      --good:#1f7a4c;
+      --good-bg:#eaf7ee;
+      --bad:#d94d45;
+      --bad-bg:#fff0ee;
+      --text:#194636;
+      --muted:#567163;
+      --shadow:0 12px 30px rgba(14,75,58,.08);
+      --radius:22px;
+      --max:1180px;
+      --star:#f2b21d;
+    }
+
+    *{box-sizing:border-box}
+    html{
+      scroll-behavior:smooth;
+      width:100%;
+      max-width:100%;
+      overflow-x:hidden;
+    }
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.45;
+      width:100%;
+      max-width:100%;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button,input,select,textarea{font:inherit}
+    .container{width:min(var(--max), calc(100% - 36px)); margin:0 auto}
+    .desktop-only{display:inline}
+    .mobile-only{display:none}
+
+    .topbar{
+      background:var(--green);
+      color:#fff;
+      font-size:13px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      text-align:center;
+      padding:8px 16px;
+      font-weight:700;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(244,241,234,.96);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      color:var(--green);
+      min-width:0;
+      flex:0 1 auto;
+    }
+
+    .brand-logo{
+      width:40px;
+      height:40px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      flex:0 0 auto;
+      background:transparent;
+    }
+
+    .brand-logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:10px;
+    }
+
+    .brand-name{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:21px;
+      white-space:nowrap;
+    }
+
+    .brand-flag{
+      margin-left:6px;
+      font-size:18px;
+      vertical-align:middle;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      color:var(--muted);
+      font-weight:700;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a:hover{color:var(--green)}
+
+    .nav-cta{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex:0 0 auto;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 22px;
+      border-radius:10px;
+      border:1.5px solid var(--green);
+      font-weight:800;
+      transition:.18s ease;
+      cursor:pointer;
+      background:transparent;
+      color:var(--green);
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+
+    .btn.primary{
+      background:linear-gradient(180deg, #14624c 0%, #0f4b3a 100%);
+      color:#fff;
+      border-color:#0a3c2f;
+      box-shadow:0 12px 24px rgba(15,75,58,.24);
+    }
+
+    .header-buy-btn{
+      min-width:170px;
+      min-height:56px;
+      font-size:19px;
+      padding:0 32px;
+      border:2px solid #0a3c2f;
+      box-shadow:0 12px 24px rgba(15,75,58,.22);
+    }
+
+    .mobile-menu-btn{
+      display:none;
+      align-items:center;
+      justify-content:center;
+      width:48px;
+      height:48px;
+      border-radius:12px;
+      border:1.5px solid var(--green);
+      background:transparent;
+      color:var(--green);
+      font-size:24px;
+      font-weight:900;
+      cursor:pointer;
+      flex:0 0 auto;
+    }
+
+    section{padding:0}
+
+    .hero-wrap{
+      background:linear-gradient(90deg, #0b4a38 0%, #0f4b3a 48%, #14513f 100%);
+      color:#fff;
+      padding:86px 0 80px;
+      min-height:740px;
+      display:flex;
+      align-items:center;
+      overflow:visible;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:38px;
+      align-items:center;
+    }
+
+    .hero-grid > div:first-child{min-width:0}
+    .hero-grid > div:last-child{min-width:0}
+
+    .eyebrow{
+      display:inline-flex;
+      padding:9px 16px;
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:999px;
+      color:rgba(255,255,255,.8);
+      text-transform:uppercase;
+      font-size:13px;
+      letter-spacing:.22em;
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:76px;
+      line-height:.96;
+      margin:0 0 18px;
+      letter-spacing:-.04em;
+      color:#f3eee4;
+    }
+
+    .hero h1 em{
+      font-style:italic;
+      display:block;
+    }
+
+    .hero-sub{
+      font-size:20px;
+      color:rgba(255,255,255,.72);
+      font-weight:700;
+      margin-bottom:22px;
+    }
+
+    .hero-sub-punch{
+      font-size:24px;
+      font-weight:800;
+      color:#f3eee4;
+      margin-bottom:20px;
+      letter-spacing:.01em;
+    }
+
+    .hero-proof-list{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin:0 0 18px;
+      max-width:620px;
+    }
+
+    .hero-proof-item{
+      color:rgba(255,255,255,.92);
+      font-size:17px;
+      font-weight:700;
+      line-height:1.55;
+      padding:10px 14px;
+      border-left:3px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.04);
+      border-radius:10px;
+    }
+
+    .hero-note{
+      max-width:520px;
+      color:rgba(255,255,255,.78);
+      font-size:17px;
+      font-weight:700;
+      line-height:1.55;
+      margin-bottom:8px;
+    }
+
+    .hero-note.shipping{
+      color:#ecf7f0;
+      font-weight:900;
+      font-size:18px;
+      margin-bottom:14px;
+    }
+
+    .hero-left-buy{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:260px;
+      height:70px;
+      border:2px solid #f7f2e8;
+      border-radius:16px;
+      background:#f7f2e8;
+      color:#0b4a38;
+      font-weight:900;
+      font-size:24px;
+      letter-spacing:.02em;
+      box-shadow:0 18px 34px rgba(0,0,0,.22), 0 0 0 4px rgba(255,255,255,.06);
+      margin:12px 0 12px;
+    }
+
+    .hero-left-buy:hover{
+      transform:translateY(-1px);
+    }
+
+    .trust-badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:0 0 18px;
+    }
+
+    .trust-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.14);
+      color:#f5f0e7;
+      font-size:13px;
+      font-weight:800;
+      line-height:1.2;
+    }
+
+    .hero-trust-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .hero-trust-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.14);
+      color:#f5f0e7;
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:800;
+      font-size:14px;
+      line-height:1.2;
+    }
+
+    .hero-stars{
+      color:var(--star);
+      letter-spacing:2px;
+      font-size:16px;
+      line-height:1;
+    }
+
+    .hero-trust-inline{
+      color:#f3eee4;
+      font-weight:900;
+      font-size:15px;
+      margin-top:8px;
+    }
+
+    .hero-card-area{
+      position:relative;
+      min-height:540px;
+      min-width:0;
+      overflow:visible;
+    }
+
+    .section-shell{
+      padding:74px 0 86px;
+      border-top:1px solid var(--line);
+    }
+
+    .title-top{
+      font-size:13px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:#547162;
+      text-align:center;
+      margin-bottom:12px;
+    }
+
+    .section-title{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:68px;
+      line-height:1;
+      letter-spacing:-.04em;
+      margin:0;
+      text-align:center;
+      color:var(--green);
+    }
+
+    .section-sub{
+      max-width:820px;
+      margin:18px auto 0;
+      text-align:center;
+      color:#4f7162;
+      font-size:18px;
+    }
+
+    .benefit-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:30px;
+      margin-top:72px;
+    }
+
+    .benefit-card{
+      background:#f8f6f1;
+      border:1px solid #d9d3c7;
+      border-radius:20px;
+      padding:32px 24px;
+      min-height:530px;
+      box-shadow:0 8px 16px rgba(14,75,58,.03);
+      min-width:0;
+    }
+
+    .benefit-card.tinted{background:#f8f6f1}
+
+    .benefit-head{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:26px;
+    }
+
+    .benefit-icon{
+      width:46px;
+      height:46px;
+      border-radius:12px;
+      background:#ecece7;
+      display:grid;
+      place-items:center;
+      font-size:20px;
+      flex:0 0 auto;
+    }
+
+    .benefit-tag{
+      background:var(--green);
+      color:#fff;
+      border-radius:999px;
+      padding:7px 12px;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      line-height:1.15;
+    }
+
+    .benefit-card h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:22px;
+      line-height:1.2;
+      margin:0 0 22px;
+    }
+
+    .benefit-card ul{
+      padding:0;
+      margin:0;
+      list-style:none;
+      display:grid;
+      gap:13px;
+      color:#47695b;
+      font-size:16px;
+    }
+
+    .benefit-card li{
+      position:relative;
+      padding-left:18px;
+    }
+
+    .benefit-card li::before{
+      content:"➜";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--green);
+      font-weight:900;
+    }
+
+    .bad-chip,
+    .good-chip{
+      display:inline;
+      padding:.08em .35em;
+      border-radius:8px;
+      box-decoration-break:clone;
+      -webkit-box-decoration-break:clone;
+    }
+
+    .bad-chip{
+      background:var(--bad-bg);
+      color:var(--bad);
+      font-weight:800;
+    }
+
+    .good-chip{
+      background:var(--good-bg);
+      color:var(--good);
+      font-weight:800;
+    }
+
+    .science-wrap{
+      background:var(--green);
+      color:#fff;
+      padding:68px 0 0;
+      border-radius:0 0 12px 12px;
+      overflow-x:hidden;
+    }
+
+    .science-title{
+      color:#f2ede3;
+      text-align:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:64px;
+      margin:0;
+    }
+
+    .science-sub{
+      color:#d8ddd8;
+      text-align:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-style:italic;
+      font-size:26px;
+      margin:10px 0 34px;
+    }
+
+    .table-wrap{
+      width:min(920px, calc(100% - 36px));
+      margin:0 auto;
+      border-radius:18px 18px 0 0;
+      overflow-x:auto;
+      overflow-y:hidden;
+      -webkit-overflow-scrolling:touch;
+      box-shadow:0 -2px 0 rgba(255,255,255,.05), 0 18px 32px rgba(0,0,0,.12);
+      max-width:100%;
+    }
+
+    table{
+      width:100%;
+      min-width:760px;
+      border-collapse:collapse;
+      background:rgba(255,255,255,.06);
+    }
+
+    th,td{
+      padding:18px 20px;
+      text-align:left;
+      font-size:16px;
+      vertical-align:top;
+    }
+
+    thead th{
+      background:rgba(255,255,255,.14);
+      color:#d6dbd5;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-weight:800;
+    }
+
+    tbody tr:nth-child(odd){background:rgba(255,255,255,.04)}
+    tbody tr:nth-child(even){background:rgba(255,255,255,.02)}
+
+    .bad{color:#ff9f9f; font-weight:700}
+    .good{color:#84f2a6; font-weight:700}
+
+    .review-shell{
+      padding:70px 0 86px;
+      border-top:1px solid var(--line);
+    }
+
+    .review-summary{
+      max-width:760px;
+      margin:42px auto 58px;
+      background:#faf8f3;
+      border:1px solid #d9d3c7;
+      border-radius:22px;
+      padding:36px 38px;
+      display:grid;
+      grid-template-columns:180px 1fr;
+      gap:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .rating-big{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:72px;
+      line-height:1;
+      color:var(--green);
+      margin-bottom:10px;
+    }
+
+    .stars{
+      color:var(--star);
+      font-size:20px;
+      letter-spacing:3px;
+      margin-bottom:10px;
+    }
+
+    .muted{color:#527264}
+
+    .bar-row{
+      display:grid;
+      grid-template-columns:42px 1fr 36px;
+      gap:10px;
+      align-items:center;
+      margin-bottom:10px;
+      color:#557364;
+    }
+
+    .bar{
+      height:8px;
+      background:#e8e4db;
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .bar > span{
+      display:block;
+      height:100%;
+      background:var(--green);
+      border-radius:999px;
+    }
+
+    .bar.zero > span{
+      width:0 !important;
+      background:transparent;
+    }
+
+    .review-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .review-card{
+      background:#faf8f3;
+      border:1px solid #d9d3c7;
+      border-radius:20px;
+      padding:26px 24px 22px;
+      box-shadow:0 6px 14px rgba(14,75,58,.03);
+      min-height:230px;
+      transition:.18s ease;
+    }
+
+    .review-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 14px 28px rgba(14,75,58,.08);
+    }
+
+    .review-top{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:2px;
+    }
+
+    .review-name{
+      font-weight:900;
+      font-size:18px;
+      color:var(--green);
+      line-height:1.1;
+    }
+
+    .review-tag{
+      background:#e9ece6;
+      color:var(--green);
+      border-radius:999px;
+      padding:5px 10px;
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      white-space:nowrap;
+      line-height:1.1;
+    }
+
+    .review-meta{
+      font-size:14px;
+      color:#5c7a6d;
+      margin-bottom:12px;
+      line-height:1.3;
+    }
+
+    .review-copy{
+      color:#47695b;
+      font-size:16px;
+      line-height:1.55;
+      font-style:italic;
+    }
+
+    .delivery-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:62px;
+      align-items:center;
+      margin-top:58px;
+    }
+
+    .delivery-copy h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:66px;
+      line-height:1;
+      margin:0 0 18px;
+      color:var(--green);
+    }
+
+    .delivery-copy .mini{
+      font-family:Georgia, "Times New Roman", serif;
+      font-style:italic;
+      color:#5b856f;
+      font-size:18px;
+      margin-bottom:28px;
+    }
+
+    .delivery-copy p{
+      font-size:18px;
+      line-height:1.55;
+      color:#4e7062;
+      max-width:500px;
+    }
+
+    .delivery-feats{
+      display:flex;
+      gap:28px;
+      margin-top:34px;
+      flex-wrap:wrap;
+    }
+
+    .delivery-feat{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      color:var(--green);
+      font-weight:700;
+    }
+
+    .delivery-feat i{
+      width:40px;
+      height:40px;
+      border-radius:10px;
+      background:#ecece7;
+      display:grid;
+      place-items:center;
+      font-style:normal;
+    }
+
+    .delivery-card{
+      position:relative;
+      border-radius:24px;
+      overflow:hidden;
+      min-height:385px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.18)),
+        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=80') center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .delivery-card .label{
+      position:absolute;
+      left:24px;
+      bottom:24px;
+      color:#fff;
+    }
+
+    .delivery-card .label strong{
+      display:block;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:34px;
+      margin-bottom:8px;
+    }
+
+    .plan-box{
+      max-width:560px;
+      margin:56px auto 0;
+      background:#fbfaf6;
+      border:1px solid #d8d2c8;
+      border-radius:24px;
+      padding:40px 44px;
+      box-shadow:var(--shadow);
+      max-width:100%;
+      overflow-x:hidden;
+    }
+
+    .plan-title{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:22px;
+      font-weight:700;
+      color:var(--green);
+      margin-bottom:22px;
+    }
+
+    .select-wrap{position:relative}
+
+    select{
+      width:100%;
+      appearance:none;
+      border:1px solid #d6d0c3;
+      background:#f8f6f0;
+      color:#4f7162;
+      padding:17px 52px 17px 18px;
+      border-radius:14px;
+      font-size:16px;
+      outline:none;
+    }
+
+    .select-wrap::after{
+      content:"⌄";
+      position:absolute;
+      right:18px;
+      top:50%;
+      transform:translateY(-54%);
+      color:#738c80;
+      font-size:20px;
+      pointer-events:none;
+    }
+
+    .checkout{
+      width:100%;
+      margin-top:22px;
+      padding:20px 22px;
+      border:none;
+      border-radius:16px;
+      background:linear-gradient(180deg, #1a7157 0%, #0f4b3a 100%);
+      color:#fff;
+      font-weight:900;
+      font-size:20px;
+      letter-spacing:.02em;
+      cursor:pointer;
+      box-shadow:0 18px 34px rgba(15,75,58,.28), 0 0 0 3px rgba(15,75,58,.08);
+      border:2px solid #0a3c2f;
+      transition:.18s ease;
+    }
+
+    .checkout:hover{
+      transform:translateY(-1px);
+      box-shadow:0 22px 38px rgba(15,75,58,.34), 0 0 0 3px rgba(15,75,58,.10);
+    }
+
+    .checkout:active{
+      transform:translateY(0);
+    }
+
+    .plan-foot{
+      margin-top:16px;
+      text-align:center;
+      color:#527264;
+      font-size:14px;
+    }
+
+    .bulk-savings{
+      max-width:920px;
+      margin:28px auto 0;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .bulk-card{
+      background:#faf8f3;
+      border:1px solid #d9d3c7;
+      border-radius:18px;
+      padding:22px 18px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .bulk-card h4{
+      margin:0;
+      color:var(--green);
+      font-size:20px;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    .bulk-card .bulk-small{
+      margin-top:8px;
+      color:#557364;
+      font-weight:700;
+    }
+
+    .bulk-card .bulk-save{
+      margin-top:10px;
+      color:var(--green);
+      font-weight:900;
+      font-size:18px;
+    }
+
+    .faq-shell{
+      padding:74px 0 84px;
+      border-top:1px solid var(--line);
+    }
+
+    .faq-sub{
+      max-width:760px;
+      margin:14px auto 0;
+      text-align:center;
+      color:#4f7162;
+      font-size:18px;
+    }
+
+    .faq-box{
+      max-width:720px;
+      margin:46px auto 0;
+      background:#f8f6f1;
+      border:1px solid #d9d3c7;
+      border-radius:20px;
+      padding:20px 36px;
+      box-shadow:var(--shadow);
+    }
+
+    .faq-item{
+      border-bottom:1px solid #d8d2c7;
+    }
+
+    .faq-item:last-child{border-bottom:none}
+
+    .faq-question{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:22px 0;
+      cursor:pointer;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:18px;
+      font-weight:700;
+      color:var(--green);
+      background:none;
+      border:none;
+      width:100%;
+      text-align:left;
+    }
+
+    .faq-question span:last-child{
+      font-family:Inter, sans-serif;
+      font-size:30px;
+      line-height:1;
+      color:#6b8778;
+      flex:0 0 auto;
+    }
+
+    .faq-answer{
+      display:none;
+      padding:0 0 20px;
+      color:#4c6d60;
+      font-size:16px;
+      line-height:1.6;
+    }
+
+    .faq-item.active .faq-answer{display:block}
+    .faq-item.active .faq-question span:last-child{color:var(--green)}
+
+    .contact-shell{
+      padding:74px 0 84px;
+      border-top:1px solid var(--line);
+    }
+
+    .contact-sub{
+      max-width:760px;
+      margin:14px auto 0;
+      text-align:center;
+      color:#4f7162;
+      font-size:18px;
+    }
+
+    .contact-card{
+      max-width:760px;
+      margin:46px auto 0;
+      background:#faf8f3;
+      border:1px solid #d9d3c7;
+      border-radius:24px;
+      padding:34px 30px;
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+
+    .contact-card h3{
+      margin:0 0 12px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:30px;
+      color:var(--green);
+    }
+
+    .contact-card p{
+      margin:0 0 14px;
+      color:#4f7162;
+      font-size:17px;
+      line-height:1.6;
+    }
+
+    .contact-email-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:14px;
+      background:var(--green-soft);
+      border:1px solid #cfe1d8;
+      color:var(--green);
+      font-weight:900;
+      font-size:18px;
+      margin:8px 0 18px;
+    }
+
+    .social-heading{
+      margin-top:8px;
+      color:var(--green);
+      font-weight:900;
+      font-size:16px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .contact-socials{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .contact-social-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid #d9d3c7;
+      color:var(--green);
+      font-weight:900;
+      box-shadow:0 10px 20px rgba(14,75,58,.05);
+      transition:.18s ease;
+    }
+
+    .contact-social-link:hover{
+      transform:translateY(-2px);
+      border-color:#0f4b3a;
+      box-shadow:0 14px 24px rgba(14,75,58,.10);
+    }
+
+    .cta-shell{
+      padding:78px 0 0;
+      border-top:1px solid var(--line);
+    }
+
+    .cta-title{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:66px;
+      line-height:1;
+      letter-spacing:-.04em;
+      text-align:center;
+      color:var(--green);
+      margin:0;
+    }
+
+    .cta-sub{
+      margin:18px 0 54px;
+      text-align:center;
+      color:#4f7162;
+      font-size:18px;
+    }
+
+    .cta-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:44px;
+      max-width:830px;
+      margin:0 auto;
+    }
+
+    .checkout-card,.quote-card{
+      background:#faf8f3;
+      border:1px solid #d9d3c7;
+      border-radius:22px;
+      padding:28px 28px 30px;
+      min-height:480px;
+      box-shadow:var(--shadow);
+    }
+
+    .mini-heading{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:18px;
+      color:var(--green);
+      font-weight:700;
+      margin-bottom:24px;
+    }
+
+    .mini-heading i{
+      font-style:normal;
+      font-size:18px;
+    }
+
+    .pay-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      width:100%;
+      height:48px;
+      border-radius:12px;
+      color:#fff;
+      font-weight:900;
+      font-size:16px;
+      margin-bottom:16px;
+      box-shadow:0 10px 20px rgba(0,0,0,.08);
+      border:none;
+      cursor:pointer;
+    }
+
+    .pay-btn.paypal{
+      background:linear-gradient(180deg, #1b84cf 0%, #1475bb 100%);
+      box-shadow:0 14px 26px rgba(20,117,187,.24);
+    }
+
+    .pay-btn.stripe{
+      background:linear-gradient(180deg, #6f68ff 0%, #5d5af3 100%);
+      box-shadow:0 14px 26px rgba(99,91,255,.24);
+    }
+
+    .pay-btn .icon{font-size:20px; font-weight:900}
+
+    .checkout-note{
+      text-align:center;
+      color:#527264;
+      font-size:14px;
+      max-width:320px;
+      margin:20px auto 0;
+      line-height:1.45;
+    }
+
+    .selected-plan-box{
+      background:#f4f1ea;
+      border:1px solid #d9d3c7;
+      color:#45675a;
+      border-radius:14px;
+      padding:14px 16px;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    .quote-card form{
+      display:grid;
+      gap:14px;
+    }
+
+    .quote-card input,.quote-card select,.quote-card textarea{
+      width:100%;
+      border:1px solid #d9d3c7;
+      border-radius:14px;
+      background:#f5f2eb;
+      color:#4f7162;
+      padding:14px 16px;
+      font-size:16px;
+      outline:none;
+    }
+
+    .quote-card textarea{
+      min-height:88px;
+      resize:vertical;
+    }
+
+    .quote-submit{
+      margin-top:2px;
+      height:46px;
+      border:none;
+      border-radius:12px;
+      background:var(--green);
+      color:#fff;
+      font-weight:900;
+      font-size:16px;
+      cursor:pointer;
+    }
+
+    .site-footer{
+      margin-top:78px;
+      background:var(--green);
+      color:#e9eee8;
+      padding:64px 0 46px;
+      overflow-x:hidden;
+    }
+
+    .site-footer .logo-row{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:20px;
+      font-weight:700;
+    }
+
+    .site-footer .logo-row .foot-logo{
+      width:30px;
+      height:30px;
+      border-radius:8px;
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+    }
+
+    .site-footer .logo-row .foot-logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .foot-links{
+      display:flex;
+      justify-content:center;
+      gap:22px;
+      margin:28px 0 30px;
+      color:#dbe5de;
+      flex-wrap:wrap;
+      text-align:center;
+    }
+
+    .foot-links span.sep{opacity:.35}
+
+    .footer-socials{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin:0 0 26px;
+    }
+
+    .footer-social-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.18);
+      color:#f4f7f4;
+      font-weight:800;
+      background:rgba(255,255,255,.06);
+      transition:.18s ease;
+    }
+
+    .footer-social-link:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.10);
+    }
+
+    .foot-divider{
+      max-width:630px;
+      height:1px;
+      background:rgba(255,255,255,.18);
+      margin:0 auto 28px;
+    }
+
+    .foot-copy{
+      max-width:720px;
+      margin:0 auto;
+      text-align:center;
+      color:rgba(233,238,232,.72);
+      font-size:14px;
+      line-height:1.55;
+    }
+
+    .foot-copy .copyright{
+      margin-top:14px;
+      opacity:.86;
+    }
+
+    .hero-product-stage{
+      position:relative;
+      min-height:670px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      max-width:100%;
+      overflow:visible;
+    }
+
+    .hero-product-card{
+      position:relative;
+      width:100%;
+      max-width:560px;
+      min-height:650px;
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,.78), rgba(235,233,225,.74));
+      box-shadow:0 30px 60px rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.2);
+      padding:16px 24px 26px;
+      overflow:visible;
+      backdrop-filter:blur(3px);
+    }
+
+    .winner-badge{
+      position:absolute;
+      top:14px;
+      right:18px;
+      z-index:5;
+      background:#fff;
+      color:var(--green);
+      border:1px solid #d9d3c7;
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-rating-badge{
+      position:absolute;
+      left:24px;
+      top:-42px;
+      z-index:5;
+      background:rgba(255,255,255,.94);
+      color:var(--green);
+      border:1px solid #d9d3c7;
+      border-radius:16px;
+      padding:10px 14px;
+      box-shadow:0 14px 28px rgba(0,0,0,.12);
+      max-width:220px;
+    }
+
+    .hero-rating-badge .rating-top{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:900;
+      font-size:14px;
+      line-height:1.2;
+    }
+
+    .hero-rating-badge .rating-stars{
+      color:var(--star);
+      letter-spacing:2px;
+      font-size:14px;
+      margin-top:4px;
+    }
+
+    .hero-rating-badge .rating-sub{
+      font-size:12px;
+      font-weight:800;
+      color:#58786a;
+      margin-top:4px;
+    }
+
+    .hero-product-image-wrap{
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      min-height:560px;
+      padding:4px 0 0;
+      position:relative;
+      z-index:2;
+      max-width:100%;
+      overflow:hidden;
+    }
+
+    .hero-product-image{
+      max-height:616px;
+      width:100%;
+      max-width:100%;
+      object-fit:contain;
+      object-position:top center;
+      filter:drop-shadow(0 24px 42px rgba(0,0,0,.28));
+    }
+
+    .hero-buy-wrap{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      margin-top:-6px;
+      position:relative;
+      z-index:3;
+    }
+
+    .hero-buy-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:255px;
+      height:66px;
+      border:2px solid #0a3c2f;
+      border-radius:14px;
+      background:linear-gradient(180deg, #14624c 0%, #0f4b3a 100%);
+      color:#fff;
+      font-weight:900;
+      font-size:24px;
+      letter-spacing:.02em;
+      box-shadow:0 18px 30px rgba(15,75,58,.30), 0 0 0 4px rgba(15,75,58,.08);
+      cursor:pointer;
+    }
+
+    .hero-buy-sub{
+      font-size:14px;
+      color:var(--green);
+      font-weight:900;
+      text-align:center;
+    }
+
+    .hero-callout{
+      position:absolute;
+      z-index:4;
+      max-width:180px;
+      font-weight:900;
+      line-height:1.18;
+    }
+
+    .hero-callout span{
+      display:inline-block;
+      border-radius:14px;
+      padding:12px 14px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-callout.good span{
+      background:#edf7f1;
+      color:#1f7a4c;
+      border:1px solid #d9eadf;
+    }
+
+    .hero-callout::after{
+      content:"";
+      position:absolute;
+      height:2px;
+      background:rgba(15,75,58,.72);
+    }
+
+    .callout-l1{left:-44px; top:110px;}
+    .callout-l1::after{width:86px; right:-80px; top:28px;}
+
+    .callout-l2{left:-84px; top:260px;}
+    .callout-l2::after{width:120px; right:-112px; top:27px; transform:rotate(2deg);}
+
+    .callout-l3{left:-48px; bottom:350px;}
+    .callout-l3::after{width:82px; right:-74px; top:40px; transform:rotate(10deg);}
+
+    .callout-r1{right:-52px; top:114px;}
+    .callout-r1::after{width:92px; left:-86px; top:29px; transform:rotate(1deg);}
+
+    .callout-r2{right:-78px; top:274px;}
+    .callout-r2::after{width:118px; left:-112px; top:28px; transform:rotate(-2deg);}
+
+    .callout-r3{right:-44px; bottom:344px;}
+    .callout-r3::after{width:82px; left:-76px; top:26px; transform:rotate(-10deg);}
+
+    .hero-mobile-callouts{
+      display:none;
+    }
+
+    .hero-discount-row{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+      position:relative;
+      z-index:3;
+      max-width:100%;
+    }
+
+    .discount-chip{
+      background:#f1ece2;
+      color:var(--green);
+      border:1px solid #ddd8ce;
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:13px;
+      font-weight:900;
+    }
+
+    .sticky-mobile-buy{
+      display:none;
+      position:fixed;
+      left:12px;
+      right:12px;
+      bottom:12px;
+      z-index:120;
+      background:rgba(244,241,234,.96);
+      border:1px solid #d9d3c7;
+      border-radius:18px;
+      box-shadow:0 18px 36px rgba(0,0,0,.20);
+      backdrop-filter:blur(12px);
+      padding:8px;
+      max-width:calc(100vw - 24px);
+      overflow:hidden;
+    }
+
+    .sticky-mobile-summary{
+      text-align:center;
+      color:var(--green);
+      font-size:12px;
+      font-weight:900;
+      line-height:1.3;
+      margin-bottom:7px;
+      min-height:16px;
+    }
+
+    .sticky-mobile-buy a{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      min-height:54px;
+      border-radius:14px;
+      background:linear-gradient(180deg, #14624c 0%, #0f4b3a 100%);
+      color:#fff;
+      font-weight:1000;
+      font-size:22px;
+      letter-spacing:.01em;
+      box-shadow:0 12px 24px rgba(15,75,58,.24);
+      text-align:center;
+      padding:10px 14px;
+    }
+
+    .sticky-mobile-meta{
+      margin-top:6px;
+      text-align:center;
+      font-size:11px;
+      font-weight:800;
+      color:var(--green);
+      line-height:1.28;
+    }
+
+    .plan-cards-box{
+      max-width:980px;
+    }
+
+    .plan-cards{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+      margin-top:8px;
+      min-width:0;
+    }
+
+    .plan-card{
+      position:relative;
+      text-align:left;
+      border:2px solid #d8d2c8;
+      background:#fffdf8;
+      border-radius:20px;
+      padding:20px 18px 18px;
+      cursor:pointer;
+      transition:.18s ease;
+      box-shadow:0 10px 22px rgba(14,75,58,.05);
+      min-width:0;
+      max-width:100%;
+    }
+
+    .plan-card:hover{
+      transform:translateY(-2px);
+      border-color:#0f4b3a;
+      box-shadow:0 16px 30px rgba(14,75,58,.12);
+    }
+
+    .plan-card.active{
+      border-color:#0a3c2f;
+      background:#e5f4ec;
+      box-shadow:0 0 0 3px rgba(15,75,58,.18), 0 22px 40px rgba(14,75,58,.20);
+      transform:translateY(-2px) scale(1.02);
+    }
+
+    .selected-chip{
+      position:absolute;
+      top:-12px;
+      right:14px;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(180deg, #14624c 0%, #0f4b3a 100%);
+      color:#fff;
+      font-size:12px;
+      font-weight:900;
+      padding:8px 12px;
+      border-radius:999px;
+      box-shadow:0 10px 20px rgba(15,75,58,.20);
+      letter-spacing:.02em;
+      z-index:4;
+    }
+
+    .plan-card.active .selected-chip{
+      display:inline-flex;
+    }
+
+    .plan-card-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+      min-width:0;
+    }
+
+    .plan-card-name{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:22px;
+      line-height:1.1;
+      color:var(--green);
+      font-weight:700;
+      min-width:0;
+    }
+
+    .plan-card-price{
+      font-weight:900;
+      font-size:24px;
+      color:var(--green);
+      white-space:nowrap;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      line-height:1.05;
+      flex-shrink:0;
+    }
+
+    .plan-card-old-price{
+      font-size:15px;
+      color:#c24a43;
+      text-decoration:line-through;
+      font-weight:800;
+      opacity:.95;
+    }
+
+    .plan-card-new-price{
+      font-size:24px;
+      color:var(--green);
+      font-weight:900;
+    }
+
+    .plan-card-volume{
+      color:#4f7162;
+      font-size:16px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .plan-card-save{
+      color:#1f7a4c;
+      font-size:15px;
+      font-weight:900;
+      margin-top:4px;
+    }
+
+    .plan-card-save-amount{
+      color:#c24a43;
+      font-size:14px;
+      font-weight:900;
+      margin-top:4px;
+    }
+
+    .plan-helper-text{
+      max-width:980px;
+      margin:16px auto 0;
+      text-align:center;
+      color:#4f7162;
+      font-size:15px;
+      font-weight:800;
+    }
+
+    .custom-litres-wrap{
+      display:none;
+      margin-top:16px;
+    }
+
+    .custom-litres-wrap.show{
+      display:block;
+    }
+
+    .custom-litres-label{
+      display:block;
+      margin-bottom:8px;
+      color:var(--green);
+      font-size:15px;
+      font-weight:900;
+      text-align:left;
+    }
+
+    .custom-stepper{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .custom-stepper-btn{
+      width:52px;
+      height:52px;
+      flex:0 0 52px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(180deg, #14624c 0%, #0f4b3a 100%);
+      color:#fff;
+      font-size:28px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 12px 24px rgba(15,75,58,.20);
+    }
+
+    .custom-stepper-btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .custom-litres-input{
+      width:100%;
+      border:1px solid #d6d0c3;
+      background:#f8f6f0;
+      color:#4f7162;
+      padding:16px 18px;
+      border-radius:14px;
+      font-size:18px;
+      font-weight:900;
+      outline:none;
+      text-align:center;
+    }
+
+    .plan-badge{
+      position:absolute;
+      top:-12px;
+      left:16px;
+      background:linear-gradient(180deg, #f3c84b 0%, #e5b52a 100%);
+      color:#214235;
+      font-weight:900;
+      font-size:12px;
+      padding:8px 12px;
+      border-radius:999px;
+      box-shadow:0 10px 20px rgba(0,0,0,.10);
+      letter-spacing:.02em;
+    }
+
+    .most-popular{
+      border-color:#d7b24a;
+      background:#fffaf0;
+      box-shadow:0 16px 28px rgba(229,181,42,.14);
+    }
+
+    .selected-plan-box-main{
+      margin-top:18px;
+      font-size:16px;
+    }
+
+    .checkout-summary-text{
+      margin-top:18px;
+      text-align:center;
+      color:var(--green);
+      font-size:16px;
+      font-weight:900;
+      line-height:1.35;
+      min-height:22px;
+    }
+
+    .secure-stripe-btn{
+      margin-top:10px;
+      font-size:28px;
+      font-weight:1000;
+      min-height:74px;
+      letter-spacing:.01em;
+    }
+
+    @media (max-width: 1100px){
+      .hero-grid,.delivery-grid,.benefit-grid,.review-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .benefit-grid .benefit-card:last-child{grid-column:span 2}
+      .hero h1{font-size:58px}
+      .section-title,.delivery-copy h2,.science-title,.cta-title{font-size:52px}
+
+      .hero-card-area{min-height:auto}
+
+      .hero-product-stage{min-height:auto}
+      .hero-product-card{
+        min-height:auto;
+        padding:24px 18px 22px;
+      }
+
+      .hero-product-image-wrap{
+        min-height:420px;
+      }
+
+      .hero-product-image{
+        max-height:440px;
+        width:100%;
+      }
+
+      .hero-callout{
+        display:none;
+      }
+
+      .hero-mobile-callouts{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+        margin-top:18px;
+      }
+
+      .hero-mobile-callouts .hero-callout{
+        display:block;
+        position:static;
+        max-width:none;
+      }
+
+      .hero-mobile-callouts .hero-callout::after{
+        display:none;
+      }
+
+      .hero-rating-badge{
+        position:static;
+        max-width:none;
+        margin:0 auto 12px;
+      }
+    }
+
+    @media (max-width: 980px){
+      .cta-grid{
+        grid-template-columns:1fr;
+        max-width:620px;
+      }
+
+      .checkout-card,.quote-card{min-height:auto}
+      .bulk-savings{grid-template-columns:1fr}
+
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:34px;
+      }
+
+      .hero-card-area{
+        order:-1;
+      }
+
+      .hero-product-card{
+        max-width:620px;
+        margin:0 auto;
+      }
+
+      .hero-product-image{
+        width:100%;
+        max-width:100%;
+        max-height:520px;
+      }
+
+      .hero-callout{
+        display:none;
+      }
+
+      .hero-mobile-callouts{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+        margin-top:16px;
+      }
+
+      .hero-mobile-callouts .hero-callout{
+        display:block;
+        position:static;
+        max-width:none;
+      }
+
+      .hero-mobile-callouts .hero-callout::after{
+        display:none;
+      }
+
+      .plan-cards{
+        grid-template-columns:repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px){
+      html,
+      body{
+        overflow-x:hidden !important;
+      }
+
+      main,
+      header,
+      section,
+      .container,
+      .plan-box,
+      .plan-cards-box,
+      .review-shell,
+      .contact-shell,
+      .cta-shell,
+      .site-footer{
+        max-width:100%;
+        overflow-x:hidden;
+      }
+
+      .desktop-only{display:none}
+      .mobile-only{display:inline}
+
+      .topbar{
+        font-size:10px;
+        letter-spacing:.08em;
+        padding:8px 10px;
+      }
+
+      .nav{
+        display:grid;
+        grid-template-columns:auto 1fr auto;
+        gap:10px;
+        align-items:center;
+        min-height:auto;
+        padding:12px 0;
+      }
+
+      .mobile-menu-btn{
+        display:inline-flex;
+        width:44px;
+        height:44px;
+        font-size:22px;
+        order:1;
+        justify-self:start;
+      }
+
+      .brand{
+        order:2;
+        justify-self:center;
+        justify-content:center;
+        gap:0;
+        min-width:0;
+      }
+
+      .brand-logo{
+        display:none;
+      }
+
+      .brand-name{
+        font-size:18px;
+        line-height:1.1;
+        white-space:nowrap;
+        overflow:visible;
+        text-overflow:unset;
+        max-width:none;
+      }
+
+      .brand-flag{
+        margin-left:4px;
+        font-size:15px;
+      }
+
+      .nav-cta{
+        order:3;
+        width:auto;
+        justify-content:flex-end;
+      }
+
+      .nav-links{
+        display:none;
+        order:4;
+        grid-column:1 / -1;
+        width:100%;
+        padding:10px 0 0;
+        gap:12px;
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .nav-links.show{
+        display:flex;
+      }
+
+      .header-buy-btn{
+        min-width:118px;
+        min-height:44px;
+        font-size:15px;
+        padding:0 16px;
+      }
+
+      .hero-wrap{
+        padding:24px 0 108px;
+        min-height:auto;
+      }
+
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:22px;
+      }
+
+      .hero-card-area{
+        order:-1;
+        min-height:auto;
+      }
+
+      .hero-product-stage{
+        min-height:auto;
+      }
+
+      .hero-product-card{
+        max-width:100%;
+        min-height:auto;
+        padding:14px 12px 18px;
+        border-radius:22px;
+        overflow:visible;
+      }
+
+      .hero-rating-badge{
+        position:absolute;
+        left:16px;
+        top:-28px;
+        max-width:180px;
+        margin:0;
+        padding:8px 10px;
+        border-radius:14px;
+      }
+
+      .hero-rating-badge .rating-top{
+        font-size:12px;
+      }
+
+      .hero-rating-badge .rating-stars{
+        font-size:12px;
+        letter-spacing:1px;
+      }
+
+      .hero-rating-badge .rating-sub{
+        font-size:11px;
+      }
+
+      .winner-badge{
+        top:12px;
+        right:12px;
+        font-size:10px;
+        padding:8px 10px;
+      }
+
+      .hero-product-image-wrap{
+        min-height:0;
+        padding:26px 0 0;
+      }
+
+      .hero-product-image{
+        width:100%;
+        max-width:100%;
+        max-height:none;
+        height:auto;
+        object-fit:contain;
+        object-position:center top;
+      }
+
+      .hero-callout{
+        display:block;
+        position:absolute;
+        z-index:4;
+        font-weight:900;
+        line-height:1.02;
+      }
+
+      .hero-callout span{
+        padding:7px 9px;
+        font-size:10px;
+        border-radius:12px;
+      }
+
+      .hero-callout::after{
+        display:block;
+        height:2px;
+      }
+
+      .callout-l1{
+        left:6px;
+        top:120px;
+        max-width:90px;
+      }
+      .callout-l1::after{
+        width:32px;
+        right:-28px;
+        top:18px;
+      }
+
+      .callout-l2{
+        left:6px;
+        top:208px;
+        max-width:98px;
+      }
+      .callout-l2::after{
+        width:34px;
+        right:-30px;
+        top:18px;
+      }
+
+      .callout-l3{
+        left:6px;
+        bottom:286px;
+        max-width:96px;
+      }
+      .callout-l3::after{
+        width:28px;
+        right:-24px;
+        top:18px;
+        transform:rotate(8deg);
+      }
+
+      .callout-r1{
+        right:6px;
+        top:122px;
+        max-width:96px;
+      }
+      .callout-r1::after{
+        width:28px;
+        left:-24px;
+        top:18px;
+      }
+
+      .callout-r2{
+        right:6px;
+        top:212px;
+        max-width:96px;
+      }
+      .callout-r2::after{
+        width:30px;
+        left:-26px;
+        top:18px;
+      }
+
+      .callout-r3{
+        right:6px;
+        bottom:286px;
+        max-width:102px;
+      }
+      .callout-r3::after{
+        width:24px;
+        left:-20px;
+        top:18px;
+        transform:rotate(-8deg);
+      }
+
+      .hero-mobile-callouts{
+        display:none !important;
+      }
+
+      .eyebrow{
+        font-size:10px;
+        letter-spacing:.14em;
+        margin-bottom:12px;
+      }
+
+      .hero h1{
+        font-size:42px;
+        line-height:.96;
+        margin-bottom:12px;
+      }
+
+      .hero-sub{
+        font-size:15px;
+        margin-bottom:14px;
+      }
+
+      .hero-sub-punch{
+        font-size:18px;
+        margin-bottom:16px;
+      }
+
+      .hero-proof-list{
+        gap:10px;
+        margin-bottom:14px;
+      }
+
+      .hero-proof-item{
+        font-size:14px;
+        line-height:1.45;
+        padding:9px 11px;
+      }
+
+      .hero-note{
+        font-size:15px;
+        margin-bottom:8px;
+        line-height:1.45;
+      }
+
+      .hero-note.shipping{
+        font-size:15px;
+        margin-bottom:14px;
+      }
+
+      .hero-left-buy{
+        min-width:220px;
+        height:58px;
+        font-size:21px;
+        margin:10px 0 10px;
+      }
+
+      .trust-badges{
+        gap:8px;
+        margin-bottom:12px;
+      }
+
+      .trust-badge{
+        font-size:11px;
+        padding:7px 10px;
+      }
+
+      .hero-trust-row{
+        margin-bottom:12px;
+      }
+
+      .hero-trust-chip{
+        font-size:12px;
+        padding:8px 10px;
+      }
+
+      .hero-stars{
+        font-size:13px;
+        letter-spacing:1px;
+      }
+
+      .hero-trust-inline{
+        font-size:13px;
+        line-height:1.4;
+      }
+
+      .hero-buy-wrap{
+        margin-top:-2px;
+        gap:4px;
+      }
+
+      .hero-buy-btn{
+        min-width:220px;
+        height:56px;
+        font-size:20px;
+      }
+
+      .hero-buy-sub{
+        font-size:11px;
+        line-height:1.15;
+        margin-bottom:2px;
+      }
+
+      .hero-discount-row{
+        gap:7px;
+        margin-top:8px;
+      }
+
+      .discount-chip{
+        font-size:10px;
+        padding:7px 9px;
+      }
+
+      .section-title,
+      .delivery-copy h2,
+      .science-title,
+      .cta-title{
+        font-size:36px;
+      }
+
+      .section-shell,
+      .review-shell,
+      .faq-shell,
+      .contact-shell{
+        padding:40px 0;
+      }
+
+      .benefit-grid,
+      .review-summary,
+      .cta-grid,
+      .delivery-grid{
+        grid-template-columns:1fr;
+      }
+
+      .benefit-grid{
+        grid-template-columns:0.9fr 1.1fr;
+        gap:10px;
+        margin-top:28px;
+        align-items:start;
+      }
+
+      .benefit-grid .benefit-card:last-child{
+        grid-column:span 1 !important;
+      }
+
+      .benefit-card{
+        min-height:auto;
+        padding:14px 10px;
+        border-radius:16px;
+      }
+
+      .benefit-head{
+        align-items:flex-start;
+        gap:7px;
+        margin-bottom:10px;
+      }
+
+      .benefit-icon{
+        width:30px;
+        height:30px;
+        font-size:14px;
+      }
+
+      .benefit-tag{
+        font-size:8px;
+        padding:5px 7px;
+        line-height:1.05;
+      }
+
+      .benefit-card h3{
+        font-size:14px;
+        line-height:1.08;
+        margin:0 0 10px;
+        word-break:break-word;
+      }
+
+      .benefit-card ul{
+        gap:8px;
+        font-size:11.5px;
+        line-height:1.28;
+      }
+
+      .benefit-card li{
+        padding-left:13px;
+      }
+
+      .benefit-card li::before{
+        font-size:11px;
+        top:0;
+      }
+
+      .section-sub,
+      .faq-sub,
+      .cta-sub,
+      .contact-sub{
+        font-size:15px;
+      }
+
+      .review-grid{
+        grid-template-columns:1fr;
+      }
+
+      .review-summary{
+        padding:22px 18px;
+        gap:18px;
+      }
+
+      .review-card{
+        min-height:auto;
+        padding:22px 18px 18px;
+      }
+
+      .review-name{
+        font-size:17px;
+      }
+
+      .review-meta{
+        font-size:13px;
+      }
+
+      .review-copy{
+        font-size:15px;
+      }
+
+      .plan-box{
+        padding:24px 18px;
+      }
+
+      .checkout{
+        font-size:18px;
+        padding:18px 18px;
+        border-radius:15px;
+      }
+
+      .plan-cards{
+        grid-template-columns:1fr;
+        gap:14px;
+      }
+
+      .plan-card{
+        padding:18px 16px 16px;
+        border-radius:18px;
+      }
+
+      .plan-card.active{
+        transform:translateY(-2px);
+      }
+
+      .selected-chip{
+        top:-10px;
+        right:12px;
+        font-size:11px;
+        padding:7px 10px;
+      }
+
+      .plan-card-name{
+        font-size:20px;
+      }
+
+      .plan-card-price{
+        font-size:22px;
+      }
+
+      .plan-card-volume{
+        font-size:15px;
+      }
+
+      .plan-card-save{
+        font-size:14px;
+      }
+
+      .checkout-summary-text{
+        font-size:14px;
+        min-height:18px;
+      }
+
+      .secure-stripe-btn{
+        font-size:22px;
+        min-height:66px;
+      }
+
+      .custom-stepper-btn{
+        width:48px;
+        height:48px;
+        flex-basis:48px;
+        font-size:24px;
+      }
+
+      .custom-litres-input{
+        font-size:16px;
+        padding:14px 14px;
+      }
+
+      .faq-box{
+        padding:12px 16px;
+      }
+
+      .contact-card{
+        padding:24px 18px;
+      }
+
+      .contact-card h3{
+        font-size:24px;
+      }
+
+      .contact-email-link,
+      .contact-social-link{
+        width:100%;
+      }
+
+      .checkout-card,
+      .quote-card{
+        padding:20px;
+      }
+
+      .science-wrap{
+        padding:34px 0 0;
+      }
+
+      .science-title{
+        font-size:32px;
+      }
+
+      .science-sub{
+        font-size:16px;
+        margin:6px 0 12px;
+      }
+
+      .table-wrap{
+        width:calc(100% - 12px);
+        margin:0 6px;
+        border-radius:14px;
+      }
+
+      table{
+        min-width:470px;
+      }
+
+      th,td{
+        padding:9px 7px;
+        font-size:11.5px;
+        line-height:1.25;
+      }
+
+      thead th{
+        font-size:9.5px;
+        letter-spacing:.03em;
+      }
+
+      .sticky-mobile-buy{
+        display:block;
+        left:10px;
+        right:10px;
+        bottom:10px;
+        padding:8px;
+        border-radius:16px;
+      }
+
+      .sticky-mobile-summary{
+        font-size:11px;
+        margin-bottom:6px;
+      }
+
+      .sticky-mobile-buy a{
+        min-height:50px;
+        font-size:20px;
+      }
+
+      .sticky-mobile-meta{
+        margin-top:6px;
+        font-size:11px;
+        line-height:1.25;
+      }
+
+      body.has-sticky-buy .site-footer{
+        padding-bottom:108px;
+      }
+
+      .hero-wrap,
+      .hero-grid,
+      .hero-card-area,
+      .hero-product-stage,
+      .hero-product-card{
+        overflow:visible !important;
+      }
+    }
+  </style>
+</head>
+<body class="has-sticky-buy">
+  <div class="topbar">⌂ Free Shipping Across NSW, VIC &amp; QLD - Fresh Raw Cow's Milk ⌂</div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <span class="brand-logo">
+          <img src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='22px';" />
+        </span>
+        <span class="brand-name">RawMilkAUS <span class="brand-flag">🇦🇺</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#top">Home</a>
+        <a href="#science">Science</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#delivery">Delivery</a>
+        <a href="#plans">Plans</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu">☰</button>
+
+      <div class="nav-cta">
+        <a class="btn primary header-buy-btn" href="#plans">Buy Now</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero-wrap hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">🇦🇺 AUSTRALIA'S PREMIUM RAW MILK</div>
+
+          <div class="hero-trust-row">
+            <div class="hero-trust-chip">
+              <span class="hero-stars">★★★★★</span>
+              <span>342 Aussies Trust This</span>
+            </div>
+          </div>
+
+          <h1>Fresh Raw<br><em>Cow's Milk</em></h1>
+          <div class="hero-sub hero-sub-punch">Primal Fuel • Live Enzymes • Ancestral Nutrition</div>
+
+          <div class="hero-proof-list">
+            <div class="hero-proof-item">🇦🇺 Straight from pasture-raised grass-fed Australian cows — no vaccines • no hormones • no antibiotics.</div>
+            <div class="hero-proof-item">Cows to glass bottle — nothing added, nothing removed.</div>
+            <div class="hero-proof-item">Delivered in 2L glass bottles with stainless steel lids — zero microplastics.</div>
+          </div>
+
+          <div class="hero-note shipping">Free shipping across NSW, VIC &amp; QLD</div>
+
+          <a class="hero-left-buy" href="#plans">BUY NOW</a>
+
+          <div class="trust-badges">
+            <div class="trust-badge">🔒 Secure Checkout</div>
+            <div class="trust-badge">🇦🇺 100% Grass-Fed Pasture-Raised Australian Cows • No Vaccines • No Hormones • No Antibiotics</div>
+            <div class="trust-badge">🚚 Free Shipping</div>
+          </div>
+
+          <div class="hero-trust-inline">🇦🇺 Trusted by Aussies • 312+ 5-star reviews • ★★★★★</div>
+        </div>
+
+        <div class="hero-card-area">
+          <div class="hero-product-stage">
+            <div class="hero-product-card">
+              <div class="hero-rating-badge">
+                <div class="rating-top">🇦🇺 342 Aussies Trust This</div>
+                <div class="rating-stars">★★★★★</div>
+                <div class="rating-sub">312+ 5-star reviews</div>
+              </div>
+
+              <div class="winner-badge">★ Winner</div>
+
+              <div class="hero-callout good callout-l1"><span>Increases Height</span></div>
+              <div class="hero-callout good callout-l2"><span>Lowers Cortisol</span></div>
+              <div class="hero-callout good callout-l3"><span>Improves Gut Health</span></div>
+
+              <div class="hero-callout good callout-r1"><span>Clears Skin &amp; Acne</span></div>
+              <div class="hero-callout good callout-r2"><span>Immunity Support</span></div>
+              <div class="hero-callout good callout-r3"><span>Microplastic Free • 100% Glass</span></div>
+
+              <div class="hero-product-image-wrap">
+                <img class="hero-product-image" src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="RawMilkAUS product" />
+              </div>
+
+              <div class="hero-buy-wrap">
+                <a class="hero-buy-btn" href="#plans">Buy Now</a>
+                <div class="hero-buy-sub">Free Shipping Across NSW, VIC &amp; QLD</div>
+              </div>
+
+              <div class="hero-discount-row">
+                <div class="discount-chip">Buy More • Save More</div>
+                <div class="discount-chip">2+ Plans = 10% Off</div>
+                <div class="discount-chip">4+ Plans = 20% Off</div>
+              </div>
+
+              <div class="hero-mobile-callouts">
+                <div class="hero-callout good"><span>Increases Height</span></div>
+                <div class="hero-callout good"><span>Lowers Cortisol</span></div>
+                <div class="hero-callout good"><span>Improves Gut Health</span></div>
+                <div class="hero-callout good"><span>Clears Skin &amp; Acne</span></div>
+                <div class="hero-callout good"><span>Immunity Support</span></div>
+                <div class="hero-callout good"><span>Microplastic Free • 100% Glass</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="science" class="science-wrap">
+      <h2 class="science-title">Raw Milk vs Pasteurised</h2>
+      <div class="science-sub">— The Brutal Truth</div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nutrient</th>
+              <th>Pasteurised</th>
+              <th>Raw Milk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Vitamin A</td><td class="bad">✕ 35% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Vitamin C</td><td class="bad">✕ 77% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Vitamin E</td><td class="bad">✕ 14% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Iron</td><td class="bad">✕ 66% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Zinc</td><td class="bad">✕ 70% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>B-Complex Vitamins</td><td class="bad">✕ 38% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Calcium</td><td class="bad">✕ 21% Reduction</td><td class="good">✓ 100% Active</td></tr>
+            <tr><td>Enzymes</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
+
+            <tr>
+              <td>Immunoglobulins</td>
+              <td class="bad">
+                <span class="desktop-only">✕ 100% Damaged (59% Destroyed)</span>
+                <span class="mobile-only">✕ 59% Destroyed</span>
+              </td>
+              <td class="good">✓ 100% Active</td>
+            </tr>
+
+            <tr>
+              <td>Whey Proteins</td>
+              <td class="bad">
+                <span class="desktop-only">✕ 100% Damaged (34% Denatured)</span>
+                <span class="mobile-only">✕ 34% Destroyed</span>
+              </td>
+              <td class="good">✓ 100% Active</td>
+            </tr>
+
+            <tr><td>Probiotics</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="benefits" class="section-shell">
+      <div class="container">
+        <div class="title-top">Why Raw Milk</div>
+        <h2 class="section-title">Primal Benefits</h2>
+        <p class="section-sub">100% Grass-Fed Pasture-Raised Australian Cows • No Vaccines • No Hormones • No Antibiotics</p>
+
+        <div class="benefit-grid">
+          <article class="benefit-card">
+            <div class="benefit-head">
+              <div class="benefit-icon">🥛</div>
+              <div class="benefit-tag">0 Microplastics</div>
+            </div>
+            <h3>Zero Microplastics. Pure Glass.</h3>
+            <ul>
+              <li><span class="bad-chip">Every other milk brand uses plastic bottles or plastic-lined packaging.</span></li>
+              <li><span class="bad-chip">Microplastics leach into fat-rich liquids like milk, which builds up in the body, blood,, organs, reproductive systems, brain tissue, pregnant women and newborn babies.</span></li>
+              <li><span class="good-chip">Our process is straight from the cow to the bottle.</span></li>
+              <li><span class="good-chip">We use 2L glass bottles with stainless steel lids. Zero plastic contact. Zero microplastics. Pure glass. </span></li>
+            </ul>
+          </article>
+
+          <article class="benefit-card">
+            <div class="benefit-head">
+              <div class="benefit-icon">↗️</div>
+              <div class="benefit-tag">Height &amp; Structure</div>
+            </div>
+            <h3>Growth Factors, Bone Density &amp; Structure</h3>
+            <ul>
+              <li><span class="bad-chip">Have you stopped growing, and want to still grow taller and improve your frame?.</span></li>
+              <li><span class="bad-chip">By drinking paesturized milk your whole life, most of the growth hormones, proteins and bone growth calcium have been destroyed from the high heat, keeping you short.</span></li>
+              <li><span class="good-chip">Raw milk is an organic superfood that contains naturally occurring IGF-1, growth factors, complete protein, calcium and phosphorus that pasteurisation significantly reduces. This supports bone growth and density, body structure, strength and recovery.</span></li>
+              <li><span class="good-chip">Raw Milk is the missing ancestral nutrition that many cultures in Netherlands, Eastern Europe and South Sudan use today, where high raw milk intake is directly linked to their populations being the highest amongst global averages. </span></li>
+            </ul>
+          </article>
+
+          <article class="benefit-card">
+            <div class="benefit-head">
+              <div class="benefit-icon">♡</div>
+              <div class="benefit-tag">Gut Restored</div>
+            </div>
+            <h3>Gut Health, Digestion &amp; Clearer Skin</h3>
+            <ul>
+              <li><span class="bad-chip">Tired of felling bloated, brain fog, poor digestion, bad skin breakouts and acne - it all comes from your gut.</span></li>
+              <li><span class="bad-chip">Pasteurised milk kills the bacteria that your gut needs to function well.</span></li>
+              <li><span class="good-chip">Raw milk is untouched and keeps the live bacteria + active lactase + intact probiotics that is healthy for your body and allows your gut to digest better and optimally function. </span></li>
+              <li><span class="good-chip">Feed your body with the right nutrients. Its like an engine. Raw milk will give you clearer face and skin, calmer disgestion, less bloat and stronger gut support.</span></li>
+            </ul>
+          </article>
+
+          <article class="benefit-card tinted">
+            <div class="benefit-head">
+              <div class="benefit-icon">🛡</div>
+              <div class="benefit-tag">Allergies Reduced</div>
+            </div>
+            <h3>Immunoglobulins &amp; Immune Support Positioning</h3>
+            <ul>
+              <li><span class="bad-chip">Dead, overprocessed milk slop is stripped of its nutrients and doesn't help your immune system do its job. </span></li>
+              <li><span class="bad-chip">Pasteurisation significantly destroys the immunoglobulins and bioactive proteins our bodies rely on to function.</span></li>
+              <li><span class="good-chip">Raw milk keeps the natural immunoglobulins, supportive milk porteins and bioactive components active as it is untouched and fully organic.</span></li>
+              <li><span class="good-chip">This keeps you healthy as raw milk is nutrient rich and naturally supportive, whilst processed milk is dead and stripped off its nutrients, keeping you sick and wrecked every flu season.</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="review-shell">
+      <div class="container">
+        <div class="title-top">Customer Reviews</div>
+        <h2 class="section-title">Real Results, Real People</h2>
+
+        <div class="review-summary">
+          <div>
+            <div class="rating-big">4.9</div>
+            <div class="stars">★★★★★</div>
+            <div class="muted">Based on 342 reviews</div>
+          </div>
+          <div>
+            <div class="bar-row"><span>★ 5</span><div class="bar"><span style="width:91%"></span></div><span>312</span></div>
+            <div class="bar-row"><span>★ 4</span><div class="bar"><span style="width:8%"></span></div><span>26</span></div>
+            <div class="bar-row"><span>★ 3</span><div class="bar"><span style="width:1.2%"></span></div><span>4</span></div>
+            <div class="bar-row"><span>★ 2</span><div class="bar zero"><span style="width:0%"></span></div><span>0</span></div>
+            <div class="bar-row"><span>★ 1</span><div class="bar zero"><span style="width:0%"></span></div><span>0</span></div>
+          </div>
+        </div>
+
+        <div class="review-grid">
+          <article class="review-card"><div class="review-top"><div class="review-name">Lachlan T.</div><div class="review-tag">Height &amp; Growth</div></div><div class="review-meta">Sydney, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“I was 5'9 and honestly had given up on growing. Started giving this to my dog and accidentally had a glass myself every day for 3 months. Shot up 2.5cm and my posture improved dramatically. The growth factors in raw milk are no joke. My joints feel incredible.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Bridie M.</div><div class="review-tag">Skin &amp; Gut Health</div></div><div class="review-meta">Brisbane, QLD · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My eczema has been gone for 6 weeks. Gone. I'd been dealing with it since childhood. Two months of raw milk and my skin is clearer than it's ever been in my life. The probiotics are doing something conventional medicine never could.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Josh R.</div><div class="review-tag">Child Growth &amp; Allergies</div></div><div class="review-meta">Melbourne, VIC · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My young one is 14 and has grown 4cm in 3 months since we started. His allergies are also completely gone — used to need antihistamines daily. The immunoglobulins in this are doing exactly what the research says. Absolute game changer.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Tamara K.</div><div class="review-tag">Gut Health</div></div><div class="review-meta">Gold Coast, QLD · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“I had IBS for 7 years. Doctors had no answers. Six weeks on raw milk and I can eat anything without bloating. The live enzymes are doing what they're supposed to — actually digesting food properly. I'm blown away.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Marcus W.</div><div class="review-tag">Immunity &amp; Muscle</div></div><div class="review-meta">Newcastle, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My immune system was a mess — sick every month. Haven't been sick once in 4 months since starting. The immunoglobulins are the real deal. Also put on 3kg of muscle with the same gym routine. The whey protein in raw form is completely different.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Chloe B.</div><div class="review-tag">Child Height Growth</div></div><div class="review-meta">Adelaide, SA · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My son grew 3cm in 8 weeks. He's 16 and I thought he was done growing. The growth hormones in this milk are real. His energy levels are also through the roof compared to before. We'll never go back to pasteurised garbage.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Daniel F.</div><div class="review-tag">Allergy Relief</div></div><div class="review-meta">Perth, WA · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“Seasonal allergies destroyed my quality of life every spring. This is my first spring in 12 years without antihistamines. The anti-inflammatory properties are insane. Also sleeping better than I have in years.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Natasha P.</div><div class="review-tag">Height &amp; Skin</div></div><div class="review-meta">Sydney, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“I'm 22 and gained 1.5cm in height. Not even kidding. Combined with the clearest skin I've had since primary school, I'm a full convert. The glass bottles are a bonus — no plastic taste, no nothing. Totally pure.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Riley O.</div><div class="review-tag">Energy &amp; Digestion</div></div><div class="review-meta">Canberra, ACT · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My digestion completely transformed. Used to have brain fog all day and now I wake up clear-headed. The energy difference is huge — the B vitamins and live enzymes actually reaching your bloodstream is not the same as pasteurised. Nothing is.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Sophie H.</div><div class="review-tag">Respiratory &amp; Immunity</div></div><div class="review-meta">Wollongong, NSW · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My daughter's asthma has reduced by at least 70%. Her specialist is confused. I know exactly why — the immunoglobulins and anti-inflammatory properties in raw milk. We've been ordering 20L a month for 3 months and won't stop.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Tom A.</div><div class="review-tag">Bone &amp; Height</div></div><div class="review-meta">Brisbane, QLD · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“Grew 2cm at 20. People told me I was done. The calcium bioavailability in raw milk vs pasteurised is incomparable. My bone density has genuinely improved based on recent scans. This product is the real deal.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Emma S.</div><div class="review-tag">Joint &amp; Gut Health</div></div><div class="review-meta">Melbourne, VIC · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“Chronic joint pain since my twenties. Gone after 6 weeks. The zinc and anti-inflammatory factors are doing what no supplement ever did. Also lost the belly bloat I thought was just how I was built! It was just dead pasteurised milk all along.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Aaron C.</div><div class="review-tag">Child Growth</div></div><div class="review-meta">Sunshine Coast, QLD · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My boy is 13 and hit a growth spurt nobody expected. 5cm in 10 weeks. His football coach asked what we changed. Raw milk, mate. The growth factors and bioavailable protein are doing exactly what Pottenger's research showed.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Isabella M.</div><div class="review-tag">Skin &amp; Gut</div></div><div class="review-meta">Sydney, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“Acne I'd had for 6 years cleared up in 5 weeks. My gut must have been completely dysbiotic — the probiotics and enzymes in raw milk restored something that years of skincare never touched. Game changing for my confidence.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Callum D.</div><div class="review-tag">Height Growth</div></div><div class="review-meta">Geelong, VIC · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“This sounds crazy but I grew at 21. 1.8cm. I had my height measured twice to confirm. The HGH support factors and calcium absorption in raw milk is nothing like the heat-damaged version. Also zero hay fever this season.”</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="delivery" class="section-shell">
+      <div class="container delivery-grid">
+        <div class="delivery-copy">
+          <div class="title-top" style="text-align:left; margin-bottom:14px">Delivery</div>
+          <h2>Weekly Chilled Delivery</h2>
+          <div class="mini">Free Shipping Across NSW, VIC &amp; QLD</div>
+          <p>Fresh from licensed Australian dairies with 100% grass fed pasture raised cows. Cold-chain guaranteed from farm to your door. Glass bottles only — because your milk should never touch plastic.</p>
+          <div class="delivery-feats">
+            <div class="delivery-feat"><i>🚚</i><span>Free shipping on all orders</span></div>
+            <div class="delivery-feat"><i>🌡</i><span>Cold-chain guaranteed</span></div>
+            <div class="delivery-feat"><i>🥛</i><span>Glass bottles only</span></div>
+          </div>
+        </div>
+
+        <div class="delivery-card">
+          <div class="label">
+            <strong>Licensed Australian Dairies</strong>
+            <div>Free Shipping • NSW • VIC • QLD</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans" class="section-shell" style="padding-top:78px">
+      <div class="container">
+        <div class="title-top">Subscription Plans</div>
+        <h2 class="section-title">Monthly Plans (Delivered Weekly)</h2>
+        <p class="section-sub">Choose your monthly volume below. The prices shown are per month with weekly deliveries included.</p>
+
+        <div class="plan-box plan-cards-box">
+          <div class="plan-title">🥛 <span>Select Your Monthly Plan</span></div>
+
+          <div class="plan-cards" id="planCards">
+            <button type="button" class="plan-card" data-plan="20L / month — 5L weekly — Starter — $200" data-name="Starter" data-monthly="20" data-weekly="5" data-price="200" data-type="standard">
+              <div class="selected-chip">✓ Selected</div>
+              <div class="plan-card-top">
+                <div class="plan-card-name">Starter</div>
+                <div class="plan-card-price"><span class="plan-card-new-price">$200</span></div>
+              </div>
+              <div class="plan-card-volume">20L / month • 5L weekly</div>
+              <div class="plan-card-save">Standard entry plan</div>
+            </button>
+
+            <button type="button" class="plan-card" data-plan="40L / month — 10L weekly — For 2 — $380 — Save 5%" data-name="For 2" data-monthly="40" data-weekly="10" data-price="380" data-type="standard">
+              <div class="selected-chip">✓ Selected</div>
+              <div class="plan-card-top">
+                <div class="plan-card-name">For 2</div>
+                <div class="plan-card-price"><span class="plan-card-old-price">$400</span><span class="plan-card-new-price">$380</span></div>
+              </div>
+              <div class="plan-card-volume">40L / month • 10L weekly</div>
+              <div class="plan-card-save">5% OFF</div>
+              <div class="plan-card-save-amount">Save $20</div>
+            </button>
+
+            <button type="button" class="plan-card most-popular" data-plan="60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 — Save 10%" data-name="Most Popular" data-monthly="60" data-weekly="15" data-price="540" data-type="standard">
+              <div class="plan-badge">⭐ Most Popular ⭐</div>
+              <div class="selected-chip">✓ Selected</div>
+              <div class="plan-card-top">
+                <div class="plan-card-name">Most Popular</div>
+                <div class="plan-card-price"><span class="plan-card-old-price">$600</span><span class="plan-card-new-price">$540</span></div>
+              </div>
+              <div class="plan-card-volume">60L / month • 15L weekly</div>
+              <div class="plan-card-save">10% OFF</div>
+              <div class="plan-card-save-amount">Save $60</div>
+            </button>
+
+            <button type="button" class="plan-card" data-plan="90L / month — 22.5L weekly — Small Household — $765 — Save 15%" data-name="Small Household" data-monthly="90" data-weekly="22.5" data-price="765" data-type="standard">
+              <div class="selected-chip">✓ Selected</div>
+              <div class="plan-card-top">
+                <div class="plan-card-name">Small Household</div>
+                <div class="plan-card-price"><span class="plan-card-old-price">$900</span><span class="plan-card-new-price">$765</span></div>
+              </div>
+              <div class="plan-card-volume">90L / month • 22.5L weekly</div>
+              <div class="plan-card-save">15% OFF</div>
+              <div class="plan-card-save-amount">Save $135</div>
+            </button>
+
+            <button type="button" class="plan-card" data-plan="120L / month — 30L weekly — Medium Household — $960 — Save 20%" data-name="Medium Household" data-monthly="120" data-weekly="30" data-price="960" data-type="standard">
+              <div class="selected-chip">✓ Selected</div>
+              <div class="plan-card-top">
+                <div class="plan-card-name">Medium Household</div>
+                <div class="plan-card-price"><span class="plan-card-old-price">$1200</span><span class="plan-card-new-price">$960</span></div>
+              </div>
+              <div class="plan-card-volume">120L / month • 30L weekly</div>
+              <div class="plan-card-save">20% OFF</div>
+              <div class="plan-card-save-amount">Save $240</div>
+            </button>
+
+            <button type="button" class="plan-card" data-plan="150L / month — 37.5L weekly — Large Household — $1125 — Save 25%" data-name="Large Household" data-monthly="150" data-weekly="37.5" data-price="1125" data-type="standard">
+              <div class="selected-chip">✓ Selected</div>
+              <div class="plan-card-top">
+                <div class="plan-card-name">Large Household</div>
+                <div class="plan-card-price"><span class="plan-card-old-price">$1500</span><span class="plan-card-new-price">$1125</span></div>
+              </div>
+              <div class="plan-card-volume">150L / month • 37.5L weekly</div>
+              <div class="plan-card-save">25% OFF</div>
+              <div class="plan-card-save-amount">Save $375</div>
+            </button>
+
+            <button type="button" class="plan-card custom-card" data-plan="Bulk / Custom Orders — Save 30%" data-name="Bulk / Custom Orders" data-type="bulk">
+              <div class="selected-chip">✓ Selected</div>
+              <div class="plan-card-top">
+                <div class="plan-card-name">Bulk / Custom Orders</div>
+                <div class="plan-card-price"><span class="plan-card-old-price">Standard+</span><span class="plan-card-new-price">30% OFF</span></div>
+              </div>
+              <div class="plan-card-volume">151L–500L / month</div>
+              <div class="plan-card-save">Best for very large orders</div>
+              <div class="plan-card-save-amount">Save 30%</div>
+            </button>
+          </div>
+
+          <div class="plan-helper-text">All prices below are monthly prices. Your milk is still delivered weekly.</div>
+
+          <div class="custom-litres-wrap" id="customLitresWrap">
+            <label class="custom-litres-label" for="customLitresInput">For bulk / custom orders, choose your litres per month</label>
+            <div class="custom-stepper">
+              <button type="button" class="custom-stepper-btn" id="customMinusBtn">−</button>
+              <input class="custom-litres-input" id="customLitresInput" type="number" min="151" max="500" step="1" value="151" inputmode="numeric" />
+              <button type="button" class="custom-stepper-btn" id="customPlusBtn">+</button>
+            </div>
+          </div>
+
+          <div class="selected-plan-box selected-plan-box-main">
+            Selected plan: <span id="selectedPlanText">No plan selected yet</span>
+          </div>
+
+          <div class="checkout-summary-text" id="checkoutSummaryText">Select a plan to continue</div>
+          <button class="checkout secure-stripe-btn" id="goToCheckoutBtn">$0 CHECKOUT NOW</button>
+          <div class="plan-foot">🥛 Delivered weekly in 2L glass bottles • Free shipping across NSW, VIC &amp; QLD • 100% Grass-Fed Pasture-Raised Australian Cows • No Vaccines • No Hormones • No Antibiotics</div>
+        </div>
+
+        <div class="bulk-savings">
+          <div class="bulk-card">
+            <h4>Starter</h4>
+            <div class="bulk-small">20L / month</div>
+            <div class="bulk-save">Entry plan</div>
+          </div>
+
+          <div class="bulk-card">
+            <h4>★ Most Popular ★</h4>
+            <div class="bulk-small">60L / month</div>
+            <div class="bulk-save">10% OFF</div>
+          </div>
+
+          <div class="bulk-card">
+            <h4>Bulk / Custom</h4>
+            <div class="bulk-small">151L–500L / month</div>
+            <div class="bulk-save">30% OFF</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq-shell">
+      <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="faq-sub">Everything you need to know about raw milk, delivery, and your subscription.</p>
+
+        <div class="faq-box">
+          <div class="faq-item"><button class="faq-question" type="button"><span>What kind of cows produce your milk?</span><span>+</span></button><div class="faq-answer">Our milk comes from 100% pasture raised grass-fed Australian dairy herds, selected for premium milk quality and consistency.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>Is raw milk legal in Australia?</span><span>+</span></button><div class="faq-answer">Raw cow's milk sold for human consumption is illegal in Australia. Our product is sold for pet use only and labelled accordingly.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>What makes raw milk different from pasteurised milk?</span><span>+</span></button><div class="faq-answer">Pasteurisation uses heat to kill bacteria and extend shelf life, but it also changes delicate proteins, enzymes, bacteria and other bioactive compounds. Raw milk appeals to customers who want a more natural, less processed whole-food product.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>How is your raw milk kept safe during delivery?</span><span>+</span></button><div class="faq-answer">We use a strict cold-chain process from the dairy to your door. Milk is collected fresh, immediately refrigerated, packed with premium cold gel packs, and delivered in an insulated container. Our glass bottles are sanitised between each delivery cycle.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>Why do you use glass bottles and stainless steel lids?</span><span>+</span></button><div class="faq-answer">Plastic leaches microplastics and BPA/BPS into liquids — especially fats like milk. We use 2L glass bottles with stainless steel lids so your milk never touches plastic at any point.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>What is the minimum order?</span><span>+</span></button><div class="faq-answer">Our minimum subscription is 20L per month with weekly delivery. We offer plans from 20L up to 150L per month, plus larger custom bulk orders.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>Which areas do you deliver to?</span><span>+</span></button><div class="faq-answer">We currently service major areas across NSW, VIC and QLD. If you're outside these states or in a remote area, please request a custom quote.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>How fresh is the milk when it arrives?</span><span>+</span></button><div class="faq-answer">Our milk is collected fresh and typically arrives at your door within 24 hours of collection. Shelf life is usually 7–10 days refrigerated.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>Do I need to shake the bottle before use?</span><span>+</span></button><div class="faq-answer">Yes. Raw milk is not homogenised, so the cream naturally rises to the top. Gently invert the bottle a few times before use.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>How do I store raw milk?</span><span>+</span></button><div class="faq-answer">Keep raw milk refrigerated at all times below 4°C. It is best consumed while fresh and kept cold. Our glass bottles are reusable and collected on your next delivery.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span>Can I cancel or change my plan anytime?</span><span>+</span></button><div class="faq-answer">Yes. You can upgrade, downgrade, pause, or cancel your subscription at any time with at least 72 hours notice before your next scheduled delivery.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-shell">
+      <div class="container">
+        <div class="title-top">Contact Us</div>
+        <h2 class="section-title">Still Have Questions?</h2>
+        <p class="contact-sub">Need help with your plan, delivery area, or anything else? Reach out directly and follow our journey on Instagram and TikTok.</p>
+
+        <div class="contact-card">
+          <h3>We’d Love To Hear From You</h3>
+          <p>For any questions about your order, subscription, delivery, or custom requests, contact us anytime below.</p>
+
+          <div class="social-heading">Follow Our Journey on Instagram &amp; TikTok</div>
+
+          <div class="contact-socials">
+            <a class="contact-social-link" href="https://www.instagram.com/RawMilkAUS" target="_blank" rel="noopener noreferrer">Instagram — @RawMilkAUS</a>
+            <a class="contact-social-link" href="https://www.tiktok.com/@RawMilkAUS" target="_blank" rel="noopener noreferrer">TikTok — @RawMilkAUS</a>
+          </div>
+
+          <div class="quote-card">
+            <div class="mini-heading"><span>Contact Us With Any Questions</span></div>
+            <form id="contactForm" action="https://formspree.io/f/mbdppbne" method="POST">
+              <input type="text" name="full_name" placeholder="Full Name" required>
+              <input type="email" name="email" placeholder="Email Address" required>
+              <input type="text" name="location" placeholder="Suburb / Postcode" required>
+
+              <select name="plan" class="quote-plan-select" required>
+                <option selected disabled>Select a plan...</option>
+                <option value="20L / month — 5L weekly — Starter — $200">20L / month — 5L weekly — Starter — $200</option>
+                <option value="40L / month — 10L weekly — For 2 — $380 — Save 5%">40L / month — 10L weekly — For 2 — $380 — Save 5%</option>
+                <option value="60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 — Save 10%">60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 — Save 10%</option>
+                <option value="90L / month — 22.5L weekly — Small Household — $765 — Save 15%">90L / month — 22.5L weekly — Small Household — $765 — Save 15%</option>
+                <option value="120L / month — 30L weekly — Medium Household — $960 — Save 20%">120L / month — 30L weekly — Medium Household — $960 — Save 20%</option>
+                <option value="150L / month — 37.5L weekly — Large Household — $1125 — Save 25%">150L / month — 37.5L weekly — Large Household — $1125 — Save 25%</option>
+                <option value="Bulk / Custom Orders — Save 30%">Bulk / Custom Orders — Save 30%</option>
+              </select>
+
+              <textarea name="notes" placeholder="Additional notes (delivery preference, custom volume, questions, etc.)"></textarea>
+              <input type="hidden" name="_subject" value="New RawMilkAUS Contact Message">
+              <button type="submit" class="quote-submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="checkout" class="cta-shell">
+      <div class="container">
+        <h2 class="cta-title">Ready for Primal Fuel?</h2>
+        <p class="cta-sub">Secure your weekly delivery</p>
+
+        <div class="cta-grid">
+          <div class="checkout-card">
+            <div class="mini-heading"><i>💳</i><span>Quick Checkout</span></div>
+
+            <div class="selected-plan-box">
+              Selected plan: <span id="selectedPlanTextCheckout">No plan selected yet</span>
+            </div>
+
+            <button type="button" class="pay-btn paypal" id="paypalCheckoutBtn">
+              <span class="icon">P</span><span>Pay with PayPal</span>
+            </button>
+
+            <button type="button" class="pay-btn stripe" id="stripeCheckoutBtn">
+              <span class="icon">S</span><span>Pay with Stripe</span>
+            </button>
+
+            <div class="checkout-note">
+              Select a plan above, then click your preferred checkout option.
+            </div>
+          </div>
+
+          <div class="quote-card">
+            <div class="mini-heading"><span>Request a Custom Quote</span></div>
+            <form id="customQuoteForm" action="https://formspree.io/f/mbdppbne" method="POST">
+              <input type="text" name="full_name" placeholder="Full Name" required>
+              <input type="email" name="email" placeholder="Email Address" required>
+              <input type="text" name="location" placeholder="Suburb / Postcode" required>
+
+              <select name="plan" class="quote-plan-select" required>
+                <option selected disabled>Select a plan...</option>
+                <option value="20L / month — 5L weekly — Starter — $200">20L / month — 5L weekly — Starter — $200</option>
+                <option value="40L / month — 10L weekly — For 2 — $380 — Save 5%">40L / month — 10L weekly — For 2 — $380 — Save 5%</option>
+                <option value="60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 — Save 10%">60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 — Save 10%</option>
+                <option value="90L / month — 22.5L weekly — Small Household — $765 — Save 15%">90L / month — 22.5L weekly — Small Household — $765 — Save 15%</option>
+                <option value="120L / month — 30L weekly — Medium Household — $960 — Save 20%">120L / month — 30L weekly — Medium Household — $960 — Save 20%</option>
+                <option value="150L / month — 37.5L weekly — Large Household — $1125 — Save 25%">150L / month — 37.5L weekly — Large Household — $1125 — Save 25%</option>
+                <option value="Bulk / Custom Orders — Save 30%">Bulk / Custom Orders — Save 30%</option>
+              </select>
+
+              <textarea name="notes" placeholder="Additional notes (delivery preference, custom volume, questions, etc.)"></textarea>
+              <input type="hidden" name="_subject" value="New RawMilkAUS Custom Quote Request">
+              <button type="submit" class="quote-submit">Submit Quote Request</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="logo-row">
+          <span class="foot-logo">
+            <img src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄'; this.parentNode.style.fontSize='18px';">
+          </span>
+          <span>RawMilkAUS 🇦🇺</span>
+        </div>
+
+        <div class="foot-links">
+          <span>100% Grass-Fed Pasture-Raised Australian Cows • No Vaccines • No Hormones • No Antibiotics</span>
+        </div>
+
+        <div class="footer-socials">
+          <a class="footer-social-link" href="https://www.instagram.com/RawMilkAUS" target="_blank" rel="noopener noreferrer">Instagram — @RawMilkAUS</a>
+          <a class="footer-social-link" href="https://www.tiktok.com/@RawMilkAUS" target="_blank" rel="noopener noreferrer">TikTok — @RawMilkAUS</a>
+        </div>
+
+        <div class="foot-divider"></div>
+
+        <div class="foot-copy">
+          <div>Free shipping across NSW, VIC &amp; QLD. This product is sold strictly for pet use only. Consult a qualified professional for feeding decisions.</div>
+          <div class="copyright">©️ 2026 RawMilkAUS. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="sticky-mobile-buy">
+    <div class="sticky-mobile-summary" id="mobileStickySummary">Select a plan to continue</div>
+    <a href="#plans" id="mobileStickyBtn">BUY NOW</a>
+    <div class="sticky-mobile-meta">🔒 Secure Checkout • 🇦🇺 Australian Made • 🚚 Free Shipping NSW, VIC &amp; QLD</div>
+  </div>
+
+  <script>
+    const STRIPE_LINKS = {
+      starter: "https://buy.stripe.com/3cI00j85o6Y714Z1XD28800",
+      for2: "https://buy.stripe.com/6oUeVd4Tcaaj00VgSx28801",
+      popular: "https://buy.stripe.com/dRm6oH85ocirdRLbyd28802",
+      small: "https://buy.stripe.com/eVqfZh71kben8xr0Tz28803",
+      medium: "https://buy.stripe.com/8x200jfxQ5U37tneKp28804",
+      large: "https://buy.stripe.com/14A9AT4Tceqz00VfOt28805",
+      bulk: "https://buy.stripe.com/28EaEXfxQcir14ZdGl28806"
+    };
+
+    const PAYPAL_BASE_URL = "";
+    const quotePlanSelects = document.querySelectorAll('.quote-plan-select');
+    const customLitresWrap = document.getElementById('customLitresWrap');
+    const customLitresInput = document.getElementById('customLitresInput');
+    const customMinusBtn = document.getElementById('customMinusBtn');
+    const customPlusBtn = document.getElementById('customPlusBtn');
+    const selectedPlanText = document.getElementById('selectedPlanText');
+    const selectedPlanTextCheckout = document.getElementById('selectedPlanTextCheckout');
+    const checkoutSummaryText = document.getElementById('checkoutSummaryText');
+    const mobileStickySummary = document.getElementById('mobileStickySummary');
+    const mobileStickyBtn = document.getElementById('mobileStickyBtn');
+    const goToCheckoutBtn = document.getElementById('goToCheckoutBtn');
+    const paypalCheckoutBtn = document.getElementById('paypalCheckoutBtn');
+    const stripeCheckoutBtn = document.getElementById('stripeCheckoutBtn');
+    const planCards = document.querySelectorAll('.plan-card');
+
+    let selectedCard = null;
+
+    function clampBulkLitres(value){
+      const numeric = parseInt(value, 10);
+      if(isNaN(numeric)) return 151;
+      return Math.min(500, Math.max(151, numeric));
+    }
+
+    function formatCurrency(value){
+      return '$' + Number(value).toLocaleString('en-AU');
+    }
+
+    function getBulkLitres(){
+      return clampBulkLitres(customLitresInput.value);
+    }
+
+    function getStripeUrl(meta){
+      if(!meta) return '';
+      if(meta.type === 'bulk') return STRIPE_LINKS.bulk;
+      if(meta.monthly === '20') return STRIPE_LINKS.starter;
+      if(meta.monthly === '40') return STRIPE_LINKS.for2;
+      if(meta.monthly === '60') return STRIPE_LINKS.popular;
+      if(meta.monthly === '90') return STRIPE_LINKS.small;
+      if(meta.monthly === '120') return STRIPE_LINKS.medium;
+      if(meta.monthly === '150') return STRIPE_LINKS.large;
+      return '';
+    }
+
+    function getSelectedPlanMeta(){
+      if(!selectedCard) return null;
+
+      const type = selectedCard.dataset.type || 'standard';
+
+      if(type === 'bulk'){
+        const litres = getBulkLitres();
+        const price = litres * 7;
+        return {
+          rawPlan: selectedCard.dataset.plan,
+          checkoutPlan: 'Bulk / Custom Orders',
+          type: 'bulk',
+          litres: litres,
+          monthly: String(litres),
+          weekly: '',
+          price: price,
+          summary: litres + 'L monthly',
+          selectedText: 'Bulk / Custom Orders • ' + litres + 'L monthly • ' + formatCurrency(price),
+          stripeUrl: STRIPE_LINKS.bulk
+        };
+      }
+
+      const monthly = selectedCard.dataset.monthly;
+      const weekly = selectedCard.dataset.weekly;
+      const price = Number(selectedCard.dataset.price);
+      const meta = {
+        rawPlan: selectedCard.dataset.plan,
+        checkoutPlan: selectedCard.dataset.plan,
+        type: 'standard',
+        litres: '',
+        monthly: monthly,
+        weekly: weekly,
+        price: price,
+        summary: monthly + 'L monthly • ' + weekly + 'L weekly',
+        selectedText: monthly + 'L monthly • ' + weekly + 'L weekly • ' + formatCurrency(price)
+      };
+      meta.stripeUrl = getStripeUrl(meta);
+      return meta;
+    }
+
+    function syncPlanSelects(value){
+      quotePlanSelects.forEach(function(select){
+        const matchingOption = Array.from(select.options).find(function(option){
+          return option.value === value;
+        });
+        if(matchingOption){
+          select.value = value;
+        }
+      });
+    }
+
+    function refreshPlanUI(){
+      const meta = getSelectedPlanMeta();
+
+      planCards.forEach(function(card){
+        card.classList.toggle('active', card === selectedCard);
+      });
+
+      if(!meta){
+        selectedPlanText.textContent = 'No plan selected yet';
+        selectedPlanTextCheckout.textContent = 'No plan selected yet';
+        checkoutSummaryText.textContent = 'Select a plan to continue';
+        mobileStickySummary.textContent = 'Select a plan to continue';
+        goToCheckoutBtn.textContent = '$0 CHECKOUT NOW';
+        mobileStickyBtn.textContent = 'BUY NOW';
+        customLitresWrap.classList.remove('show');
+        return;
+      }
+
+      const selectedCheckoutLabel = formatCurrency(meta.price) + ' CHECKOUT NOW';
+
+      selectedPlanText.textContent = meta.selectedText;
+      selectedPlanTextCheckout.textContent = meta.selectedText;
+      checkoutSummaryText.textContent = meta.summary;
+      mobileStickySummary.textContent = meta.summary;
+      goToCheckoutBtn.textContent = selectedCheckoutLabel;
+      mobileStickyBtn.textContent = selectedCheckoutLabel;
+
+      customLitresWrap.classList.toggle('show', meta.type === 'bulk');
+
+      if(meta.type === 'standard'){
+        syncPlanSelects(meta.rawPlan);
+      } else {
+        syncPlanSelects('Bulk / Custom Orders — Save 30%');
+      }
+    }
+
+    function updateSelectedPlan(card){
+      if(!card) return;
+      selectedCard = card;
+      refreshPlanUI();
+    }
+
+    function openCheckout(mode){
+      const meta = getSelectedPlanMeta();
+
+      if(!meta){
+        alert('Please select a plan first.');
+        document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      if(mode === 'paypal'){
+        if(!PAYPAL_BASE_URL || !PAYPAL_BASE_URL.includes('http')){
+          alert('PayPal link not added yet.');
+          return;
+        }
+        window.open(PAYPAL_BASE_URL, '_blank');
+        return;
+      }
+
+      const stripeUrl = meta.stripeUrl;
+      if(!stripeUrl || !stripeUrl.includes('http')){
+        alert('Stripe link missing for this plan.');
+        return;
+      }
+
+      window.location.href = stripeUrl;
+    }
+
+    planCards.forEach(function(card){
+      card.addEventListener('click', function(){
+        updateSelectedPlan(this);
+      });
+    });
+
+    if(customMinusBtn){
+      customMinusBtn.addEventListener('click', function(){
+        customLitresInput.value = clampBulkLitres(getBulkLitres() - 1);
+        if(selectedCard && selectedCard.dataset.type === 'bulk'){
+          refreshPlanUI();
+        }
+      });
+    }
+
+    if(customPlusBtn){
+      customPlusBtn.addEventListener('click', function(){
+        customLitresInput.value = clampBulkLitres(getBulkLitres() + 1);
+        if(selectedCard && selectedCard.dataset.type === 'bulk'){
+          refreshPlanUI();
+        }
+      });
+    }
+
+    if(customLitresInput){
+      customLitresInput.addEventListener('input', function(){
+        this.value = this.value.replace(/[^\d]/g, '');
+        if(selectedCard && selectedCard.dataset.type === 'bulk'){
+          refreshPlanUI();
+        }
+      });
+
+      customLitresInput.addEventListener('blur', function(){
+        this.value = clampBulkLitres(this.value);
+        if(selectedCard && selectedCard.dataset.type === 'bulk'){
+          refreshPlanUI();
+        }
+      });
+    }
+
+    goToCheckoutBtn.addEventListener('click', function(){
+      openCheckout('stripe');
+    });
+
+    if(mobileStickyBtn){
+      mobileStickyBtn.addEventListener('click', function(event){
+        if(!selectedCard){
+          return;
+        }
+        event.preventDefault();
+        openCheckout('stripe');
+      });
+    }
+
+    paypalCheckoutBtn.addEventListener('click', function(){
+      openCheckout('paypal');
+    });
+
+    stripeCheckoutBtn.addEventListener('click', function(){
+      openCheckout('stripe');
+    });
+
+    document.querySelectorAll('.faq-question').forEach(function(button){
+      button.addEventListener('click', function(){
+        var item = this.parentElement;
+        var isActive = item.classList.contains('active');
+
+        document.querySelectorAll('.faq-item').forEach(function(faq){
+          faq.classList.remove('active');
+          faq.querySelector('.faq-question span:last-child').textContent = '+';
+        });
+
+        if(!isActive){
+          item.classList.add('active');
+          this.querySelector('span:last-child').textContent = '−';
+        }
+      });
+    });
+
+    var firstFaq = document.querySelector('.faq-item');
+    if(firstFaq){
+      firstFaq.classList.add('active');
+      firstFaq.querySelector('.faq-question span:last-child').textContent = '−';
+    }
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.querySelector('.nav-links');
+
+    if(mobileMenuBtn && navLinks){
+      mobileMenuBtn.addEventListener('click', function(){
+        navLinks.classList.toggle('show');
+      });
+
+      navLinks.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click', function(){
+          navLinks.classList.remove('show');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
