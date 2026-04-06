@@ -3032,10 +3032,6 @@ header{
               Selected plan: <span id="selectedPlanTextCheckout">No plan selected yet</span>
             </div>
 
-            <button type="button" class="pay-btn paypal" id="paypalCheckoutBtn">
-              <span class="icon">P</span><span>Pay with PayPal</span>
-            </button>
-
             <button type="button" class="pay-btn stripe" id="stripeCheckoutBtn">
               <span class="icon">S</span><span>Pay with Stripe</span>
             </button>
@@ -3117,7 +3113,6 @@ header{
       bulk: "https://buy.stripe.com/28EaEXfxQcir14ZdGl28806"
     };
 
-    const PAYPAL_BASE_URL = "";
     const quotePlanSelects = document.querySelectorAll('.quote-plan-select');
     const customLitresWrap = document.getElementById('customLitresWrap');
     const customLitresInput = document.getElementById('customLitresInput');
@@ -3129,7 +3124,6 @@ header{
     const mobileStickySummary = document.getElementById('mobileStickySummary');
     const mobileStickyBtn = document.getElementById('mobileStickyBtn');
     const goToCheckoutBtn = document.getElementById('goToCheckoutBtn');
-    const paypalCheckoutBtn = document.getElementById('paypalCheckoutBtn');
     const stripeCheckoutBtn = document.getElementById('stripeCheckoutBtn');
     const planCards = document.querySelectorAll('.plan-card');
 
@@ -3263,13 +3257,7 @@ header{
         return;
       }
 
-      if(mode === 'paypal'){
-        if(!PAYPAL_BASE_URL || !PAYPAL_BASE_URL.includes('http')){
-          alert('PayPal link not added yet.');
-          return;
-        }
-        window.open(PAYPAL_BASE_URL, '_blank');
-        return;
+
       }
 
       const stripeUrl = meta.stripeUrl;
@@ -3335,9 +3323,6 @@ header{
       });
     }
 
-    paypalCheckoutBtn.addEventListener('click', function(){
-      openCheckout('paypal');
-    });
 
     stripeCheckoutBtn.addEventListener('click', function(){
       openCheckout('stripe');
