@@ -3007,6 +3007,32 @@
       <div class="container">
           </div>
 
+          <div class="quote-card">
+            <div class="mini-heading"><span>Request a Custom Quote</span></div>
+            <form id="customQuoteForm" action="https://formspree.io/f/mbdppbne" method="POST">
+              <input type="text" name="full_name" placeholder="Full Name" required>
+              <input type="email" name="email" placeholder="Email Address" required>
+              <input type="text" name="location" placeholder="Suburb / Postcode" required>
+
+              <select name="plan" class="quote-plan-select" required>
+                <option selected disabled>Select a plan...</option>
+                <option value="20L / month — 5L weekly — Starter — $200">20L / month — 5L weekly — Starter — $200</option>
+                <option value="40L / month — 10L weekly — For 2 — $380 — Save 5%">40L / month — 10L weekly — For 2 — $380 — Save 5%</option>
+                <option value="60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 — Save 10%">60L / month — 15L weekly — ⭐ Most Popular ⭐ — $540 — Save 10%</option>
+                <option value="90L / month — 22.5L weekly — Small Household — $765 — Save 15%">90L / month — 22.5L weekly — Small Household — $765 — Save 15%</option>
+                <option value="120L / month — 30L weekly — Medium Household — $960 — Save 20%">120L / month — 30L weekly — Medium Household — $960 — Save 20%</option>
+                <option value="150L / month — 37.5L weekly — Large Household — $1125 — Save 25%">150L / month — 37.5L weekly — Large Household — $1125 — Save 25%</option>
+                <option value="Bulk / Custom Orders — Save 30%">Bulk / Custom Orders — Save 30%</option>
+              </select>
+
+              <textarea name="notes" placeholder="Additional notes (delivery preference, custom volume, questions, etc.)"></textarea>
+              <input type="hidden" name="_subject" value="New RawMilkAUS Custom Quote Request">
+              <button type="submit" class="quote-submit">Submit Quote Request</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
     </section>
 
     <footer class="site-footer">
