@@ -66,7 +66,7 @@
     header{
       position:sticky;
       top:0;
-      z-index:1000;
+      z-index:100;
       background:rgba(244,241,234,.96);
       backdrop-filter:blur(10px);
       border-bottom:1px solid var(--line);
@@ -1118,6 +1118,8 @@
       cursor:pointer;
     }
 
+    }
+
     .pay-btn.stripe{
       background:linear-gradient(180deg, #6f68ff 0%, #5d5af3 100%);
       box-shadow:0 14px 26px rgba(99,91,255,.24);
@@ -1956,14 +1958,6 @@
         gap:12px;
         flex-direction:column;
         align-items:flex-start;
-        background:rgba(244,241,234,.98);
-        border-top:1px solid var(--line);
-        position:absolute;
-        top:100%;
-        left:0;
-        right:0;
-        z-index:999;
-        box-shadow:0 10px 20px rgba(0,0,0,.1);
       }
 
       .nav-links.show{
@@ -2533,7 +2527,7 @@
         <span class="brand-name">RawMilkAUS <span class="brand-flag">🇦🇺</span></span>
       </a>
 
-      <nav class="nav-links" id="navLinks">
+      <nav class="nav-links">
         <a href="#top">Home</a>
         <a href="#science">Science</a>
         <a href="#benefits">Benefits</a>
@@ -3028,8 +3022,7 @@
             <div class="checkout-note">
               Select a plan above, then click your preferred checkout option.
             </div>
-          </div>
-        </div>
+      
     </section>
 
     <footer class="site-footer">
@@ -3067,23 +3060,6 @@
   </div>
 
 <script>
-  // Mobile dropdown menu fix
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const navLinks = document.getElementById('navLinks');
-
-  if (mobileMenuBtn && navLinks) {
-    mobileMenuBtn.addEventListener('click', function() {
-      navLinks.classList.toggle('show');
-    });
-
-    navLinks.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        navLinks.classList.remove('show');
-      });
-    });
-  }
-
-  // Your original script starts here - unchanged
   const STRIPE_LINKS = {
     starter: "https://buy.stripe.com/3cI00j85o6Y714Z1XD28800",
     for2: "https://buy.stripe.com/6oUeVd4Tcaaj00VgSx28801",
@@ -3091,7 +3067,7 @@
     small: "https://buy.stripe.com/eVqfZh71kben8xr0Tz28803",
     medium: "https://buy.stripe.com/8x200jfxQ5U37tneKp28804",
     large: "https://buy.stripe.com/14A9AT4Tceqz00VfOt28805",
-    bulk: "https://buy.stripe.com/28AaEXfxQcir14ZdGl28806"
+    bulk: "https://buy.stripe.com/28EaEXfxQcir14ZdGl28806"
   };
 
   const PAYPAL_BASE_URL = "";
@@ -3312,6 +3288,21 @@
   if (firstFaq){
     firstFaq.classList.add('active');
     firstFaq.querySelector('.faq-question span:last-child').textContent = '−';
+  }
+
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (mobileMenuBtn && navLinks){
+    mobileMenuBtn.addEventListener('click', function(){
+      navLinks.classList.toggle('show');
+    });
+
+    navLinks.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navLinks.classList.remove('show');
+      });
+    });
   }
 </script>
   
