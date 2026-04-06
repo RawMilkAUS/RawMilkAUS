@@ -3090,280 +3090,252 @@
     <div class="sticky-mobile-meta">🔒 Secure Checkout • 🇦🇺 Australian Made • 🚚 Free Shipping NSW, VIC &amp; QLD</div>
   </div>
 
-  <script>
-    const STRIPE_LINKS = {
-      starter: "https://buy.stripe.com/3cI00j85o6Y714Z1XD28800",
-      for2: "https://buy.stripe.com/6oUeVd4Tcaaj00VgSx28801",
-      popular: "https://buy.stripe.com/dRm6oH85ocirdRLbyd28802",
-      small: "https://buy.stripe.com/eVqfZh71kben8xr0Tz28803",
-      medium: "https://buy.stripe.com/8x200jfxQ5U37tneKp28804",
-      large: "https://buy.stripe.com/14A9AT4Tceqz00VfOt28805",
-      bulk: "https://buy.stripe.com/28EaEXfxQcir14ZdGl28806"
-    };
+<script>
+  const STRIPE_LINKS = {
+    starter: "https://buy.stripe.com/3cI00j85o6Y714Z1XD28800",
+    for2: "https://buy.stripe.com/6oUeVd4Tcaaj00VgSx28801",
+    popular: "https://buy.stripe.com/dRm6oH85ocirdRLbyd28802",
+    small: "https://buy.stripe.com/eVqfZh71kben8xr0Tz28803",
+    medium: "https://buy.stripe.com/8x200jfxQ5U37tneKp28804",
+    large: "https://buy.stripe.com/14A9AT4Tceqz00VfOt28805",
+    bulk: "https://buy.stripe.com/28EaEXfxQcir14ZdGl28806"
+  };
 
-    const PAYPAL_BASE_URL = "";
-    const quotePlanSelects = document.querySelectorAll('.quote-plan-select');
-    const customLitresWrap = document.getElementById('customLitresWrap');
-    const customLitresInput = document.getElementById('customLitresInput');
-    const customMinusBtn = document.getElementById('customMinusBtn');
-    const customPlusBtn = document.getElementById('customPlusBtn');
-    const selectedPlanText = document.getElementById('selectedPlanText');
-    const selectedPlanTextCheckout = document.getElementById('selectedPlanTextCheckout');
-    const checkoutSummaryText = document.getElementById('checkoutSummaryText');
-    const mobileStickySummary = document.getElementById('mobileStickySummary');
-    const mobileStickyBtn = document.getElementById('mobileStickyBtn');
-    const goToCheckoutBtn = document.getElementById('goToCheckoutBtn');
-    const paypalCheckoutBtn = document.getElementById('paypalCheckoutBtn');
-    const stripeCheckoutBtn = document.getElementById('stripeCheckoutBtn');
-    const planCards = document.querySelectorAll('.plan-card');
+  const PAYPAL_BASE_URL = "";
 
-    let selectedCard = null;
+  const quotePlanSelects = document.querySelectorAll('.quote-plan-select');
+  const customLitresWrap = document.getElementById('customLitresWrap');
+  const customLitresInput = document.getElementById('customLitresInput');
+  const customMinusBtn = document.getElementById('customMinusBtn');
+  const customPlusBtn = document.getElementById('customPlusBtn');
+  const selectedPlanText = document.getElementById('selectedPlanText');
+  const selectedPlanTextCheckout = document.getElementById('selectedPlanTextCheckout');
+  const checkoutSummaryText = document.getElementById('checkoutSummaryText');
+  const mobileStickySummary = document.getElementById('mobileStickySummary');
+  const mobileStickyBtn = document.getElementById('mobileStickyBtn');
+  const goToCheckoutBtn = document.getElementById('goToCheckoutBtn');
+  const paypalCheckoutBtn = document.getElementById('paypalCheckoutBtn');
+  const stripeCheckoutBtn = document.getElementById('stripeCheckoutBtn');
+  const planCards = document.querySelectorAll('.plan-card');
 
-    function clampBulkLitres(value){
-      const numeric = parseInt(value, 10);
-      if(isNaN(numeric)) return 151;
-      return Math.min(500, Math.max(151, numeric));
-    }
+  let selectedCard = null;
 
-    function formatCurrency(value){
-      return '$' + Number(value).toLocaleString('en-AU');
-    }
+  function clampBulkLitres(value){
+    const numeric = parseInt(value, 10);
+    if (isNaN(numeric)) return 151;
+    return Math.min(500, Math.max(151, numeric));
+  }
 
-    function getBulkLitres(){
-      return clampBulkLitres(customLitresInput.value);
-    }
+  function formatCurrency(value){
+    return '$' + Number(value).toLocaleString('en-AU');
+  }
 
-    function getStripeUrl(meta){
-      if(!meta) return '';
-      if(meta.type === 'bulk') return STRIPE_LINKS.bulk;
-      if(meta.monthly === '20') return STRIPE_LINKS.starter;
-      if(meta.monthly === '40') return STRIPE_LINKS.for2;
-      if(meta.monthly === '60') return STRIPE_LINKS.popular;
-      if(meta.monthly === '90') return STRIPE_LINKS.small;
-      if(meta.monthly === '120') return STRIPE_LINKS.medium;
-      if(meta.monthly === '150') return STRIPE_LINKS.large;
-      return '';
-    }
+  function getBulkLitres(){
+    return clampBulkLitres(customLitresInput.value);
+  }
 
-    function getSelectedPlanMeta(){
-      if(!selectedCard) return null;
+  function getSelectedPlanMeta(){
+    if (!selectedCard) return null;
 
-      const type = selectedCard.dataset.type || 'standard';
+    const type = selectedCard.dataset.type || 'standard';
+    const name = selectedCard.dataset.name || '';
 
-      if(type === 'bulk'){
-        const litres = getBulkLitres();
-        const price = litres * 7;
-        return {
-          rawPlan: selectedCard.dataset.plan,
-          checkoutPlan: 'Bulk / Custom Orders',
-          type: 'bulk',
-          litres: litres,
-          monthly: String(litres),
-          weekly: '',
-          price: price,
-          summary: litres + 'L monthly',
-          selectedText: 'Bulk / Custom Orders • ' + litres + 'L monthly • ' + formatCurrency(price),
-          stripeUrl: STRIPE_LINKS.bulk
-        };
-      }
+    if (type === 'bulk'){
+      const litres = getBulkLitres();
+      const price = litres * 7;
 
-      const monthly = selectedCard.dataset.monthly;
-      const weekly = selectedCard.dataset.weekly;
-      const price = Number(selectedCard.dataset.price);
-      const meta = {
-        rawPlan: selectedCard.dataset.plan,
-        checkoutPlan: selectedCard.dataset.plan,
-        type: 'standard',
-        litres: '',
-        monthly: monthly,
-        weekly: weekly,
-        price: price,
-        summary: monthly + 'L monthly • ' + weekly + 'L weekly',
-        selectedText: monthly + 'L monthly • ' + weekly + 'L weekly • ' + formatCurrency(price)
+      return {
+        key: 'bulk',
+        type: 'bulk',
+        name: 'Bulk / Custom Orders',
+        litres,
+        price,
+        selectedText: `Bulk / Custom Orders • ${litres}L monthly • ${formatCurrency(price)}`,
+        summary: `${litres}L monthly`
       };
-      meta.stripeUrl = getStripeUrl(meta);
-      return meta;
     }
 
-    function syncPlanSelects(value){
-      quotePlanSelects.forEach(function(select){
-        const matchingOption = Array.from(select.options).find(function(option){
-          return option.value === value;
-        });
-        if(matchingOption){
-          select.value = value;
-        }
+    const monthly = selectedCard.dataset.monthly;
+    const weekly = selectedCard.dataset.weekly;
+    const price = Number(selectedCard.dataset.price);
+
+    let key = '';
+    if (name === 'Starter') key = 'starter';
+    if (name === 'For 2') key = 'for2';
+    if (name === 'Most Popular') key = 'popular';
+    if (name === 'Small Household') key = 'small';
+    if (name === 'Medium Household') key = 'medium';
+    if (name === 'Large Household') key = 'large';
+
+    return {
+      key,
+      type: 'standard',
+      name,
+      monthly,
+      weekly,
+      price,
+      rawPlan: selectedCard.dataset.plan,
+      selectedText: `${monthly}L monthly • ${weekly}L weekly • ${formatCurrency(price)}`,
+      summary: `${monthly}L monthly • ${weekly}L weekly`
+    };
+  }
+
+  function syncQuoteSelects(value){
+    quotePlanSelects.forEach(function(select){
+      const option = Array.from(select.options).find(function(opt){
+        return opt.value === value;
       });
-    }
+      if (option) select.value = value;
+    });
+  }
 
-    function refreshPlanUI(){
-      const meta = getSelectedPlanMeta();
-
-      planCards.forEach(function(card){
-        card.classList.toggle('active', card === selectedCard);
-      });
-
-      if(!meta){
-        selectedPlanText.textContent = 'No plan selected yet';
-        selectedPlanTextCheckout.textContent = 'No plan selected yet';
-        checkoutSummaryText.textContent = 'Select a plan to continue';
-        mobileStickySummary.textContent = 'Select a plan to continue';
-        goToCheckoutBtn.textContent = '$0 CHECKOUT NOW';
-        mobileStickyBtn.textContent = 'BUY NOW';
-        customLitresWrap.classList.remove('show');
-        return;
-      }
-
-      const selectedCheckoutLabel = formatCurrency(meta.price) + ' CHECKOUT NOW';
-
-      selectedPlanText.textContent = meta.selectedText;
-      selectedPlanTextCheckout.textContent = meta.selectedText;
-      checkoutSummaryText.textContent = meta.summary;
-      mobileStickySummary.textContent = meta.summary;
-      goToCheckoutBtn.textContent = selectedCheckoutLabel;
-      mobileStickyBtn.textContent = selectedCheckoutLabel;
-
-      customLitresWrap.classList.toggle('show', meta.type === 'bulk');
-
-      if(meta.type === 'standard'){
-        syncPlanSelects(meta.rawPlan);
-      } else {
-        syncPlanSelects('Bulk / Custom Orders — Save 30%');
-      }
-    }
-
-    function updateSelectedPlan(card){
-      if(!card) return;
-      selectedCard = card;
-      refreshPlanUI();
-    }
-
-    function openCheckout(mode){
-      const meta = getSelectedPlanMeta();
-
-      if(!meta){
-        alert('Please select a plan first.');
-        document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-
-      if(mode === 'paypal'){
-        if(!PAYPAL_BASE_URL || !PAYPAL_BASE_URL.includes('http')){
-          alert('PayPal link not added yet.');
-          return;
-        }
-        window.open(PAYPAL_BASE_URL, '_blank');
-        return;
-      }
-
-      const stripeUrl = meta.stripeUrl;
-      if(!stripeUrl || !stripeUrl.includes('http')){
-        alert('Stripe link missing for this plan.');
-        return;
-      }
-
-      window.location.href = stripeUrl;
-    }
+  function refreshPlanUI(){
+    const meta = getSelectedPlanMeta();
 
     planCards.forEach(function(card){
-      card.addEventListener('click', function(){
-        updateSelectedPlan(this);
-      });
+      card.classList.toggle('active', card === selectedCard);
     });
 
-    if(customMinusBtn){
-      customMinusBtn.addEventListener('click', function(){
-        customLitresInput.value = clampBulkLitres(getBulkLitres() - 1);
-        if(selectedCard && selectedCard.dataset.type === 'bulk'){
-          refreshPlanUI();
-        }
-      });
+    if (!meta){
+      selectedPlanText.textContent = 'No plan selected yet';
+      selectedPlanTextCheckout.textContent = 'No plan selected yet';
+      checkoutSummaryText.textContent = 'Select a plan to continue';
+      mobileStickySummary.textContent = 'Select a plan to continue';
+      goToCheckoutBtn.textContent = '$0 CHECKOUT NOW';
+      mobileStickyBtn.textContent = 'BUY NOW';
+      customLitresWrap.classList.remove('show');
+      return;
     }
 
-    if(customPlusBtn){
-      customPlusBtn.addEventListener('click', function(){
-        customLitresInput.value = clampBulkLitres(getBulkLitres() + 1);
-        if(selectedCard && selectedCard.dataset.type === 'bulk'){
-          refreshPlanUI();
-        }
-      });
+    selectedPlanText.textContent = meta.selectedText;
+    selectedPlanTextCheckout.textContent = meta.selectedText;
+    checkoutSummaryText.textContent = meta.summary;
+    mobileStickySummary.textContent = meta.summary;
+    goToCheckoutBtn.textContent = `${formatCurrency(meta.price)} CHECKOUT NOW`;
+    mobileStickyBtn.textContent = `${formatCurrency(meta.price)} CHECKOUT NOW`;
+
+    customLitresWrap.classList.toggle('show', meta.type === 'bulk');
+
+    if (meta.type === 'standard'){
+      syncQuoteSelects(meta.rawPlan);
+    } else {
+      syncQuoteSelects('Bulk / Custom Orders — Save 30%');
+    }
+  }
+
+  function updateSelectedPlan(card){
+    selectedCard = card;
+    refreshPlanUI();
+  }
+
+  function openStripeCheckout(){
+    const meta = getSelectedPlanMeta();
+
+    if (!meta){
+      alert('Please select a plan first.');
+      document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
+      return;
     }
 
-    if(customLitresInput){
-      customLitresInput.addEventListener('input', function(){
-        this.value = this.value.replace(/[^\d]/g, '');
-        if(selectedCard && selectedCard.dataset.type === 'bulk'){
-          refreshPlanUI();
-        }
-      });
+    const checkoutUrl = STRIPE_LINKS[meta.key];
 
-      customLitresInput.addEventListener('blur', function(){
-        this.value = clampBulkLitres(this.value);
-        if(selectedCard && selectedCard.dataset.type === 'bulk'){
-          refreshPlanUI();
-        }
-      });
+    if (!checkoutUrl){
+      alert('Stripe link missing for this plan.');
+      return;
     }
 
-    goToCheckoutBtn.addEventListener('click', function(){
-      openCheckout('stripe');
+    window.open(checkoutUrl, '_blank');
+  }
+
+  planCards.forEach(function(card){
+    card.addEventListener('click', function(){
+      updateSelectedPlan(this);
+    });
+  });
+
+  if (customMinusBtn){
+    customMinusBtn.addEventListener('click', function(){
+      customLitresInput.value = clampBulkLitres(getBulkLitres() - 1);
+      if (selectedCard && selectedCard.dataset.type === 'bulk') refreshPlanUI();
+    });
+  }
+
+  if (customPlusBtn){
+    customPlusBtn.addEventListener('click', function(){
+      customLitresInput.value = clampBulkLitres(getBulkLitres() + 1);
+      if (selectedCard && selectedCard.dataset.type === 'bulk') refreshPlanUI();
+    });
+  }
+
+  if (customLitresInput){
+    customLitresInput.addEventListener('input', function(){
+      this.value = this.value.replace(/[^\d]/g, '');
+      if (selectedCard && selectedCard.dataset.type === 'bulk') refreshPlanUI();
     });
 
-    if(mobileStickyBtn){
-      mobileStickyBtn.addEventListener('click', function(event){
-        if(!selectedCard){
-          return;
-        }
-        event.preventDefault();
-        openCheckout('stripe');
-      });
-    }
+    customLitresInput.addEventListener('blur', function(){
+      this.value = clampBulkLitres(this.value);
+      if (selectedCard && selectedCard.dataset.type === 'bulk') refreshPlanUI();
+    });
+  }
 
-    paypalCheckoutBtn.addEventListener('click', function(){
-      openCheckout('paypal');
+  goToCheckoutBtn.addEventListener('click', openStripeCheckout);
+  stripeCheckoutBtn.addEventListener('click', openStripeCheckout);
+
+  paypalCheckoutBtn.addEventListener('click', function(){
+    if (!PAYPAL_BASE_URL) {
+      alert('PayPal link not added yet.');
+      return;
+    }
+    window.open(PAYPAL_BASE_URL, '_blank');
+  });
+
+  if (mobileStickyBtn){
+    mobileStickyBtn.addEventListener('click', function(event){
+      if (!selectedCard) return;
+      event.preventDefault();
+      openStripeCheckout();
+    });
+  }
+
+  document.querySelectorAll('.faq-question').forEach(function(button){
+    button.addEventListener('click', function(){
+      const item = this.parentElement;
+      const isActive = item.classList.contains('active');
+
+      document.querySelectorAll('.faq-item').forEach(function(faq){
+        faq.classList.remove('active');
+        faq.querySelector('.faq-question span:last-child').textContent = '+';
+      });
+
+      if (!isActive){
+        item.classList.add('active');
+        this.querySelector('span:last-child').textContent = '−';
+      }
+    });
+  });
+
+  const firstFaq = document.querySelector('.faq-item');
+  if (firstFaq){
+    firstFaq.classList.add('active');
+    firstFaq.querySelector('.faq-question span:last-child').textContent = '−';
+  }
+
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (mobileMenuBtn && navLinks){
+    mobileMenuBtn.addEventListener('click', function(){
+      navLinks.classList.toggle('show');
     });
 
-    stripeCheckoutBtn.addEventListener('click', function(){
-      openCheckout('stripe');
-    });
-
-    document.querySelectorAll('.faq-question').forEach(function(button){
-      button.addEventListener('click', function(){
-        var item = this.parentElement;
-        var isActive = item.classList.contains('active');
-
-        document.querySelectorAll('.faq-item').forEach(function(faq){
-          faq.classList.remove('active');
-          faq.querySelector('.faq-question span:last-child').textContent = '+';
-        });
-
-        if(!isActive){
-          item.classList.add('active');
-          this.querySelector('span:last-child').textContent = '−';
-        }
+    navLinks.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navLinks.classList.remove('show');
       });
     });
-
-    var firstFaq = document.querySelector('.faq-item');
-    if(firstFaq){
-      firstFaq.classList.add('active');
-      firstFaq.querySelector('.faq-question span:last-child').textContent = '−';
-    }
-
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.querySelector('.nav-links');
-
-    if(mobileMenuBtn && navLinks){
-      mobileMenuBtn.addEventListener('click', function(){
-        navLinks.classList.toggle('show');
-      });
-
-      navLinks.querySelectorAll('a').forEach(function(link){
-        link.addEventListener('click', function(){
-          navLinks.classList.remove('show');
-        });
-      });
-    }
-  </script>
+  }
+</script>
+  
 </body>
 </html>
