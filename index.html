@@ -2975,15 +2975,15 @@
             <a class="contact-social-link" href="https://www.instagram.com/RawMilkAUS" target="_blank" rel="noopener noreferrer">Instagram — @RawMilkAUS</a>
             <a class="contact-social-link" href="https://www.tiktok.com/@RawMilkAUS" target="_blank" rel="noopener noreferrer">TikTok — @RawMilkAUS</a>
           </div>
-          
+
           <div class="quote-card">
             <div class="mini-heading"><span>Contact Us With Any Questions</span></div>
-            <form id="quoteForm" action="https://formspree.io/f/mbdppbne" method="POST">
+            <form id="contactForm" action="https://formspree.io/f/mbdppbne" method="POST">
               <input type="text" name="full_name" placeholder="Full Name" required>
               <input type="email" name="email" placeholder="Email Address" required>
               <input type="text" name="location" placeholder="Suburb / Postcode" required>
 
-              <select name="plan" id="quotePlanSelect" required>
+              <select name="plan" class="quote-plan-select" required>
                 <option selected disabled>Select a plan...</option>
                 <option value="20L / month — 5L weekly — Starter — $200">20L / month — 5L weekly — Starter — $200</option>
                 <option value="40L / month — 10L weekly — For 2 — $380 — Save 5%">40L / month — 10L weekly — For 2 — $380 — Save 5%</option>
@@ -3025,18 +3025,18 @@
             </button>
 
             <div class="checkout-note">
-              Select a plan above, then click your preferred checkout option. Replace the placeholder payment links in the script with your real PayPal and Stripe checkout URLs.
+              Select a plan above, then click your preferred checkout option.
             </div>
           </div>
 
           <div class="quote-card">
             <div class="mini-heading"><span>Request a Custom Quote</span></div>
-            <form id="quoteForm" action="https://formspree.io/f/mbdppbne" method="POST">
+            <form id="customQuoteForm" action="https://formspree.io/f/mbdppbne" method="POST">
               <input type="text" name="full_name" placeholder="Full Name" required>
               <input type="email" name="email" placeholder="Email Address" required>
               <input type="text" name="location" placeholder="Suburb / Postcode" required>
 
-              <select name="plan" id="quotePlanSelect" required>
+              <select name="plan" class="quote-plan-select" required>
                 <option selected disabled>Select a plan...</option>
                 <option value="20L / month — 5L weekly — Starter — $200">20L / month — 5L weekly — Starter — $200</option>
                 <option value="40L / month — 10L weekly — For 2 — $380 — Save 5%">40L / month — 10L weekly — For 2 — $380 — Save 5%</option>
@@ -3091,10 +3091,18 @@
   </div>
 
   <script>
-    const PAYPAL_BASE_URL = "https://your-paypal-checkout-link.com";
-    const STRIPE_BASE_URL = "https://buy.stripe.com/your-checkout-link";
+    const STRIPE_LINKS = {
+      starter: "https://buy.stripe.com/3cI00j85o6Y714Z1XD28800",
+      for2: "https://buy.stripe.com/6oUeVd4Tcaaj00VgSx28801",
+      popular: "https://buy.stripe.com/dRm6oH85ocirdRLbyd28802",
+      small: "https://buy.stripe.com/eVqfZh71kben8xr0Tz28803",
+      medium: "https://buy.stripe.com/8x200jfxQ5U37tneKp28804",
+      large: "https://buy.stripe.com/14A9AT4Tceqz00VfOt28805",
+      bulk: "https://buy.stripe.com/28EaEXfxQcir14ZdGl28806"
+    };
 
-    const quotePlanSelect = document.getElementById('quotePlanSelect');
+    const PAYPAL_BASE_URL = "";
+    const quotePlanSelects = document.querySelectorAll('.quote-plan-select');
     const customLitresWrap = document.getElementById('customLitresWrap');
     const customLitresInput = document.getElementById('customLitresInput');
     const customMinusBtn = document.getElementById('customMinusBtn');
@@ -3109,11 +3117,7 @@
     const stripeCheckoutBtn = document.getElementById('stripeCheckoutBtn');
     const planCards = document.querySelectorAll('.plan-card');
 
-    let selectedPlanValue = '';
     let selectedCard = null;
-    let selectedPlanPrice = 0;
-    let selectedPlanSummary = '';
-    let selectedCheckoutLabel = '$0 CHECKOUT NOW';
 
     function clampBulkLitres(value){
       const numeric = parseInt(value, 10);
@@ -3129,6 +3133,18 @@
       return clampBulkLitres(customLitresInput.value);
     }
 
+    function getStripeUrl(meta){
+      if(!meta) return '';
+      if(meta.type === 'bulk') return STRIPE_LINKS.bulk;
+      if(meta.monthly === '20') return STRIPE_LINKS.starter;
+      if(meta.monthly === '40') return STRIPE_LINKS.for2;
+      if(meta.monthly === '60') return STRIPE_LINKS.popular;
+      if(meta.monthly === '90') return STRIPE_LINKS.small;
+      if(meta.monthly === '120') return STRIPE_LINKS.medium;
+      if(meta.monthly === '150') return STRIPE_LINKS.large;
+      return '';
+    }
+
     function getSelectedPlanMeta(){
       if(!selectedCard) return null;
 
@@ -3142,18 +3158,19 @@
           checkoutPlan: 'Bulk / Custom Orders',
           type: 'bulk',
           litres: litres,
-          monthly: litres,
+          monthly: String(litres),
           weekly: '',
           price: price,
           summary: litres + 'L monthly',
-          selectedText: 'Bulk / Custom Orders • ' + litres + 'L monthly • ' + formatCurrency(price)
+          selectedText: 'Bulk / Custom Orders • ' + litres + 'L monthly • ' + formatCurrency(price),
+          stripeUrl: STRIPE_LINKS.bulk
         };
       }
 
       const monthly = selectedCard.dataset.monthly;
       const weekly = selectedCard.dataset.weekly;
       const price = Number(selectedCard.dataset.price);
-      return {
+      const meta = {
         rawPlan: selectedCard.dataset.plan,
         checkoutPlan: selectedCard.dataset.plan,
         type: 'standard',
@@ -3164,6 +3181,19 @@
         summary: monthly + 'L monthly • ' + weekly + 'L weekly',
         selectedText: monthly + 'L monthly • ' + weekly + 'L weekly • ' + formatCurrency(price)
       };
+      meta.stripeUrl = getStripeUrl(meta);
+      return meta;
+    }
+
+    function syncPlanSelects(value){
+      quotePlanSelects.forEach(function(select){
+        const matchingOption = Array.from(select.options).find(function(option){
+          return option.value === value;
+        });
+        if(matchingOption){
+          select.value = value;
+        }
+      });
     }
 
     function refreshPlanUI(){
@@ -3180,18 +3210,11 @@
         mobileStickySummary.textContent = 'Select a plan to continue';
         goToCheckoutBtn.textContent = '$0 CHECKOUT NOW';
         mobileStickyBtn.textContent = 'BUY NOW';
-        selectedPlanValue = '';
-        selectedPlanPrice = 0;
-        selectedPlanSummary = '';
-        selectedCheckoutLabel = '$0 CHECKOUT NOW';
         customLitresWrap.classList.remove('show');
         return;
       }
 
-      selectedPlanValue = meta.checkoutPlan;
-      selectedPlanPrice = meta.price;
-      selectedPlanSummary = meta.summary;
-      selectedCheckoutLabel = formatCurrency(meta.price) + ' CHECKOUT NOW';
+      const selectedCheckoutLabel = formatCurrency(meta.price) + ' CHECKOUT NOW';
 
       selectedPlanText.textContent = meta.selectedText;
       selectedPlanTextCheckout.textContent = meta.selectedText;
@@ -3203,19 +3226,9 @@
       customLitresWrap.classList.toggle('show', meta.type === 'bulk');
 
       if(meta.type === 'standard'){
-        const matchingOption = Array.from(quotePlanSelect.options).find(function(option){
-          return option.value === meta.rawPlan;
-        });
-        if(matchingOption){
-          quotePlanSelect.value = meta.rawPlan;
-        }
+        syncPlanSelects(meta.rawPlan);
       } else {
-        const matchingBulkOption = Array.from(quotePlanSelect.options).find(function(option){
-          return option.value === 'Bulk / Custom Orders — Save 30%';
-        });
-        if(matchingBulkOption){
-          quotePlanSelect.value = 'Bulk / Custom Orders — Save 30%';
-        }
+        syncPlanSelects('Bulk / Custom Orders — Save 30%');
       }
     }
 
@@ -3223,6 +3236,33 @@
       if(!card) return;
       selectedCard = card;
       refreshPlanUI();
+    }
+
+    function openCheckout(mode){
+      const meta = getSelectedPlanMeta();
+
+      if(!meta){
+        alert('Please select a plan first.');
+        document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      if(mode === 'paypal'){
+        if(!PAYPAL_BASE_URL || !PAYPAL_BASE_URL.includes('http')){
+          alert('PayPal link not added yet.');
+          return;
+        }
+        window.open(PAYPAL_BASE_URL, '_blank');
+        return;
+      }
+
+      const stripeUrl = meta.stripeUrl;
+      if(!stripeUrl || !stripeUrl.includes('http')){
+        alert('Stripe link missing for this plan.');
+        return;
+      }
+
+      window.location.href = stripeUrl;
     }
 
     planCards.forEach(function(card){
@@ -3266,12 +3306,7 @@
     }
 
     goToCheckoutBtn.addEventListener('click', function(){
-      if(!selectedCard){
-        alert('Please select a plan first.');
-        document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-      openCheckout(STRIPE_BASE_URL);
+      openCheckout('stripe');
     });
 
     if(mobileStickyBtn){
@@ -3280,45 +3315,16 @@
           return;
         }
         event.preventDefault();
-        openCheckout(STRIPE_BASE_URL);
+        openCheckout('stripe');
       });
     }
 
-    function openCheckout(baseUrl){
-      const meta = getSelectedPlanMeta();
-
-      if(!meta){
-        alert('Please select a plan first.');
-        document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-
-      if(!baseUrl.includes('http')){
-        alert('Add your real checkout URL in the script first.');
-        return;
-      }
-
-      const separator = baseUrl.includes('?') ? '&' : '?';
-      let finalUrl = baseUrl
-        + separator + 'plan=' + encodeURIComponent(meta.checkoutPlan)
-        + '&price=' + encodeURIComponent(meta.price);
-
-      if(meta.type === 'bulk'){
-        finalUrl += '&litres=' + encodeURIComponent(meta.litres);
-      } else {
-        finalUrl += '&monthly=' + encodeURIComponent(meta.monthly)
-          + '&weekly=' + encodeURIComponent(meta.weekly);
-      }
-
-      window.open(finalUrl, '_blank');
-    }
-
     paypalCheckoutBtn.addEventListener('click', function(){
-      openCheckout(PAYPAL_BASE_URL);
+      openCheckout('paypal');
     });
 
     stripeCheckoutBtn.addEventListener('click', function(){
-      openCheckout(STRIPE_BASE_URL);
+      openCheckout('stripe');
     });
 
     document.querySelectorAll('.faq-question').forEach(function(button){
