@@ -3321,16 +3321,24 @@ header{
       });
     }
 
-    // Mobile +/- buttons
-    if (mobileMinusBtn && mobilePlusBtn) {
+    // Mobile +/- buttons - sync with main input
+    if (mobileMinusBtn && mobilePlusBtn && customLitresInput) {
       mobileMinusBtn.addEventListener('click', () => {
-        if (currentMobileLitres > 5) currentMobileLitres -= 5;
-        if (mobileLitresDisplay) mobileLitresDisplay.textContent = currentMobileLitres + "L";
+        let val = parseInt(customLitresInput.value) || 20;
+        if (val > 20) val -= 5;
+        customLitresInput.value = val;
+        if (selectedCard && selectedCard.dataset.type === 'bulk') {
+          refreshPlanUI();
+        }
       });
 
       mobilePlusBtn.addEventListener('click', () => {
-        if (currentMobileLitres < 500) currentMobileLitres += 5;
-        if (mobileLitresDisplay) mobileLitresDisplay.textContent = currentMobileLitres + "L";
+        let val = parseInt(customLitresInput.value) || 20;
+        if (val < 500) val += 5;
+        customLitresInput.value = val;
+        if (selectedCard && selectedCard.dataset.type === 'bulk') {
+          refreshPlanUI();
+        }
       });
     }
 
