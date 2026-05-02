@@ -54,7 +54,6 @@
     .mobile-only{display:none}
 
     .topbar{
-     
         background:var(--green);
   color:#fff;
   font-size:13px;
@@ -71,7 +70,6 @@
     }
 
     header{
-   
       position:fixed;
   top:37px;
   left:0;
@@ -865,7 +863,7 @@
       font-size:14px;
     }
 
-    .-savings{
+    .bulk-savings{
       max-width:920px;
       margin:28px auto 0;
       display:grid;
@@ -2890,6 +2888,44 @@ header{
           <div class="plan-foot">🥛 Delivered weekly in 2L glass bottles • Free shipping across NSW, VIC &amp; QLD • 100% Grass-Fed Pasture-Raised Australian Cows • No Vaccines • No Hormones • No Antibiotics</div>
         </div>
 
+        <!-- NEW SECTION: Wanna Try It Out? -->
+        <div style="margin-top:60px; padding-top:40px; border-top:1px solid var(--line);">
+          <div class="plan-title" style="margin-bottom:30px;">🥛 Wanna Try It Out?</div>
+          <div class="plan-cards" style="grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));">
+            
+            <button type="button" class="plan-card" data-plan="5L Trial — $50 + $7.99 Shipping" data-name="Try It Out Starter" data-monthly="5" data-weekly="0" data-price="50" data-type="oneoff">
+              <div class="selected-chip">✓ Selected</div>
+              <div class="plan-card-top">
+                <div class="plan-card-name">Try It Out Starter</div>
+                <div class="plan-card-price"><span class="plan-card-new-price">$50</span></div>
+              </div>
+              <div class="plan-card-volume">5L One-Time • +$7.99 Shipping</div>
+              <div class="plan-card-save">Perfect first test</div>
+            </button>
+
+            <button type="button" class="plan-card" data-plan="10L Trial — $100 + $7.99 Shipping" data-name="Try It Out For 2" data-monthly="10" data-weekly="0" data-price="100" data-type="oneoff">
+              <div class="selected-chip">✓ Selected</div>
+              <div class="plan-card-top">
+                <div class="plan-card-name">Try It Out For 2</div>
+                <div class="plan-card-price"><span class="plan-card-new-price">$100</span></div>
+              </div>
+              <div class="plan-card-volume">10L One-Time • +$7.99 Shipping</div>
+              <div class="plan-card-save">Good for small household test</div>
+            </button>
+
+            <button type="button" class="plan-card" data-plan="20L Trial — $200 + $7.99 Shipping" data-name="Try It Out Household" data-monthly="20" data-weekly="0" data-price="200" data-type="oneoff">
+              <div class="selected-chip">✓ Selected</div>
+              <div class="plan-card-top">
+                <div class="plan-card-name">Try It Out Household</div>
+                <div class="plan-card-price"><span class="plan-card-new-price">$200</span></div>
+              </div>
+              <div class="plan-card-volume">20L One-Time • +$7.99 Shipping</div>
+              <div class="plan-card-save">Full household test</div>
+            </button>
+
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -3033,6 +3069,14 @@ header{
 
   <div class="sticky-mobile-buy">
     <div class="sticky-mobile-summary" id="mobileStickySummary">Select a plan to continue</div>
+    
+    <!-- Quantity controls for custom orders -->
+    <div id="mobileQuantityControls" style="display:none; justify-content:center; gap:12px; margin:8px 0;">
+      <button type="button" id="mobileMinusBtn" style="width:44px; height:44px; font-size:24px; border-radius:12px; border:2px solid #0f4b3a; background:#fff; color:#0f4b3a;">−</button>
+      <span id="mobileLitresDisplay" style="font-size:18px; font-weight:900; min-width:60px; text-align:center;">20L</span>
+      <button type="button" id="mobilePlusBtn" style="width:44px; height:44px; font-size:24px; border-radius:12px; border:2px solid #0f4b3a; background:#fff; color:#0f4b3a;">+</button>
+    </div>
+
     <a href="#plans" id="mobileStickyBtn">BUY NOW</a>
     <div class="sticky-mobile-meta">🔒 Secure Checkout • 🇦🇺 Australian Made • 🚚 Free Shipping NSW, VIC &amp; QLD</div>
   </div>
@@ -3063,7 +3107,14 @@ header{
     const stripeCheckoutBtn = document.getElementById('stripeCheckoutBtn');
     const planCards = document.querySelectorAll('.plan-card');
 
+    // Mobile quantity controls
+    const mobileQuantityControls = document.getElementById('mobileQuantityControls');
+    const mobileLitresDisplay = document.getElementById('mobileLitresDisplay');
+    const mobileMinusBtn = document.getElementById('mobileMinusBtn');
+    const mobilePlusBtn = document.getElementById('mobilePlusBtn');
+
     let selectedCard = null;
+    let currentMobileLitres = 20;
 
     function clampBulkLitres(value){
       const numeric = parseInt(value, 10);
@@ -3157,6 +3208,7 @@ header{
         goToCheckoutBtn.textContent = '$0 CHECKOUT NOW';
         mobileStickyBtn.textContent = 'BUY NOW';
         customLitresWrap.classList.remove('show');
+        if(mobileQuantityControls) mobileQuantityControls.style.display = 'none';
         return;
       }
 
@@ -3173,8 +3225,12 @@ header{
 
       if(meta.type === 'standard'){
         syncPlanSelects(meta.rawPlan);
+        if(mobileQuantityControls) mobileQuantityControls.style.display = 'none';
       } else {
-        syncPlanSelects('Bulk / Custom Orders — Save 30%');
+        syncPlanSelects('Custom Order (Choose How Much You Want)');
+        if(mobileQuantityControls) mobileQuantityControls.style.display = 'flex';
+        currentMobileLitres = parseInt(meta.litres) || 20;
+        if(mobileLitresDisplay) mobileLitresDisplay.textContent = currentMobileLitres + "L";
       }
     }
 
@@ -3264,6 +3320,20 @@ header{
         openCheckout('stripe');
       });
     }
+
+    // Mobile +/- buttons
+    if (mobileMinusBtn && mobilePlusBtn) {
+      mobileMinusBtn.addEventListener('click', () => {
+        if (currentMobileLitres > 5) currentMobileLitres -= 5;
+        if (mobileLitresDisplay) mobileLitresDisplay.textContent = currentMobileLitres + "L";
+      });
+
+      mobilePlusBtn.addEventListener('click', () => {
+        if (currentMobileLitres < 500) currentMobileLitres += 5;
+        if (mobileLitresDisplay) mobileLitresDisplay.textContent = currentMobileLitres + "L";
+      });
+    }
+
     paypalCheckoutBtn.addEventListener('click', function(){
       openCheckout('paypal');
     });
@@ -3308,34 +3378,6 @@ header{
           navLinks.classList.remove('show');
         });
       });
-// Mobile quantity controls for custom orders
-const mobileQuantityControls = document.getElementById('mobileQuantityControls');
-const mobileLitresDisplay = document.getElementById('mobileLitresDisplay');
-const mobileMinusBtn = document.getElementById('mobileMinusBtn');
-const mobilePlusBtn = document.getElementById('mobilePlusBtn');
-
-let currentMobileLitres = 20;
-
-function updateMobileQuantity() {
-  mobileLitresDisplay.textContent = currentMobileLitres + "L";
-  // Update the main selected plan too if needed
-  if (selectedCard && selectedCard.dataset.type === 'bulk') {
-    refreshPlanUI();
-  }
-}
-
-if (mobileMinusBtn && mobilePlusBtn) {
-  mobileMinusBtn.addEventListener('click', () => {
-    if (currentMobileLitres > 5) currentMobileLitres -= 5;
-    updateMobileQuantity();
-  });
-
-  mobilePlusBtn.addEventListener('click', () => {
-    if (currentMobileLitres < 151) currentMobileLitres += 5;
-    updateMobileQuantity();
-  });
-}
-      
     }
   </script>
 </body>
