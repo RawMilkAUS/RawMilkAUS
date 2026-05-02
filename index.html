@@ -3033,14 +3033,6 @@ header{
 
   <div class="sticky-mobile-buy">
     <div class="sticky-mobile-summary" id="mobileStickySummary">Select a plan to continue</div>
-
-<!-- Quantity controls for custom orders -->
-  <div id="mobileQuantityControls" style="display:none; justify-content:center; gap:12px; margin:8px 0;">
-    <button type="button" id="mobileMinusBtn" style="width:44px; height:44px; font-size:24px; border-radius:12px; border:2px solid #0f4b3a; background:#fff; color:#0f4b3a;">−</button>
-    <span id="mobileLitresDisplay" style="font-size:18px; font-weight:900; min-width:60px; text-align:center;">20L</span>
-    <button type="button" id="mobilePlusBtn" style="width:44px; height:44px; font-size:24px; border-radius:12px; border:2px solid #0f4b3a; background:#fff; color:#0f4b3a;">+</button>
-  </div>
-    
     <a href="#plans" id="mobileStickyBtn">BUY NOW</a>
     <div class="sticky-mobile-meta">🔒 Secure Checkout • 🇦🇺 Australian Made • 🚚 Free Shipping NSW, VIC &amp; QLD</div>
   </div>
@@ -3342,20 +3334,6 @@ if (mobileMinusBtn && mobilePlusBtn) {
     if (currentMobileLitres < 151) currentMobileLitres += 5;
     updateMobileQuantity();
   });
-}
-
-// Show/hide quantity controls when custom is selected
-function refreshPlanUI() {
-  // ... your existing code ...
-
-  const meta = getSelectedPlanMeta();
-  if (meta && (meta.type === 'bulk' || meta.type === 'custom')) {
-    mobileQuantityControls.style.display = 'flex';
-    currentMobileLitres = parseInt(meta.litres) || 20;
-    updateMobileQuantity();
-  } else {
-    mobileQuantityControls.style.display = 'none';
-  }
 }
       
     }
