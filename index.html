@@ -3088,7 +3088,7 @@
             <div class="custom-stepper">
               <!-- FIX: Desktop stepper now steps ±5L per click -->
               <button type="button" class="custom-stepper-btn" id="customMinusBtn">−</button>
-              <input class="custom-litres-input" id="customLitresInput" type="number" min="20" max="500" step="5" value="20" inputmode="numeric" readonly />
+              <input class="custom-litres-input" id="customLitresInput" type="number" min="20" max="200" step="10" value="20" inputmode="numeric" readonly />
               <button type="button" class="custom-stepper-btn" id="customPlusBtn">+</button>
             </div>
           </div>
@@ -3358,16 +3358,39 @@
     }
 
     const STRIPE_LINKS = {
-      starter:  "https://buy.stripe.com/3cI00j85o6Y714Z1XD28800",   // 20L/month
-      for2:     "https://buy.stripe.com/6oUeVd4Tcaaj00VgSx28801",   // 40L/month
-      popular:  "https://buy.stripe.com/00w6oH4Tc3LVbJD6dT28808",   // 60L/month
-      small:    "https://buy.stripe.com/eVqfZh71kben8xr0Tz28803",   // 90L/month
-      medium:   "https://buy.stripe.com/8x200jfxQ5U37tneKp28804",   // 120L/month
-      large:    "https://buy.stripe.com/14A9AT4Tceqz00VfOt28805",   // 150L/month
-      bulk:     "https://buy.stripe.com/aFa3cv71kgyHfZTgSx28807",   // Custom/bulk
-      trial5:   "https://buy.stripe.com/00waEX85ofuD4hbfOt28809",   // Try It Out — 5L
-      trial10:  "https://buy.stripe.com/aFa8wPetMeqz14Zbyd2880a",   // Try It Out — 10L
-      trial15:  "https://buy.stripe.com/dRm8wP5Xgeqz5lfau92880b"    // Try It Out — 15L
+      // ── SUBSCRIPTION PLANS (fixed cards) ────────────────────────
+      starter:  "https://buy.stripe.com/3cl00j85o6Y714Z1XD28800",
+      for2:     "https://buy.stripe.com/6oUeVd4Tcaaj00VgSx28801",
+      popular:  "https://buy.stripe.com/00w6oH4Tc3LVbJD6dT28808",
+      small:    "https://buy.stripe.com/eVqfZh71kben8xr0Tz28803",
+      medium:   "https://buy.stripe.com/8x200jfxQ5U37tneKp28804",
+      large:    "https://buy.stripe.com/14A9AT4Tceqz00VfOt28805",
+
+      // ── TRY IT OUT (one-time) ────────────────────────────────────
+      trial5:   "https://buy.stripe.com/00waEX85ofuD4hbfOt28809",
+      trial10:  "https://buy.stripe.com/5kQcN5etM82b14ZcCh2880c",
+      trial15:  "https://buy.stripe.com/dRm8wP5Xgeqz5lfau92880b",
+
+      // ── CUSTOM ORDERS — exact link per litre amount ──────────────
+      20:  "https://buy.stripe.com/3cl00j85o6Y714Z1XD28800",
+      30:  "https://buy.stripe.com/8x214netMben5lfeKp2880d",
+      40:  "https://buy.stripe.com/3cl8wP71kaajdRLbyd2880e",
+      50:  "https://buy.stripe.com/8x29AT0CW6Y700V59P2880f",
+      60:  "https://buy.stripe.com/00w6oH4Tc3LVbJD6dT28808",
+      70:  "https://buy.stripe.com/28E6oH5Xg82bcNHdGl2880g",
+      80:  "https://buy.stripe.com/7sY5kD1H00zJ2937hX2880h",
+      90:  "https://buy.stripe.com/6oU3cvetM6Y72931XD2880i",
+      100: "https://buy.stripe.com/bJe5kDclE2HRcNHeKp2880j",
+      110: "https://buy.stripe.com/8x2cN5clEeqzaFzeKp2880k",
+      120: "https://buy.stripe.com/14A7sL0CWeqzbJDau92880l",
+      130: "https://buy.stripe.com/bJe8wPdpI5U39BvdGl2880m",
+      140: "https://buy.stripe.com/dRm7sLdpI96feVPfOt2880n",
+      150: "https://buy.stripe.com/bJe7sLfxQ1DNaFz1XD2880o",
+      160: "https://buy.stripe.com/8x23cv85o6Y7cNHau92880p",
+      170: "https://buy.stripe.com/bJebJ1bhAfuD9BvdGl2880q",
+      180: "https://buy.stripe.com/fZu5kD0CW2HReVPgSx2880r",
+      190: "https://buy.stripe.com/eVq9ATclE5U35lf9q52880s",
+      200: "https://buy.stripe.com/3cIfZh71kfuD293cCh2880t",
     };
 
     const PAYPAL_BASE_URL = "";
@@ -3402,7 +3425,7 @@
     function clampBulkLitres(value) {
       const n = parseInt(value, 10);
       if (isNaN(n)) return 20;
-      return Math.min(500, Math.max(20, n));
+      return Math.min(200, Math.max(20, n));
     }
 
     function formatCurrency(value) {
@@ -3432,8 +3455,11 @@
 
       // --- BULK / CUSTOM ---
       if (type === 'bulk') {
-        const litres   = getBulkLitres();
+        const litres    = getBulkLitres();
         const bulkPrice = litres * 10;
+        // Round to nearest 10 to find the closest link (our links go in steps of 10)
+        const rounded   = Math.min(200, Math.max(20, Math.round(litres / 10) * 10));
+        const stripeUrl = STRIPE_LINKS[rounded] || STRIPE_LINKS[200];
         return {
           rawPlan:      selectedCard.dataset.plan,
           checkoutPlan: 'Bulk / Custom Orders',
@@ -3444,7 +3470,7 @@
           price:        bulkPrice,
           summary:      litres + 'L monthly',
           selectedText: 'Bulk / Custom Orders • ' + litres + 'L monthly • ' + formatCurrency(bulkPrice),
-          stripeUrl:    STRIPE_LINKS.bulk
+          stripeUrl
         };
       }
 
@@ -3561,10 +3587,6 @@
         alert('Stripe link missing for this plan. Please contact us to order.');
         return;
       }
-      // For bulk/custom orders, append ?prefilled_quantity=X so Stripe pre-fills the exact litres chosen
-      if (meta.type === 'bulk' && meta.litres) {
-        url = url + '?prefilled_quantity=' + meta.litres;
-      }
       window.location.href = url;
     }
 
@@ -3583,14 +3605,14 @@
     // ============================================================
     if (customMinusBtn) {
       customMinusBtn.addEventListener('click', function() {
-        customLitresInput.value = clampBulkLitres(getBulkLitres() - 5);
+        customLitresInput.value = clampBulkLitres(getBulkLitres() - 10);
         if (selectedCard && selectedCard.dataset.type === 'bulk') refreshPlanUI();
       });
     }
 
     if (customPlusBtn) {
       customPlusBtn.addEventListener('click', function() {
-        customLitresInput.value = clampBulkLitres(getBulkLitres() + 5);
+        customLitresInput.value = clampBulkLitres(getBulkLitres() + 10);
         if (selectedCard && selectedCard.dataset.type === 'bulk') refreshPlanUI();
       });
     }
@@ -3617,14 +3639,14 @@
     // ============================================================
     if (mobileMinusBtn && mobilePlusBtn) {
       mobileMinusBtn.addEventListener('click', function() {
-        const val = clampBulkLitres(getBulkLitres() - 5);
+        const val = clampBulkLitres(getBulkLitres() - 10);
         customLitresInput.value = val;
         if (mobileLitresDisplay) mobileLitresDisplay.textContent = val + 'L';
         if (selectedCard && selectedCard.dataset.type === 'bulk') refreshPlanUI();
       });
 
       mobilePlusBtn.addEventListener('click', function() {
-        const val = clampBulkLitres(getBulkLitres() + 5);
+        const val = clampBulkLitres(getBulkLitres() + 10);
         customLitresInput.value = val;
         if (mobileLitresDisplay) mobileLitresDisplay.textContent = val + 'L';
         if (selectedCard && selectedCard.dataset.type === 'bulk') refreshPlanUI();
