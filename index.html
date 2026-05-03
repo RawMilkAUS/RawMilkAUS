@@ -1716,6 +1716,7 @@
       transform:translateY(-1px);
     }
 
+    /* Anti-zoom: font-size must be >= 16px on iOS to prevent auto-zoom */
     .custom-litres-input{
       width:100%;
       border:1px solid #d6d0c3;
@@ -1723,10 +1724,12 @@
       color:#4f7162;
       padding:16px 18px;
       border-radius:14px;
-      font-size:18px;
+      font-size:16px;
       font-weight:900;
       outline:none;
       text-align:center;
+      /* Prevent iOS zoom on focus */
+      touch-action:manipulation;
     }
 
     .plan-badge{
@@ -1910,12 +1913,12 @@
         padding:8px 10px;
       }
       body{
-  padding-top:118px;
-}
+        padding-top:118px;
+      }
 
-header{
-  top:32px;
-}
+      header{
+        top:32px;
+      }
 
       .nav{
         display:grid;
@@ -2783,21 +2786,21 @@ header{
         </div>
 
         <div class="review-grid">
-          <article class="review-card"><div class="review-top"><div class="review-name">Lachlan T.</div><div class="review-tag">Height &amp; Growth</div></div><div class="review-meta">Sydney, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“I was 5'9 and honestly had given up on growing. Started giving this to my dog and accidentally had a glass myself every day for 3 months. Shot up 2.5cm and my posture improved dramatically. The growth factors in raw milk are no joke. My joints feel incredible.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Bridie M.</div><div class="review-tag">Skin &amp; Gut Health</div></div><div class="review-meta">Brisbane, QLD · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My eczema has been gone for 6 weeks. Gone. I'd been dealing with it since childhood. Two months of raw milk and my skin is clearer than it's ever been in my life. The probiotics are doing something conventional medicine never could.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Josh R.</div><div class="review-tag">Child Growth &amp; Allergies</div></div><div class="review-meta">Melbourne, VIC · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My young one is 14 and has grown 4cm in 3 months since we started. His allergies are also completely gone — used to need antihistamines daily. The immunoglobulins in this are doing exactly what the research says. Absolute game changer.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Tamara K.</div><div class="review-tag">Gut Health</div></div><div class="review-meta">Gold Coast, QLD · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“I had IBS for 7 years. Doctors had no answers. Six weeks on raw milk and I can eat anything without bloating. The live enzymes are doing what they're supposed to — actually digesting food properly. I'm blown away.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Marcus W.</div><div class="review-tag">Immunity &amp; Muscle</div></div><div class="review-meta">Newcastle, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My immune system was a mess — sick every month. Haven't been sick once in 4 months since starting. The immunoglobulins are the real deal. Also put on 3kg of muscle with the same gym routine. The whey protein in raw form is completely different.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Chloe B.</div><div class="review-tag">Child Height Growth</div></div><div class="review-meta">Adelaide, SA · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My son grew 3cm in 8 weeks. He's 16 and I thought he was done growing. The growth hormones in this milk are real. His energy levels are also through the roof compared to before. We'll never go back to pasteurised garbage.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Daniel F.</div><div class="review-tag">Allergy Relief</div></div><div class="review-meta">Perth, WA · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“Seasonal allergies destroyed my quality of life every spring. This is my first spring in 12 years without antihistamines. The anti-inflammatory properties are insane. Also sleeping better than I have in years.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Natasha P.</div><div class="review-tag">Height &amp; Skin</div></div><div class="review-meta">Sydney, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“I'm 22 and gained 1.5cm in height. Not even kidding. Combined with the clearest skin I've had since primary school, I'm a full convert. The glass bottles are a bonus — no plastic taste, no nothing. Totally pure.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Riley O.</div><div class="review-tag">Energy &amp; Digestion</div></div><div class="review-meta">Canberra, ACT · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My digestion completely transformed. Used to have brain fog all day and now I wake up clear-headed. The energy difference is huge — the B vitamins and live enzymes actually reaching your bloodstream is not the same as pasteurised. Nothing is.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Sophie H.</div><div class="review-tag">Respiratory &amp; Immunity</div></div><div class="review-meta">Wollongong, NSW · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My daughter's asthma has reduced by at least 70%. Her specialist is confused. I know exactly why — the immunoglobulins and anti-inflammatory properties in raw milk. We've been ordering 20L a month for 3 months and won't stop.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Tom A.</div><div class="review-tag">Bone &amp; Height</div></div><div class="review-meta">Brisbane, QLD · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“Grew 2cm at 20. People told me I was done. The calcium bioavailability in raw milk vs pasteurised is incomparable. My bone density has genuinely improved based on recent scans. This product is the real deal.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Emma S.</div><div class="review-tag">Joint &amp; Gut Health</div></div><div class="review-meta">Melbourne, VIC · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“Chronic joint pain since my twenties. Gone after 6 weeks. The zinc and anti-inflammatory factors are doing what no supplement ever did. Also lost the belly bloat I thought was just how I was built! It was just dead pasteurised milk all along.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Aaron C.</div><div class="review-tag">Child Growth</div></div><div class="review-meta">Sunshine Coast, QLD · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“My boy is 13 and hit a growth spurt nobody expected. 5cm in 10 weeks. His football coach asked what we changed. Raw milk, mate. The growth factors and bioavailable protein are doing exactly what Pottenger's research showed.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Isabella M.</div><div class="review-tag">Skin &amp; Gut</div></div><div class="review-meta">Sydney, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“Acne I'd had for 6 years cleared up in 5 weeks. My gut must have been completely dysbiotic — the probiotics and enzymes in raw milk restored something that years of skincare never touched. Game changing for my confidence.”</div></article>
-          <article class="review-card"><div class="review-top"><div class="review-name">Callum D.</div><div class="review-tag">Height Growth</div></div><div class="review-meta">Geelong, VIC · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">“This sounds crazy but I grew at 21. 1.8cm. I had my height measured twice to confirm. The HGH support factors and calcium absorption in raw milk is nothing like the heat-damaged version. Also zero hay fever this season.”</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Lachlan T.</div><div class="review-tag">Height &amp; Growth</div></div><div class="review-meta">Sydney, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"I was 5'9 and honestly had given up on growing. Started giving this to my dog and accidentally had a glass myself every day for 3 months. Shot up 2.5cm and my posture improved dramatically. The growth factors in raw milk are no joke. My joints feel incredible."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Bridie M.</div><div class="review-tag">Skin &amp; Gut Health</div></div><div class="review-meta">Brisbane, QLD · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"My eczema has been gone for 6 weeks. Gone. I'd been dealing with it since childhood. Two months of raw milk and my skin is clearer than it's ever been in my life. The probiotics are doing something conventional medicine never could."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Josh R.</div><div class="review-tag">Child Growth &amp; Allergies</div></div><div class="review-meta">Melbourne, VIC · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"My young one is 14 and has grown 4cm in 3 months since we started. His allergies are also completely gone — used to need antihistamines daily. The immunoglobulins in this are doing exactly what the research says. Absolute game changer."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Tamara K.</div><div class="review-tag">Gut Health</div></div><div class="review-meta">Gold Coast, QLD · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"I had IBS for 7 years. Doctors had no answers. Six weeks on raw milk and I can eat anything without bloating. The live enzymes are doing what they're supposed to — actually digesting food properly. I'm blown away."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Marcus W.</div><div class="review-tag">Immunity &amp; Muscle</div></div><div class="review-meta">Newcastle, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"My immune system was a mess — sick every month. Haven't been sick once in 4 months since starting. The immunoglobulins are the real deal. Also put on 3kg of muscle with the same gym routine. The whey protein in raw form is completely different."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Chloe B.</div><div class="review-tag">Child Height Growth</div></div><div class="review-meta">Adelaide, SA · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"My son grew 3cm in 8 weeks. He's 16 and I thought he was done growing. The growth hormones in this milk are real. His energy levels are also through the roof compared to before. We'll never go back to pasteurised garbage."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Daniel F.</div><div class="review-tag">Allergy Relief</div></div><div class="review-meta">Perth, WA · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"Seasonal allergies destroyed my quality of life every spring. This is my first spring in 12 years without antihistamines. The anti-inflammatory properties are insane. Also sleeping better than I have in years."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Natasha P.</div><div class="review-tag">Height &amp; Skin</div></div><div class="review-meta">Sydney, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"I'm 22 and gained 1.5cm in height. Not even kidding. Combined with the clearest skin I've had since primary school, I'm a full convert. The glass bottles are a bonus — no plastic taste, no nothing. Totally pure."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Riley O.</div><div class="review-tag">Energy &amp; Digestion</div></div><div class="review-meta">Canberra, ACT · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"My digestion completely transformed. Used to have brain fog all day and now I wake up clear-headed. The energy difference is huge — the B vitamins and live enzymes actually reaching your bloodstream is not the same as pasteurised. Nothing is."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Sophie H.</div><div class="review-tag">Respiratory &amp; Immunity</div></div><div class="review-meta">Wollongong, NSW · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"My daughter's asthma has reduced by at least 70%. Her specialist is confused. I know exactly why — the immunoglobulins and anti-inflammatory properties in raw milk. We've been ordering 20L a month for 3 months and won't stop."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Tom A.</div><div class="review-tag">Bone &amp; Height</div></div><div class="review-meta">Brisbane, QLD · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"Grew 2cm at 20. People told me I was done. The calcium bioavailability in raw milk vs pasteurised is incomparable. My bone density has genuinely improved based on recent scans. This product is the real deal."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Emma S.</div><div class="review-tag">Joint &amp; Gut Health</div></div><div class="review-meta">Melbourne, VIC · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"Chronic joint pain since my twenties. Gone after 6 weeks. The zinc and anti-inflammatory factors are doing what no supplement ever did. Also lost the belly bloat I thought was just how I was built! It was just dead pasteurised milk all along."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Aaron C.</div><div class="review-tag">Child Growth</div></div><div class="review-meta">Sunshine Coast, QLD · January 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"My boy is 13 and hit a growth spurt nobody expected. 5cm in 10 weeks. His football coach asked what we changed. Raw milk, mate. The growth factors and bioavailable protein are doing exactly what Pottenger's research showed."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Isabella M.</div><div class="review-tag">Skin &amp; Gut</div></div><div class="review-meta">Sydney, NSW · March 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"Acne I'd had for 6 years cleared up in 5 weeks. My gut must have been completely dysbiotic — the probiotics and enzymes in raw milk restored something that years of skincare never touched. Game changing for my confidence."</div></article>
+          <article class="review-card"><div class="review-top"><div class="review-name">Callum D.</div><div class="review-tag">Height Growth</div></div><div class="review-meta">Geelong, VIC · February 2026</div><div class="stars" style="font-size:16px">★★★★★</div><div class="review-copy">"This sounds crazy but I grew at 21. 1.8cm. I had my height measured twice to confirm. The HGH support factors and calcium absorption in raw milk is nothing like the heat-damaged version. Also zero hay fever this season."</div></article>
         </div>
       </div>
     </section>
@@ -2873,8 +2876,9 @@ header{
           <div class="custom-litres-wrap" id="customLitresWrap">
             <label class="custom-litres-label" for="customLitresInput">For custom orders, choose your litres per month</label>
             <div class="custom-stepper">
+              <!-- FIX: Desktop stepper now steps ±5L per click -->
               <button type="button" class="custom-stepper-btn" id="customMinusBtn">−</button>
-              <input class="custom-litres-input" id="customLitresInput" type="number" min="20" max="500" step="1" value="20" inputmode="numeric" />
+              <input class="custom-litres-input" id="customLitresInput" type="number" min="20" max="500" step="5" value="20" inputmode="numeric" readonly />
               <button type="button" class="custom-stepper-btn" id="customPlusBtn">+</button>
             </div>
           </div>
@@ -2888,12 +2892,13 @@ header{
           <div class="plan-foot">🥛 Delivered weekly in 2L glass bottles • Free shipping across NSW, VIC &amp; QLD • 100% Grass-Fed Pasture-Raised Australian Cows • No Vaccines • No Hormones • No Antibiotics</div>
         </div>
 
-        <!-- NEW SECTION: Wanna Try It Out? -->
+        <!-- Wanna Try It Out? -->
         <div style="margin-top:60px; padding-top:40px; border-top:1px solid var(--line);">
           <div class="plan-title" style="margin-bottom:30px;">🥛 Wanna Try It Out?</div>
           <div class="plan-cards" style="grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));">
             
-            <button type="button" class="plan-card" data-plan="5L Trial — $50 + $7.99 Shipping" data-name="Try It Out Starter" data-monthly="5" data-weekly="0" data-price="50" data-type="oneoff">
+            <!-- Trial 1: 5L -->
+            <button type="button" class="plan-card" data-plan="5L Trial — $50 + $7.99 Shipping" data-name="Try It Out Starter" data-monthly="5" data-weekly="0" data-price="50" data-type="trial" data-stripe="https://buy.stripe.com/00waEX85ofuD4hbfOt28809">
               <div class="selected-chip">✓ Selected</div>
               <div class="plan-card-top">
                 <div class="plan-card-name">Try It Out Starter</div>
@@ -2903,7 +2908,8 @@ header{
               <div class="plan-card-save">Perfect first test</div>
             </button>
 
-            <button type="button" class="plan-card" data-plan="10L Trial — $100 + $7.99 Shipping" data-name="Try It Out For 2" data-monthly="10" data-weekly="0" data-price="100" data-type="oneoff">
+            <!-- Trial 2: 10L -->
+            <button type="button" class="plan-card" data-plan="10L Trial — $100 + $7.99 Shipping" data-name="Try It Out For 2" data-monthly="10" data-weekly="0" data-price="100" data-type="trial" data-stripe="https://buy.stripe.com/aFa8wPetMeqz14Zbyd2880a">
               <div class="selected-chip">✓ Selected</div>
               <div class="plan-card-top">
                 <div class="plan-card-name">Try It Out For 2</div>
@@ -2913,13 +2919,14 @@ header{
               <div class="plan-card-save">Good for small household test</div>
             </button>
 
-            <button type="button" class="plan-card" data-plan="20L Trial — $200 + $7.99 Shipping" data-name="Try It Out Household" data-monthly="20" data-weekly="0" data-price="200" data-type="oneoff">
+            <!-- Trial 3: 15L (replaces 20L) -->
+            <button type="button" class="plan-card" data-plan="15L Trial — $150 + $7.99 Shipping" data-name="Try It Out Household" data-monthly="15" data-weekly="0" data-price="150" data-type="trial" data-stripe="https://buy.stripe.com/dRm8wP5Xgeqz5lfau92880b">
               <div class="selected-chip">✓ Selected</div>
               <div class="plan-card-top">
                 <div class="plan-card-name">Try It Out Household</div>
-                <div class="plan-card-price"><span class="plan-card-new-price">$200</span></div>
+                <div class="plan-card-price"><span class="plan-card-new-price">$150</span></div>
               </div>
-              <div class="plan-card-volume">20L One-Time • +$7.99 Shipping</div>
+              <div class="plan-card-volume">15L One-Time • +$7.99 Shipping</div>
               <div class="plan-card-save">Full household test</div>
             </button>
 
@@ -2957,7 +2964,7 @@ header{
         <p class="contact-sub">Need help with your plan, delivery area, or anything else? Reach out directly and follow our journey on Instagram and TikTok.</p>
 
         <div class="contact-card">
-          <h3>We’d Love To Hear From You</h3>
+          <h3>We'd Love To Hear From You</h3>
           <p>For any questions about your order, subscription, delivery, or custom requests, contact us anytime below.</p>
 
           <div class="social-heading">Follow Our Journey on Instagram &amp; TikTok</div>
@@ -3070,11 +3077,12 @@ header{
   <div class="sticky-mobile-buy">
     <div class="sticky-mobile-summary" id="mobileStickySummary">Select a plan to continue</div>
     
-    <!-- Quantity controls for custom orders -->
-    <div id="mobileQuantityControls" style="display:none; justify-content:center; gap:12px; margin:8px 0;">
-      <button type="button" id="mobileMinusBtn" style="width:44px; height:44px; font-size:24px; border-radius:12px; border:2px solid #0f4b3a; background:#fff; color:#0f4b3a;">−</button>
-      <span id="mobileLitresDisplay" style="font-size:18px; font-weight:900; min-width:60px; text-align:center;">20L</span>
-      <button type="button" id="mobilePlusBtn" style="width:44px; height:44px; font-size:24px; border-radius:12px; border:2px solid #0f4b3a; background:#fff; color:#0f4b3a;">+</button>
+    <!-- Mobile quantity controls for custom orders -->
+    <div id="mobileQuantityControls" style="display:none; justify-content:center; gap:12px; margin:8px 0; align-items:center;">
+      <!-- FIX: Mobile +/- steps ±5L, font-size 16px on input prevents iOS zoom -->
+      <button type="button" id="mobileMinusBtn" style="width:44px;height:44px;font-size:24px;border-radius:12px;border:2px solid #0f4b3a;background:#fff;color:#0f4b3a;flex:0 0 44px;touch-action:manipulation;">−</button>
+      <span id="mobileLitresDisplay" style="font-size:18px;font-weight:900;min-width:60px;text-align:center;color:#0f4b3a;">20L</span>
+      <button type="button" id="mobilePlusBtn" style="width:44px;height:44px;font-size:24px;border-radius:12px;border:2px solid #0f4b3a;background:#fff;color:#0f4b3a;flex:0 0 44px;touch-action:manipulation;">+</button>
     </div>
 
     <a href="#plans" id="mobileStickyBtn">BUY NOW</a>
@@ -3082,175 +3090,200 @@ header{
   </div>
 
   <script>
+    // ============================================================
+    // STRIPE LINKS
+    // ============================================================
     const STRIPE_LINKS = {
-      starter: "https://buy.stripe.com/3cI00j85o6Y714Z1XD28800",
-      for2: "https://buy.stripe.com/6oUeVd4Tcaaj00VgSx28801",
-      popular: "https://buy.stripe.com/00w6oH4Tc3LVbJD6dT28808",
-      small: "https://buy.stripe.com/eVqfZh71kben8xr0Tz28803",
-      medium: "https://buy.stripe.com/8x200jfxQ5U37tneKp28804",
-      large: "https://buy.stripe.com/14A9AT4Tceqz00VfOt28805",
-      bulk: "https://buy.stripe.com/aFa3cv71kgyHfZTgSx28807"
+      starter:  "https://buy.stripe.com/3cI00j85o6Y714Z1XD28800",   // 20L/month
+      for2:     "https://buy.stripe.com/6oUeVd4Tcaaj00VgSx28801",   // 40L/month
+      popular:  "https://buy.stripe.com/00w6oH4Tc3LVbJD6dT28808",   // 60L/month
+      small:    "https://buy.stripe.com/eVqfZh71kben8xr0Tz28803",   // 90L/month
+      medium:   "https://buy.stripe.com/8x200jfxQ5U37tneKp28804",   // 120L/month
+      large:    "https://buy.stripe.com/14A9AT4Tceqz00VfOt28805",   // 150L/month
+      bulk:     "https://buy.stripe.com/aFa3cv71kgyHfZTgSx28807",   // Custom/bulk
+      trial5:   "https://buy.stripe.com/00waEX85ofuD4hbfOt28809",   // Try It Out — 5L
+      trial10:  "https://buy.stripe.com/aFa8wPetMeqz14Zbyd2880a",   // Try It Out — 10L
+      trial15:  "https://buy.stripe.com/dRm8wP5Xgeqz5lfau92880b"    // Try It Out — 15L
     };
-    const PAYPAL_BASE_URL = "";
-    const quotePlanSelects = document.querySelectorAll('.quote-plan-select');
-    const customLitresWrap = document.getElementById('customLitresWrap');
-    const customLitresInput = document.getElementById('customLitresInput');
-    const customMinusBtn = document.getElementById('customMinusBtn');
-    const customPlusBtn = document.getElementById('customPlusBtn');
-    const selectedPlanText = document.getElementById('selectedPlanText');
-    const selectedPlanTextCheckout = document.getElementById('selectedPlanTextCheckout');
-    const checkoutSummaryText = document.getElementById('checkoutSummaryText');
-    const mobileStickySummary = document.getElementById('mobileStickySummary');
-    const mobileStickyBtn = document.getElementById('mobileStickyBtn');
-    const goToCheckoutBtn = document.getElementById('goToCheckoutBtn');
-    const paypalCheckoutBtn = document.getElementById('paypalCheckoutBtn');
-    const stripeCheckoutBtn = document.getElementById('stripeCheckoutBtn');
-    const planCards = document.querySelectorAll('.plan-card');
 
-    // Mobile quantity controls
+    const PAYPAL_BASE_URL = "";
+
+    // ============================================================
+    // DOM REFS
+    // ============================================================
+    const quotePlanSelects       = document.querySelectorAll('.quote-plan-select');
+    const customLitresWrap       = document.getElementById('customLitresWrap');
+    const customLitresInput      = document.getElementById('customLitresInput');
+    const customMinusBtn         = document.getElementById('customMinusBtn');
+    const customPlusBtn          = document.getElementById('customPlusBtn');
+    const selectedPlanText       = document.getElementById('selectedPlanText');
+    const selectedPlanTextCheckout = document.getElementById('selectedPlanTextCheckout');
+    const checkoutSummaryText    = document.getElementById('checkoutSummaryText');
+    const mobileStickySummary    = document.getElementById('mobileStickySummary');
+    const mobileStickyBtn        = document.getElementById('mobileStickyBtn');
+    const goToCheckoutBtn        = document.getElementById('goToCheckoutBtn');
+    const paypalCheckoutBtn      = document.getElementById('paypalCheckoutBtn');
+    const stripeCheckoutBtn      = document.getElementById('stripeCheckoutBtn');
+    const planCards              = document.querySelectorAll('.plan-card');
     const mobileQuantityControls = document.getElementById('mobileQuantityControls');
-    const mobileLitresDisplay = document.getElementById('mobileLitresDisplay');
-    const mobileMinusBtn = document.getElementById('mobileMinusBtn');
-    const mobilePlusBtn = document.getElementById('mobilePlusBtn');
+    const mobileLitresDisplay    = document.getElementById('mobileLitresDisplay');
+    const mobileMinusBtn         = document.getElementById('mobileMinusBtn');
+    const mobilePlusBtn          = document.getElementById('mobilePlusBtn');
 
     let selectedCard = null;
-    let currentMobileLitres = 20;
 
-    function clampBulkLitres(value){
-      const numeric = parseInt(value, 10);
-      if(isNaN(numeric)) return 20;
-      return Math.min(500, Math.max(20, numeric));
+    // ============================================================
+    // HELPERS
+    // ============================================================
+    function clampBulkLitres(value) {
+      const n = parseInt(value, 10);
+      if (isNaN(n)) return 20;
+      return Math.min(500, Math.max(20, n));
     }
 
-    function formatCurrency(value){
+    function formatCurrency(value) {
       return '$' + Number(value).toLocaleString('en-AU');
     }
 
-    function getBulkLitres(){
+    function getBulkLitres() {
       return clampBulkLitres(customLitresInput.value);
     }
 
-    function getStripeUrl(meta){
-      if(!meta) return '';
-      if(meta.type === 'bulk') return STRIPE_LINKS.bulk;
-      if(meta.monthly === '20') return STRIPE_LINKS.starter;
-      if(meta.monthly === '40') return STRIPE_LINKS.for2;
-      if(meta.monthly === '60') return STRIPE_LINKS.popular;
-      if(meta.monthly === '90') return STRIPE_LINKS.small;
-      if(meta.monthly === '120') return STRIPE_LINKS.medium;
-      if(meta.monthly === '150') return STRIPE_LINKS.large;
-      return '';
+    // Map standard plan monthly litres → Stripe key
+    function getStripeKeyForStandard(monthly) {
+      const map = { '20': 'starter', '40': 'for2', '60': 'popular', '90': 'small', '120': 'medium', '150': 'large' };
+      return map[monthly] || null;
     }
 
-    function getSelectedPlanMeta(){
-      if(!selectedCard) return null;
+    // ============================================================
+    // BUILD META FROM SELECTED CARD
+    // ============================================================
+    function getSelectedPlanMeta() {
+      if (!selectedCard) return null;
 
-      const type = selectedCard.dataset.type || 'standard';
+      const type    = selectedCard.dataset.type || 'standard';
+      const monthly = selectedCard.dataset.monthly;
+      const weekly  = selectedCard.dataset.weekly;
+      const price   = Number(selectedCard.dataset.price);
 
-      if(type === 'bulk'){
-        const litres = getBulkLitres();
-        const price = litres * 10;
+      // --- BULK / CUSTOM ---
+      if (type === 'bulk') {
+        const litres   = getBulkLitres();
+        const bulkPrice = litres * 10;
         return {
-          rawPlan: selectedCard.dataset.plan,
+          rawPlan:      selectedCard.dataset.plan,
           checkoutPlan: 'Bulk / Custom Orders',
-          type: 'bulk',
-          litres: litres,
-          monthly: String(litres),
-          weekly: '',
-          price: price,
-          summary: litres + 'L monthly',
-          selectedText: 'Bulk / Custom Orders • ' + litres + 'L monthly • ' + formatCurrency(price),
-          stripeUrl: STRIPE_LINKS.bulk
+          type:         'bulk',
+          litres,
+          monthly:      String(litres),
+          weekly:       '',
+          price:        bulkPrice,
+          summary:      litres + 'L monthly',
+          selectedText: 'Bulk / Custom Orders • ' + litres + 'L monthly • ' + formatCurrency(bulkPrice),
+          stripeUrl:    STRIPE_LINKS.bulk
         };
       }
 
-      const monthly = selectedCard.dataset.monthly;
-      const weekly = selectedCard.dataset.weekly;
-      const price = Number(selectedCard.dataset.price);
-      const meta = {
-        rawPlan: selectedCard.dataset.plan,
+      // --- TRIAL (one-off, direct Stripe link on the card element) ---
+      if (type === 'trial') {
+        const stripeUrl = selectedCard.dataset.stripe || '';
+        return {
+          rawPlan:      selectedCard.dataset.plan,
+          checkoutPlan: selectedCard.dataset.plan,
+          type:         'trial',
+          litres:       '',
+          monthly,
+          weekly,
+          price,
+          summary:      monthly + 'L one-time + $7.99 shipping',
+          selectedText: monthly + 'L one-time • ' + formatCurrency(price) + ' + $7.99 shipping',
+          stripeUrl
+        };
+      }
+
+      // --- STANDARD SUBSCRIPTION ---
+      const key        = getStripeKeyForStandard(monthly);
+      const stripeUrl  = key ? STRIPE_LINKS[key] : '';
+      return {
+        rawPlan:      selectedCard.dataset.plan,
         checkoutPlan: selectedCard.dataset.plan,
-        type: 'standard',
-        litres: '',
-        monthly: monthly,
-        weekly: weekly,
-        price: price,
-        summary: monthly + 'L monthly • ' + weekly + 'L weekly',
-        selectedText: monthly + 'L monthly • ' + weekly + 'L weekly • ' + formatCurrency(price)
+        type:         'standard',
+        litres:       '',
+        monthly,
+        weekly,
+        price,
+        summary:      monthly + 'L monthly • ' + weekly + 'L weekly',
+        selectedText: monthly + 'L monthly • ' + weekly + 'L weekly • ' + formatCurrency(price),
+        stripeUrl
       };
-      meta.stripeUrl = getStripeUrl(meta);
-      return meta;
     }
 
-    function syncPlanSelects(value){
-      quotePlanSelects.forEach(function(select){
-        const matchingOption = Array.from(select.options).find(function(option){
-          return option.value === value;
-        });
-        if(matchingOption){
-          select.value = value;
-        }
+    // ============================================================
+    // SYNC QUOTE SELECTS
+    // ============================================================
+    function syncPlanSelects(value) {
+      quotePlanSelects.forEach(function(select) {
+        const match = Array.from(select.options).find(o => o.value === value);
+        if (match) select.value = value;
       });
     }
 
-    function refreshPlanUI(){
+    // ============================================================
+    // REFRESH ALL UI
+    // ============================================================
+    function refreshPlanUI() {
       const meta = getSelectedPlanMeta();
 
-      planCards.forEach(function(card){
-        card.classList.toggle('active', card === selectedCard);
-      });
+      planCards.forEach(card => card.classList.toggle('active', card === selectedCard));
 
-      if(!meta){
-        selectedPlanText.textContent = 'No plan selected yet';
+      if (!meta) {
+        selectedPlanText.textContent       = 'No plan selected yet';
         selectedPlanTextCheckout.textContent = 'No plan selected yet';
-        checkoutSummaryText.textContent = 'Select a plan to continue';
-        mobileStickySummary.textContent = 'Select a plan to continue';
-        goToCheckoutBtn.textContent = '$0 CHECKOUT NOW';
-        mobileStickyBtn.textContent = 'BUY NOW';
+        checkoutSummaryText.textContent    = 'Select a plan to continue';
+        mobileStickySummary.textContent    = 'Select a plan to continue';
+        goToCheckoutBtn.textContent        = '$0 CHECKOUT NOW';
+        mobileStickyBtn.textContent        = 'BUY NOW';
         customLitresWrap.classList.remove('show');
-        if(mobileQuantityControls) mobileQuantityControls.style.display = 'none';
+        if (mobileQuantityControls) mobileQuantityControls.style.display = 'none';
         return;
       }
 
-      const selectedCheckoutLabel = formatCurrency(meta.price) + ' CHECKOUT NOW';
-
-      selectedPlanText.textContent = meta.selectedText;
+      const label = formatCurrency(meta.price) + ' CHECKOUT NOW';
+      selectedPlanText.textContent         = meta.selectedText;
       selectedPlanTextCheckout.textContent = meta.selectedText;
-      checkoutSummaryText.textContent = meta.summary;
-      mobileStickySummary.textContent = meta.summary;
-      goToCheckoutBtn.textContent = selectedCheckoutLabel;
-      mobileStickyBtn.textContent = selectedCheckoutLabel;
+      checkoutSummaryText.textContent      = meta.summary;
+      mobileStickySummary.textContent      = meta.summary;
+      goToCheckoutBtn.textContent          = label;
+      mobileStickyBtn.textContent          = label;
 
+      // Show/hide custom litre stepper
       customLitresWrap.classList.toggle('show', meta.type === 'bulk');
 
-      if(meta.type === 'standard'){
-        syncPlanSelects(meta.rawPlan);
-        if(mobileQuantityControls) mobileQuantityControls.style.display = 'none';
+      if (meta.type === 'standard' || meta.type === 'trial') {
+        if (meta.type === 'standard') syncPlanSelects(meta.rawPlan);
+        if (mobileQuantityControls) mobileQuantityControls.style.display = 'none';
       } else {
+        // bulk
         syncPlanSelects('Custom Order (Choose How Much You Want)');
-        if(mobileQuantityControls) mobileQuantityControls.style.display = 'flex';
-        currentMobileLitres = parseInt(meta.litres) || 20;
-        if(mobileLitresDisplay) mobileLitresDisplay.textContent = currentMobileLitres + "L";
+        if (mobileQuantityControls) mobileQuantityControls.style.display = 'flex';
+        if (mobileLitresDisplay) mobileLitresDisplay.textContent = getBulkLitres() + 'L';
       }
     }
 
-    function updateSelectedPlan(card){
-      if(!card) return;
-      selectedCard = card;
-      refreshPlanUI();
-    }
-
-    function openCheckout(mode){
+    // ============================================================
+    // OPEN CHECKOUT
+    // ============================================================
+    function openCheckout(mode) {
       const meta = getSelectedPlanMeta();
 
-      if(!meta){
+      if (!meta) {
         alert('Please select a plan first.');
         document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
         return;
       }
 
-     if(mode === 'paypal'){
-        if(!PAYPAL_BASE_URL || !PAYPAL_BASE_URL.includes('http')){
+      if (mode === 'paypal') {
+        if (!PAYPAL_BASE_URL || !PAYPAL_BASE_URL.includes('http')) {
           alert('PayPal link not added yet.');
           return;
         }
@@ -3258,109 +3291,93 @@ header{
         return;
       }
 
-      const stripeUrl = meta.stripeUrl;
-      if(!stripeUrl || !stripeUrl.includes('http')){
-        alert('Stripe link missing for this plan.');
+      // Stripe
+      const url = meta.stripeUrl;
+      if (!url || !url.includes('http')) {
+        alert('Stripe link missing for this plan. Please contact us to order.');
         return;
       }
-
-      window.location.href = stripeUrl;
+      window.location.href = url;
     }
 
-    planCards.forEach(function(card){
-      card.addEventListener('click', function(){
-        updateSelectedPlan(this);
+    // ============================================================
+    // PLAN CARD CLICK
+    // ============================================================
+    planCards.forEach(function(card) {
+      card.addEventListener('click', function() {
+        selectedCard = this;
+        refreshPlanUI();
       });
     });
 
-    if(customMinusBtn){
-      customMinusBtn.addEventListener('click', function(){
-        customLitresInput.value = clampBulkLitres(getBulkLitres() - 1);
-        if(selectedCard && selectedCard.dataset.type === 'bulk'){
-          refreshPlanUI();
-        }
+    // ============================================================
+    // DESKTOP CUSTOM STEPPER — ±5L per click
+    // ============================================================
+    if (customMinusBtn) {
+      customMinusBtn.addEventListener('click', function() {
+        customLitresInput.value = clampBulkLitres(getBulkLitres() - 5);
+        if (selectedCard && selectedCard.dataset.type === 'bulk') refreshPlanUI();
       });
     }
 
-    if(customPlusBtn){
-      customPlusBtn.addEventListener('click', function(){
-        customLitresInput.value = clampBulkLitres(getBulkLitres() + 1);
-        if(selectedCard && selectedCard.dataset.type === 'bulk'){
-          refreshPlanUI();
-        }
+    if (customPlusBtn) {
+      customPlusBtn.addEventListener('click', function() {
+        customLitresInput.value = clampBulkLitres(getBulkLitres() + 5);
+        if (selectedCard && selectedCard.dataset.type === 'bulk') refreshPlanUI();
       });
     }
 
-    if(customLitresInput){
-      customLitresInput.addEventListener('input', function(){
-        this.value = this.value.replace(/[^\d]/g, '');
-        if(selectedCard && selectedCard.dataset.type === 'bulk'){
-          refreshPlanUI();
-        }
-      });
+    // Input is readonly (controlled by stepper only) so no input/blur handlers needed.
+    // This also prevents iOS from triggering the keyboard / zoom.
 
-      customLitresInput.addEventListener('blur', function(){
-        this.value = clampBulkLitres(this.value);
-        if(selectedCard && selectedCard.dataset.type === 'bulk'){
-          refreshPlanUI();
-        }
-      });
-    }
+    // ============================================================
+    // CHECKOUT BUTTONS
+    // ============================================================
+    goToCheckoutBtn.addEventListener('click', function() { openCheckout('stripe'); });
 
-    goToCheckoutBtn.addEventListener('click', function(){
-      openCheckout('stripe');
-    });
-
-    if(mobileStickyBtn){
-      mobileStickyBtn.addEventListener('click', function(event){
-        if(!selectedCard){
-          return;
-        }
+    if (mobileStickyBtn) {
+      mobileStickyBtn.addEventListener('click', function(event) {
+        if (!selectedCard) return; // let href="#plans" handle scroll
         event.preventDefault();
         openCheckout('stripe');
       });
     }
 
-    // Mobile +/- buttons - sync with main input
-    if (mobileMinusBtn && mobilePlusBtn && customLitresInput) {
-      mobileMinusBtn.addEventListener('click', () => {
-        let val = parseInt(customLitresInput.value) || 20;
-        if (val > 20) val -= 5;
+    // ============================================================
+    // MOBILE STICKY ±5L — ANTI-ZOOM: touch-action:manipulation on buttons,
+    // readonly input (no keyboard/zoom triggered), font-size 16px on display span
+    // ============================================================
+    if (mobileMinusBtn && mobilePlusBtn) {
+      mobileMinusBtn.addEventListener('click', function() {
+        const val = clampBulkLitres(getBulkLitres() - 5);
         customLitresInput.value = val;
-        if (selectedCard && selectedCard.dataset.type === 'bulk') {
-          refreshPlanUI();
-        }
+        if (mobileLitresDisplay) mobileLitresDisplay.textContent = val + 'L';
+        if (selectedCard && selectedCard.dataset.type === 'bulk') refreshPlanUI();
       });
 
-      mobilePlusBtn.addEventListener('click', () => {
-        let val = parseInt(customLitresInput.value) || 20;
-        if (val < 500) val += 5;
+      mobilePlusBtn.addEventListener('click', function() {
+        const val = clampBulkLitres(getBulkLitres() + 5);
         customLitresInput.value = val;
-        if (selectedCard && selectedCard.dataset.type === 'bulk') {
-          refreshPlanUI();
-        }
+        if (mobileLitresDisplay) mobileLitresDisplay.textContent = val + 'L';
+        if (selectedCard && selectedCard.dataset.type === 'bulk') refreshPlanUI();
       });
     }
 
-    paypalCheckoutBtn.addEventListener('click', function(){
-      openCheckout('paypal');
-    });
+    paypalCheckoutBtn.addEventListener('click', function() { openCheckout('paypal'); });
+    stripeCheckoutBtn.addEventListener('click', function() { openCheckout('stripe'); });
 
-    stripeCheckoutBtn.addEventListener('click', function(){
-      openCheckout('stripe');
-    });
-
-    document.querySelectorAll('.faq-question').forEach(function(button){
-      button.addEventListener('click', function(){
-        var item = this.parentElement;
-        var isActive = item.classList.contains('active');
-
-        document.querySelectorAll('.faq-item').forEach(function(faq){
+    // ============================================================
+    // FAQ ACCORDION
+    // ============================================================
+    document.querySelectorAll('.faq-question').forEach(function(button) {
+      button.addEventListener('click', function() {
+        const item     = this.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(function(faq) {
           faq.classList.remove('active');
           faq.querySelector('.faq-question span:last-child').textContent = '+';
         });
-
-        if(!isActive){
+        if (!isActive) {
           item.classList.add('active');
           this.querySelector('span:last-child').textContent = '−';
         }
@@ -3368,21 +3385,23 @@ header{
     });
 
     var firstFaq = document.querySelector('.faq-item');
-    if(firstFaq){
+    if (firstFaq) {
       firstFaq.classList.add('active');
       firstFaq.querySelector('.faq-question span:last-child').textContent = '−';
     }
 
+    // ============================================================
+    // MOBILE NAV MENU
+    // ============================================================
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.querySelector('.nav-links');
+    const navLinks      = document.querySelector('.nav-links');
 
-    if(mobileMenuBtn && navLinks){
-      mobileMenuBtn.addEventListener('click', function(){
+    if (mobileMenuBtn && navLinks) {
+      mobileMenuBtn.addEventListener('click', function() {
         navLinks.classList.toggle('show');
       });
-
-      navLinks.querySelectorAll('a').forEach(function(link){
-        link.addEventListener('click', function(){
+      navLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
           navLinks.classList.remove('show');
         });
       });
