@@ -43,7 +43,7 @@
   max-width:100%;
   overflow-x:hidden;
   position:relative;
-  padding-top:158px;
+  padding-top:172px;
     }
 
     img{max-width:100%;display:block}
@@ -101,33 +101,18 @@
       align-items:center;
       justify-content:center;
       gap:0;
-      padding:0 44px 0 0;
+      padding:0 32px 0 0;
       position:relative;
       min-height:69px;
-    }
-
-    /* left fire accent strip */
-    .promo-banner-inner::before{
-      content:"🔥";
-      font-size:22px;
-      padding:0 14px 0 16px;
-      flex:0 0 auto;
-      line-height:1;
-      animation:fireWiggle 1.1s ease-in-out infinite alternate;
-    }
-
-    @keyframes fireWiggle{
-      from{transform:scale(1) rotate(-4deg)}
-      to  {transform:scale(1.15) rotate(4deg)}
     }
 
     .promo-content{
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:12px;
+      gap:8px;
       flex-wrap:wrap;
-      padding:14px 8px;
+      padding:10px 8px;
     }
 
     /* BIG headline text */
@@ -195,29 +180,40 @@
       animation:none;
     }
 
+    .promo-row2{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      flex-wrap:nowrap;
+      white-space:nowrap;
+      width:100%;
+      padding:0 8px;
+    }
+
     .promo-copy-hint{
-      color:rgba(255,255,255,.75);
-      font-size:11px;
+      color:#ffe066;
+      font-size:20px;
+      font-weight:900;
+      display:inline;
+      line-height:1;
+    }
+
+    .promo-tap-label{
+      color:rgba(255,255,255,.9);
+      font-size:12px;
       font-weight:800;
       letter-spacing:.08em;
       text-transform:uppercase;
       display:inline;
     }
 
-    /* right fire */
-    .promo-fire-r{
-      font-size:22px;
-      padding:0 10px;
-      flex:0 0 auto;
-      animation:fireWiggle 1.1s .4s ease-in-out infinite alternate;
-    }
-
     /* close button */
     .promo-close{
       position:absolute;
-      right:10px;
-      top:50%;
-      transform:translateY(-50%);
+      right:8px;
+      top:8px;
+      transform:none;
       background:rgba(255,255,255,.15);
       border:1px solid rgba(255,255,255,.25);
       color:#fff;
@@ -247,7 +243,7 @@
       padding:8px 16px;
       font-weight:700;
       position:fixed;
-      top:69px;
+      top:83px;
       left:0;
       right:0;
       z-index:1001;
@@ -255,7 +251,7 @@
 
     header{
       position:fixed;
-  top:106px;
+  top:120px;
   left:0;
   right:0;
   z-index:1000;
@@ -2094,11 +2090,12 @@
       .promo-headline{font-size:11px; letter-spacing:.04em;}
       .promo-headline strong{font-size:14px;}
       .promo-dot{display:none;}
-      .promo-copy-hint{display:inline; font-size:10px; color:rgba(255,255,255,.85);}
-      .promo-code-pill{font-size:13px; padding:6px 12px; letter-spacing:.08em;}
-      .promo-content{gap:7px; padding:10px 8px;}
-      .promo-banner-inner{min-height:auto; padding-right:36px;}
-      .promo-banner-inner::before{font-size:16px; padding:0 8px 0 8px;}
+      .promo-copy-hint{display:inline; font-size:14px;}
+      .promo-tap-label{font-size:10px; letter-spacing:.04em;}
+      .promo-code-pill{font-size:12px; padding:5px 10px; letter-spacing:.06em;}
+      .promo-row2{gap:5px; padding:0 4px;}
+      .promo-content{gap:5px; padding:8px 4px;}
+      .promo-banner-inner{min-height:auto; padding-right:32px;}
 
       .topbar{
         font-size:10px;
@@ -2106,11 +2103,11 @@
         padding:8px 10px;
       }
       body{
-        padding-top:150px;
+        padding-top:168px;
       }
 
       header{
-        top:114px;
+        top:128px;
       }
 
       .nav{
@@ -2741,12 +2738,14 @@
         <span class="promo-headline">🔥 LIMITED TIME — THIS MONTH ONLY</span>
         <span class="promo-dot">•</span>
         <span class="promo-headline"><strong>10% OFF</strong> YOUR ENTIRE ORDER</span>
-        <span class="promo-dot">•</span>
-        <span class="promo-headline">USE CODE AT CHECKOUT:</span>
-        <button class="promo-code-pill" id="copyCodeBtn" title="Tap to copy" onclick="copyPromoCode()">
-          <span id="codeText">RAWMILK</span>
-        </button>
-        <span class="promo-copy-hint">— tap to copy</span>
+        <span class="promo-row2">
+          <span class="promo-headline">USE CHECKOUT CODE:</span>
+          <button class="promo-code-pill" id="copyCodeBtn" title="Tap to copy" onclick="copyPromoCode()">
+            <span id="codeText">RAWMILK</span>
+          </button>
+          <span class="promo-copy-hint">👈</span>
+          <span class="promo-tap-label">TAP TO COPY</span>
+        </span>
       </div>
       <button class="promo-close" id="promoClose" aria-label="Dismiss">✕</button>
     </div>
@@ -3310,16 +3309,30 @@
     function copyPromoCode() {
       const btn = document.getElementById('copyCodeBtn');
       const codeText = document.getElementById('codeText');
-      navigator.clipboard.writeText('RAWMILK').then(function() {
+      function showCopied() {
         btn.classList.add('copied');
         codeText.textContent = 'COPIED ✓';
         setTimeout(function() {
           btn.classList.remove('copied');
           codeText.textContent = 'RAWMILK';
         }, 2500);
-      }).catch(function() {
-        codeText.textContent = 'RAWMILK';
-      });
+      }
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText('RAWMILK').then(showCopied).catch(showCopied);
+      } else {
+        // fallback for non-https / older browsers
+        try {
+          var el = document.createElement('textarea');
+          el.value = 'RAWMILK';
+          el.style.position = 'fixed';
+          el.style.opacity = '0';
+          document.body.appendChild(el);
+          el.focus(); el.select();
+          document.execCommand('copy');
+          document.body.removeChild(el);
+        } catch(e){}
+        showCopied();
+      }
     }
 
     const promoClose = document.getElementById('promoClose');
