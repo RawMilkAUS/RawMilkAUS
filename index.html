@@ -1370,8 +1370,67 @@
       cursor:pointer;
     }
 
+    /* ── REFERRAL BAR ── */
+    .referral-bar{
+      background:linear-gradient(90deg, #0b4a38 0%, #0f4b3a 100%);
+      padding:28px 18px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .referral-bar-inner{
+      max-width:900px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .referral-bar-emoji{ font-size:36px; flex:0 0 auto; }
+
+    .referral-bar-text{ flex:1 1 260px; min-width:0; }
+
+    .referral-bar-text strong{
+      display:block;
+      color:#ffe066;
+      font-size:18px;
+      font-weight:900;
+      font-family:Georgia, serif;
+      margin-bottom:4px;
+    }
+
+    .referral-bar-sub{
+      color:rgba(255,255,255,.75);
+      font-size:14px;
+      font-weight:700;
+      font-family:Inter, sans-serif;
+      line-height:1.4;
+    }
+
+    .referral-bar-btns{ display:flex; gap:10px; flex-wrap:wrap; flex:0 0 auto; }
+
+    .referral-bar-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:900;
+      font-size:14px;
+      font-family:Inter, sans-serif;
+      transition:.18s ease;
+      white-space:nowrap;
+      border:2px solid transparent;
+      color:#fff;
+    }
+
+    .referral-bar-btn:hover{ transform:translateY(-1px); opacity:.9; }
+    .referral-bar-btn.insta{ background:linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%); }
+    .referral-bar-btn.tiktok{ background:#111; border-color:#333; }
+
     .site-footer{
-      margin-top:78px;
+      margin-top:0;
       background:var(--green);
       color:#e9eee8;
       padding:64px 0 46px;
@@ -2716,6 +2775,13 @@
         padding-bottom:108px;
       }
 
+      .referral-bar-inner{ gap:12px; text-align:center; }
+      .referral-bar-text{ flex:1 1 100%; }
+      .referral-bar-text strong{ font-size:15px; }
+      .referral-bar-sub{ font-size:12px; }
+      .referral-bar-btns{ justify-content:center; width:100%; }
+      .referral-bar-btn{ flex:1; justify-content:center; font-size:13px; padding:10px 14px; }
+
       .hero-wrap,
       .hero-grid,
       .hero-card-area,
@@ -3119,13 +3185,13 @@
             </button>
 
             <!-- Trial 2: 10L -->
-            <button type="button" class="plan-card" data-plan="10L Trial — $100 + $7.99 Shipping" data-name="Try It Out For 2" data-monthly="10" data-weekly="0" data-price="100" data-type="trial" data-stripe="https://buy.stripe.com/aFa8wPetMeqz14Zbyd2880a">
+            <button type="button" class="plan-card" data-plan="10L Trial — $107.99 inc. Shipping" data-name="Try It Out For 2" data-monthly="10" data-weekly="0" data-price="108" data-type="trial" data-stripe="https://buy.stripe.com/5kQcN5etM82b14ZcCh2880c">
               <div class="selected-chip">✓ Selected</div>
               <div class="plan-card-top">
                 <div class="plan-card-name">Try It Out For 2</div>
-                <div class="plan-card-price"><span class="plan-card-new-price">$100</span></div>
+                <div class="plan-card-price"><span class="plan-card-new-price">$107.99</span></div>
               </div>
-              <div class="plan-card-volume">10L One-Time • +$7.99 Shipping</div>
+              <div class="plan-card-volume">10L One-Time • Shipping Included</div>
               <div class="plan-card-save">Good for small household test</div>
             </button>
 
@@ -3256,6 +3322,21 @@
       </div>
     </section>
 
+    <!-- REFERRAL BAR -->
+    <div class="referral-bar">
+      <div class="referral-bar-inner">
+        <span class="referral-bar-emoji">🎁</span>
+        <div class="referral-bar-text">
+          <strong>Refer a friend &amp; you both get 10% off</strong>
+          <span class="referral-bar-sub">When your friend places an order, message us on Instagram or TikTok with their details</span>
+        </div>
+        <div class="referral-bar-btns">
+          <a class="referral-bar-btn insta" href="https://www.instagram.com/slavic.stallion/" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+          <a class="referral-bar-btn tiktok" href="https://www.tiktok.com/@slavic.stallion" target="_blank" rel="noopener noreferrer">🎵 TikTok</a>
+        </div>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="container">
         <div class="logo-row">
@@ -3359,7 +3440,7 @@
 
     const STRIPE_LINKS = {
       // ── SUBSCRIPTION PLANS (fixed cards) ────────────────────────
-      starter:  "https://buy.stripe.com/3cl00j85o6Y714Z1XD28800",
+      starter:  "https://buy.stripe.com/3cI00j85o6Y714Z1XD28800",
       for2:     "https://buy.stripe.com/6oUeVd4Tcaaj00VgSx28801",
       popular:  "https://buy.stripe.com/00w6oH4Tc3LVbJD6dT28808",
       small:    "https://buy.stripe.com/eVqfZh71kben8xr0Tz28803",
@@ -3372,7 +3453,7 @@
       trial15:  "https://buy.stripe.com/dRm8wP5Xgeqz5lfau92880b",
 
       // ── CUSTOM ORDERS — exact link per litre amount ──────────────
-      20:  "https://buy.stripe.com/3cl00j85o6Y714Z1XD28800",
+      20:  "https://buy.stripe.com/3cI00j85o6Y714Z1XD28800",
       30:  "https://buy.stripe.com/8x214netMben5lfeKp2880d",
       40:  "https://buy.stripe.com/3cl8wP71kaajdRLbyd2880e",
       50:  "https://buy.stripe.com/8x29AT0CW6Y700V59P2880f",
