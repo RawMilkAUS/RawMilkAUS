@@ -3543,10 +3543,14 @@
       }
 
       // Stripe
-      const url = meta.stripeUrl;
+      let url = meta.stripeUrl;
       if (!url || !url.includes('http')) {
         alert('Stripe link missing for this plan. Please contact us to order.');
         return;
+      }
+      // For bulk/custom orders, append ?quantity=X so Stripe pre-fills the exact litres chosen
+      if (meta.type === 'bulk' && meta.litres) {
+        url = url + '?quantity=' + meta.litres;
       }
       window.location.href = url;
     }
