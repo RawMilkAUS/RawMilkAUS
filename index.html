@@ -201,6 +201,7 @@
       font-weight:800;
       letter-spacing:.08em;
       text-transform:uppercase;
+      display:inline;
     }
 
     /* right fire */
@@ -2093,7 +2094,7 @@
       .promo-headline{font-size:11px; letter-spacing:.04em;}
       .promo-headline strong{font-size:14px;}
       .promo-dot{display:none;}
-      .promo-copy-hint{display:none;}
+      .promo-copy-hint{display:inline; font-size:10px; color:rgba(255,255,255,.85);}
       .promo-code-pill{font-size:13px; padding:6px 12px; letter-spacing:.08em;}
       .promo-content{gap:7px; padding:10px 8px;}
       .promo-banner-inner{min-height:auto; padding-right:36px;}
@@ -2742,11 +2743,10 @@
         <span class="promo-headline"><strong>10% OFF</strong> YOUR ENTIRE ORDER</span>
         <span class="promo-dot">•</span>
         <span class="promo-headline">USE CODE AT CHECKOUT:</span>
-        <button class="promo-code-pill" id="copyCodeBtn" title="Click to copy" onclick="copyPromoCode()">
+        <button class="promo-code-pill" id="copyCodeBtn" title="Tap to copy" onclick="copyPromoCode()">
           <span id="codeText">RAWMILK</span>
-          <span id="copyIcon">📋</span>
         </button>
-        <span class="promo-copy-hint">👆 tap to copy</span>
+        <span class="promo-copy-hint">— tap to copy</span>
       </div>
       <button class="promo-close" id="promoClose" aria-label="Dismiss">✕</button>
     </div>
@@ -3309,16 +3309,13 @@
     // ============================================================
     function copyPromoCode() {
       const btn = document.getElementById('copyCodeBtn');
-      const icon = document.getElementById('copyIcon');
       const codeText = document.getElementById('codeText');
       navigator.clipboard.writeText('RAWMILK').then(function() {
         btn.classList.add('copied');
-        codeText.textContent = 'COPIED!';
-        icon.textContent = '✓';
+        codeText.textContent = 'COPIED ✓';
         setTimeout(function() {
           btn.classList.remove('copied');
           codeText.textContent = 'RAWMILK';
-          icon.textContent = '📋';
         }, 2500);
       }).catch(function() {
         codeText.textContent = 'RAWMILK';
