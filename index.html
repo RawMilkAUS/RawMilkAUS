@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -9,341 +10,406 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --white:#ffffff; --off:#f7f6f3; --border:#e8e4dc; --border2:#d4cfc5;
-      --green:#1c3d2a; --green2:#2b5a3e; --green3:#3d7a54; --green4:#eef4f0;
-      --gold:#a8792a; --gold2:#c49035; --gold-bg:#fdf6e8;
-      --red:#c0392b; --red-bg:#fef3f2; --good:#1a6b3a; --good-bg:#edf7f2;
-      --text:#1a1a1a; --text2:#4a4a4a; --muted:#7a7a7a; --star:#d4a017;
+    :root{
+      --white:#fff;--off:#f7f6f3;--border:#e8e4dc;--border2:#d4cfc5;
+      --green:#1c3d2a;--green2:#2b5a3e;--green3:#3d7a54;--green4:#eef4f0;
+      --gold:#a8792a;--gold2:#c49035;--gold-bg:#fdf6e8;
+      --red:#c0392b;--red-bg:#fef3f2;--good:#1a6b3a;--good-bg:#edf7f2;
+      --text:#1a1a1a;--text2:#4a4a4a;--muted:#7a7a7a;--star:#d4a017;
       --s1:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.06);
-      --s2:0 4px 20px rgba(0,0,0,.09),0 1px 4px rgba(0,0,0,.05);
-      --s3:0 8px 40px rgba(0,0,0,.12);
-      --r:8px; --r2:14px; --r3:20px;
+      --s2:0 4px 20px rgba(0,0,0,.09);--s3:0 8px 40px rgba(0,0,0,.12);
+      --r:8px;--r2:14px;--r3:20px;
       --sans:'Figtree',system-ui,sans-serif;
       --serif:'Cormorant Garamond',Georgia,serif;
       --max:1240px;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;overflow-x:hidden}
-    body{font-family:var(--sans);background:var(--white);color:var(--text);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    html{scroll-behavior:smooth;overflow-x:hidden;max-width:100vw}
+    body{font-family:var(--sans);background:var(--white);color:var(--text);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased;max-width:100vw}
     img{max-width:100%;display:block}
     a{text-decoration:none;color:inherit}
     button,input,select,textarea{font:inherit}
-    .wrap{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    .wrap{width:min(var(--max),calc(100% - 32px));margin:0 auto}
 
-    /* ANN BAR — scrolling marquee */
-    .ann{background:var(--green);color:#fff;height:40px;overflow:hidden;position:relative;display:flex;align-items:center}
-    .ann-track{display:flex;align-items:center;white-space:nowrap;animation:marquee 18s linear infinite;gap:0}
-    .ann-track:hover{animation-play-state:paused}
-    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    .ann-item{display:inline-flex;align-items:center;gap:8px;padding:0 32px;font-size:12.5px;font-weight:500;color:rgba(255,255,255,.9)}
-    .ann-item strong{color:#f5e098;font-weight:700}
-    .ann-sep{color:rgba(255,255,255,.25);font-size:16px;padding:0 4px}
-    .ann-code{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.12);border:1px dashed rgba(255,255,255,.35);border-radius:5px;padding:1px 9px;font-weight:700;letter-spacing:.10em;cursor:pointer;transition:background .15s;font-size:11.5px;color:#fff}
-    .ann-code:hover{background:rgba(255,255,255,.22)}
-    .ann-code.copied{color:#a8ffbe;border-color:#a8ffbe}
-    /* hide old close button — marquee doesn't need it */
-    .ann-x{display:none}
+```
+/* ── ANN BAR ── */
+.ann{background:var(--green);height:40px;overflow:hidden;display:flex;align-items:center;width:100%;max-width:100vw}
+.ann-track{display:flex;align-items:center;white-space:nowrap;animation:marquee 16s linear infinite}
+.ann-track:hover{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ann-item{display:inline-flex;align-items:center;gap:8px;padding:0 28px;font-size:12.5px;font-weight:500;color:rgba(255,255,255,.88)}
+.ann-item strong{color:#f5e098;font-weight:700}
+.ann-sep{color:rgba(255,255,255,.22);font-size:14px;padding:0 2px}
+.ann-code{display:inline-flex;align-items:center;background:rgba(255,255,255,.12);border:1px dashed rgba(255,255,255,.35);border-radius:5px;padding:1px 9px;font-weight:700;letter-spacing:.10em;cursor:pointer;transition:background .15s;font-size:11.5px;color:#fff}
+.ann-code:hover{background:rgba(255,255,255,.22)}
+.ann-code.copied{color:#a8ffbe;border-color:#a8ffbe}
 
-    /* HEADER */
-    .hdr{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-    .hdr-in{height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:22px;font-weight:600;color:var(--green)}
-    .brand-logo{width:36px;height:36px;border-radius:9px;border:1px solid var(--border);overflow:hidden;background:var(--off);display:grid;place-items:center;flex:0 0 36px}
-    .brand-logo img{width:100%;height:100%;object-fit:cover}
-    .nav-links{display:flex;gap:20px;align-items:center;font-size:13.5px;font-weight:500;color:var(--text2)}
-    .nav-links a:hover{color:var(--green)}
-    .hdr-right{display:flex;align-items:center;gap:10px;flex:0 0 auto}
-    .hbtn{display:inline-flex;align-items:center;padding:9px 20px;border-radius:var(--r);font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s;border:1.5px solid var(--green);color:var(--green);background:transparent}
-    .hbtn.f{background:var(--green);color:#fff;box-shadow:0 2px 10px rgba(28,61,42,.18)}
-    .hbtn.f:hover{background:var(--green2)}
-    .hbtn:hover{background:var(--green4)}
-    .mob-menu-btn{display:none;background:none;border:1.5px solid var(--border);border-radius:8px;padding:7px 10px;font-size:18px;cursor:pointer;color:var(--green)}
+/* ── HEADER ── */
+.hdr{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;width:100%;max-width:100vw}
+.hdr-in{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-size:20px;font-weight:600;color:var(--green);flex:0 0 auto}
+.brand-logo{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);overflow:hidden;background:var(--off);display:grid;place-items:center;flex:0 0 34px}
+.brand-logo img{width:100%;height:100%;object-fit:cover}
+.nav-links{display:flex;gap:18px;align-items:center;font-size:13px;font-weight:500;color:var(--text2)}
+.nav-links a:hover{color:var(--green)}
+.hdr-right{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.hbtn{display:inline-flex;align-items:center;padding:8px 18px;border-radius:var(--r);font-size:13px;font-weight:700;cursor:pointer;transition:.15s;border:1.5px solid var(--green);color:var(--green);background:transparent}
+.hbtn.f{background:var(--green);color:#fff;box-shadow:0 2px 10px rgba(28,61,42,.18)}
+.hbtn.f:hover{background:var(--green2)}
+.mob-menu-btn{display:none;background:none;border:1.5px solid var(--border);border-radius:8px;padding:7px 9px;font-size:18px;cursor:pointer;color:var(--green)}
 
-    /* BREADCRUMB */
-    .bc{padding:11px 0;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)}
-    .bc span{color:var(--text2);font-weight:600}
+/* ── BREADCRUMB ── */
+.bc{padding:10px 0;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)}
+.bc span{color:var(--text2);font-weight:600}
 
-    /* PRODUCT LAYOUT */
-    .product-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start}
+/* ── PRODUCT LAYOUT ── */
+.product-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start;max-width:100%}
 
-    /* GALLERY */
-    .gallery-col{position:sticky;top:66px;padding:32px 40px 32px 0}
-    .gallery-main{border-radius:var(--r3);background:var(--off);border:1px solid var(--border);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-    .gallery-main img{width:82%;height:82%;object-fit:contain;filter:drop-shadow(0 12px 28px rgba(0,0,0,.14))}
-    .g-badge{position:absolute;top:14px;left:14px;background:var(--green);color:#fff;border-radius:999px;padding:5px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-    .thumbs{display:flex;gap:9px;margin-top:11px}
-    .thumb{width:70px;height:70px;border-radius:10px;border:2px solid transparent;background:var(--off);display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;transition:border-color .15s;flex:0 0 70px}
-    .thumb.active,.thumb:hover{border-color:var(--green)}
-    .thumb img{width:78%;height:78%;object-fit:contain}
-    .thumb-lbl{width:70px;height:70px;border-radius:10px;border:2px solid var(--border);background:var(--green4);display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:var(--green);text-align:center;line-height:1.25;padding:6px;cursor:pointer;flex:0 0 70px;transition:border-color .15s}
-    .thumb-lbl:hover{border-color:var(--green)}
+/* ══════════════════════════════════════════
+   IMAGE SLIDER GALLERY
+══════════════════════════════════════════ */
+.gallery-col{position:sticky;top:64px;padding:28px 36px 28px 0;max-width:100%}
 
-    /* BUY BOX */
-    .buybox{padding:32px 0 32px 40px;border-left:1px solid var(--border)}
-    .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-    .product-title{font-family:var(--serif);font-size:42px;font-weight:600;line-height:1.05;color:var(--green);margin-bottom:14px}
-    .product-title em{font-style:italic}
-    .stars-row{display:flex;align-items:center;gap:8px;margin-bottom:18px}
-    .stars{color:var(--star);font-size:13.5px;letter-spacing:2px}
-    .stars-ct{font-size:13px;color:var(--text2);font-weight:500}
-    .stars-lnk{font-size:12.5px;color:var(--green);font-weight:600;border-bottom:1px solid;cursor:pointer}
-    .benefit-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
-    .bpill{display:inline-flex;align-items:center;gap:5px;background:var(--green4);border:1px solid #c8dfd0;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:600;color:var(--green2)}
+.slider-wrap{position:relative;border-radius:var(--r3);overflow:hidden;border:1px solid var(--border);background:var(--off);aspect-ratio:1/1;touch-action:pan-y}
+.slides{display:flex;height:100%;transition:transform .4s cubic-bezier(.4,0,.2,1);will-change:transform}
+.slide{min-width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
 
-    /* PURCHASE TYPE TOGGLE */
-    .ptype{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--border2);border-radius:var(--r2);overflow:hidden;margin-bottom:20px}
-    .ptab{padding:14px 10px;text-align:center;cursor:pointer;background:var(--white);border:none;font-family:inherit;transition:background .15s;position:relative}
-    .ptab.active{background:var(--green);color:#fff}
-    .ptab.active .pt-title,.ptab.active .pt-sub{color:#fff}
-    .ptab.active .pt-sub{color:rgba(255,255,255,.7)}
-    .pt-title{font-size:13.5px;font-weight:700;color:var(--text);display:block}
-    .pt-sub{font-size:11.5px;color:var(--muted);display:block;margin-top:2px}
-    .pt-badge{position:absolute;top:-10px;right:10px;background:var(--gold2);color:#fff;border-radius:999px;padding:2px 9px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+/* Slide 1 — bottle with callouts */
+.slide-1{background:var(--green4)}
+.slide-1 img{width:72%;height:72%;object-fit:contain;filter:drop-shadow(0 12px 28px rgba(0,0,0,.18))}
+.slide-callouts{position:absolute;inset:0;pointer-events:none}
+.callout-chip{position:absolute;background:#fff;color:var(--green);border:1.5px solid #c8dfd0;border-radius:10px;padding:7px 11px;font-size:11.5px;font-weight:700;line-height:1.2;box-shadow:0 4px 14px rgba(0,0,0,.10);max-width:110px}
+.cc-tl{top:14%;left:5%}
+.cc-tr{top:14%;right:5%}
+.cc-ml{top:44%;left:5%}
+.cc-mr{top:44%;right:5%}
+.cc-bl{bottom:18%;left:5%}
+.cc-br{bottom:18%;right:5%}
+.slide-badge-winner{position:absolute;top:10px;right:10px;background:var(--gold2);color:#fff;border-radius:999px;padding:5px 12px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 3px 10px rgba(196,144,53,.35)}
+.slide-badge-rating{position:absolute;top:10px;left:10px;background:#fff;color:var(--green);border:1px solid #c8dfd0;border-radius:11px;padding:7px 11px;font-size:11px;font-weight:700;line-height:1.3;box-shadow:0 4px 14px rgba(0,0,0,.10)}
+.slide-badge-rating .r-stars{color:var(--star);font-size:12px;letter-spacing:1.5px}
 
-    /* PLAN CARDS */
-    .plan-label{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
-    .plan-cards{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
-    .plan-card{display:flex;align-items:center;justify-content:space-between;padding:13px 15px;border:2px solid var(--border);border-radius:var(--r2);background:var(--white);cursor:pointer;transition:border-color .15s,background .15s,box-shadow .15s;position:relative;text-align:left;gap:10px;font-family:inherit;width:100%}
-    .plan-card:hover{border-color:var(--green3)}
-    .plan-card.active{border-color:var(--green);background:var(--green4);box-shadow:0 0 0 3px rgba(28,61,42,.08)}
-    .plan-card.pop{border-color:var(--gold2)}
-    .plan-card.pop.active{border-color:var(--gold);background:var(--gold-bg)}
-    .pc-left{display:flex;align-items:center;gap:11px;min-width:0}
-    .pc-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--border2);background:var(--white);flex:0 0 18px;display:flex;align-items:center;justify-content:center;transition:border-color .15s}
-    .plan-card.active .pc-radio{border-color:var(--green);background:var(--green)}
-    .pc-dot{width:8px;height:8px;border-radius:50%;background:#fff;opacity:0;transition:opacity .15s}
-    .plan-card.active .pc-dot{opacity:1}
-    .pc-name{font-size:14.5px;font-weight:700;color:var(--text)}
-    .pc-vol{font-size:12.5px;color:var(--muted);font-weight:500;margin-top:1px}
-    .pc-right{text-align:right;flex:0 0 auto}
-    .pc-price{font-size:19px;font-weight:800;color:var(--green);display:block}
-    .pc-save{font-size:11px;color:var(--good);font-weight:700;display:block;margin-top:2px}
-    .pc-badge{position:absolute;top:-10px;left:13px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#fff;border-radius:999px;padding:3px 10px;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 2px 8px rgba(168,121,42,.3)}
+/* Slide 2 — farm photo */
+.slide-2{background:#1a3d2a}
+.slide-2 img{width:100%;height:100%;object-fit:cover}
+.slide-2-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.65));padding:20px;color:#fff}
+.slide-2-overlay strong{font-family:var(--serif);font-size:20px;display:block;margin-bottom:2px}
+.slide-2-overlay span{font-size:12.5px;opacity:.8}
 
-    /* CUSTOM STEPPER */
-    .cs-wrap{display:none;align-items:center;gap:10px;padding:13px 15px;border:2px solid var(--green);border-radius:var(--r2);background:var(--green4);margin-bottom:18px}
-    .cs-wrap.show{display:flex}
-    .cs-lbl{font-size:13.5px;font-weight:700;color:var(--green);flex:1}
-    .cs-btn{width:34px;height:34px;border-radius:7px;border:1.5px solid var(--green);background:var(--white);color:var(--green);font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:0 0 34px;transition:background .12s}
-    .cs-btn:hover{background:var(--green4)}
-    .cs-val{font-size:16px;font-weight:800;color:var(--green);min-width:48px;text-align:center}
+/* Slide 3 — comparison card */
+.slide-3{background:var(--green);flex-direction:column;padding:16px;align-items:stretch;justify-content:flex-start}
+.slide-3-title{color:#f0ebe0;font-family:var(--serif);font-size:18px;font-weight:600;text-align:center;margin-bottom:10px;flex:0 0 auto}
+.slide-3-title em{color:var(--gold2);font-style:italic}
+.cmp-table{width:100%;border-collapse:collapse;font-size:11px;flex:1}
+.cmp-table thead th{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);padding:7px 8px;text-align:center;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.cmp-table thead th:first-child{text-align:left}
+.cmp-table tbody td{padding:6px 8px;border-top:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.75);font-size:10.5px}
+.cmp-table tbody td:first-child{font-weight:600;color:rgba(255,255,255,.8)}
+.cmp-table tbody td:nth-child(2){color:#f28282;font-weight:600;text-align:center}
+.cmp-table tbody td:nth-child(3){color:#72e6a2;font-weight:600;text-align:center}
+.cmp-table tbody tr:nth-child(odd) td{background:rgba(255,255,255,.03)}
+.cmp-table tfoot td{padding:8px;text-align:center;color:rgba(255,255,255,.4);font-size:9.5px;border-top:1px solid rgba(255,255,255,.08)}
 
-    /* PRICE */
-    .price-block{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
-    .price-main{font-size:34px;font-weight:800;color:var(--green)}
-    .price-save{display:inline-flex;align-items:center;background:var(--gold-bg);border:1px solid #e8d49a;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;color:var(--gold)}
-    .price-note{font-size:13px;color:var(--muted);margin-bottom:16px}
+/* Slide 4 — benefits graphic */
+.slide-4{background:#f0f9f3;flex-direction:column;padding:20px 16px;align-items:stretch;justify-content:flex-start;gap:0}
+.slide-4-title{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--green);text-align:center;margin-bottom:12px}
+.slide-4-title em{font-style:italic;color:var(--gold)}
+.benefit-rows{display:flex;flex-direction:column;gap:8px;flex:1}
+.benefit-row-item{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #c8dfd0;border-radius:10px;padding:9px 12px}
+.bri-icon{font-size:18px;flex:0 0 24px;text-align:center}
+.bri-text{font-size:12.5px;font-weight:700;color:var(--green);line-height:1.2}
+.bri-sub{font-size:11px;color:var(--muted);font-weight:400;margin-top:1px}
 
-    /* CTA */
-    .btn-cart{width:100%;height:56px;border:none;border-radius:var(--r2);background:var(--green);color:#fff;font-size:16.5px;font-weight:800;letter-spacing:.02em;cursor:pointer;transition:background .15s,transform .12s,box-shadow .15s;box-shadow:0 4px 18px rgba(28,61,42,.22);margin-bottom:9px;display:flex;align-items:center;justify-content:center;gap:8px}
-    .btn-cart:hover{background:var(--green2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(28,61,42,.28)}
-    .btn-cart:active{transform:translateY(0)}
-    .btn-cart-sub{font-size:12px;color:var(--muted);text-align:center;margin-bottom:16px}
+/* SLIDER CONTROLS */
+.slider-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:10;background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--green);box-shadow:0 2px 10px rgba(0,0,0,.12);transition:background .15s;touch-action:manipulation}
+.slider-btn:hover{background:#fff}
+.slider-prev{left:8px}
+.slider-next{right:8px}
+.slider-dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.slider-dot{width:7px;height:7px;border-radius:50%;background:var(--border2);cursor:pointer;transition:background .2s,transform .2s;border:none;padding:0}
+.slider-dot.active{background:var(--green);transform:scale(1.25)}
 
-    /* TRUST BADGES */
-    .trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:16px 0}
-    .tbadge{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--text2)}
-    .tbadge-icon{width:27px;height:27px;border-radius:7px;background:var(--green4);border:1px solid #c8dfd0;display:flex;align-items:center;justify-content:center;font-size:13px;flex:0 0 27px}
+/* Thumbs row */
+.thumbs{display:flex;gap:8px;margin-top:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumb-item{width:66px;height:66px;border-radius:9px;border:2px solid transparent;background:var(--off);display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;transition:border-color .15s;flex:0 0 66px}
+.thumb-item.active{border-color:var(--green)}
+.thumb-item img{width:100%;height:100%;object-fit:cover;border-radius:7px}
+.thumb-item-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;background:var(--green4);border-radius:7px;font-size:16px;gap:2px}
+.thumb-item-label{font-size:9px;font-weight:700;color:var(--green);text-align:center;line-height:1.1;padding:0 2px}
 
-    /* DIVIDER */
-    .div{height:1px;background:var(--border);margin:18px 0}
+/* ── BUY BOX ── */
+.buybox{padding:28px 0 28px 36px;border-left:1px solid var(--border);min-width:0}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.product-title{font-family:var(--serif);font-size:40px;font-weight:600;line-height:1.05;color:var(--green);margin-bottom:12px}
+.product-title em{font-style:italic}
+.stars-row{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.stars{color:var(--star);font-size:13px;letter-spacing:2px}
+.stars-ct{font-size:12.5px;color:var(--text2);font-weight:500}
+.stars-lnk{font-size:12px;color:var(--green);font-weight:600;border-bottom:1px solid;cursor:pointer}
+.bpills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.bpill{display:inline-flex;align-items:center;gap:4px;background:var(--green4);border:1px solid #c8dfd0;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:600;color:var(--green2)}
 
-    /* INCLUDED */
-    .inc-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
-    .inc-item{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:var(--text2);line-height:1.45}
-    .inc-chk{width:18px;height:18px;border-radius:50%;background:var(--green4);border:1px solid #c8dfd0;display:flex;align-items:center;justify-content:center;font-size:9.5px;flex:0 0 18px;margin-top:1px;color:var(--green)}
+/* PURCHASE TOGGLE */
+.ptype{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--border2);border-radius:var(--r2);overflow:hidden;margin-bottom:18px}
+.ptab{padding:13px 8px;text-align:center;cursor:pointer;background:var(--white);border:none;font-family:inherit;transition:background .15s;position:relative}
+.ptab.active{background:var(--green)}
+.ptab.active .pt-title{color:#fff}
+.ptab.active .pt-sub{color:rgba(255,255,255,.7)}
+.pt-title{font-size:13px;font-weight:700;color:var(--text);display:block}
+.pt-sub{font-size:11px;color:var(--muted);display:block;margin-top:2px}
+.pt-badge{position:absolute;top:-10px;right:8px;background:var(--gold2);color:#fff;border-radius:999px;padding:2px 9px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
 
-    /* INFO ACCORDION */
-    .info-acc{border-top:1px solid var(--border)}
-    .ia-item{border-bottom:1px solid var(--border)}
-    .ia-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:13px 0;background:none;border:none;cursor:pointer;font-size:13.5px;font-weight:600;color:var(--text);text-align:left;gap:10px}
-    .ia-icon{font-size:18px;color:var(--muted);flex:0 0 auto}
-    .ia-item.open .ia-icon{color:var(--green)}
-    .ia-body{display:none;padding:0 0 13px;font-size:13px;color:var(--text2);line-height:1.65}
-    .ia-item.open .ia-body{display:block}
+/* PLAN CARDS */
+.plan-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.plan-cards{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.plan-card{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:2px solid var(--border);border-radius:var(--r2);background:var(--white);cursor:pointer;transition:border-color .15s,background .15s,box-shadow .15s;position:relative;text-align:left;gap:10px;font-family:inherit;width:100%}
+.plan-card:hover{border-color:var(--green3)}
+.plan-card.active{border-color:var(--green);background:var(--green4);box-shadow:0 0 0 3px rgba(28,61,42,.08)}
+.plan-card.pop{border-color:var(--gold2)}
+.plan-card.pop.active{border-color:var(--gold);background:var(--gold-bg)}
+.pc-left{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+.pc-radio{width:17px;height:17px;border-radius:50%;border:2px solid var(--border2);background:var(--white);flex:0 0 17px;display:flex;align-items:center;justify-content:center;transition:border-color .15s}
+.plan-card.active .pc-radio{border-color:var(--green);background:var(--green)}
+.pc-dot{width:7px;height:7px;border-radius:50%;background:#fff;opacity:0;transition:opacity .15s}
+.plan-card.active .pc-dot{opacity:1}
+.pc-name{font-size:14px;font-weight:700;color:var(--text)}
+.pc-vol{font-size:12px;color:var(--muted);font-weight:500;margin-top:1px}
+.pc-right{text-align:right;flex:0 0 auto}
+.pc-price{font-size:18px;font-weight:800;color:var(--green);display:block}
+.pc-save{font-size:11px;color:var(--good);font-weight:700;display:block;margin-top:1px}
+.pc-badge{position:absolute;top:-10px;left:12px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#fff;border-radius:999px;padding:3px 10px;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 2px 8px rgba(168,121,42,.3)}
 
-    /* ── BELOW FOLD ── */
-    /* PROOF BAR */
-    .proof-bar{padding:18px 0;border-bottom:1px solid var(--border);background:var(--off);border-top:1px solid var(--border)}
-    .proof-inner{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap}
-    .pstat{text-align:center}
-    .pstat-n{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--green);line-height:1}
-    .pstat-l{font-size:12px;color:var(--muted);font-weight:500;margin-top:2px}
-    .pdiv{width:1px;height:38px;background:var(--border2)}
+/* CUSTOM STEPPER */
+.cs-wrap{display:none;align-items:center;gap:10px;padding:12px 14px;border:2px solid var(--green);border-radius:var(--r2);background:var(--green4);margin-bottom:16px}
+.cs-wrap.show{display:flex}
+.cs-lbl{font-size:13px;font-weight:700;color:var(--green);flex:1}
+.cs-btn{width:33px;height:33px;border-radius:7px;border:1.5px solid var(--green);background:var(--white);color:var(--green);font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:0 0 33px}
+.cs-val{font-size:16px;font-weight:800;color:var(--green);min-width:46px;text-align:center}
 
-    /* SECTIONS */
-    .section{padding:68px 0;border-bottom:1px solid var(--border)}
-    .sec-lbl{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:9px}
-    .sec-title{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1.05;color:var(--green);text-align:center}
-    .sec-sub{max-width:560px;margin:12px auto 0;text-align:center;font-size:15.5px;color:var(--text2);line-height:1.65}
+/* PRICE */
+.price-block{display:flex;align-items:baseline;gap:10px;margin-bottom:5px}
+.price-main{font-size:32px;font-weight:800;color:var(--green)}
+.price-note{font-size:12.5px;color:var(--muted);margin-bottom:14px}
 
-    /* SCIENCE */
-    .sci-section{background:var(--green);border-bottom:none}
-    .sci-section .sec-title{color:#f2ede3}
-    .sci-section .sec-sub{color:rgba(255,255,255,.48);font-style:italic}
-    .sci-section .sec-lbl{color:var(--gold2)}
-    .tbl-wrap{width:min(840px,100%);margin:44px auto 0;border-radius:14px 14px 0 0;overflow:hidden;overflow-x:auto;box-shadow:0 -1px 0 rgba(255,255,255,.08),0 16px 48px rgba(0,0,0,.2)}
-    table{width:100%;min-width:500px;border-collapse:collapse}
-    thead th{background:rgba(255,255,255,.09);padding:13px 18px;text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-    tbody td{padding:12px 18px;font-size:14px;border-top:1px solid rgba(255,255,255,.06)}
-    tbody tr:nth-child(odd) td{background:rgba(255,255,255,.03)}
-    td.bad{color:#f28282;font-weight:600}
-    td.good{color:#72e6a2;font-weight:600}
-    td:first-child{color:rgba(255,255,255,.72);font-weight:500}
+/* CTA */
+.btn-cart{width:100%;height:54px;border:none;border-radius:var(--r2);background:var(--green);color:#fff;font-size:16px;font-weight:800;letter-spacing:.02em;cursor:pointer;transition:background .15s,transform .12s,box-shadow .15s;box-shadow:0 4px 18px rgba(28,61,42,.22);margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-cart:hover{background:var(--green2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(28,61,42,.28)}
+.btn-cart-sub{font-size:12px;color:var(--muted);text-align:center;margin-bottom:14px}
 
-    /* BENEFITS */
-    .ben-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
-    .ben-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r3);padding:26px 24px;transition:box-shadow .2s,transform .2s}
-    .ben-card:hover{box-shadow:var(--s3);transform:translateY(-2px)}
-    .bc-head{display:flex;align-items:flex-start;gap:11px;margin-bottom:16px}
-    .bc-icon{width:42px;height:42px;border-radius:10px;background:var(--green4);border:1px solid #c8dfd0;display:flex;align-items:center;justify-content:center;font-size:19px;flex:0 0 42px}
-    .bc-tag{background:var(--green);color:#fff;border-radius:999px;padding:4px 11px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-    .bc-title{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--green);margin-bottom:12px;line-height:1.2}
-    .bc-list{list-style:none;display:flex;flex-direction:column;gap:9px}
-    .bc-list li{font-size:14px;color:var(--text2);line-height:1.55;padding-left:14px;position:relative}
-    .bc-list li::before{content:'→';position:absolute;left:0;top:0;color:var(--green3);font-size:11px}
-    .chip-bad{display:inline;background:var(--red-bg);color:var(--red);border-radius:5px;padding:.08em .35em;font-weight:600;font-size:.93em}
-    .chip-good{display:inline;background:var(--good-bg);color:var(--good);border-radius:5px;padding:.08em .35em;font-weight:600;font-size:.93em}
+/* TRUST BADGES */
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:14px 0}
+.tbadge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--text2)}
+.tbadge-icon{width:26px;height:26px;border-radius:7px;background:var(--green4);border:1px solid #c8dfd0;display:flex;align-items:center;justify-content:center;font-size:13px;flex:0 0 26px}
 
-    /* REVIEWS */
-    .rev-section{background:var(--off)}
-    .rating-sum{max-width:640px;margin:44px auto 0;background:var(--white);border:1px solid var(--border);border-radius:var(--r3);padding:28px;display:grid;grid-template-columns:130px 1fr;gap:24px;box-shadow:var(--s1)}
-    .r-big{font-family:var(--serif);font-size:60px;font-weight:700;color:var(--green);line-height:1}
-    .r-stars{color:var(--star);font-size:16px;letter-spacing:2px;margin:5px 0 5px}
-    .r-ct{font-size:12.5px;color:var(--muted);font-weight:500}
-    .bar-rows{display:flex;flex-direction:column;gap:7px;justify-content:center}
-    .bar-row{display:grid;grid-template-columns:36px 1fr 32px;gap:8px;align-items:center;font-size:12px;color:var(--muted);font-weight:500}
-    .bar{height:6px;background:var(--border);border-radius:999px;overflow:hidden}
-    .bar>span{display:block;height:100%;background:var(--green);border-radius:999px}
-    .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
-    .rev-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);padding:18px;transition:box-shadow .2s,transform .2s}
-    .rev-card:hover{box-shadow:var(--s2);transform:translateY(-2px)}
-    .rc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3px}
-    .rc-name{font-weight:700;font-size:14.5px;color:var(--text)}
-    .rc-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--off);border-radius:999px;padding:3px 8px;white-space:nowrap}
-    .rc-meta{font-size:12px;color:var(--muted);margin-bottom:7px}
-    .rc-stars{color:var(--star);font-size:11.5px;letter-spacing:1.5px;margin-bottom:8px}
-    .rc-copy{font-size:13.5px;color:var(--text2);line-height:1.6;font-style:italic}
+.div{height:1px;background:var(--border);margin:16px 0}
 
-    /* DELIVERY */
-    .del-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:44px}
-    .del-ey{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block}
-    .del-h{font-family:var(--serif);font-size:40px;font-weight:600;color:var(--green);margin-bottom:7px;line-height:1.05}
-    .del-it{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:16px;margin-bottom:18px}
-    .del-p{font-size:15px;color:var(--text2);line-height:1.65;max-width:420px}
-    .del-feats{display:flex;flex-direction:column;gap:12px;margin-top:24px}
-    .del-feat{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:600;color:var(--text)}
-    .del-icon{width:36px;height:36px;border-radius:8px;background:var(--green4);border:1px solid #c8dfd0;display:flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 36px}
-    .del-img{border-radius:var(--r3);aspect-ratio:4/3;background:linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.42) 100%),url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80') center/cover;box-shadow:var(--s3);display:flex;align-items:flex-end;padding:22px}
-    .del-img-lbl strong{display:block;font-family:var(--serif);font-size:22px;color:#fff;margin-bottom:3px}
-    .del-img-lbl span{font-size:12.5px;color:rgba(255,255,255,.72)}
+/* INCLUDED */
+.inc-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.inc-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text2);line-height:1.4}
+.inc-chk{width:17px;height:17px;border-radius:50%;background:var(--green4);border:1px solid #c8dfd0;display:flex;align-items:center;justify-content:center;font-size:9px;flex:0 0 17px;margin-top:1px;color:var(--green)}
 
-    /* FAQ */
-    .faq-wrap{max-width:620px;margin:44px auto 0;background:var(--white);border:1px solid var(--border);border-radius:var(--r3);overflow:hidden;box-shadow:var(--s1)}
-    .faq-item{border-bottom:1px solid var(--border)}
-    .faq-item:last-child{border-bottom:none}
-    .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:17px 22px;background:none;border:none;cursor:pointer;font-size:14.5px;font-weight:600;color:var(--text);text-align:left;gap:10px;font-family:inherit}
-    .fq-icon{font-size:20px;color:var(--muted);flex:0 0 auto}
-    .faq-item.open .fq-icon{color:var(--green)}
-    .faq-a{display:none;padding:0 22px 17px;font-size:13.5px;color:var(--text2);line-height:1.65}
-    .faq-item.open .faq-a{display:block}
+/* INFO ACCORDION */
+.info-acc{border-top:1px solid var(--border)}
+.ia-item{border-bottom:1px solid var(--border)}
+.ia-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 0;background:none;border:none;cursor:pointer;font-size:13px;font-weight:600;color:var(--text);text-align:left;gap:10px}
+.ia-icon{font-size:18px;color:var(--muted);flex:0 0 auto}
+.ia-item.open .ia-icon{color:var(--green)}
+.ia-body{display:none;padding:0 0 12px;font-size:13px;color:var(--text2);line-height:1.65}
+.ia-item.open .ia-body{display:block}
 
-    /* CONTACT */
-    .cc{max-width:620px;margin:44px auto 0;background:var(--white);border:1px solid var(--border);border-radius:var(--r3);padding:32px;box-shadow:var(--s1);text-align:center}
-    .cc h3{font-family:var(--serif);font-size:24px;color:var(--green);margin-bottom:7px}
-    .cc>p{color:var(--text2);font-size:14.5px;line-height:1.6;margin-bottom:20px}
-    .soc-links{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-bottom:24px}
-    .soc-link{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border:1.5px solid var(--border);border-radius:var(--r);font-size:13px;font-weight:600;color:var(--text);background:var(--off);transition:border-color .15s,background .15s}
-    .soc-link:hover{border-color:var(--green);background:var(--green4);color:var(--green)}
-    .cform{text-align:left;display:grid;gap:9px}
-    .cform input,.cform select,.cform textarea{width:100%;border:1.5px solid var(--border);border-radius:var(--r);background:var(--off);color:var(--text);padding:11px 13px;font-size:14px;outline:none;transition:border-color .15s}
-    .cform input:focus,.cform select:focus,.cform textarea:focus{border-color:var(--green)}
-    .cform textarea{min-height:76px;resize:vertical}
-    .btn-submit{height:44px;border:none;border-radius:var(--r);background:var(--green);color:#fff;font-size:14.5px;font-weight:700;cursor:pointer;transition:background .15s}
-    .btn-submit:hover{background:var(--green2)}
+/* ══════════════════════════════════════════
+   BELOW FOLD
+══════════════════════════════════════════ */
+.proof-bar{padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--off)}
+.proof-inner{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+.pstat{text-align:center}
+.pstat-n{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--green);line-height:1}
+.pstat-l{font-size:11.5px;color:var(--muted);font-weight:500;margin-top:2px}
+.pdiv{width:1px;height:34px;background:var(--border2)}
 
-    /* REFERRAL */
-    .ref{background:var(--green2);padding:26px 0}
-    .ref-in{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center}
-    .ref-emoji{font-size:28px}
-    .ref-txt{flex:1 1 200px}
-    .ref-txt strong{display:block;color:#f5e098;font-size:16.5px;font-weight:700;font-family:var(--serif);margin-bottom:2px}
-    .ref-txt span{font-size:13px;color:rgba(255,255,255,.62)}
-    .ref-btns{display:flex;gap:8px;flex-wrap:wrap}
-    .ref-btn{display:inline-flex;align-items:center;gap:5px;padding:9px 15px;border-radius:var(--r);font-size:13px;font-weight:700;color:#fff;border:none;cursor:pointer;transition:opacity .15s,transform .12s}
-    .ref-btn:hover{transform:translateY(-1px);opacity:.9}
-    .ref-btn.insta{background:linear-gradient(135deg,#833ab4,#fd1d1d 55%,#fcb045)}
-    .ref-btn.tiktok{background:#111;outline:1px solid #333}
+.section{padding:60px 0;border-bottom:1px solid var(--border)}
+.sec-lbl{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:8px}
+.sec-title{font-family:var(--serif);font-size:40px;font-weight:600;line-height:1.05;color:var(--green);text-align:center}
+.sec-sub{max-width:520px;margin:11px auto 0;text-align:center;font-size:15px;color:var(--text2);line-height:1.65}
 
-    /* FOOTER */
-    .footer{background:var(--green);padding:48px 0 32px}
-    .foot-logo{display:flex;align-items:center;justify-content:center;gap:9px;font-family:var(--serif);font-size:19px;color:rgba(255,255,255,.82);margin-bottom:20px}
-    .foot-logo-img{width:28px;height:28px;border-radius:7px;overflow:hidden;border:1px solid rgba(255,255,255,.18)}
-    .foot-logo-img img{width:100%;height:100%;object-fit:cover}
-    .foot-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
-    .foot-links a{font-size:12.5px;color:rgba(255,255,255,.48);font-weight:500;transition:color .15s}
-    .foot-links a:hover{color:rgba(255,255,255,.82)}
-    .foot-socs{display:flex;justify-content:center;gap:9px;margin-bottom:22px;flex-wrap:wrap}
-    .foot-soc{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border:1px solid rgba(255,255,255,.13);border-radius:8px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.6);background:rgba(255,255,255,.04);transition:.15s}
-    .foot-soc:hover{color:rgba(255,255,255,.88);border-color:rgba(255,255,255,.26);background:rgba(255,255,255,.08)}
-    .foot-hr{max-width:520px;height:1px;background:rgba(255,255,255,.09);margin:0 auto 20px}
-    .foot-copy{text-align:center;font-size:12px;color:rgba(255,255,255,.36);line-height:1.6;max-width:580px;margin:0 auto}
+/* SCIENCE — mobile-safe card layout instead of table */
+.sci-section{background:var(--green);border-bottom:none}
+.sci-section .sec-title{color:#f2ede3}
+.sci-section .sec-sub{color:rgba(255,255,255,.48);font-style:italic}
+.sci-section .sec-lbl{color:var(--gold2)}
 
-    /* STICKY BAR */
-    .sticky-bar{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transform:translateY(-100%);transition:transform .25s ease;box-shadow:0 4px 20px rgba(0,0,0,.1)}
-    .sticky-bar.vis{transform:translateY(0)}
-    .sticky-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
-    .sticky-title{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--green)}
-    .sticky-stars{color:var(--star);font-size:12px;letter-spacing:1.5px}
-    .sticky-price{font-size:19px;font-weight:800;color:var(--green)}
-    .sticky-btn{height:40px;padding:0 24px;border:none;border-radius:var(--r);background:var(--green);color:#fff;font-size:14px;font-weight:800;cursor:pointer;transition:background .15s;flex:0 0 auto;white-space:nowrap}
-    .sticky-btn:hover{background:var(--green2)}
+/* Mobile-first comparison cards */
+.cmp-cards{display:flex;flex-direction:column;gap:8px;margin-top:32px;width:min(760px,100%);margin-left:auto;margin-right:auto}
+.cmp-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:rgba(255,255,255,.05);border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.cmp-row-head{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:rgba(255,255,255,.1);border-radius:10px 10px 0 0;overflow:hidden;margin-top:32px;width:min(760px,100%);margin-left:auto;margin-right:auto}
+.cmp-cell{padding:12px 14px;font-size:13px;color:rgba(255,255,255,.75);font-weight:500;border-right:1px solid rgba(255,255,255,.07)}
+.cmp-cell:last-child{border-right:none}
+.cmp-cell.hd{font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.5);padding:10px 14px}
+.cmp-cell.hd:first-child{color:rgba(255,255,255,.5)}
+.cmp-cell.bad{color:#f28282;font-weight:600;font-size:12.5px}
+.cmp-cell.good{color:#72e6a2;font-weight:600;font-size:12.5px}
 
-    /* MOBILE STICKY */
-    .mob-sticky{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:200;background:rgba(255,255,255,.97);border:1px solid var(--border);border-radius:16px;padding:9px;box-shadow:0 12px 40px rgba(0,0,0,.16);backdrop-filter:blur(12px)}
-    .ms-lbl{text-align:center;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:6px}
-    .ms-qty{display:none;justify-content:center;align-items:center;gap:11px;margin-bottom:7px}
-    .ms-qbtn{width:38px;height:38px;border-radius:8px;border:1.5px solid var(--green);background:var(--white);color:var(--green);font-size:18px;font-weight:700;cursor:pointer;flex:0 0 38px}
-    .ms-qval{font-size:15px;font-weight:800;color:var(--green);min-width:48px;text-align:center}
-    .ms-btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;border:none;border-radius:11px;background:var(--green);color:#fff;font-size:16.5px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(28,61,42,.22);transition:background .15s}
-    .ms-btn:hover{background:var(--green2)}
-    .ms-meta{margin-top:5px;text-align:center;font-size:10.5px;color:var(--muted);font-weight:500}
+/* BENEFITS */
+.ben-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
+.ben-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r3);padding:22px 20px;transition:box-shadow .2s,transform .2s}
+.ben-card:hover{box-shadow:var(--s3);transform:translateY(-2px)}
+.bc-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}
+.bc-icon{width:40px;height:40px;border-radius:10px;background:var(--green4);border:1px solid #c8dfd0;display:flex;align-items:center;justify-content:center;font-size:18px;flex:0 0 40px}
+.bc-tag{background:var(--green);color:#fff;border-radius:999px;padding:4px 10px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.bc-title{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--green);margin-bottom:10px;line-height:1.2}
+.bc-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.bc-list li{font-size:13.5px;color:var(--text2);line-height:1.55;padding-left:13px;position:relative}
+.bc-list li::before{content:'→';position:absolute;left:0;top:0;color:var(--green3);font-size:11px}
+.chip-bad{display:inline;background:var(--red-bg);color:var(--red);border-radius:5px;padding:.08em .35em;font-weight:600;font-size:.93em}
+.chip-good{display:inline;background:var(--good-bg);color:var(--good);border-radius:5px;padding:.08em .35em;font-weight:600;font-size:.93em}
 
-    /* RESPONSIVE */
-    @media(max-width:980px){
-      .product-layout{grid-template-columns:1fr}
-      .gallery-col{position:static;padding:20px 0 0}
-      .buybox{padding:20px 0;border-left:none;border-top:1px solid var(--border)}
-      .nav-links,.hbtn:not(.f){display:none}
-      .mob-menu-btn{display:block}
-      .mob-sticky{display:block}
-      body{padding-bottom:76px}
-      .sticky-bar{display:none}
-      .rev-grid{grid-template-columns:1fr 1fr}
-      .ben-grid{grid-template-columns:1fr}
-      .del-grid{grid-template-columns:1fr;gap:28px}
-    }
-    @media(max-width:600px){
-      .product-title{font-size:32px}
-      .sec-title{font-size:32px}
-      .rev-grid{grid-template-columns:1fr}
-      .rating-sum{grid-template-columns:1fr;gap:14px}
-      .proof-inner{gap:16px}
-      .pdiv{display:none}
-      .ann{font-size:11.5px;padding:8px 36px 8px 12px}
-      .trust-grid{grid-template-columns:1fr}
-      .del-h{font-size:30px}
-      .ref-btns{width:100%}
-      .ref-btn{flex:1;justify-content:center}
-    }
+/* REVIEWS */
+.rev-section{background:var(--off)}
+.rating-sum{max-width:600px;margin:40px auto 0;background:var(--white);border:1px solid var(--border);border-radius:var(--r3);padding:24px;display:grid;grid-template-columns:120px 1fr;gap:20px;box-shadow:var(--s1)}
+.r-big{font-family:var(--serif);font-size:56px;font-weight:700;color:var(--green);line-height:1}
+.r-stars{color:var(--star);font-size:15px;letter-spacing:2px;margin:5px 0 4px}
+.r-ct{font-size:12px;color:var(--muted);font-weight:500}
+.bar-rows{display:flex;flex-direction:column;gap:7px;justify-content:center}
+.bar-row{display:grid;grid-template-columns:34px 1fr 30px;gap:7px;align-items:center;font-size:12px;color:var(--muted);font-weight:500}
+.bar{height:6px;background:var(--border);border-radius:999px;overflow:hidden}
+.bar>span{display:block;height:100%;background:var(--green);border-radius:999px}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.rev-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);padding:16px;transition:box-shadow .2s,transform .2s}
+.rev-card:hover{box-shadow:var(--s2);transform:translateY(-2px)}
+.rc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3px;gap:6px}
+.rc-name{font-weight:700;font-size:14px;color:var(--text)}
+.rc-tag{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--off);border-radius:999px;padding:3px 8px;white-space:nowrap;flex-shrink:0}
+.rc-meta{font-size:11.5px;color:var(--muted);margin-bottom:6px}
+.rc-stars{color:var(--star);font-size:11px;letter-spacing:1.5px;margin-bottom:7px}
+.rc-copy{font-size:13px;color:var(--text2);line-height:1.6;font-style:italic}
+
+/* DELIVERY */
+.del-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:40px}
+.del-ey{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+.del-h{font-family:var(--serif);font-size:36px;font-weight:600;color:var(--green);margin-bottom:6px;line-height:1.05}
+.del-it{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:15px;margin-bottom:16px}
+.del-p{font-size:14.5px;color:var(--text2);line-height:1.65;max-width:400px}
+.del-feats{display:flex;flex-direction:column;gap:11px;margin-top:20px}
+.del-feat{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;color:var(--text)}
+.del-icon{width:34px;height:34px;border-radius:8px;background:var(--green4);border:1px solid #c8dfd0;display:flex;align-items:center;justify-content:center;font-size:15px;flex:0 0 34px}
+.del-img{border-radius:var(--r3);aspect-ratio:4/3;background:linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.42) 100%),url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80') center/cover;box-shadow:var(--s3);display:flex;align-items:flex-end;padding:20px}
+.del-img-lbl strong{display:block;font-family:var(--serif);font-size:20px;color:#fff;margin-bottom:3px}
+.del-img-lbl span{font-size:12px;color:rgba(255,255,255,.72)}
+
+/* FAQ */
+.faq-wrap{max-width:600px;margin:40px auto 0;background:var(--white);border:1px solid var(--border);border-radius:var(--r3);overflow:hidden;box-shadow:var(--s1)}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:none;border:none;cursor:pointer;font-size:14px;font-weight:600;color:var(--text);text-align:left;gap:10px;font-family:inherit}
+.fq-icon{font-size:20px;color:var(--muted);flex:0 0 auto}
+.faq-item.open .fq-icon{color:var(--green)}
+.faq-a{display:none;padding:0 20px 16px;font-size:13.5px;color:var(--text2);line-height:1.65}
+.faq-item.open .faq-a{display:block}
+
+/* CONTACT */
+.cc{max-width:600px;margin:40px auto 0;background:var(--white);border:1px solid var(--border);border-radius:var(--r3);padding:28px;box-shadow:var(--s1);text-align:center}
+.cc h3{font-family:var(--serif);font-size:22px;color:var(--green);margin-bottom:6px}
+.cc>p{color:var(--text2);font-size:14px;line-height:1.6;margin-bottom:18px}
+.soc-links{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.soc-link{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1.5px solid var(--border);border-radius:var(--r);font-size:13px;font-weight:600;color:var(--text);background:var(--off);transition:border-color .15s,background .15s}
+.soc-link:hover{border-color:var(--green);background:var(--green4);color:var(--green)}
+.cform{text-align:left;display:grid;gap:8px}
+.cform input,.cform select,.cform textarea{width:100%;border:1.5px solid var(--border);border-radius:var(--r);background:var(--off);color:var(--text);padding:10px 12px;font-size:14px;outline:none;transition:border-color .15s}
+.cform input:focus,.cform select:focus,.cform textarea:focus{border-color:var(--green)}
+.cform textarea{min-height:72px;resize:vertical}
+.btn-submit{height:42px;border:none;border-radius:var(--r);background:var(--green);color:#fff;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s}
+.btn-submit:hover{background:var(--green2)}
+
+/* REFERRAL */
+.ref{background:var(--green2);padding:24px 0}
+.ref-in{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center}
+.ref-emoji{font-size:26px}
+.ref-txt{flex:1 1 180px}
+.ref-txt strong{display:block;color:#f5e098;font-size:16px;font-weight:700;font-family:var(--serif);margin-bottom:2px}
+.ref-txt span{font-size:13px;color:rgba(255,255,255,.62)}
+.ref-btns{display:flex;gap:8px;flex-wrap:wrap}
+.ref-btn{display:inline-flex;align-items:center;gap:5px;padding:9px 14px;border-radius:var(--r);font-size:13px;font-weight:700;color:#fff;border:none;cursor:pointer;transition:opacity .15s,transform .12s}
+.ref-btn:hover{transform:translateY(-1px);opacity:.9}
+.ref-btn.insta{background:linear-gradient(135deg,#833ab4,#fd1d1d 55%,#fcb045)}
+.ref-btn.tiktok{background:#111;outline:1px solid #333}
+
+/* FOOTER */
+.footer{background:var(--green);padding:44px 0 28px}
+.foot-logo{display:flex;align-items:center;justify-content:center;gap:9px;font-family:var(--serif);font-size:18px;color:rgba(255,255,255,.82);margin-bottom:18px}
+.foot-logo-img{width:28px;height:28px;border-radius:7px;overflow:hidden;border:1px solid rgba(255,255,255,.18)}
+.foot-logo-img img{width:100%;height:100%;object-fit:cover}
+.foot-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.foot-links a{font-size:12px;color:rgba(255,255,255,.48);font-weight:500;transition:color .15s}
+.foot-links a:hover{color:rgba(255,255,255,.82)}
+.foot-socs{display:flex;justify-content:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.foot-soc{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border:1px solid rgba(255,255,255,.13);border-radius:8px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.6);background:rgba(255,255,255,.04);transition:.15s}
+.foot-soc:hover{color:rgba(255,255,255,.88);border-color:rgba(255,255,255,.26)}
+.foot-hr{max-width:480px;height:1px;background:rgba(255,255,255,.09);margin:0 auto 18px}
+.foot-copy{text-align:center;font-size:11.5px;color:rgba(255,255,255,.36);line-height:1.6;max-width:560px;margin:0 auto}
+
+/* STICKY BAR desktop */
+.sticky-bar{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transform:translateY(-100%);transition:transform .25s ease;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.sticky-bar.vis{transform:translateY(0)}
+.sticky-in{display:flex;align-items:center;justify-content:space-between;gap:14px;height:58px}
+.sticky-title{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--green)}
+.sticky-stars{color:var(--star);font-size:12px;letter-spacing:1.5px}
+.sticky-price{font-size:18px;font-weight:800;color:var(--green)}
+.sticky-btn{height:38px;padding:0 22px;border:none;border-radius:var(--r);background:var(--green);color:#fff;font-size:13.5px;font-weight:800;cursor:pointer;transition:background .15s;flex:0 0 auto;white-space:nowrap}
+.sticky-btn:hover{background:var(--green2)}
+
+/* MOBILE STICKY */
+.mob-sticky{display:none;position:fixed;left:10px;right:10px;bottom:10px;z-index:200;background:rgba(255,255,255,.97);border:1px solid var(--border);border-radius:16px;padding:9px;box-shadow:0 12px 40px rgba(0,0,0,.16);backdrop-filter:blur(12px)}
+.ms-lbl{text-align:center;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:5px}
+.ms-qty{display:none;justify-content:center;align-items:center;gap:10px;margin-bottom:6px}
+.ms-qbtn{width:36px;height:36px;border-radius:8px;border:1.5px solid var(--green);background:var(--white);color:var(--green);font-size:18px;font-weight:700;cursor:pointer;flex:0 0 36px;touch-action:manipulation}
+.ms-qval{font-size:15px;font-weight:800;color:var(--green);min-width:46px;text-align:center}
+.ms-btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;border:none;border-radius:11px;background:var(--green);color:#fff;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(28,61,42,.22);transition:background .15s}
+.ms-btn:hover{background:var(--green2)}
+.ms-meta{margin-top:5px;text-align:center;font-size:10.5px;color:var(--muted);font-weight:500}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — MOBILE FIRST
+══════════════════════════════════════════ */
+@media(max-width:900px){
+  .product-layout{grid-template-columns:1fr}
+  .gallery-col{position:static;padding:0;margin:0}
+  .buybox{padding:20px 0;border-left:none;border-top:1px solid var(--border)}
+  .nav-links,.hbtn:not(.f){display:none}
+  .mob-menu-btn{display:block}
+  .mob-sticky{display:block}
+  body{padding-bottom:74px}
+  .sticky-bar{display:none}
+  .rev-grid{grid-template-columns:1fr 1fr}
+  .ben-grid{grid-template-columns:1fr}
+  .del-grid{grid-template-columns:1fr;gap:24px}
+  .product-title{font-size:32px}
+  .sec-title{font-size:32px}
+  .trust-grid{grid-template-columns:1fr}
+  .slider-btn{width:30px;height:30px;font-size:12px}
+}
+
+@media(max-width:540px){
+  .rev-grid{grid-template-columns:1fr}
+  .rating-sum{grid-template-columns:1fr;gap:14px}
+  .proof-inner{gap:14px}
+  .pdiv{display:none}
+  .ref-btns{width:100%}
+  .ref-btn{flex:1;justify-content:center}
+  .ann-item{padding:0 20px;font-size:12px}
+  .callout-chip{font-size:10px;padding:5px 8px;max-width:90px}
+  .del-h{font-size:28px}
+}
+```
+
   </style>
   <script type="text/javascript" src="https://api.goaffpro.com/loader.js?shop=xivesoysjv"></script>
 </head>
 <body>
 
-<!-- ANN BAR — scrolling marquee -->
-<div class="ann" id="annBar">
+<!-- ANN BAR -->
+
+<div class="ann">
   <div class="ann-track">
     <span class="ann-item">🇦🇺 <strong>FREE SHIPPING</strong></span>
     <span class="ann-sep">·</span>
@@ -357,18 +423,19 @@
 </div>
 
 <!-- HEADER -->
+
 <header class="hdr" id="siteHdr">
   <div class="wrap hdr-in">
     <a class="brand" href="#top">
       <div class="brand-logo">
         <img src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="RawMilkAUS" onerror="this.style.display='none';this.parentNode.innerHTML='🐄';">
       </div>
-      RawMilkAUS <span style="margin-left:2px;">🇦🇺</span>
+      RawMilkAUS 🇦🇺
     </a>
     <nav class="nav-links">
       <a href="#top">Home</a><a href="#science">Science</a><a href="#benefits">Benefits</a>
       <a href="#reviews">Reviews</a><a href="#delivery">Delivery</a>
-      <a href="#plans" id="navPlans">Plans</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+      <a href="#plans">Plans</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
     </nav>
     <div class="hdr-right">
       <button class="mob-menu-btn" id="mobMenuBtn">☰</button>
@@ -378,11 +445,12 @@
 </header>
 
 <!-- STICKY BAR -->
+
 <div class="sticky-bar" id="stickyBar">
   <div class="wrap sticky-in">
     <div>
       <div class="sticky-title">Fresh Raw Cow's Milk 🇦🇺</div>
-      <div class="sticky-stars">★★★★★ <span style="font-size:11.5px;color:var(--muted);">342 reviews</span></div>
+      <div class="sticky-stars">★★★★★ <span style="font-size:11px;color:var(--muted);">342 reviews</span></div>
     </div>
     <div class="sticky-price" id="stickyPrice">Select a plan</div>
     <button class="sticky-btn" id="stickyCartBtn">Add to Cart</button>
@@ -390,202 +458,279 @@
 </div>
 
 <main id="top">
-
-  <!-- BREADCRUMB -->
   <div class="bc"><div class="wrap">Home / <span>Raw Cow's Milk — Weekly Subscription</span></div></div>
 
-  <!-- ══════════════ PRODUCT LAYOUT ══════════════ -->
+  <!-- ══ PRODUCT LAYOUT ══ -->
+
   <div class="wrap product-layout" id="productTop">
 
-    <!-- GALLERY -->
-    <div class="gallery-col">
-      <div class="gallery-main">
-        <div class="g-badge">🇦🇺 Australian Made</div>
-        <img src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="RawMilkAUS 2L Glass Bottle"
-          onerror="this.style.display='none';this.parentNode.style.background='var(--green4)';">
+```
+<!-- ══ GALLERY / SLIDER ══ -->
+<div class="gallery-col">
+  <div class="slider-wrap" id="sliderWrap">
+    <div class="slides" id="slides">
+
+      <!-- SLIDE 1: Bottle + callouts -->
+      <div class="slide slide-1">
+        <img src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="RawMilkAUS 2L Glass Bottle" onerror="this.style.display='none';this.parentNode.style.background='var(--green4)';">
+        <div class="slide-callouts">
+          <div class="callout-chip cc-tl">📈 Increases Height</div>
+          <div class="callout-chip cc-tr">✨ Clears Skin &amp; Acne</div>
+          <div class="callout-chip cc-ml">😌 Lowers Cortisol</div>
+          <div class="callout-chip cc-mr">🛡 Immunity Support</div>
+          <div class="callout-chip cc-bl">♡ Improves Gut Health</div>
+          <div class="callout-chip cc-br">🚫 Microplastic Free</div>
+        </div>
+        <div class="slide-badge-winner">⭐ Winner</div>
+        <div class="slide-badge-rating">
+          <div style="font-weight:700;font-size:11px;color:var(--green);">342 Aussies Trust This</div>
+          <div class="r-stars">★★★★★</div>
+          <div style="font-size:10px;color:var(--muted);font-weight:600;">312+ 5-star reviews</div>
+        </div>
       </div>
-      <div class="thumbs">
-        <div class="thumb active"><img src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="" onerror="this.style.display='none'"></div>
-        <div class="thumb-lbl">2L<br>Glass</div>
-        <div class="thumb-lbl">🐄<br>Grass-Fed</div>
-        <div class="thumb-lbl">🌿<br>No Plastic</div>
-        <div class="thumb-lbl">🚚<br>Free Ship</div>
+
+      <!-- SLIDE 2: Farm / cows photo -->
+      <div class="slide slide-2">
+        <img src="/mnt/user-data/uploads/1778028891714_image.png" alt="Our grass-fed Australian cows" onerror="this.src='https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80';">
+        <div class="slide-2-overlay">
+          <strong>Licensed Australian Dairies</strong>
+          <span>100% Grass-Fed · Pasture-Raised · No Hormones</span>
+        </div>
       </div>
+
+      <!-- SLIDE 3: Comparison table -->
+      <div class="slide slide-3">
+        <div class="slide-3-title">Raw vs Pasteurised — <em>The Truth</em></div>
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th style="text-align:left;">Nutrient</th>
+              <th>Pasteurised ❌</th>
+              <th>Raw Milk ✅</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Vitamin A</td><td>35% Lost</td><td>100% Active</td></tr>
+            <tr><td>Vitamin C</td><td>77% Lost</td><td>100% Active</td></tr>
+            <tr><td>Iron</td><td>66% Lost</td><td>100% Active</td></tr>
+            <tr><td>Zinc</td><td>70% Lost</td><td>100% Active</td></tr>
+            <tr><td>Calcium</td><td>21% Lost</td><td>100% Active</td></tr>
+            <tr><td>Enzymes</td><td>100% Destroyed</td><td>100% Active</td></tr>
+            <tr><td>Probiotics</td><td>100% Destroyed</td><td>100% Active</td></tr>
+            <tr><td>Immunoglobulins</td><td>59% Destroyed</td><td>100% Active</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="3">Pasteurisation uses heat that destroys what your body needs</td></tr></tfoot>
+        </table>
+      </div>
+
+      <!-- SLIDE 4: Benefits graphic -->
+      <div class="slide slide-4">
+        <div class="slide-4-title">Why Raw Milk? <em>Everything.</em></div>
+        <div class="benefit-rows">
+          <div class="benefit-row-item"><div class="bri-icon">↗️</div><div><div class="bri-text">Increases Height &amp; Bone Density</div><div class="bri-sub">IGF-1, growth factors &amp; bioavailable calcium</div></div></div>
+          <div class="benefit-row-item"><div class="bri-icon">✨</div><div><div class="bri-text">Clears Skin &amp; Acne</div><div class="bri-sub">Live probiotics restore your gut-skin axis</div></div></div>
+          <div class="benefit-row-item"><div class="bri-icon">♡</div><div><div class="bri-text">Heals Gut &amp; Digestion</div><div class="bri-sub">Live enzymes + intact probiotics</div></div></div>
+          <div class="benefit-row-item"><div class="bri-icon">🛡</div><div><div class="bri-text">Strengthens Immunity</div><div class="bri-sub">Natural immunoglobulins fully preserved</div></div></div>
+          <div class="benefit-row-item"><div class="bri-icon">🥛</div><div><div class="bri-text">Zero Microplastics</div><div class="bri-sub">2L glass + stainless steel lids</div></div></div>
+          <div class="benefit-row-item"><div class="bri-icon">😌</div><div><div class="bri-text">Lowers Cortisol &amp; Stress</div><div class="bri-sub">B-vitamins &amp; magnesium fully intact</div></div></div>
+        </div>
+      </div>
+
+    </div><!-- /slides -->
+
+    <button class="slider-btn slider-prev" id="sliderPrev" aria-label="Previous">‹</button>
+    <button class="slider-btn slider-next" id="sliderNext" aria-label="Next">›</button>
+  </div><!-- /slider-wrap -->
+
+  <div class="slider-dots" id="sliderDots">
+    <button class="slider-dot active" data-idx="0"></button>
+    <button class="slider-dot" data-idx="1"></button>
+    <button class="slider-dot" data-idx="2"></button>
+    <button class="slider-dot" data-idx="3"></button>
+  </div>
+
+  <!-- THUMBS -->
+  <div class="thumbs" id="thumbs" style="margin-top:10px;">
+    <div class="thumb-item active" data-idx="0">
+      <img src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="" onerror="this.parentNode.innerHTML='<div class=\'thumb-item-inner\'><span>🥛</span><span class=\'thumb-item-label\'>Bottle</span></div>'">
+    </div>
+    <div class="thumb-item" data-idx="1">
+      <img src="/mnt/user-data/uploads/1778028891714_image.png" alt="" onerror="this.parentNode.innerHTML='<div class=\'thumb-item-inner\'><span>🐄</span><span class=\'thumb-item-label\'>Cows</span></div>'">
+    </div>
+    <div class="thumb-item" data-idx="2">
+      <div class="thumb-item-inner"><span>📊</span><span class="thumb-item-label">Compare</span></div>
+    </div>
+    <div class="thumb-item" data-idx="3">
+      <div class="thumb-item-inner"><span>✅</span><span class="thumb-item-label">Benefits</span></div>
+    </div>
+  </div>
+</div><!-- /gallery-col -->
+
+<!-- ══ BUY BOX ══ -->
+<div class="buybox" id="buybox">
+  <div class="eyebrow">Australia's Premium Raw Milk</div>
+  <h1 class="product-title">Fresh Raw <em>Cow's Milk</em></h1>
+
+  <div class="stars-row">
+    <span class="stars">★★★★★</span>
+    <span class="stars-ct">4.9</span>
+    <span class="stars-lnk" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'})">342 reviews</span>
+  </div>
+
+  <div class="bpills">
+    <span class="bpill">🥛 2L Glass Bottles</span>
+    <span class="bpill">🚫 Zero Microplastics</span>
+    <span class="bpill">🐄 No Hormones</span>
+    <span class="bpill">🇦🇺 Grass-Fed</span>
+  </div>
+
+  <!-- TOGGLE -->
+  <div class="ptype">
+    <button class="ptab active" id="tabSub">
+      <div class="pt-badge">BEST VALUE</div>
+      <span class="pt-title">Subscribe &amp; Save</span>
+      <span class="pt-sub">Delivered weekly · Cancel anytime</span>
+    </button>
+    <button class="ptab" id="tabOne">
+      <span class="pt-title">Try It Out</span>
+      <span class="pt-sub">One-time · No commitment</span>
+    </button>
+  </div>
+
+  <!-- SUBSCRIBE PLANS -->
+  <div id="subPlans">
+    <div class="plan-label" id="plans">Select your monthly volume</div>
+    <div class="plan-cards" id="planCards">
+
+      <button type="button" class="plan-card"
+        data-name="Starter" data-monthly="20" data-weekly="5" data-price="200" data-type="standard">
+        <div class="pc-left"><div class="pc-radio"><div class="pc-dot"></div></div>
+          <div><div class="pc-name">Starter</div><div class="pc-vol">20L / month · 5L weekly</div></div>
+        </div>
+        <div class="pc-right"><span class="pc-price">$200</span><span class="pc-save">$10 / litre</span></div>
+      </button>
+
+      <button type="button" class="plan-card pop"
+        data-name="Most Popular" data-monthly="60" data-weekly="15" data-price="600" data-type="standard">
+        <div class="pc-badge">⭐ Most Popular</div>
+        <div class="pc-left"><div class="pc-radio"><div class="pc-dot"></div></div>
+          <div><div class="pc-name">Most Popular</div><div class="pc-vol">60L / month · 15L weekly · For 2</div></div>
+        </div>
+        <div class="pc-right"><span class="pc-price">$600</span><span class="pc-save">Best value</span></div>
+      </button>
+
+      <button type="button" class="plan-card custom-card"
+        data-name="Custom" data-type="bulk">
+        <div class="pc-left"><div class="pc-radio"><div class="pc-dot"></div></div>
+          <div><div class="pc-name">Custom Order</div><div class="pc-vol">20L–500L / month · You choose</div></div>
+        </div>
+        <div class="pc-right"><span class="pc-price">$200+</span></div>
+      </button>
+
     </div>
 
-    <!-- BUY BOX -->
-    <div class="buybox" id="buybox">
-      <div class="eyebrow">Australia's Premium Raw Milk</div>
-      <h1 class="product-title">Fresh Raw <em>Cow's Milk</em></h1>
+    <div class="cs-wrap" id="csWrap">
+      <span class="cs-lbl">Litres per month</span>
+      <button class="cs-btn" id="csMinus">−</button>
+      <span class="cs-val" id="csVal">20L</span>
+      <button class="cs-btn" id="csPlus">+</button>
+    </div>
 
-      <div class="stars-row">
-        <span class="stars">★★★★★</span>
-        <span class="stars-ct">4.9</span>
-        <span class="stars-lnk" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'})">342 reviews</span>
-      </div>
+    <div class="price-block"><span class="price-main" id="subPrice">—</span></div>
+    <div class="price-note" id="subNote">Select a plan above to see pricing</div>
+    <button class="btn-cart" id="subBtn">🔒 &nbsp;Checkout Now</button>
+    <div class="btn-cart-sub">Free shipping · Cancel anytime · No lock-in</div>
+  </div>
 
-      <div class="benefit-pills">
-        <span class="bpill">🥛 2L Glass Bottles</span>
-        <span class="bpill">🚫 Zero Microplastics</span>
-        <span class="bpill">🐄 No Hormones</span>
-        <span class="bpill">🇦🇺 Grass-Fed</span>
-      </div>
+  <!-- TRY IT OUT -->
+  <div id="onePlans" style="display:none;">
+    <div class="plan-label">Select a trial size</div>
+    <div class="plan-cards" id="tryCards">
 
-      <!-- SUBSCRIBE / ONE-TIME TOGGLE -->
-      <div class="ptype">
-        <button class="ptab active" id="tabSub" data-mode="sub">
-          <div class="pt-badge">BEST VALUE</div>
-          <span class="pt-title">Subscribe &amp; Save</span>
-          <span class="pt-sub">Delivered weekly · Cancel anytime</span>
-        </button>
-        <button class="ptab" id="tabOne" data-mode="one">
-          <span class="pt-title">Try It Out</span>
-          <span class="pt-sub">One-time · No commitment</span>
-        </button>
-      </div>
-
-      <!-- ── SUBSCRIBE PLANS ── -->
-      <div id="subPlans">
-        <div class="plan-label" id="plans">Select your monthly volume</div>
-        <div class="plan-cards" id="planCards">
-
-          <button type="button" class="plan-card"
-            data-name="Starter" data-monthly="20" data-weekly="5"
-            data-price="200" data-type="standard">
-            <div class="pc-left"><div class="pc-radio"><div class="pc-dot"></div></div>
-              <div><div class="pc-name">Starter</div><div class="pc-vol">20L / month · 5L weekly</div></div>
-            </div>
-            <div class="pc-right"><span class="pc-price">$200</span><span class="pc-save">$10 / litre</span></div>
-          </button>
-
-          <button type="button" class="plan-card pop"
-            data-name="Most Popular" data-monthly="60" data-weekly="15"
-            data-price="600" data-type="standard">
-            <div class="pc-badge">⭐ Most Popular</div>
-            <div class="pc-left"><div class="pc-radio"><div class="pc-dot"></div></div>
-              <div><div class="pc-name">Most Popular</div><div class="pc-vol">60L / month · 15L weekly · For 2</div></div>
-            </div>
-            <div class="pc-right"><span class="pc-price">$600</span><span class="pc-save">Best value</span></div>
-          </button>
-
-          <button type="button" class="plan-card custom-card"
-            data-name="Custom" data-type="bulk">
-            <div class="pc-left"><div class="pc-radio"><div class="pc-dot"></div></div>
-              <div><div class="pc-name">Custom Order</div><div class="pc-vol">20L–500L / month · You choose</div></div>
-            </div>
-            <div class="pc-right"><span class="pc-price">$200+</span></div>
-          </button>
-
+      <button type="button" class="plan-card"
+        data-name="Starter Trial" data-monthly="5" data-price="50" data-type="trial"
+        data-stripe="https://buy.stripe.com/00waEX85ofuD4hbfOt28809">
+        <div class="pc-left"><div class="pc-radio"><div class="pc-dot"></div></div>
+          <div><div class="pc-name">Starter Trial</div><div class="pc-vol">5L · One-time · +$7.99 shipping</div></div>
         </div>
+        <div class="pc-right"><span class="pc-price">$50</span><span class="pc-save">Perfect first taste</span></div>
+      </button>
 
-        <!-- CUSTOM STEPPER -->
-        <div class="cs-wrap" id="csWrap">
-          <span class="cs-lbl">Litres per month</span>
-          <button class="cs-btn" id="csMinus">−</button>
-          <span class="cs-val" id="csVal">20L</span>
-          <button class="cs-btn" id="csPlus">+</button>
+      <button type="button" class="plan-card pop"
+        data-name="For Two" data-monthly="10" data-price="100" data-type="trial"
+        data-stripe="https://buy.stripe.com/5kQcN5etM82b14ZcCh2880c">
+        <div class="pc-badge">⭐ Popular</div>
+        <div class="pc-left"><div class="pc-radio"><div class="pc-dot"></div></div>
+          <div><div class="pc-name">For Two</div><div class="pc-vol">10L · One-time · +$7.99 shipping</div></div>
         </div>
+        <div class="pc-right"><span class="pc-price">$100</span><span class="pc-save">Best for two</span></div>
+      </button>
 
-        <div class="price-block">
-          <span class="price-main" id="subPrice">—</span>
+      <button type="button" class="plan-card"
+        data-name="Household Trial" data-monthly="15" data-price="150" data-type="trial"
+        data-stripe="https://buy.stripe.com/dRm8wP5Xgeqz5lfau92880b">
+        <div class="pc-left"><div class="pc-radio"><div class="pc-dot"></div></div>
+          <div><div class="pc-name">Household Trial</div><div class="pc-vol">15L · One-time · +$7.99 shipping</div></div>
         </div>
-        <div class="price-note" id="subNote">Select a plan above to see pricing</div>
-        <button class="btn-cart" id="subBtn">🔒 &nbsp;Checkout Now</button>
-        <div class="btn-cart-sub">Free shipping · Cancel anytime · No lock-in</div>
-      </div>
+        <div class="pc-right"><span class="pc-price">$150</span><span class="pc-save">Best trial size</span></div>
+      </button>
 
-      <!-- ── TRY IT OUT ── -->
-      <div id="onePlans" style="display:none;">
-        <div class="plan-label">Select a trial size</div>
-        <div class="plan-cards" id="tryCards">
+    </div>
 
-          <button type="button" class="plan-card"
-            data-name="Starter Trial" data-monthly="5" data-price="50"
-            data-type="trial" data-stripe="https://buy.stripe.com/00waEX85ofuD4hbfOt28809">
-            <div class="pc-left"><div class="pc-radio"><div class="pc-dot"></div></div>
-              <div><div class="pc-name">Starter Trial</div><div class="pc-vol">5L · One-time · +$7.99 shipping</div></div>
-            </div>
-            <div class="pc-right"><span class="pc-price">$50</span><span class="pc-save">Perfect first taste</span></div>
-          </button>
+    <div class="price-block"><span class="price-main" id="tryPrice">—</span></div>
+    <div class="price-note" id="tryNote">Select a trial size above</div>
+    <button class="btn-cart" id="tryBtn">🔒 &nbsp;Order Now — One Time</button>
+    <div class="btn-cart-sub">No subscription · No commitment · One-time only</div>
+  </div>
 
-          <button type="button" class="plan-card pop"
-            data-name="For Two" data-monthly="10" data-price="100"
-            data-type="trial" data-stripe="https://buy.stripe.com/5kQcN5etM82b14ZcCh2880c">
-            <div class="pc-badge">⭐ Popular</div>
-            <div class="pc-left"><div class="pc-radio"><div class="pc-dot"></div></div>
-              <div><div class="pc-name">For Two</div><div class="pc-vol">10L · One-time · +$7.99 shipping</div></div>
-            </div>
-            <div class="pc-right"><span class="pc-price">$100</span><span class="pc-save">Best for two</span></div>
-          </button>
+  <!-- TRUST -->
+  <div class="trust-grid">
+    <div class="tbadge"><div class="tbadge-icon">🔒</div>Secure Checkout</div>
+    <div class="tbadge"><div class="tbadge-icon">🚚</div>Free Shipping NSW, VIC, QLD</div>
+    <div class="tbadge"><div class="tbadge-icon">🐄</div>100% Grass-Fed Australian</div>
+    <div class="tbadge"><div class="tbadge-icon">🥛</div>Glass Bottles · No Plastic</div>
+    <div class="tbadge"><div class="tbadge-icon">🌡</div>Cold-Chain Guaranteed</div>
+    <div class="tbadge"><div class="tbadge-icon">♻️</div>Cancel Anytime</div>
+  </div>
 
-          <button type="button" class="plan-card"
-            data-name="Household Trial" data-monthly="15" data-price="150"
-            data-type="trial" data-stripe="https://buy.stripe.com/dRm8wP5Xgeqz5lfau92880b">
-            <div class="pc-left"><div class="pc-radio"><div class="pc-dot"></div></div>
-              <div><div class="pc-name">Household Trial</div><div class="pc-vol">15L · One-time · +$7.99 shipping</div></div>
-            </div>
-            <div class="pc-right"><span class="pc-price">$150</span><span class="pc-save">Best trial size</span></div>
-          </button>
+  <div class="div"></div>
 
-        </div>
+  <p style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;">What's Included</p>
+  <ul class="inc-list">
+    <li class="inc-item"><div class="inc-chk">✓</div>Fresh raw milk from 100% pasture-raised Australian cows</li>
+    <li class="inc-item"><div class="inc-chk">✓</div>2L glass bottles with stainless steel lids — zero microplastics</li>
+    <li class="inc-item"><div class="inc-chk">✓</div>Weekly chilled delivery across NSW, VIC &amp; QLD</li>
+    <li class="inc-item"><div class="inc-chk">✓</div>No vaccines · No hormones · No antibiotics</li>
+    <li class="inc-item"><div class="inc-chk">✓</div>100% live enzymes, probiotics &amp; immunoglobulins preserved</li>
+  </ul>
 
-        <div class="price-block">
-          <span class="price-main" id="tryPrice">—</span>
-        </div>
-        <div class="price-note" id="tryNote">Select a trial size above</div>
-        <button class="btn-cart" id="tryBtn">🔒 &nbsp;Order Now — One Time</button>
-        <div class="btn-cart-sub">No subscription · No commitment · One-time only</div>
-      </div>
+  <div class="div"></div>
 
-      <!-- TRUST BADGES -->
-      <div class="trust-grid">
-        <div class="tbadge"><div class="tbadge-icon">🔒</div>Secure Checkout</div>
-        <div class="tbadge"><div class="tbadge-icon">🚚</div>Free Shipping NSW, VIC, QLD</div>
-        <div class="tbadge"><div class="tbadge-icon">🐄</div>100% Grass-Fed Australian</div>
-        <div class="tbadge"><div class="tbadge-icon">🥛</div>Glass Bottles · No Plastic</div>
-        <div class="tbadge"><div class="tbadge-icon">🌡</div>Cold-Chain Guaranteed</div>
-        <div class="tbadge"><div class="tbadge-icon">♻️</div>Cancel Anytime</div>
-      </div>
+  <div class="info-acc">
+    <div class="ia-item open">
+      <button class="ia-btn" type="button"><span>Delivery information</span><span class="ia-icon">−</span></button>
+      <div class="ia-body">Fresh from licensed Australian dairies. Cold-chain guaranteed. Delivered weekly in insulated packaging with cold gel packs. Glass bottles collected and sanitised on next delivery.</div>
+    </div>
+    <div class="ia-item">
+      <button class="ia-btn" type="button"><span>Why raw milk?</span><span class="ia-icon">+</span></button>
+      <div class="ia-body">Pasteurisation destroys up to 100% of enzymes, 100% of probiotics, and significantly reduces vitamins, minerals and immunoglobulins. Raw milk preserves all bioactive compounds exactly as nature intended.</div>
+    </div>
+    <div class="ia-item">
+      <button class="ia-btn" type="button"><span>Legal notice</span><span class="ia-icon">+</span></button>
+      <div class="ia-body">Raw cow's milk for human consumption is illegal in Australia. This product is sold for pet use only and is labelled accordingly.</div>
+    </div>
+    <div class="ia-item">
+      <button class="ia-btn" type="button"><span>Subscription &amp; cancellation</span><span class="ia-icon">+</span></button>
+      <div class="ia-body">Upgrade, downgrade, pause, or cancel anytime with at least 72 hours notice before your next scheduled delivery.</div>
+    </div>
+  </div>
+</div><!-- /buybox -->
+```
 
-      <div class="div"></div>
-
-      <!-- INCLUDED -->
-      <p style="font-size:11.5px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">What's Included</p>
-      <ul class="inc-list">
-        <li class="inc-item"><div class="inc-chk">✓</div>Fresh raw milk from 100% pasture-raised Australian cows</li>
-        <li class="inc-item"><div class="inc-chk">✓</div>2L glass bottles with stainless steel lids — zero microplastics</li>
-        <li class="inc-item"><div class="inc-chk">✓</div>Weekly chilled delivery across NSW, VIC &amp; QLD</li>
-        <li class="inc-item"><div class="inc-chk">✓</div>No vaccines · No hormones · No antibiotics</li>
-        <li class="inc-item"><div class="inc-chk">✓</div>100% live enzymes, probiotics &amp; immunoglobulins preserved</li>
-      </ul>
-
-      <div class="div"></div>
-
-      <!-- ACCORDION INFO -->
-      <div class="info-acc">
-        <div class="ia-item open">
-          <button class="ia-btn" type="button"><span>Delivery information</span><span class="ia-icon">+</span></button>
-          <div class="ia-body">Fresh from licensed Australian dairies. Cold-chain guaranteed from farm to your door. Delivered weekly in insulated packaging with cold gel packs. Glass bottles collected and sanitised on next delivery.</div>
-        </div>
-        <div class="ia-item">
-          <button class="ia-btn" type="button"><span>Why raw milk?</span><span class="ia-icon">+</span></button>
-          <div class="ia-body">Pasteurisation destroys up to 100% of enzymes, 100% of probiotics, and significantly reduces vitamins, minerals and immunoglobulins. Raw milk preserves all bioactive compounds exactly as nature intended.</div>
-        </div>
-        <div class="ia-item">
-          <button class="ia-btn" type="button"><span>Legal notice</span><span class="ia-icon">+</span></button>
-          <div class="ia-body">Raw cow's milk for human consumption is illegal in Australia. This product is sold for pet use only and is labelled accordingly.</div>
-        </div>
-        <div class="ia-item">
-          <button class="ia-btn" type="button"><span>Subscription &amp; cancellation</span><span class="ia-icon">+</span></button>
-          <div class="ia-body">Upgrade, downgrade, pause, or cancel anytime with at least 72 hours notice before your next scheduled delivery.</div>
-        </div>
-      </div>
-    </div><!-- /buybox -->
   </div><!-- /product-layout -->
 
-  <!-- ══════════════ BELOW FOLD ══════════════ -->
-
   <!-- PROOF BAR -->
+
   <div class="proof-bar">
     <div class="wrap proof-inner">
       <div class="pstat"><div class="pstat-n">342</div><div class="pstat-l">Verified Buyers</div></div>
@@ -595,37 +740,41 @@
       <div class="pstat"><div class="pstat-n">100%</div><div class="pstat-l">Grass-Fed Australian</div></div>
       <div class="pdiv"></div>
       <div class="pstat"><div class="pstat-n">0</div><div class="pstat-l">Microplastics</div></div>
-      <div class="pdiv"></div>
-      <div class="pstat"><div class="pstat-n">NSW·VIC·QLD</div><div class="pstat-l">Free Delivery Zones</div></div>
     </div>
   </div>
 
-  <!-- SCIENCE -->
+  <!-- SCIENCE — mobile-safe card layout -->
+
   <section id="science" class="section sci-section">
-    <div class="sec-lbl">The Research</div>
-    <h2 class="sec-title">Raw vs Pasteurised</h2>
-    <p class="sec-sub">— The brutal truth about what pasteurisation does to your milk</p>
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>Nutrient / Component</th><th>Pasteurised</th><th>Raw Milk</th></tr></thead>
-        <tbody>
-          <tr><td>Vitamin A</td><td class="bad">✕ 35% Reduced</td><td class="good">✓ 100% Active</td></tr>
-          <tr><td>Vitamin C</td><td class="bad">✕ 77% Reduced</td><td class="good">✓ 100% Active</td></tr>
-          <tr><td>Vitamin E</td><td class="bad">✕ 14% Reduced</td><td class="good">✓ 100% Active</td></tr>
-          <tr><td>Iron</td><td class="bad">✕ 66% Reduced</td><td class="good">✓ 100% Active</td></tr>
-          <tr><td>Zinc</td><td class="bad">✕ 70% Reduced</td><td class="good">✓ 100% Active</td></tr>
-          <tr><td>B-Complex Vitamins</td><td class="bad">✕ 38% Reduced</td><td class="good">✓ 100% Active</td></tr>
-          <tr><td>Calcium</td><td class="bad">✕ 21% Reduced</td><td class="good">✓ 100% Active</td></tr>
-          <tr><td>Enzymes</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
-          <tr><td>Immunoglobulins</td><td class="bad">✕ 59% Destroyed</td><td class="good">✓ 100% Active</td></tr>
-          <tr><td>Whey Proteins</td><td class="bad">✕ 34% Denatured</td><td class="good">✓ 100% Active</td></tr>
-          <tr><td>Probiotics</td><td class="bad">✕ 100% Destroyed</td><td class="good">✓ 100% Active</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="wrap">
+      <div class="sec-lbl">The Research</div>
+      <h2 class="sec-title">Raw vs Pasteurised</h2>
+      <p class="sec-sub">— What pasteurisation actually destroys</p>
+
+```
+  <div class="cmp-row-head">
+    <div class="cmp-cell hd">Nutrient</div>
+    <div class="cmp-cell hd" style="text-align:center;">Pasteurised ❌</div>
+    <div class="cmp-cell hd" style="text-align:center;">Raw Milk ✅</div>
+  </div>
+  <div class="cmp-cards">
+    <div class="cmp-row"><div class="cmp-cell">Vitamin A</div><div class="cmp-cell bad">35% Lost</div><div class="cmp-cell good">100% Active</div></div>
+    <div class="cmp-row"><div class="cmp-cell">Vitamin C</div><div class="cmp-cell bad">77% Lost</div><div class="cmp-cell good">100% Active</div></div>
+    <div class="cmp-row"><div class="cmp-cell">Iron</div><div class="cmp-cell bad">66% Lost</div><div class="cmp-cell good">100% Active</div></div>
+    <div class="cmp-row"><div class="cmp-cell">Zinc</div><div class="cmp-cell bad">70% Lost</div><div class="cmp-cell good">100% Active</div></div>
+    <div class="cmp-row"><div class="cmp-cell">B-Complex Vitamins</div><div class="cmp-cell bad">38% Lost</div><div class="cmp-cell good">100% Active</div></div>
+    <div class="cmp-row"><div class="cmp-cell">Calcium</div><div class="cmp-cell bad">21% Lost</div><div class="cmp-cell good">100% Active</div></div>
+    <div class="cmp-row"><div class="cmp-cell">Enzymes</div><div class="cmp-cell bad">100% Destroyed</div><div class="cmp-cell good">100% Active</div></div>
+    <div class="cmp-row"><div class="cmp-cell">Immunoglobulins</div><div class="cmp-cell bad">59% Destroyed</div><div class="cmp-cell good">100% Active</div></div>
+    <div class="cmp-row"><div class="cmp-cell">Probiotics</div><div class="cmp-cell bad">100% Destroyed</div><div class="cmp-cell good">100% Active</div></div>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- BENEFITS -->
+
   <section id="benefits" class="section">
     <div class="wrap">
       <div class="sec-lbl">Why Raw Milk</div>
@@ -674,6 +823,7 @@
   </section>
 
   <!-- REVIEWS -->
+
   <section id="reviews" class="section rev-section">
     <div class="wrap">
       <div class="sec-lbl">Customer Reviews</div>
@@ -707,6 +857,7 @@
   </section>
 
   <!-- DELIVERY -->
+
   <section id="delivery" class="section">
     <div class="wrap">
       <div class="del-grid">
@@ -733,6 +884,7 @@
   </section>
 
   <!-- FAQ -->
+
   <section id="faq" class="section" style="background:var(--off);">
     <div class="wrap">
       <div class="sec-lbl">FAQ</div>
@@ -742,9 +894,9 @@
         <div class="faq-item open"><button class="faq-q" type="button"><span>What kind of cows produce your milk?</span><span class="fq-icon">−</span></button><div class="faq-a">Our milk comes from 100% pasture-raised grass-fed Australian dairy Jersey cows, selected for premium milk quality and consistency.</div></div>
         <div class="faq-item"><button class="faq-q" type="button"><span>Is raw milk legal in Australia?</span><span class="fq-icon">+</span></button><div class="faq-a">Raw cow's milk sold for human consumption is illegal in Australia. Our product is sold for pet use only and labelled accordingly.</div></div>
         <div class="faq-item"><button class="faq-q" type="button"><span>What makes raw milk different from pasteurised milk?</span><span class="fq-icon">+</span></button><div class="faq-a">Pasteurisation uses heat to extend shelf life, but destroys delicate proteins, enzymes, bacteria and other bioactive compounds. Raw milk preserves all of these naturally.</div></div>
-        <div class="faq-item"><button class="faq-q" type="button"><span>How is your raw milk kept safe during delivery?</span><span class="fq-icon">+</span></button><div class="faq-a">We use a strict cold-chain process from the dairy to your door. Milk is collected fresh, immediately refrigerated, packed with cold gel packs, and delivered in an insulated container. Glass bottles are sanitised between each delivery cycle.</div></div>
-        <div class="faq-item"><button class="faq-q" type="button"><span>Why glass bottles and stainless steel lids?</span><span class="fq-icon">+</span></button><div class="faq-a">Plastic leaches microplastics and BPA/BPS into liquids — especially fats like milk. We use 2L glass bottles with stainless steel lids so your milk never touches plastic at any point.</div></div>
-        <div class="faq-item"><button class="faq-q" type="button"><span>What is the minimum order?</span><span class="fq-icon">+</span></button><div class="faq-a">Our minimum subscription is 20L per month with weekly delivery. We also offer one-time trial orders from 5L for those who want to try before subscribing.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span>How is your raw milk kept safe during delivery?</span><span class="fq-icon">+</span></button><div class="faq-a">We use a strict cold-chain process from the dairy to your door. Milk is collected fresh, immediately refrigerated, packed with cold gel packs, and delivered in insulated containers. Glass bottles are sanitised between each delivery cycle.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span>Why glass bottles and stainless steel lids?</span><span class="fq-icon">+</span></button><div class="faq-a">Plastic leaches microplastics and BPA into liquids — especially fats like milk. We use 2L glass bottles with stainless steel lids so your milk never touches plastic at any point.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span>What is the minimum order?</span><span class="fq-icon">+</span></button><div class="faq-a">Our minimum subscription is 20L per month with weekly delivery. We also offer one-time trial orders from 5L.</div></div>
         <div class="faq-item"><button class="faq-q" type="button"><span>Which areas do you deliver to?</span><span class="fq-icon">+</span></button><div class="faq-a">We currently service major areas across NSW, VIC and QLD. If you're outside these states, please request a custom quote via the contact form.</div></div>
         <div class="faq-item"><button class="faq-q" type="button"><span>Can I cancel or change my plan anytime?</span><span class="fq-icon">+</span></button><div class="faq-a">Yes. Upgrade, downgrade, pause, or cancel at any time with at least 72 hours notice before your next scheduled delivery.</div></div>
       </div>
@@ -752,6 +904,7 @@
   </section>
 
   <!-- CONTACT -->
+
   <section id="contact" class="section">
     <div class="wrap">
       <div class="sec-lbl">Contact Us</div>
@@ -786,6 +939,7 @@
   </section>
 
   <!-- REFERRAL -->
+
   <div class="ref">
     <div class="wrap ref-in">
       <span class="ref-emoji">🎁</span>
@@ -801,6 +955,7 @@
   </div>
 
   <!-- FOOTER -->
+
   <footer class="footer">
     <div class="wrap">
       <div class="foot-logo">
@@ -819,7 +974,7 @@
       <div class="foot-copy">
         100% Grass-Fed Pasture-Raised Australian Cows · No Vaccines · No Hormones · No Antibiotics<br>
         Free shipping across NSW, VIC &amp; QLD. Sold for pet use only.<br>
-        <span style="opacity:.55;font-size:11.5px;display:block;margin-top:7px;">© 2026 RawMilkAUS. All rights reserved.</span>
+        <span style="opacity:.55;font-size:11px;display:block;margin-top:6px;">© 2026 RawMilkAUS. All rights reserved.</span>
       </div>
     </div>
   </footer>
@@ -827,24 +982,24 @@
 </main>
 
 <!-- MOBILE STICKY -->
+
 <div class="mob-sticky" id="mobSticky">
   <div class="ms-lbl" id="msLbl">Select a plan to continue</div>
   <div class="ms-qty" id="msQty">
-    <button class="ms-qbtn" id="msMinus">−</button>
+    <button class="ms-qbtn" id="msMinus" touch-action="manipulation">−</button>
     <span class="ms-qval" id="msQval">20L</span>
-    <button class="ms-qbtn" id="msPlus">+</button>
+    <button class="ms-qbtn" id="msPlus" touch-action="manipulation">+</button>
   </div>
   <button class="ms-btn" id="msStickyBtn">BUY NOW</button>
   <div class="ms-meta">🔒 Secure · 🇦🇺 Australian Made · 🚚 Free Shipping</div>
 </div>
 
 <script>
-/* ====================================================
+/* ════════════════════════════
    STRIPE LINKS
-==================================================== */
-const S = {
+════════════════════════════ */
+const S={
   starter:"https://buy.stripe.com/3cI00j85o6Y714Z1XD28800",
-  for2:"https://buy.stripe.com/6oUeVd4Tcaaj00VgSx28801",
   popular:"https://buy.stripe.com/00w6oH4Tc3LVbJD6dT28808",
   trial5:"https://buy.stripe.com/00waEX85ofuD4hbfOt28809",
   trial10:"https://buy.stripe.com/5kQcN5etM82b14ZcCh2880c",
@@ -863,53 +1018,40 @@ const S = {
   130:"https://buy.stripe.com/bJe8wPdpI5U39BvdGl2880m",
   140:"https://buy.stripe.com/dRm7sLdpI96feVPfOt2880n",
   150:"https://buy.stripe.com/bJe7sLfxQ1DNaFz1XD2880o",
-  160:"https://buy.stripe.com/8x23cv85o6Y7cNHau92880p",
-  170:"https://buy.stripe.com/bJebJ1bhAfuD9BvdGl2880q",
-  180:"https://buy.stripe.com/fZu5kD0CW2HReVPgSx2880r",
-  190:"https://buy.stripe.com/eVq9ATclE5U35lf9q52880s",
   200:"https://buy.stripe.com/3cIfZh71kfuD293cCh2880t",
 };
-const STDKEY={'20':'starter','60':'popular','40':'for2'};
+const STDKEY={'20':'starter','60':'popular'};
 const clamp=v=>Math.min(200,Math.max(20,Math.round(v/10)*10));
 const fmt=v=>'$'+Number(v).toLocaleString('en-AU');
 
-/* STATE */
-let mode='sub', selSub=null, selTry=null, customL=20;
-let _subURL='', _tryURL='';
+let mode='sub',selSub=null,selTry=null,customL=20;
+let _subURL='',_tryURL='';
 
 /* MODE TOGGLE */
 const tabSub=document.getElementById('tabSub');
 const tabOne=document.getElementById('tabOne');
-const subPlans=document.getElementById('subPlans');
-const onePlans=document.getElementById('onePlans');
-
 function setMode(m){
   mode=m;
   tabSub.classList.toggle('active',m==='sub');
   tabOne.classList.toggle('active',m==='one');
-  subPlans.style.display=m==='sub'?'':'none';
-  onePlans.style.display=m==='one'?'':'none';
+  document.getElementById('subPlans').style.display=m==='sub'?'':'none';
+  document.getElementById('onePlans').style.display=m==='one'?'':'none';
   refreshUI();
 }
 tabSub.addEventListener('click',()=>setMode('sub'));
 tabOne.addEventListener('click',()=>setMode('one'));
 
-/* PLAN CARDS - SUBSCRIBE */
-const planCards=document.querySelectorAll('#planCards .plan-card');
-planCards.forEach(c=>c.addEventListener('click',function(){
+/* PLAN CARDS */
+document.querySelectorAll('#planCards .plan-card').forEach(c=>c.addEventListener('click',function(){
   selSub=this;
-  planCards.forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('#planCards .plan-card').forEach(x=>x.classList.remove('active'));
   this.classList.add('active');
-  const bulk=this.dataset.type==='bulk';
-  document.getElementById('csWrap').classList.toggle('show',bulk);
+  document.getElementById('csWrap').classList.toggle('show',this.dataset.type==='bulk');
   refreshUI();
 }));
-
-/* PLAN CARDS - TRY */
-const tryCards=document.querySelectorAll('#tryCards .plan-card');
-tryCards.forEach(c=>c.addEventListener('click',function(){
+document.querySelectorAll('#tryCards .plan-card').forEach(c=>c.addEventListener('click',function(){
   selTry=this;
-  tryCards.forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('#tryCards .plan-card').forEach(x=>x.classList.remove('active'));
   this.classList.add('active');
   refreshUI();
 }));
@@ -926,129 +1068,138 @@ document.getElementById('csPlus').addEventListener('click',()=>updateCustom(cust
 document.getElementById('msMinus').addEventListener('click',()=>updateCustom(customL-10));
 document.getElementById('msPlus').addEventListener('click',()=>updateCustom(customL+10));
 
-/* REFRESH */
-function refreshUI(){
-  if(mode==='sub') refreshSub(); else refreshTry();
-}
+/* REFRESH UI */
+function refreshUI(){ mode==='sub'?refreshSub():refreshTry(); }
 
 function refreshSub(){
+  const msLbl=document.getElementById('msLbl');
+  const msQty=document.getElementById('msQty');
+  const msBtn=document.getElementById('msStickyBtn');
   const priceEl=document.getElementById('subPrice');
   const noteEl=document.getElementById('subNote');
   const stkP=document.getElementById('stickyPrice');
-  const msLbl=document.getElementById('msLbl');
-  const msQty=document.getElementById('msQty');
-  const msBtn=document.getElementById('msStickyBtn');
   const btn=document.getElementById('subBtn');
-
   if(!selSub){
-    priceEl.textContent='—'; noteEl.textContent='Select a plan above to see pricing';
-    stkP.textContent='Select a plan'; msLbl.textContent='Select a plan';
-    btn.textContent='🔒  Checkout Now'; msBtn.textContent='BUY NOW';
-    msQty.style.display='none'; _subURL=''; return;
+    priceEl.textContent='—';noteEl.textContent='Select a plan above to see pricing';
+    stkP.textContent='Select a plan';msLbl.textContent='Select a plan';
+    btn.textContent='🔒  Checkout Now';msBtn.textContent='BUY NOW';
+    msQty.style.display='none';_subURL='';return;
   }
-
   const type=selSub.dataset.type;
   let price,label,note,url;
-
   if(type==='bulk'){
-    price=customL*10;
-    const r=clamp(customL);
-    url=S[r]||S[200];
-    label=fmt(price)+' — '+customL+'L/mo';
-    note=customL+'L / month · '+fmt(price)+' · delivered weekly';
+    price=customL*10;url=S[clamp(customL)]||S[200];
+    label=fmt(price)+' — '+customL+'L/mo';note=customL+'L / month · '+fmt(price);
     msQty.style.display='flex';
   } else {
     price=Number(selSub.dataset.price);
-    const m=selSub.dataset.monthly, w=selSub.dataset.weekly;
+    const m=selSub.dataset.monthly,w=selSub.dataset.weekly;
     url=S[STDKEY[m]]||S[m]||'';
-    label=fmt(price)+' — '+m+'L/mo';
-    note=m+'L / month · '+w+'L weekly · '+fmt(price)+'/mo';
+    label=fmt(price)+' — '+m+'L/mo';note=m+'L monthly · '+w+'L weekly · '+fmt(price)+'/mo';
     msQty.style.display='none';
   }
-
-  _subURL=url;
-  priceEl.textContent=fmt(price);
-  noteEl.textContent=note;
-  stkP.textContent=fmt(price);
-  msLbl.textContent=label;
-  btn.textContent='🔒  Checkout — '+fmt(price);
-  msBtn.textContent='Checkout — '+fmt(price);
+  _subURL=url;priceEl.textContent=fmt(price);noteEl.textContent=note;
+  stkP.textContent=fmt(price);msLbl.textContent=label;
+  btn.textContent='🔒  Checkout — '+fmt(price);msBtn.textContent='Checkout — '+fmt(price);
 }
 
 function refreshTry(){
+  const msLbl=document.getElementById('msLbl');
+  const msBtn=document.getElementById('msStickyBtn');
   const priceEl=document.getElementById('tryPrice');
   const noteEl=document.getElementById('tryNote');
   const stkP=document.getElementById('stickyPrice');
-  const msLbl=document.getElementById('msLbl');
-  const msQty=document.getElementById('msQty');
-  const msBtn=document.getElementById('msStickyBtn');
   const btn=document.getElementById('tryBtn');
-  msQty.style.display='none';
-
+  document.getElementById('msQty').style.display='none';
   if(!selTry){
-    priceEl.textContent='—'; noteEl.textContent='Select a trial size above';
-    stkP.textContent='Select a size'; msLbl.textContent='Select a trial size';
-    btn.textContent='🔒  Order Now — One Time'; msBtn.textContent='TRY IT OUT';
-    _tryURL=''; return;
+    priceEl.textContent='—';noteEl.textContent='Select a trial size above';
+    stkP.textContent='Select a size';msLbl.textContent='Select a trial size';
+    btn.textContent='🔒  Order Now — One Time';msBtn.textContent='TRY IT OUT';
+    _tryURL='';return;
   }
-
   const price=Number(selTry.dataset.price);
   const m=selTry.dataset.monthly;
   _tryURL=selTry.dataset.stripe||'';
   const note=m+'L · one-time · '+fmt(price);
-
-  priceEl.textContent=fmt(price);
-  noteEl.textContent=note;
-  stkP.textContent=fmt(price);
-  msLbl.textContent=note;
-  btn.textContent='🔒  Order — '+fmt(price);
-  msBtn.textContent='Order — '+fmt(price);
+  priceEl.textContent=fmt(price);noteEl.textContent=note;stkP.textContent=fmt(price);
+  msLbl.textContent=note;btn.textContent='🔒  Order — '+fmt(price);msBtn.textContent='Order — '+fmt(price);
 }
 
 /* CHECKOUT */
 function go(url){
-  if(!url||!url.includes('http')){ alert('Stripe link missing — please contact us to order.'); return; }
+  if(!url||!url.includes('http')){alert('Stripe link missing — please contact us.');return;}
   window.location.href=url;
 }
-
 document.getElementById('subBtn').addEventListener('click',function(){
-  if(!selSub){ document.getElementById('productTop').scrollIntoView({behavior:'smooth'}); return; }
-  go(_subURL);
+  if(!selSub){document.getElementById('productTop').scrollIntoView({behavior:'smooth'});return;}go(_subURL);
 });
 document.getElementById('tryBtn').addEventListener('click',function(){
-  if(!selTry){ document.getElementById('productTop').scrollIntoView({behavior:'smooth'}); return; }
-  go(_tryURL);
+  if(!selTry){document.getElementById('productTop').scrollIntoView({behavior:'smooth'});return;}go(_tryURL);
 });
 document.getElementById('msStickyBtn').addEventListener('click',function(){
-  if(mode==='sub'){ if(!selSub){document.getElementById('productTop').scrollIntoView({behavior:'smooth'});return;} go(_subURL); }
-  else { if(!selTry){document.getElementById('productTop').scrollIntoView({behavior:'smooth'});return;} go(_tryURL); }
+  if(mode==='sub'){if(!selSub){document.getElementById('productTop').scrollIntoView({behavior:'smooth'});return;}go(_subURL);}
+  else{if(!selTry){document.getElementById('productTop').scrollIntoView({behavior:'smooth'});return;}go(_tryURL);}
 });
 document.getElementById('stickyCartBtn').addEventListener('click',function(){
-  if(mode==='sub'){ if(!selSub){document.getElementById('productTop').scrollIntoView({behavior:'smooth'});return;} go(_subURL); }
-  else { if(!selTry){document.getElementById('productTop').scrollIntoView({behavior:'smooth'});return;} go(_tryURL); }
+  if(mode==='sub'){if(!selSub){document.getElementById('productTop').scrollIntoView({behavior:'smooth'});return;}go(_subURL);}
+  else{if(!selTry){document.getElementById('productTop').scrollIntoView({behavior:'smooth'});return;}go(_tryURL);}
 });
 
 /* STICKY SCROLL BAR */
 const stickyBar=document.getElementById('stickyBar');
-const buyboxEl=document.getElementById('buybox');
 new IntersectionObserver(e=>{
   stickyBar.classList.toggle('vis',!e[0].isIntersecting);
-},{threshold:0}).observe(buyboxEl);
+},{threshold:0}).observe(document.getElementById('buybox'));
 
-/* ANN BAR */
+/* ANN BAR CODE COPY */
 function copyCode(){
   const btn=document.getElementById('annCodeBtn');
   const txt=document.getElementById('codeText');
-  function done(){ btn.classList.add('copied'); txt.textContent='COPIED ✓'; setTimeout(()=>{btn.classList.remove('copied');txt.textContent='RAWMILK';},2500); }
-  if(navigator.clipboard&&window.isSecureContext) navigator.clipboard.writeText('RAWMILK').then(done).catch(done);
-  else { try{var el=document.createElement('textarea');el.value='RAWMILK';el.style.cssText='position:fixed;opacity:0';document.body.appendChild(el);el.focus();el.select();document.execCommand('copy');document.body.removeChild(el);}catch(e){} done(); }
+  function done(){btn.classList.add('copied');txt.textContent='COPIED ✓';setTimeout(()=>{btn.classList.remove('copied');txt.textContent='RAWMILK';},2500);}
+  if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText('RAWMILK').then(done).catch(done);
+  else{try{var el=document.createElement('textarea');el.value='RAWMILK';el.style.cssText='position:fixed;opacity:0';document.body.appendChild(el);el.focus();el.select();document.execCommand('copy');document.body.removeChild(el);}catch(e){}done();}
 }
-// ann bar close removed — marquee has no close button
+
+/* ════════════════════════════
+   IMAGE SLIDER
+════════════════════════════ */
+(function(){
+  const wrap=document.getElementById('sliderWrap');
+  const slides=document.getElementById('slides');
+  const dots=document.querySelectorAll('.slider-dot');
+  const thumbs=document.querySelectorAll('.thumb-item');
+  let cur=0,total=4,startX=0,isDragging=false,dragDist=0;
+
+  function goTo(n){
+    cur=((n%total)+total)%total;
+    slides.style.transform='translateX(-'+cur*100+'%)';
+    dots.forEach((d,i)=>d.classList.toggle('active',i===cur));
+    thumbs.forEach((t,i)=>t.classList.toggle('active',i===cur));
+  }
+
+  document.getElementById('sliderPrev').addEventListener('click',()=>goTo(cur-1));
+  document.getElementById('sliderNext').addEventListener('click',()=>goTo(cur+1));
+  dots.forEach(d=>d.addEventListener('click',()=>goTo(+d.dataset.idx)));
+  thumbs.forEach(t=>t.addEventListener('click',()=>goTo(+t.dataset.idx)));
+
+  /* Touch swipe */
+  wrap.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;isDragging=true;dragDist=0;},{passive:true});
+  wrap.addEventListener('touchmove',e=>{if(!isDragging)return;dragDist=e.touches[0].clientX-startX;},{passive:true});
+  wrap.addEventListener('touchend',()=>{
+    if(!isDragging)return;isDragging=false;
+    if(dragDist<-50)goTo(cur+1);
+    else if(dragDist>50)goTo(cur-1);
+    dragDist=0;
+  });
+
+  /* Auto-advance every 5s */
+  setInterval(()=>goTo(cur+1),5000);
+})();
 
 /* FAQ */
 document.querySelectorAll('.faq-q').forEach(btn=>{
   btn.addEventListener('click',function(){
-    const item=this.parentElement, open=item.classList.contains('open');
+    const item=this.parentElement,open=item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.fq-icon').textContent='+';});
     if(!open){item.classList.add('open');this.querySelector('.fq-icon').textContent='−';}
   });
@@ -1065,12 +1216,11 @@ document.querySelectorAll('.ia-btn').forEach(btn=>{
 
 /* MOBILE NAV */
 document.getElementById('mobMenuBtn').addEventListener('click',function(){
-  const nav=document.querySelector('.nav-links');
-  if(!nav) return;
+  const nav=document.querySelector('.nav-links');if(!nav)return;
   const show=nav.style.display!=='flex';
-  if(show){ nav.style.cssText='display:flex;flex-direction:column;position:fixed;top:66px;left:0;right:0;background:#fff;padding:16px 20px;border-bottom:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:99;gap:14px;'; }
-  else { nav.style.cssText=''; }
+  nav.style.cssText=show?'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:#fff;padding:14px 20px;border-bottom:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:99;gap:12px;':'';
 });
 </script>
+
 </body>
 </html>
