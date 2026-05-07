@@ -14,353 +14,83 @@
       --text: #194636;
       --shadow: 0 12px 30px rgba(14,75,58,.08);
     }
-
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
-
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
+    body { font-family: Georgia, "Times New Roman", serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
-
-    .topbar {
-      background: var(--green);
-      color: #fff;
-      font-size: 13px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      text-align: center;
-      padding: 8px 16px;
-      font-weight: 700;
-      font-family: Inter, sans-serif;
-    }
-
-    header {
-      background: rgba(244,241,234,.97);
-      border-bottom: 1px solid var(--line);
-      padding: 0 18px;
-    }
-
-    .nav {
-      max-width: 1180px;
-      margin: 0 auto;
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 900;
-      color: var(--green);
-      font-size: 20px;
-    }
-
+    .topbar { background: var(--green); color: #fff; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; text-align: center; padding: 8px 16px; font-weight: 700; font-family: Inter, sans-serif; }
+    header { background: rgba(244,241,234,.97); border-bottom: 1px solid var(--line); padding: 0 18px; }
+    .nav { max-width: 1180px; margin: 0 auto; min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; color: var(--green); font-size: 20px; }
     .brand-logo { width: 36px; height: 36px; border-radius: 9px; overflow: hidden; display: grid; place-items: center; }
     .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
-
-    .nav-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: 1.5px solid var(--green);
-      color: var(--green);
-      font-weight: 800;
-      font-size: 15px;
-      font-family: Inter, sans-serif;
-      transition: .18s ease;
-    }
-
+    .nav-back { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; border: 1.5px solid var(--green); color: var(--green); font-weight: 800; font-size: 15px; font-family: Inter, sans-serif; transition: .18s ease; }
     .nav-back:hover { background: var(--green-soft); }
-
-    /* HERO */
-    .confirm-hero {
-      background: linear-gradient(135deg, #0b4a38 0%, #0f4b3a 60%, #14513f 100%);
-      color: #fff;
-      padding: 80px 18px 90px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .confirm-hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,255,255,.05), transparent);
-      pointer-events: none;
-    }
-
+    .confirm-hero { background: linear-gradient(135deg, #0b4a38 0%, #0f4b3a 60%, #14513f 100%); color: #fff; padding: 80px 18px 90px; text-align: center; position: relative; overflow: hidden; }
+    .confirm-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,255,255,.05), transparent); pointer-events: none; }
     .confirm-hero .container { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
-
-    .check-ring {
-      width: 96px; height: 96px; border-radius: 50%;
-      background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.22);
-      display: grid; place-items: center; margin: 0 auto 28px;
-      animation: popIn .55s cubic-bezier(.34,1.56,.64,1) both;
-    }
-
+    .check-ring { width: 96px; height: 96px; border-radius: 50%; background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.22); display: grid; place-items: center; margin: 0 auto 28px; animation: popIn .55s cubic-bezier(.34,1.56,.64,1) both; }
     .check-ring .check { font-size: 44px; line-height: 1; animation: popIn .6s .15s cubic-bezier(.34,1.56,.64,1) both; }
-
     @keyframes popIn { from { opacity:0; transform:scale(.6); } to { opacity:1; transform:scale(1); } }
-
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 16px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px;
-      color: rgba(255,255,255,.82); text-transform: uppercase; font-size: 12px;
-      letter-spacing: .22em; margin-bottom: 18px; font-family: Inter, sans-serif;
-      font-weight: 800; animation: fadeUp .5s .1s both ease-out;
-    }
-
-    .confirm-hero h1 {
-      font-size: 62px; line-height: .96; margin: 0 0 16px;
-      letter-spacing: -.04em; color: #f3eee4; animation: fadeUp .5s .2s both ease-out;
-    }
-
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; color: rgba(255,255,255,.82); text-transform: uppercase; font-size: 12px; letter-spacing: .22em; margin-bottom: 18px; font-family: Inter, sans-serif; font-weight: 800; animation: fadeUp .5s .1s both ease-out; }
+    .confirm-hero h1 { font-size: 62px; line-height: .96; margin: 0 0 16px; letter-spacing: -.04em; color: #f3eee4; animation: fadeUp .5s .2s both ease-out; }
     .confirm-hero h1 em { font-style: italic; display: block; }
-
-    .confirm-sub {
-      font-size: 20px; color: rgba(255,255,255,.76); margin-bottom: 32px;
-      font-family: Inter, sans-serif; font-weight: 600; animation: fadeUp .5s .3s both ease-out;
-    }
-
+    .confirm-sub { font-size: 20px; color: rgba(255,255,255,.76); margin-bottom: 32px; font-family: Inter, sans-serif; font-weight: 600; animation: fadeUp .5s .3s both ease-out; }
     @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
-
     .confirm-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; animation: fadeUp .5s .4s both ease-out; }
-
-    .confirm-chip {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.16);
-      border-radius: 999px; padding: 10px 16px; font-size: 13px;
-      font-weight: 800; font-family: Inter, sans-serif; color: #f5f0e7;
-    }
-
-    /* NEXT STEPS */
+    .confirm-chip { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 10px 16px; font-size: 13px; font-weight: 800; font-family: Inter, sans-serif; color: #f5f0e7; }
     .next-shell { padding: 72px 18px 80px; max-width: 860px; margin: 0 auto; width: 100%; }
-
-    .section-label {
-      font-size: 12px; letter-spacing: .28em; text-transform: uppercase;
-      color: #547162; text-align: center; margin-bottom: 10px;
-      font-family: Inter, sans-serif; font-weight: 800;
-    }
-
+    .section-label { font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: #547162; text-align: center; margin-bottom: 10px; font-family: Inter, sans-serif; font-weight: 800; }
     .section-title { font-size: 52px; line-height: 1; letter-spacing: -.04em; margin: 0 0 54px; text-align: center; color: var(--green); }
-
     .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-
-    .step-card {
-      background: #faf8f3; border: 1px solid #d9d3c7; border-radius: 22px;
-      padding: 30px 24px 26px; box-shadow: var(--shadow); text-align: center;
-      animation: fadeUp .5s both ease-out;
-    }
-
+    .step-card { background: #faf8f3; border: 1px solid #d9d3c7; border-radius: 22px; padding: 30px 24px 26px; box-shadow: var(--shadow); text-align: center; animation: fadeUp .5s both ease-out; }
     .step-card:nth-child(1) { animation-delay: .1s; }
     .step-card:nth-child(2) { animation-delay: .2s; }
     .step-card:nth-child(3) { animation-delay: .3s; }
-
-    .step-num {
-      width: 44px; height: 44px; border-radius: 50%; background: var(--green);
-      color: #fff; font-size: 18px; font-weight: 900; display: grid;
-      place-items: center; margin: 0 auto 16px; font-family: Inter, sans-serif;
-    }
-
+    .step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--green); color: #fff; font-size: 18px; font-weight: 900; display: grid; place-items: center; margin: 0 auto 16px; font-family: Inter, sans-serif; }
     .step-icon { font-size: 32px; margin-bottom: 14px; display: block; }
     .step-card h3 { font-size: 20px; line-height: 1.15; margin: 0 0 10px; color: var(--green); }
     .step-card p { font-size: 15px; color: #4c6d60; line-height: 1.55; margin: 0; font-family: Inter, sans-serif; }
-
-    /* CARE */
     .care-shell { background: var(--green); color: #fff; padding: 64px 18px 70px; }
     .care-inner { max-width: 760px; margin: 0 auto; }
     .care-shell .section-label { color: rgba(255,255,255,.6); }
     .care-shell .section-title { color: #f3eee4; margin-bottom: 40px; }
     .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-    .care-card {
-      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
-      border-radius: 18px; padding: 22px 20px; display: flex; gap: 14px; align-items: flex-start;
-    }
-
+    .care-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 18px; padding: 22px 20px; display: flex; gap: 14px; align-items: flex-start; }
     .care-icon { font-size: 24px; flex: 0 0 auto; margin-top: 2px; }
     .care-card h4 { margin: 0 0 6px; font-size: 17px; color: #f3eee4; line-height: 1.2; }
     .care-card p { margin: 0; font-size: 14px; color: rgba(255,255,255,.7); font-family: Inter, sans-serif; line-height: 1.5; }
-
-    /* SOCIAL + REFERRAL */
     .social-shell { padding: 72px 18px 80px; max-width: 760px; margin: 0 auto; width: 100%; text-align: center; }
     .social-shell .section-title { margin-bottom: 14px; }
     .social-sub { font-size: 18px; color: #4f7162; margin-bottom: 38px; font-family: Inter, sans-serif; }
-
     .social-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
-
-    .social-link {
-      display: inline-flex; align-items: center; gap: 10px; padding: 16px 24px;
-      border-radius: 14px; background: #faf8f3; border: 1px solid #d9d3c7;
-      color: var(--green); font-weight: 900; font-size: 16px;
-      font-family: Inter, sans-serif; box-shadow: var(--shadow); transition: .18s ease;
-    }
-
+    .social-link { display: inline-flex; align-items: center; gap: 10px; padding: 16px 24px; border-radius: 14px; background: #faf8f3; border: 1px solid #d9d3c7; color: var(--green); font-weight: 900; font-size: 16px; font-family: Inter, sans-serif; box-shadow: var(--shadow); transition: .18s ease; }
     .social-link:hover { transform: translateY(-2px); border-color: var(--green); box-shadow: 0 18px 32px rgba(14,75,58,.12); }
-
     .divider { border: none; height: 1px; background: var(--line); max-width: 860px; margin: 0 auto; }
-
-    /* REFERRAL NUDGE BAR */
-    .referral-nudge {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: linear-gradient(90deg, #ffe066 0%, #ffd700 100%);
-      color: #5a4200;
-      font-family: Inter, sans-serif;
-      font-size: 15px;
-      font-weight: 800;
-      text-align: center;
-      padding: 14px 20px;
-      text-decoration: none;
-      letter-spacing: .01em;
-      border-bottom: 2px solid #e6c800;
-      animation: nudgePulse 2.2s ease-in-out infinite;
-    }
-
-    .referral-nudge:hover {
-      background: linear-gradient(90deg, #ffd700 0%, #ffce00 100%);
-      color: #3a2900;
-    }
-
+    .referral-nudge { display: flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(90deg, #ffe066 0%, #ffd700 100%); color: #5a4200; font-family: Inter, sans-serif; font-size: 15px; font-weight: 800; text-align: center; padding: 14px 20px; text-decoration: none; letter-spacing: .01em; border-bottom: 2px solid #e6c800; animation: nudgePulse 2.2s ease-in-out infinite; }
+    .referral-nudge:hover { background: linear-gradient(90deg, #ffd700 0%, #ffce00 100%); color: #3a2900; }
     .referral-nudge strong { color: #b8520a; }
-
-    @keyframes nudgePulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(255,215,0,.5); }
-      50%       { box-shadow: 0 4px 24px rgba(255,215,0,.55); }
-    }
-
-    @media (max-width: 700px) {
-      .referral-nudge { font-size: 13px; padding: 12px 14px; }
-    }
-
-    /* REFERRAL BOX */
-    .referral-box {
-      background: #faf8f3;
-      border: 2px solid #d9d3c7;
-      border-radius: 22px;
-      padding: 36px 32px;
-      box-shadow: var(--shadow);
-      text-align: left;
-      max-width: 580px;
-      margin: 0 auto;
-    }
-
-    .referral-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #ffe066;
-      color: #7a5a00;
-      border-radius: 999px;
-      padding: 7px 14px;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      font-family: Inter, sans-serif;
-    }
-
-    .referral-box h3 {
-      font-size: 28px;
-      margin: 0 0 12px;
-      color: var(--green);
-      line-height: 1.1;
-    }
-
-    .referral-box > p {
-      font-size: 16px;
-      color: #4c6d60;
-      line-height: 1.6;
-      margin: 0 0 22px;
-      font-family: Inter, sans-serif;
-    }
-
-    .referral-steps {
-      background: var(--green-soft);
-      border: 1px solid #cfe1d8;
-      border-radius: 14px;
-      padding: 18px 20px;
-      margin-bottom: 24px;
-      font-family: Inter, sans-serif;
-    }
-
-    .referral-steps-label {
-      font-size: 12px;
-      font-weight: 900;
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin: 0 0 10px;
-    }
-
-    .referral-steps ol {
-      margin: 0;
-      padding-left: 20px;
-      color: #3a6352;
-      font-size: 15px;
-      line-height: 1.8;
-    }
-
+    @keyframes nudgePulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,215,0,.5); } 50% { box-shadow: 0 4px 24px rgba(255,215,0,.55); } }
+    .referral-box { background: #faf8f3; border: 2px solid #d9d3c7; border-radius: 22px; padding: 36px 32px; box-shadow: var(--shadow); text-align: left; max-width: 580px; margin: 0 auto; }
+    .referral-badge { display: inline-flex; align-items: center; gap: 8px; background: #ffe066; color: #7a5a00; border-radius: 999px; padding: 7px 14px; font-size: 12px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 16px; font-family: Inter, sans-serif; }
+    .referral-box h3 { font-size: 28px; margin: 0 0 12px; color: var(--green); line-height: 1.1; }
+    .referral-box > p { font-size: 16px; color: #4c6d60; line-height: 1.6; margin: 0 0 22px; font-family: Inter, sans-serif; }
+    .referral-steps { background: var(--green-soft); border: 1px solid #cfe1d8; border-radius: 14px; padding: 18px 20px; margin-bottom: 24px; font-family: Inter, sans-serif; }
+    .referral-steps-label { font-size: 12px; font-weight: 900; color: var(--green); text-transform: uppercase; letter-spacing: .08em; margin: 0 0 10px; }
+    .referral-steps ol { margin: 0; padding-left: 20px; color: #3a6352; font-size: 15px; line-height: 1.8; }
     .referral-btns { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
-
-    .referral-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 16px 24px;
-      border-radius: 14px;
-      color: #fff;
-      font-weight: 900;
-      font-size: 16px;
-      font-family: Inter, sans-serif;
-      border: 2px solid transparent;
-      transition: .18s ease;
-      width: 100%;
-      text-align: center;
-    }
-
+    .referral-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 24px; border-radius: 14px; color: #fff; font-weight: 900; font-size: 16px; font-family: Inter, sans-serif; border: 2px solid transparent; transition: .18s ease; width: 100%; text-align: center; }
     .referral-btn:hover { transform: translateY(-1px); opacity: .9; }
     .referral-btn.instagram { background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%); }
     .referral-btn.tiktok { background: #000; border-color: #333; }
-
-    .referral-footnote {
-      font-size: 13px;
-      color: #7a9a8a;
-      margin: 0;
-      font-family: Inter, sans-serif;
-      text-align: center;
-      border-top: 1px solid #d9d3c7;
-      padding-top: 16px;
-      line-height: 1.5;
-    }
-
-    /* FOOTER */
+    .referral-footnote { font-size: 13px; color: #7a9a8a; margin: 0; font-family: Inter, sans-serif; text-align: center; border-top: 1px solid #d9d3c7; padding-top: 16px; line-height: 1.5; }
     footer { margin-top: auto; background: var(--green); color: #e9eee8; padding: 48px 18px 36px; text-align: center; }
     .foot-brand { font-size: 20px; font-weight: 700; margin-bottom: 18px; }
     .foot-copy { font-size: 13px; color: rgba(233,238,232,.6); line-height: 1.6; max-width: 560px; margin: 0 auto; font-family: Inter, sans-serif; }
     .foot-copy a { color: rgba(233,238,232,.8); text-decoration: underline; }
-
     @media (max-width: 700px) {
+      .referral-nudge { font-size: 13px; padding: 12px 14px; }
       .confirm-hero h1 { font-size: 38px; }
       .confirm-sub { font-size: 16px; }
       .section-title { font-size: 34px; }
@@ -376,6 +106,8 @@
       .referral-btn { font-size: 14px; padding: 14px 18px; }
     }
   </style>
+  <!-- GoAffPro loader -->
+  <script type="text/javascript" src="https://api.goaffpro.com/loader.js?shop=xivesoysjv"></script>
 </head>
 <body>
 
@@ -385,8 +117,7 @@
     <div class="nav">
       <a class="brand" href="index.html">
         <span class="brand-logo">
-          <img src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="RawMilkAUS logo"
-               onerror="this.style.display='none'; this.parentNode.textContent='🐄';" />
+          <img src="6d145e8e-6932-4a95-965f-ea2f943b4127.png" alt="RawMilkAUS logo" onerror="this.style.display='none'; this.parentNode.textContent='🐄';" />
         </span>
         RawMilkAUS 🇦🇺
       </a>
@@ -409,7 +140,6 @@
     </div>
   </section>
 
-  <!-- REFERRAL NUDGE -->
   <a href="#referral" class="referral-nudge">
     🎁 Refer a friend &amp; you both get <strong>10% off</strong> your next order &nbsp;👇
   </a>
@@ -458,20 +188,14 @@
     <div class="section-label">Join the Community</div>
     <h2 class="section-title">Follow the Journey</h2>
     <p class="social-sub">Tag us in your results. We share real customer stories every week.</p>
-
     <div class="social-links">
       <a class="social-link" href="https://www.instagram.com/slavic.stallion/" target="_blank" rel="noopener noreferrer">📸 Instagram — @slavic.stallion</a>
       <a class="social-link" href="https://www.tiktok.com/@slavic.stallion" target="_blank" rel="noopener noreferrer">🎵 TikTok — @slavic.stallion</a>
     </div>
-
-    <!-- REFERRAL OFFER -->
     <div class="referral-box" id="referral">
       <div class="referral-badge">🎁 Refer a Friend — Get 10% Off</div>
-
       <h3>Know someone who'd love this?</h3>
-
       <p>Refer a friend and when they buy — <strong>you both get 10% off your next order.</strong> Just message us on Instagram or TikTok with your friend's name and their order details and we'll sort you out straight away.</p>
-
       <div class="referral-steps">
         <p class="referral-steps-label">How it works</p>
         <ol>
@@ -481,19 +205,11 @@
           <li>You both get 10% off your next order 🙌</li>
         </ol>
       </div>
-
       <div class="referral-btns">
-        <a class="referral-btn instagram" href="https://www.instagram.com/slavic.stallion/" target="_blank" rel="noopener noreferrer">
-          📸 Message us on Instagram — @slavic.stallion
-        </a>
-        <a class="referral-btn tiktok" href="https://www.tiktok.com/@slavic.stallion" target="_blank" rel="noopener noreferrer">
-          🎵 Message us on TikTok — @slavic.stallion
-        </a>
+        <a class="referral-btn instagram" href="https://www.instagram.com/slavic.stallion/" target="_blank" rel="noopener noreferrer">📸 Message us on Instagram — @slavic.stallion</a>
+        <a class="referral-btn tiktok" href="https://www.tiktok.com/@slavic.stallion" target="_blank" rel="noopener noreferrer">🎵 Message us on TikTok — @slavic.stallion</a>
       </div>
-
-      <p class="referral-footnote">
-        Send us your friend's name + their order details and we'll apply 10% off your next delivery 🤙
-      </p>
+      <p class="referral-footnote">Send us your friend's name + their order details and we'll apply 10% off your next delivery 🤙</p>
     </div>
   </section>
 
@@ -501,12 +217,26 @@
     <div class="foot-brand">RawMilkAUS 🇦🇺</div>
     <div class="foot-copy">
       Free shipping across NSW, VIC &amp; QLD. This product is sold strictly for pet use only.<br />
-      Questions? Follow us on
-      <a href="https://www.instagram.com/slavic.stallion/" target="_blank">Instagram</a> or
-      <a href="https://www.tiktok.com/@slavic.stallion" target="_blank">TikTok</a>.<br /><br />
-      ©️ 2026 RawMilkAUS. All rights reserved.
+      Questions? Follow us on <a href="https://www.instagram.com/slavic.stallion/" target="_blank">Instagram</a> or <a href="https://www.tiktok.com/@slavic.stallion" target="_blank">TikTok</a>.<br /><br />
+      © 2026 RawMilkAUS. All rights reserved.
     </div>
   </footer>
+
+  <!-- GoAffPro conversion tracking — waits for loader then fires -->
+  <script type="text/javascript">
+    window.addEventListener('load', function() {
+      var attempts = 0;
+      var interval = setInterval(function() {
+        attempts++;
+        if (typeof goaffproTrackConversion === 'function') {
+          clearInterval(interval);
+          goaffproTrackConversion('last_order');
+        } else if (attempts > 20) {
+          clearInterval(interval); // give up after 2 seconds
+        }
+      }, 100);
+    });
+  </script>
 
 </body>
 </html>
